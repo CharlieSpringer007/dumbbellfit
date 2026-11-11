@@ -13,7 +13,7 @@
  * CACHE_VERSION and PRECACHE_URLS are generated from the files in this folder.
  * If you add or rename GIFs or audio clips, add them to the list and bump the version.
  */
-const CACHE_VERSION = 'v2-b7f6517ca8';
+const CACHE_VERSION = 'v2-8a79938007';
 const CACHE_NAME = 'dumbbellfit-' + CACHE_VERSION;
 const APP_SHELL = './dumbbell_workout_ios_app.html';
 
@@ -956,32 +956,34 @@ const PRECACHE_URLS = [
     "./audio/coach/workout_done.m4a"
 ];
 
-self.addEventListener('install', (event) => {
-    event.waitUntil((async () => {
-        const cache = await caches.open(CACHE_NAME);
-        // Fetch a few files at a time (gentle on phones), each on its own,
-        // so a single missing file cannot block the install.
-        const queue = PRECACHE_URLS.slice();
-        const worker = async () => {
-            while (queue.length) {
-                const url = queue.shift();
-                try {
-                    if (await cache.match(url)) continue;   // kept from an earlier install attempt
-                    // Audio and animations never change once made: reuse them from the previous version.
-                    if (/\/(audio|animations|icons)\//.test(url)) {
-                        const old = await caches.match(url);
-                        if (old) { await cache.put(url, old); continue; }
-                    }
-                    const response = await fetch(new Request(url, { cache: 'reload' }));
-                    if (response.ok) await cache.put(url, response);
-                } catch (err) {
-                    // Offline or missing: it will be cached on first use instead.
+// Save every file in the list that is not saved yet, a few at a time.
+async function fillCache() {
+    const cache = await caches.open(CACHE_NAME);
+    // Fetch a few files at a time (gentle on phones), each on its own,
+    // so a single missing file cannot block the install.
+    const queue = PRECACHE_URLS.slice();
+    const worker = async () => {
+        while (queue.length) {
+            const url = queue.shift();
+            try {
+                if (await cache.match(url)) continue;   // kept from an earlier install attempt
+                // Audio and animations never change once made: reuse them from the previous version.
+                if (/\/(audio|animations|icons)\//.test(url)) {
+                    const old = await caches.match(url);
+                    if (old) { await cache.put(url, old); continue; }
                 }
+                const response = await fetch(new Request(url, { cache: 'reload' }));
+                if (response.ok) await cache.put(url, response);
+            } catch (err) {
+                // Offline or missing: it will be cached on first use instead.
             }
-        };
-        await Promise.all([worker(), worker(), worker(), worker(), worker(), worker()]);
-        await self.skipWaiting();
-    })());
+        }
+    };
+    await Promise.all([worker(), worker(), worker(), worker(), worker(), worker()]);
+}
+
+self.addEventListener('install', (event) => {
+    event.waitUntil(fillCache().then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
@@ -996,6 +998,11 @@ self.addEventListener('activate', (event) => {
 
 // The page asks how much of the app is saved, to show "offline ready".
 self.addEventListener('message', (event) => {
+    // The page asks for another try when some files are still missing (e.g. a dropped connection).
+    if (event.data && event.data.type === 'FILL_CACHE') {
+        event.waitUntil(fillCache());
+        return;
+    }
     if (!event.data || event.data.type !== 'CACHE_STATUS' || !event.ports || !event.ports[0]) return;
     event.waitUntil((async () => {
         const cache = await caches.open(CACHE_NAME);

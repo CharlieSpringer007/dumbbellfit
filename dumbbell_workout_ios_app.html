@@ -15256,6 +15256,10 @@
                     return;
                 }
                 setOfflineState('saving', status.cached, status.total);
+                // Every 20 s while files are missing, ask the service worker to try them again.
+                if (attempt > 0 && attempt % 10 === 0) {
+                    navigator.serviceWorker.ready.then(reg => reg.active && reg.active.postMessage({ type: 'FILL_CACHE' })).catch(() => {});
+                }
             }
             if (attempt < 90) setTimeout(() => pollOfflineCache(attempt + 1), 2000);
             else if (OfflineStatus.state !== 'ready') setOfflineState('partial');
