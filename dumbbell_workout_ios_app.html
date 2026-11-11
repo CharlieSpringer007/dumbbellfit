@@ -207,6 +207,17 @@
         .icon-btn svg { width: 20px; height: 20px; }
         .icon-btn.is-off { color: var(--muted); }
         .icon-btn.is-on { color: var(--lift); }
+        .voice-btn {
+            display: inline-flex; align-items: center; gap: 5px;
+            height: 40px; padding: 0 12px; border-radius: 20px;
+            background: var(--surface); color: var(--muted);
+            font-size: 13px; font-weight: 700; white-space: nowrap;
+        }
+        .voice-btn svg { width: 18px; height: 18px; }
+        .voice-btn.is-on { background: rgba(61, 220, 132, .16); color: var(--lift); padding-right: 4px; }
+        .voice-btn .voice-stop { margin-left: 4px; height: 32px; padding: 0 10px; border-radius: 16px; display: inline-grid; place-items: center; background: var(--danger); color: #2a0503; }
+        details.help { background: var(--ink); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
+        details.help summary { cursor: pointer; font-weight: 700; color: var(--accent); }
         .airplay-btn {
             display: inline-flex; align-items: center; gap: 6px;
             height: 40px; padding: 0 12px; border-radius: 20px;
@@ -309,7 +320,9 @@
         }
         .stage-overlay .h1 { color: var(--hold); }
         .stage-chips { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; justify-content: space-between; gap: 8px; }
-        .stage-chips .hr-chip, .stage-chips .airplay-btn { height: 34px; background: rgba(10, 10, 12, .86); color: var(--text); font-size: 13px; }
+        .stage-chips { align-items: flex-start; }
+        .stage-chips .hr-chip:not(.is-live), .stage-chips .airplay-btn { height: 34px; font-size: 13px; }
+        .stage-chips .hr-chip, .stage-chips .airplay-btn { background: rgba(10, 10, 12, .86); color: var(--text); }
         .screen.workout > * + * { margin-top: 12px; }
         .hud-sticky {
             position: sticky; bottom: -28px; z-index: 5;
@@ -352,6 +365,11 @@
             background: var(--surface); font-size: 14px; font-weight: 700;
         }
         .hr-chip svg { width: 16px; height: 16px; color: var(--danger); }
+        .hr-chip.is-live { height: 52px; padding: 0 14px 0 12px; gap: 8px; }
+        .hr-chip.is-live svg { width: 22px; height: 22px; }
+        .hr-bpm { font-size: 30px; line-height: 1; }
+        .hr-unit { font-size: 11px; line-height: 1.2; text-align: left; color: var(--muted); }
+        .hr-unit b { font-size: 12px; }
         .hr-chip.is-live svg { animation: beat 1s ease-in-out infinite; }
         .hr-zone-recovery { color: var(--accent); }
         .hr-zone-aerobic { color: var(--lift); }
@@ -415,7 +433,7 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"/><polygon points="12 15 17 21 7 21 12 15"/></svg>
                     <span>AirPlay TV</span>
                 </button>
-                <button class="icon-btn is-off" onclick="toggleVoiceRecognition()" id="mic-toggle-btn" aria-label="Voice control"></button>
+                <button class="voice-btn" onclick="toggleVoiceRecognition()" id="mic-toggle-btn" aria-label="Turn on voice control"></button>
                 <button class="icon-btn" onclick="toggleAudioCoach()" id="audio-coach-toggle-btn" aria-label="Coach sound"></button>
             </div>
         </header>
@@ -12365,7 +12383,7 @@
                 // Never drop below the set the user is already on.
                 activeWorkout.sets = Math.max(rememberedDefaultSets, activeWorkout.currentSet || 1);
             }
-            announce(plural(rememberedDefaultSets, 'set'));
+            announce(plural(rememberedDefaultSets, 'set'), `sets_${rememberedDefaultSets}`);
             refreshCurrentTab();
         }
 
@@ -12662,6 +12680,7 @@
         let librarySearchQuery = '';
 
         let voiceCoachEnabled = true;
+        try { voiceCoachEnabled = localStorage.getItem('dumbbell_coach_sound_on') !== '0'; } catch (e) {}
         let voiceRecognitionActive = false;
         let speechRecognitionInstance = null;
 
@@ -12712,55 +12731,237 @@
         };
 
         // ==========================================
-        // 3. VOICE COACH (recorded clips + speech fallback)
+        // 3. VOICE COACH
+        // Recorded clips in one natural voice ("George", audio/coach/*.m4a),
+        // played through Web Audio so they can be timed to the rep tempo.
+        // Anything without a recording falls back to the device's best voice.
         // ==========================================
-        function playHumanVoiceClip(clipName, fallbackText = null) {
-            updateCoachSubtitle(fallbackText || clipName.replace(/_/g, ' '));
-            if (!voiceCoachEnabled) return;
 
-            try {
-                const audio = new Audio(`audio/${clipName}.m4a`);
-                const attempt = audio.play();
-                if (attempt && typeof attempt.catch === 'function') {
-                    attempt.catch(() => {
-                        if (fallbackText) CoachVoice.speak(fallbackText);
-                    });
-                }
-            } catch (err) {
-                if (fallbackText) CoachVoice.speak(fallbackText);
-            }
-        }
+        // Generated at build time from audio/coach: clip id -> length in seconds.
+        const COACH_CLIPS = {"breath_1":2.15,"breath_2":1.75,"breath_3":2.38,"count_1":0.67,"count_10":0.69,"count_11":0.84,"count_12":0.74,"count_13":0.9,"count_14":0.9,"count_15":0.89,"count_16":0.95,"count_17":1.02,"count_18":0.83,"count_19":0.91,"count_2":0.68,"count_20":0.8,"count_3":0.73,"count_4":0.69,"count_5":0.78,"count_6":0.61,"count_7":0.75,"count_8":0.65,"count_9":0.79,"enc_1":1.88,"enc_2":2.04,"enc_3":1.53,"enc_4":1.26,"enc_5":1.47,"enc_6":1.51,"enc_7":1.09,"enc_8":1.55,"exercise_done":1.55,"faster":1.37,"form_bike_1":1.96,"form_bike_2":2.55,"form_bike_3":2.81,"form_bike_4":2.46,"form_bridge_1":1.87,"form_bridge_2":2.04,"form_bridge_3":2.24,"form_bridge_4":2.36,"form_calf_1":2.56,"form_calf_2":2.67,"form_calf_3":1.55,"form_calf_4":1.93,"form_core_1":1.77,"form_core_2":2.69,"form_core_3":1.83,"form_core_4":2.45,"form_curl_1":2.26,"form_curl_2":2.23,"form_curl_3":1.5,"form_curl_4":2.3,"form_hinge_1":2.12,"form_hinge_2":1.88,"form_hinge_3":2.39,"form_hinge_4":2.42,"form_lunge_1":2.51,"form_lunge_2":2.1,"form_lunge_3":1.98,"form_lunge_4":1.44,"form_overhead_1":2.4,"form_overhead_2":2.74,"form_overhead_3":1.78,"form_overhead_4":2.49,"form_press_1":2.74,"form_press_2":1.89,"form_press_3":1.84,"form_press_4":2.53,"form_raise_1":1.89,"form_raise_2":2.36,"form_raise_3":2.56,"form_raise_4":1.9,"form_row_1":2.29,"form_row_2":2.56,"form_row_3":1.65,"form_row_4":2.47,"form_squat_1":2.32,"form_squat_2":2.17,"form_squat_3":1.82,"form_squat_4":2.45,"form_static_1":2.31,"form_static_2":2.53,"form_static_3":1.84,"form_static_4":1.5,"go":0.77,"howto_bent_row":7.36,"howto_biceps_dumbbell_hammer_curl":8.77,"howto_calf_eccentric":7.8,"howto_copenhagen_side_plank_bench":8.99,"howto_db_bench_nordic_curl_progression":9.86,"howto_db_bulgarian_split_squat_bench":11.41,"howto_db_close_grip_floor_press":9.45,"howto_db_elevated_calf_raise_bench":11.17,"howto_db_incline_chest_supported_rear_delt_row":11.46,"howto_db_incline_spider_curl_bench":11.62,"howto_db_mat_deadbug_press":9.74,"howto_db_mat_plank_pull_through":9.05,"howto_db_mat_russian_twist_elevated":9.95,"howto_db_neutral_grip_overhead_press_bench":8.61,"howto_db_patellar_decline_squat_hsr":12.09,"howto_db_quad_sissy_squat_progression":9.72,"howto_db_reverse_fly_isometric_pinch_bench":9.19,"howto_db_seated_90_90_external_rotation_bench":10.07,"howto_db_seated_arnold_press_bench":9.4,"howto_db_single_arm_push_press_kg":11.11,"howto_db_standing_woodchopper_low_high":9.2,"howto_db_tempo_rdl_eccentric":10.62,"howto_eccentric_hammer":7.15,"howto_floor_press":8.12,"howto_glute_bridge":7.33,"howto_goblet_squat":7.47,"howto_incline_bench_db_w_raise":10.16,"howto_incline_bench_db_y_raise":11.43,"howto_iso_squat_hold":7.82,"howto_lunges":6.47,"howto_mat_prone_floor_angel":9.28,"howto_mat_side_lying_db_external_rotation":9.09,"howto_mat_single_leg_glute_bridge_db":9.43,"howto_overhead_press":6.53,"howto_peloton_achilles_low_tension_spin":6.79,"howto_peloton_active_recovery_cruise":5.65,"howto_peloton_ankle_capillary_flush":6.18,"howto_peloton_bike_bent_row_fusion":7.55,"howto_peloton_bike_bicep_curl_fusion":4.78,"howto_peloton_bike_floor_press_fusion":6.42,"howto_peloton_bike_goblet_squat_fusion":8.22,"howto_peloton_bike_overhead_press_fusion":5.52,"howto_peloton_bike_rdl_fusion":6.6,"howto_peloton_cadence_ladder_up":4.86,"howto_peloton_cooldown_heart_decel":8.88,"howto_peloton_glute_focused_climb":5.72,"howto_peloton_hiit_15s_super_sprint":8.34,"howto_peloton_hiit_30_30_interval":9.78,"howto_peloton_hip_knee_mobility_spin":7.26,"howto_peloton_low_impact_joint_unloading":6.44,"howto_peloton_patellar_synovial_flush":10.58,"howto_peloton_post_leg_day_flush":8.82,"howto_peloton_post_squat_knee_decompression":6.37,"howto_peloton_pz2_endurance_base":9.9,"howto_peloton_pz3_tempo_cruise":8.77,"howto_peloton_seated_climb_heavy":9.79,"howto_peloton_smooth_circles":7.92,"howto_peloton_spin_100_rpm":7.52,"howto_peloton_spin_90_rpm":9.14,"howto_peloton_spin_ups_80_110":9.08,"howto_peloton_standing_climb_heavy":8.35,"howto_peloton_tabata_20_10_sprint":9.64,"howto_rdl":6.99,"howto_russian_twist":8.29,"howto_scaption_raise":7.5,"hr_connected":2.24,"hr_down":2.16,"hr_high":2.85,"minus_15":1.58,"name_abductors_side_bridge_hip_abduction":2.03,"name_abductors_side_hip_abduction":1.59,"name_abductors_straight_leg_outer_hip_abductor":2.21,"name_abs_3_4_sit_up":1.55,"name_abs_45_side_bend":1.93,"name_abs_air_bike":0.92,"name_abs_alternate_heel_touchers":1.71,"name_abs_arms_overhead_full_sit_up_male":2.6,"name_abs_assisted_lying_leg_raise_with_lateral_throw_down":3.69,"name_abs_assisted_lying_leg_raise_with_throw_down":3.04,"name_abs_assisted_motion_russian_twist":2.57,"name_abs_assisted_prone_rectus_femoris_stretch":2.95,"name_abs_assisted_sit_up":1.41,"name_abs_bodyweight_incline_side_plank":2.23,"name_abs_bottoms_up":1.08,"name_abs_bridge_mountain_climber_cross_body":2.54,"name_abs_butt_ups":0.87,"name_abs_cocoons":1.02,"name_abs_crab_twist_toe_touch":1.84,"name_abs_cross_body_crunch":1.47,"name_abs_crunch_floor":1.09,"name_abs_crunch_hands_overhead":1.81,"name_abs_curl_up":0.92,"name_abs_dead_bug":0.95,"name_abs_decline_crunch":1.35,"name_abs_decline_sit_up":1.47,"name_abs_dumbbell_side_bend":1.73,"name_abs_elbow_to_knee":1.32,"name_abs_flag":0.78,"name_abs_flexion_leg_sit_up_bent_knee":2.28,"name_abs_flexion_leg_sit_up_straight_arm":2.34,"name_abs_frog_crunch":1.12,"name_abs_frog_planche":1.12,"name_abs_front_plank_with_twist":1.67,"name_abs_full_maltese":1.23,"name_abs_full_planche":1.09,"name_abs_gorilla_chin":1.22,"name_abs_groin_crunch":1.21,"name_abs_half_sit_up_male":1.38,"name_abs_hip_raise_bent_knee":1.69,"name_abs_inchworm":0.89,"name_abs_inchworm_v_2":1.52,"name_abs_incline_leg_hip_raise_leg_straight":2.65,"name_abs_incline_twisting_sit_up":2.07,"name_abs_jackknife_sit_up":1.5,"name_abs_janda_sit_up":1.3,"name_abs_knee_touch_crunch":1.34,"name_abs_kneeling_plank_tap_shoulder_male":2.29,"name_abs_l_sit_on_floor":1.56,"name_abs_lean_planche":1.12,"name_abs_leg_pull_in_flat_bench":1.86,"name_abs_lunge_with_twist":1.48,"name_abs_lying_elbow_to_knee":1.67,"name_abs_lying_leg_hip_raise":1.62,"name_abs_lying_leg_raise_flat_bench":2.23,"name_abs_negative_crunch":1.29,"name_abs_oblique_crunch_v_2":1.8,"name_abs_oblique_crunches_floor":1.7,"name_abs_one_arm_slam_with_medicine_ball":2.61,"name_abs_otis_up":1.15,"name_abs_pelvic_tilt":1.1,"name_abs_posterior_step_to_overhead_reach":2.54,"name_abs_potty_squat":1.05,"name_abs_power_point_plank":1.37,"name_abs_prisoner_half_sit_up_male":2.06,"name_abs_push_up_to_side_plank":1.62,"name_abs_quarter_sit_up":1.22,"name_abs_reverse_crunch":1.35,"name_abs_reverse_plank_with_leg_lift":2.28,"name_abs_russian_twist":1.26,"name_abs_seated_leg_raise":1.4,"name_abs_seated_side_crunch_wall":1.8,"name_abs_shoulder_tap":1.14,"name_abs_side_bridge_v_2":1.86,"name_abs_side_hip_on_parallel_bars":2.27,"name_abs_side_to_side_toe_touch_male":2.23,"name_abs_sit_up_v_2":1.36,"name_abs_sit_up_with_arms_on_chest":2.1,"name_abs_spell_caster":1.24,"name_abs_spine_twist":1.23,"name_abs_straddle_maltese":1.49,"name_abs_straddle_planche":1.23,"name_abs_suspended_abdominal_fallout":2.4,"name_abs_suspended_reverse_crunch":2.02,"name_abs_tuck_crunch":1.05,"name_abs_twisted_leg_raise":1.59,"name_abs_twisted_leg_raise_female":2.23,"name_abs_v_sit_on_floor":1.68,"name_abs_vertical_leg_raise_on_parallel_bars":2.99,"name_abs_weighted_crunch":1.22,"name_abs_weighted_decline_sit_up":2.0,"name_abs_weighted_front_plank":1.47,"name_abs_weighted_russian_twist":1.81,"name_abs_weighted_russian_twist_legs_up":2.47,"name_abs_weighted_russian_twist_v_2":2.45,"name_abs_wind_sprints":1.18,"name_adductors_assisted_side_lying_adductor_stretch":2.84,"name_adductors_butterfly_yoga_pose":1.9,"name_adductors_side_lying_hip_adduction_male":2.36,"name_adductors_side_plank_hip_adduction":1.83,"name_bench_elevated_feet_pike_pushup":2.37,"name_bench_flat_leg_raise_hip_lift":2.67,"name_bench_reverse_crunch_leg_extension":3.15,"name_bent_row":1.93,"name_biceps_biceps_leg_concentration_curl":2.67,"name_biceps_biceps_narrow_pull_ups":1.94,"name_biceps_bodyweight_side_lying_biceps_curl":2.83,"name_biceps_dumbbell_alternate_biceps_curl":2.44,"name_biceps_dumbbell_alternate_biceps_curl_with_arm_blaster":3.47,"name_biceps_dumbbell_alternate_hammer_preacher_curl":2.88,"name_biceps_dumbbell_alternate_preacher_curl":2.43,"name_biceps_dumbbell_alternate_seated_hammer_curl":2.76,"name_biceps_dumbbell_alternating_bicep_curl_with_leg_raised_on_exercise_ball":5.25,"name_biceps_dumbbell_alternating_seated_bicep_curl_on_exercise_ball":4.36,"name_biceps_dumbbell_bicep_curl_lunge_with_bowling_motion":3.22,"name_biceps_dumbbell_bicep_curl_on_exercise_ball_with_leg_raised":4.0,"name_biceps_dumbbell_bicep_curl_with_stork_stance":2.83,"name_biceps_dumbbell_biceps_curl":1.87,"name_biceps_dumbbell_biceps_curl_reverse":2.29,"name_biceps_dumbbell_biceps_curl_squat":2.18,"name_biceps_dumbbell_biceps_curl_v_sit_on_bosu_ball":3.27,"name_biceps_dumbbell_biceps_curl_with_arm_blaster":2.85,"name_biceps_dumbbell_concentration_curl":2.09,"name_biceps_dumbbell_cross_body_hammer_curl":2.41,"name_biceps_dumbbell_cross_body_hammer_curl_v_2":2.9,"name_biceps_dumbbell_hammer_curl":1.71,"name_biceps_dumbbell_hammer_curl_on_exercise_ball":2.94,"name_biceps_dumbbell_hammer_curl_v_2":2.22,"name_biceps_dumbbell_hammer_curls_with_arm_blaster":2.61,"name_biceps_dumbbell_high_curl":1.53,"name_biceps_dumbbell_incline_biceps_curl":2.45,"name_biceps_dumbbell_incline_curl":1.88,"name_biceps_dumbbell_incline_curl_v_2":2.42,"name_biceps_dumbbell_incline_hammer_curl":2.24,"name_biceps_dumbbell_incline_inner_biceps_curl":2.76,"name_biceps_dumbbell_kneeling_bicep_curl_exercise_ball":3.37,"name_biceps_dumbbell_lunge_with_bicep_curl":2.52,"name_biceps_dumbbell_lying_supine_biceps_curl":2.58,"name_biceps_dumbbell_lying_supine_curl":2.12,"name_biceps_dumbbell_lying_wide_curl":2.07,"name_biceps_dumbbell_one_arm_hammer_preacher_curl":2.58,"name_biceps_dumbbell_one_arm_prone_curl":2.3,"name_biceps_dumbbell_one_arm_prone_hammer_curl":2.62,"name_biceps_dumbbell_one_arm_reverse_preacher_curl":2.9,"name_biceps_dumbbell_one_arm_reverse_spider_curl":2.77,"name_biceps_dumbbell_one_arm_seated_bicep_curl_on_exercise_ball":4.12,"name_biceps_dumbbell_one_arm_seated_hammer_curl":2.65,"name_biceps_dumbbell_one_arm_standing_curl":2.42,"name_biceps_dumbbell_one_arm_standing_hammer_curl":2.82,"name_biceps_dumbbell_one_arm_zottman_preacher_curl":2.83,"name_biceps_dumbbell_over_bench_neutral_wrist_curl":2.74,"name_biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl":3.29,"name_biceps_dumbbell_peacher_hammer_curl":2.19,"name_biceps_dumbbell_preacher_curl":1.73,"name_biceps_dumbbell_preacher_curl_over_exercise_ball":3.18,"name_biceps_dumbbell_prone_incline_curl":2.45,"name_biceps_dumbbell_prone_incline_hammer_curl":2.71,"name_biceps_dumbbell_revers_grip_biceps_curl":2.65,"name_biceps_dumbbell_reverse_preacher_curl":2.17,"name_biceps_dumbbell_reverse_spider_curl":2.15,"name_biceps_dumbbell_seated_alternate_hammer_curl_on_exercise_ball":3.95,"name_biceps_dumbbell_seated_bicep_curl":2.24,"name_biceps_dumbbell_seated_biceps_curl_to_shoulder_press":3.15,"name_biceps_dumbbell_seated_curl":1.65,"name_biceps_dumbbell_seated_hammer_curl":2.15,"name_biceps_dumbbell_seated_inner_biceps_curl":2.6,"name_biceps_dumbbell_seated_neutral_wrist_curl":2.5,"name_biceps_dumbbell_seated_one_arm_bicep_curl_on_exercise_ball_with_leg_raised":5.22,"name_biceps_dumbbell_seated_preacher_curl":2.2,"name_biceps_dumbbell_seated_revers_grip_concentration_curl":3.52,"name_biceps_dumbbell_standing_alternate_hammer_curl_and_press":3.22,"name_biceps_dumbbell_standing_biceps_curl":2.3,"name_biceps_dumbbell_standing_concentration_curl":2.64,"name_biceps_dumbbell_standing_inner_biceps_curl_v_2":3.12,"name_biceps_dumbbell_standing_one_arm_concentration_curl":3.12,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench":3.51,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench_1680":5.78,"name_biceps_dumbbell_standing_one_arm_reverse_curl":2.75,"name_biceps_dumbbell_standing_preacher_curl":2.19,"name_biceps_dumbbell_standing_reverse_curl":2.31,"name_biceps_dumbbell_standing_zottman_preacher_curl":2.83,"name_biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl":3.59,"name_biceps_dumbbell_waiter_biceps_curl":2.33,"name_biceps_dumbbell_zottman_curl":1.72,"name_biceps_dumbbell_zottman_preacher_curl":2.25,"name_biceps_weighted_standing_curl":1.62,"name_calf_eccentric":2.57,"name_calves_ankle_circles":1.32,"name_calves_assisted_lying_calves_stretch":2.29,"name_calves_bodyweight_standing_calf_raise":2.18,"name_calves_box_jump_down_with_one_leg_stabilization":3.39,"name_calves_calf_push_stretch_with_hands_against_wall":2.74,"name_calves_calf_stretch_with_hands_against_wall":2.56,"name_calves_circles_knee_stretch":1.57,"name_calves_donkey_calf_raise":1.59,"name_calves_dumbbell_seated_calf_raise":2.1,"name_calves_dumbbell_seated_one_leg_calf_raise":2.73,"name_calves_dumbbell_seated_one_leg_calf_raise_hammer_grip":3.35,"name_calves_dumbbell_seated_one_leg_calf_raise_palm_up":3.18,"name_calves_dumbbell_single_leg_calf_raise":2.38,"name_calves_dumbbell_standing_calf_raise":2.15,"name_calves_exercise_ball_on_the_wall_calf_raise":2.92,"name_calves_exercise_ball_on_the_wall_calf_raise_tennis_ball_between_ankles":4.76,"name_calves_exercise_ball_on_the_wall_calf_raise_tennis_ball_between_knees":4.69,"name_calves_one_leg_donkey_calf_raise":2.18,"name_calves_one_leg_floor_calf_raise":1.99,"name_calves_peroneals_stretch":1.24,"name_calves_posterior_tibialis_stretch":2.21,"name_calves_seated_calf_stretch_male":1.8,"name_calves_single_leg_calf_raise_on_a_dumbbell":2.75,"name_calves_standing_calf_raise_on_a_staircase":2.62,"name_calves_standing_calves":1.36,"name_calves_standing_calves_calf_stretch":2.12,"name_calves_weighted_donkey_calf_raise":2.06,"name_cardio_semi_squat_jump_male":1.88,"name_copenhagen_side_plank_bench":2.62,"name_db_around_the_world_bench":2.76,"name_db_b-stance_rdl_mat":2.84,"name_db_bench_nordic_curl_progression":2.96,"name_db_bench_split_squat_isometric_hold":3.37,"name_db_bench_step_ups_kg":1.99,"name_db_bulgarian_split_squat_bench":2.13,"name_db_close_grip_floor_press":2.08,"name_db_cossack_squat_mat":2.18,"name_db_curtsy_lunge_mat":1.74,"name_db_eccentric_overhead_press_lowering":3.5,"name_db_elevated_calf_raise_bench":2.15,"name_db_floor_z_press_mat":2.36,"name_db_front_raise_isometric_pause":3.5,"name_db_half_kneeling_overhead_press_mat":2.59,"name_db_high_pull_upright_row":2.7,"name_db_hollow_body_hold_mat":3.54,"name_db_incline_chest_supported_rear_delt_row":3.32,"name_db_incline_prone_reverse_fly_bench":2.7,"name_db_incline_scapular_shrugs_bench":2.9,"name_db_incline_spider_curl_bench":2.25,"name_db_incline_tate_press_bench":2.06,"name_db_isometric_lateral_hold_mat":2.85,"name_db_kneeling_woodchopper_mat":2.77,"name_db_leaning_lateral_raise":2.9,"name_db_lu_raise_overhead_arc":2.01,"name_db_mat_bird_dog_row":2.27,"name_db_mat_deadbug_press":3.05,"name_db_mat_pallof_press_kneeling":3.19,"name_db_mat_plank_pull_through":1.97,"name_db_mat_renegade_plank_hold":2.62,"name_db_mat_russian_twist_elevated":2.04,"name_db_mat_windshield_wipers":2.79,"name_db_neutral_grip_overhead_press_bench":2.63,"name_db_overhead_situp_press_mat":3.02,"name_db_patellar_decline_squat_hsr":2.15,"name_db_quad_sissy_squat_progression":2.92,"name_db_reverse_fly_isometric_pinch_bench":3.53,"name_db_seated_90_90_external_rotation_bench":4.25,"name_db_seated_alternating_shoulder_press":3.02,"name_db_seated_arnold_press_bench":2.13,"name_db_seated_bradford_press_bench":2.31,"name_db_seated_cuban_press_bench":1.97,"name_db_seated_hammer_front_raise_bench":2.37,"name_db_seated_shrug_bench":1.54,"name_db_single_arm_push_press_kg":2.15,"name_db_standing_cuban_press":2.07,"name_db_standing_oblique_side_bend":2.97,"name_db_standing_shrug_pause":2.95,"name_db_standing_suitcase_carry_march":2.76,"name_db_standing_woodchopper_high_low":2.57,"name_db_standing_woodchopper_low_high":2.72,"name_db_straight_leg_situp_mat":2.4,"name_db_sumo_goblet_squat_kg":2.41,"name_db_tempo_rdl_eccentric":2.13,"name_db_tempo_scaption_hold_mat":1.78,"name_db_turkish_getup_quarter_roll_mat":1.95,"name_db_turkish_getup_sit_to_lunge_mat":1.95,"name_db_waiter_carry_isometric_mat":3.38,"name_db_windmill_shoulder_stabilizer_mat":2.77,"name_delts_dumbbell_alternate_side_press":2.13,"name_delts_dumbbell_arnold_press":1.62,"name_delts_dumbbell_arnold_press_v_2":2.28,"name_delts_dumbbell_bench_seated_press":2.11,"name_delts_dumbbell_cuban_press":1.61,"name_delts_dumbbell_cuban_press_v_2":2.45,"name_delts_dumbbell_front_raise":1.55,"name_delts_dumbbell_front_raise_v_2":2.33,"name_delts_dumbbell_full_can_lateral_raise":2.49,"name_delts_dumbbell_incline_one_arm_lateral_raise":3.02,"name_delts_dumbbell_incline_raise":1.87,"name_delts_dumbbell_incline_rear_lateral_raise":2.74,"name_delts_dumbbell_incline_t_raise":2.03,"name_delts_dumbbell_iron_cross":1.59,"name_delts_dumbbell_lateral_raise":1.74,"name_delts_dumbbell_lateral_to_front_raise":2.44,"name_delts_dumbbell_lying_external_shoulder_rotation":2.98,"name_delts_dumbbell_lying_on_floor_rear_delt_raise":2.97,"name_delts_dumbbell_lying_one_arm_deltoid_rear":2.85,"name_delts_dumbbell_lying_one_arm_rear_lateral_raise":3.13,"name_delts_dumbbell_lying_rear_lateral_raise":2.66,"name_delts_dumbbell_one_arm_lateral_raise":2.54,"name_delts_dumbbell_one_arm_lateral_raise_with_support":3.12,"name_delts_dumbbell_one_arm_reverse_fly_with_support":3.02,"name_delts_dumbbell_one_arm_shoulder_press":2.38,"name_delts_dumbbell_one_arm_shoulder_press_v_2":2.67,"name_delts_dumbbell_one_arm_upright_row":2.45,"name_delts_dumbbell_push_press":1.47,"name_delts_dumbbell_raise":1.19,"name_delts_dumbbell_rear_delt_raise":2.11,"name_delts_dumbbell_rear_delt_row_shoulder":2.45,"name_delts_dumbbell_rear_fly":1.57,"name_delts_dumbbell_rear_lateral_raise":2.31,"name_delts_dumbbell_rear_lateral_raise_support_head":2.93,"name_delts_dumbbell_reverse_fly":1.79,"name_delts_dumbbell_rotation_reverse_fly":2.67,"name_delts_dumbbell_scott_press":1.6,"name_delts_dumbbell_seated_alternate_front_raise":2.75,"name_delts_dumbbell_seated_alternate_press":2.34,"name_delts_dumbbell_seated_alternate_shoulder":2.45,"name_delts_dumbbell_seated_bent_arm_lateral_raise":2.99,"name_delts_dumbbell_seated_front_raise":1.98,"name_delts_dumbbell_seated_lateral_raise":2.36,"name_delts_dumbbell_seated_lateral_raise_v_2":2.95,"name_delts_dumbbell_seated_shoulder_press":2.01,"name_delts_dumbbell_seated_shoulder_press_parallel_grip":2.93,"name_delts_dumbbell_side_lying_one_hand_raise":2.79,"name_delts_dumbbell_single_arm_overhead_carry":2.63,"name_delts_dumbbell_standing_alternate_overhead_press":2.92,"name_delts_dumbbell_standing_alternate_raise":2.42,"name_delts_dumbbell_standing_around_world":2.22,"name_delts_dumbbell_standing_front_raise_above_head":2.58,"name_delts_dumbbell_standing_one_arm_palm_in_press":2.71,"name_delts_dumbbell_standing_overhead_press":2.32,"name_delts_dumbbell_standing_palms_in_press":2.27,"name_delts_dumbbell_upright_row":1.7,"name_delts_dumbbell_upright_row_back_pov":2.36,"name_delts_dumbbell_upright_shoulder_external_rotation":3.16,"name_delts_dumbbell_w_press":1.66,"name_delts_left_hook_boxing":1.42,"name_delts_rear_deltoid_stretch":1.68,"name_delts_standing_behind_neck_press":2.13,"name_delts_weighted_front_raise":1.54,"name_delts_weighted_kneeling_step_with_swing":2.27,"name_delts_weighted_round_arm":1.59,"name_eccentric_hammer":2.28,"name_floor_press":1.52,"name_forearms_dumbbell_finger_curls":1.87,"name_forearms_dumbbell_one_arm_reverse_wrist_curl":2.84,"name_forearms_dumbbell_one_arm_seated_neutral_wrist_curl":3.04,"name_forearms_dumbbell_one_arm_wrist_curl":2.22,"name_forearms_dumbbell_over_bench_one_arm_reverse_wrist_curl":3.45,"name_forearms_dumbbell_over_bench_one_arm_wrist_curl":2.88,"name_forearms_dumbbell_over_bench_revers_wrist_curl":2.77,"name_forearms_dumbbell_over_bench_wrist_curl":2.32,"name_forearms_dumbbell_reverse_wrist_curl":2.2,"name_forearms_dumbbell_seated_palms_up_wrist_curl":2.67,"name_forearms_finger_curls":1.28,"name_forearms_side_wrist_pull_stretch":1.87,"name_glute_bridge":1.99,"name_glutes_arms_apart_circular_toe_touch_male":2.58,"name_glutes_assisted_lying_glutes_stretch":2.11,"name_glutes_assisted_lying_gluteus_and_piriformis_stretch":3.36,"name_glutes_basic_toe_touch_male":1.82,"name_glutes_bench_hip_extension":1.66,"name_glutes_bent_knee_lying_twist_male":2.1,"name_glutes_bodyweight_drop_jump_squat":2.16,"name_glutes_curtsey_squat":1.17,"name_glutes_dumbbell_bench_squat":1.56,"name_glutes_dumbbell_clean":1.22,"name_glutes_dumbbell_contralateral_forward_lunge":2.64,"name_glutes_dumbbell_deadlift":1.31,"name_glutes_dumbbell_lunge":1.21,"name_glutes_dumbbell_one_arm_snatch":1.95,"name_glutes_dumbbell_plyo_squat":1.67,"name_glutes_dumbbell_rear_lunge":1.55,"name_glutes_dumbbell_romanian_deadlift":2.13,"name_glutes_dumbbell_single_leg_deadlift":2.04,"name_glutes_dumbbell_single_leg_deadlift_with_stepbox_support":3.36,"name_glutes_dumbbell_single_leg_squat":1.91,"name_glutes_dumbbell_squat":1.2,"name_glutes_dumbbell_step_up":1.32,"name_glutes_dumbbell_stiff_leg_deadlift":2.29,"name_glutes_dumbbell_straight_leg_deadlift":2.0,"name_glutes_dumbbell_sumo_pull_through":2.07,"name_glutes_exercise_ball_hip_flexor_stretch":2.43,"name_glutes_exercise_ball_one_leg_prone_lower_body_rotation":3.83,"name_glutes_exercise_ball_one_legged_diagonal_kick_hamstring_curl":4.16,"name_glutes_flutter_kicks":1.06,"name_glutes_forward_lunge_male":1.63,"name_glutes_frankenstein_squat":1.65,"name_glutes_glute_bridge_march":1.45,"name_glutes_glute_bridge_two_legs_on_bench_male":2.75,"name_glutes_hands_clasped_circular_toe_touch_male":2.75,"name_glutes_hands_reversed_clasped_circular_toe_touch_male":3.23,"name_glutes_hug_keens_to_chest":1.65,"name_glutes_iron_cross_stretch":1.56,"name_glutes_jump_squat_v_2":1.64,"name_glutes_lunge_with_jump":1.39,"name_glutes_march_sit_wall":1.3,"name_glutes_monster_walk":1.23,"name_glutes_outside_leg_kick_push_up":2.02,"name_glutes_pike_to_cobra_push_up":1.79,"name_glutes_push_up_inside_leg_kick":2.06,"name_glutes_reverse_hyper_on_flat_bench":2.29,"name_glutes_rocking_frog_stretch":1.59,"name_glutes_seated_glute_stretch":1.44,"name_glutes_seated_piriformis_stretch":1.82,"name_glutes_spider_crawl_push_up":1.62,"name_glutes_swimmer_kicks_v_2_male":2.14,"name_glutes_twist_hip_lift":1.36,"name_glutes_walking_lunge":1.26,"name_glutes_weighted_lunge_with_swing":2.04,"name_glutes_weighted_stretch_lunge":1.55,"name_goblet_squat":1.59,"name_hamstrings_assisted_prone_hamstring":1.94,"name_hamstrings_dumbbell_lying_femoral":1.65,"name_hamstrings_exercise_ball_seated_hamstring_stretch":2.73,"name_hamstrings_hamstring_stretch":1.37,"name_hamstrings_inverse_leg_curl_bench_support":2.51,"name_hamstrings_kick_out_sit":1.09,"name_hamstrings_leg_up_hamstring_stretch":1.79,"name_hamstrings_power_clean":1.12,"name_hamstrings_runners_stretch":1.2,"name_hamstrings_seated_wide_angle_pose_sequence":2.61,"name_hamstrings_self_assisted_inverse_leg_curl":2.72,"name_hamstrings_self_assisted_inverse_leg_curl_1766":5.57,"name_hamstrings_self_assisted_inverse_leg_curl_on_floor":3.3,"name_hamstrings_world_greatest_stretch":1.58,"name_incline_bench_db_l_raise":3.85,"name_incline_bench_db_t_raise":2.37,"name_incline_bench_db_w_raise":2.68,"name_incline_bench_db_y_raise":2.43,"name_iso_squat_hold":2.33,"name_lats_alternate_lateral_pulldown":2.2,"name_lats_back_pec_stretch":1.29,"name_lats_bench_pull_ups":1.24,"name_lats_exercise_ball_alternating_arm_ups":2.88,"name_lats_exercise_ball_lat_stretch":2.0,"name_lats_exercise_ball_lower_back_stretch_pyramid":2.9,"name_lats_exercise_ball_lying_side_lat_stretch":2.66,"name_lats_gironda_sternum_chin":1.89,"name_lats_kipping_muscle_up":1.47,"name_lats_kneeling_lat_stretch":1.5,"name_lats_medicine_ball_catch_and_overhead_throw":2.81,"name_lats_muscle_up":1.06,"name_lats_muscle_up_on_vertical_bar":2.21,"name_lats_one_arm_against_wall":1.85,"name_lats_seated_lower_back_stretch":1.85,"name_lats_side_lying_floor_stretch":1.92,"name_lats_side_to_side_chin":1.65,"name_lats_standing_lateral_stretch":1.79,"name_lats_twin_handle_parallel_grip_lat_pulldown":3.01,"name_lats_weighted_muscle_up":1.56,"name_lats_weighted_muscle_up_on_bar":2.26,"name_levator_scapulae_neck_side_stretch":1.37,"name_levator_scapulae_side_push_neck_stretch":1.65,"name_lunges":1.81,"name_mat_bicycle_crunch_tempo_pause":2.91,"name_mat_dolphin_pushup_delts":1.99,"name_mat_flutter_kicks_db_hold":3.28,"name_mat_frog_pumps_db":2.06,"name_mat_pike_pushup_delts":1.41,"name_mat_plank_knee_to_elbow_spider":1.43,"name_mat_prone_cobra_scapular_squeeze":2.78,"name_mat_prone_floor_angel":3.15,"name_mat_side_lying_db_external_rotation":3.05,"name_mat_side_plank_hip_dip_db":2.56,"name_mat_single_leg_glute_bridge_db":2.69,"name_overhead_press":2.06,"name_pectorals_archer_push_up":1.28,"name_pectorals_assisted_chest_dip_kneeling":2.26,"name_pectorals_assisted_wide_grip_chest_dip_kneeling":2.84,"name_pectorals_behind_head_chest_stretch":1.88,"name_pectorals_chest_and_front_of_shoulder_stretch":2.51,"name_pectorals_chest_dip":1.05,"name_pectorals_chest_dip_on_straight_bar":1.94,"name_pectorals_chest_stretch_with_exercise_ball":2.45,"name_pectorals_chest_tap_push_up_male":1.83,"name_pectorals_clap_push_up":1.15,"name_pectorals_clock_push_up":1.15,"name_pectorals_decline_push_up":1.45,"name_pectorals_deep_push_up":1.13,"name_pectorals_drop_push_up":1.17,"name_pectorals_dumbbell_around_pullover":1.7,"name_pectorals_dumbbell_bench_press":1.53,"name_pectorals_dumbbell_decline_bench_press":2.2,"name_pectorals_dumbbell_decline_fly":1.8,"name_pectorals_dumbbell_decline_one_arm_fly":2.64,"name_pectorals_dumbbell_decline_twist_fly":2.17,"name_pectorals_dumbbell_fly":1.19,"name_pectorals_dumbbell_fly_on_exercise_ball":2.57,"name_pectorals_dumbbell_incline_alternate_press":2.52,"name_pectorals_dumbbell_incline_bench_press":2.19,"name_pectorals_dumbbell_incline_breeding":1.88,"name_pectorals_dumbbell_incline_fly":1.86,"name_pectorals_dumbbell_incline_fly_on_exercise_ball":2.95,"name_pectorals_dumbbell_incline_one_arm_fly":2.48,"name_pectorals_dumbbell_incline_one_arm_fly_on_exercise_ball":3.67,"name_pectorals_dumbbell_incline_one_arm_press":2.38,"name_pectorals_dumbbell_incline_one_arm_press_on_exercise_ball":3.67,"name_pectorals_dumbbell_incline_palm_in_press":2.25,"name_pectorals_dumbbell_incline_press_on_exercise_ball":3.1,"name_pectorals_dumbbell_incline_twisted_flyes":2.4,"name_pectorals_dumbbell_lying_one_arm_press":2.23,"name_pectorals_dumbbell_lying_one_arm_press_v_2":2.65,"name_pectorals_dumbbell_lying_pullover_on_exercise_ball":3.08,"name_pectorals_dumbbell_one_arm_bench_fly":2.17,"name_pectorals_dumbbell_one_arm_chest_fly_on_exercise_ball":3.5,"name_pectorals_dumbbell_one_arm_decline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_fly_on_exercise_ball":3.1,"name_pectorals_dumbbell_one_arm_incline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_press_on_exercise_ball":3.12,"name_pectorals_dumbbell_one_arm_pullover_on_exercise_ball":3.43,"name_pectorals_dumbbell_one_arm_reverse_grip_press":2.73,"name_pectorals_dumbbell_one_leg_fly_on_exercise_ball":3.14,"name_pectorals_dumbbell_press_on_exercise_ball":2.66,"name_pectorals_dumbbell_pullover":1.3,"name_pectorals_dumbbell_pullover_hip_extension_on_exercise_ball":3.72,"name_pectorals_dumbbell_pullover_on_exercise_ball":2.89,"name_pectorals_dumbbell_reverse_bench_press":2.06,"name_pectorals_dumbbell_straight_arm_pullover":2.19,"name_pectorals_dynamic_chest_stretch_male":2.02,"name_pectorals_exercise_ball_pike_push_up":2.13,"name_pectorals_full_planche_push_up":1.58,"name_pectorals_hands_bike":1.08,"name_pectorals_hyght_dumbbell_fly":1.44,"name_pectorals_incline_push_up":1.43,"name_pectorals_incline_push_up_depth_jump":2.01,"name_pectorals_incline_push_up_on_box":1.88,"name_pectorals_incline_reverse_grip_push_up":2.15,"name_pectorals_isometric_chest_squeeze":1.85,"name_pectorals_isometric_wipers":1.68,"name_pectorals_kneeling_push_up_male":1.6,"name_pectorals_korean_dips":1.2,"name_pectorals_medicine_ball_chest_pass":1.95,"name_pectorals_medicine_ball_chest_push_from_3_point_stance":3.13,"name_pectorals_medicine_ball_chest_push_multiple_response":3.21,"name_pectorals_medicine_ball_chest_push_single_response":3.02,"name_pectorals_medicine_ball_chest_push_with_run_release":2.83,"name_pectorals_modified_hindu_push_up_male":2.36,"name_pectorals_plyo_push_up":1.31,"name_pectorals_push_and_pull_bodyweight":1.74,"name_pectorals_push_up":0.8,"name_pectorals_push_up_bosu_ball":1.56,"name_pectorals_push_up_medicine_ball":1.66,"name_pectorals_push_up_on_bosu_ball":1.92,"name_pectorals_push_up_plus":1.13,"name_pectorals_push_up_wall":1.18,"name_pectorals_push_up_wall_v_2":1.8,"name_pectorals_shoulder_tap_push_up":1.67,"name_pectorals_single_arm_push_up":1.72,"name_pectorals_superman_push_up":1.48,"name_pectorals_suspended_push_up":1.5,"name_pectorals_weighted_drop_push_up":1.62,"name_pectorals_weighted_straight_bar_dip":1.73,"name_pectorals_weighted_svend_press":1.68,"name_pectorals_wide_grip_chest_dip_on_high_parallel_bars":3.09,"name_pectorals_wide_hand_push_up":1.6,"name_peloton_achilles_low_tension_spin":3.04,"name_peloton_active_recovery_cruise":2.48,"name_peloton_alpine_pass_endurance":2.98,"name_peloton_ankle_capillary_flush":3.18,"name_peloton_bike_bench_dip_fusion":3.79,"name_peloton_bike_bent_row_fusion":4.25,"name_peloton_bike_bicep_curl_fusion":4.26,"name_peloton_bike_deadbug_fusion":3.53,"name_peloton_bike_floor_press_fusion":3.94,"name_peloton_bike_goblet_squat_fusion":3.81,"name_peloton_bike_mat_mountain_climber":3.65,"name_peloton_bike_overhead_press_fusion":4.09,"name_peloton_bike_pushup_fusion":3.77,"name_peloton_bike_rdl_fusion":4.42,"name_peloton_bike_renegade_row_fusion":4.55,"name_peloton_bike_russian_twist_fusion":3.94,"name_peloton_bike_split_squat_fusion":4.03,"name_peloton_bike_tabata_squat_blast":3.85,"name_peloton_bike_tendon_stretch_flush":3.99,"name_peloton_bike_walking_lunge_fusion":3.41,"name_peloton_cadence_ladder_up":2.51,"name_peloton_cadence_pyramid":2.58,"name_peloton_climb_cadence_surge":3.63,"name_peloton_climb_summit_push":3.06,"name_peloton_cooldown_heart_decel":3.48,"name_peloton_cooldown_spin":2.49,"name_peloton_evening_parasympathetic_spin":2.83,"name_peloton_glute_focused_climb":3.15,"name_peloton_hamstring_flush_spin":3.26,"name_peloton_heavy_climb":2.17,"name_peloton_hiit_10s_flying_start":3.11,"name_peloton_hiit_15s_super_sprint":3.43,"name_peloton_hiit_30_30_interval":3.94,"name_peloton_hiit_45s_vo2_blast":4.32,"name_peloton_hiit_60s_power_surge":2.88,"name_peloton_hiit_aerobic_surge_pyramid":2.88,"name_peloton_hiit_all_out_empty_tank":2.73,"name_peloton_hiit_cadence_drop_recover":3.35,"name_peloton_hiit_descending_ladder":2.34,"name_peloton_hiit_microbursts":2.65,"name_peloton_hiit_resistance_sprint":2.19,"name_peloton_hiit_sprints":3.19,"name_peloton_hiit_standing_seated_sprint":3.6,"name_peloton_hiit_tabata_quad_crush":3.26,"name_peloton_hill_attack_intervals":3.2,"name_peloton_hip_knee_mobility_spin":3.69,"name_peloton_low_cadence_strength_grind":3.67,"name_peloton_low_impact_joint_unloading":3.32,"name_peloton_morning_awakening_spin":2.59,"name_peloton_over_under_cadence":2.65,"name_peloton_patellar_synovial_flush":3.52,"name_peloton_post_leg_day_flush":3.09,"name_peloton_post_squat_knee_decompression":3.04,"name_peloton_power_zone_2":2.89,"name_peloton_pz1_active_recovery":3.58,"name_peloton_pz2_endurance_base":3.37,"name_peloton_pz2_steady_cruise":3.38,"name_peloton_pz3_cadence_tempo":2.93,"name_peloton_pz3_tempo_cruise":3.59,"name_peloton_pz4_lactate_clearance":3.55,"name_peloton_pz4_threshold_sweet_spot":3.51,"name_peloton_pz5_hard_interval":3.34,"name_peloton_pz5_vo2max_power":4.26,"name_peloton_pz6_1min_attack":3.49,"name_peloton_pz6_anaerobic_capacity":4.03,"name_peloton_pz7_neuromuscular_max":3.81,"name_peloton_pz7_standing_watts":3.92,"name_peloton_pz_endurance_hr_cap":3.1,"name_peloton_pz_over_under_intervals":2.53,"name_peloton_quad_burning_climb":2.52,"name_peloton_quad_collagen_flush":3.47,"name_peloton_resistance_pyramid":2.26,"name_peloton_rolling_hills_interval":3.08,"name_peloton_seated_cadence_hold":2.83,"name_peloton_seated_climb_heavy":3.36,"name_peloton_seated_steep_hill":2.39,"name_peloton_seated_surges":2.28,"name_peloton_seated_to_standing_switch":2.84,"name_peloton_single_leg_drill":2.7,"name_peloton_single_leg_left":2.8,"name_peloton_single_leg_right":2.8,"name_peloton_smooth_circles":3.97,"name_peloton_spin_100_rpm":3.72,"name_peloton_spin_105_rpm":4.0,"name_peloton_spin_110_rpm":4.47,"name_peloton_spin_115_rpm":4.19,"name_peloton_spin_120_rpm":4.56,"name_peloton_spin_85_rpm":3.42,"name_peloton_spin_90_rpm":3.51,"name_peloton_spin_95_rpm":3.9,"name_peloton_spin_ups_80_110":1.97,"name_peloton_standing_climb_heavy":2.56,"name_peloton_standing_torque_push":1.92,"name_peloton_switchback_climb":3.05,"name_peloton_tabata_20_10_sprint":3.57,"name_peloton_tabata_blast":2.41,"name_peloton_tabata_standing_burst":3.44,"name_peloton_tendon_flush":2.5,"name_peloton_tendon_gentle_pulse":4.02,"name_peloton_warmup_cadence_ramp":2.82,"name_peloton_warmup_spin":2.43,"name_quads_all_fours_squad_stretch":1.72,"name_quads_assisted_prone_lying_quads_stretch":2.58,"name_quads_backward_jump":1.18,"name_quads_balance_board":1.18,"name_quads_dumbbell_step_up_lunge":1.62,"name_quads_farmers_walk":1.19,"name_quads_forward_jump":1.21,"name_quads_intermediate_hip_flexor_and_quad_stretch":2.85,"name_quads_lying_side_quads_stretch":1.88,"name_quads_quads":0.77,"name_quads_quick_feet_v_2":1.54,"name_quads_snatch_pull":1.12,"name_rdl":1.68,"name_russian_twist":2.04,"name_scaption_raise":2.46,"name_serratus_anterior_incline_scapula_push_up":2.05,"name_serratus_anterior_scapula_push_up":1.46,"name_shoulder_bench_var_0":2.22,"name_shoulder_bench_var_1":2.42,"name_shoulder_bench_var_10":2.97,"name_shoulder_bench_var_11":2.31,"name_shoulder_bench_var_12":2.59,"name_shoulder_bench_var_13":2.12,"name_shoulder_bench_var_14":3.04,"name_shoulder_bench_var_2":2.24,"name_shoulder_bench_var_3":2.34,"name_shoulder_bench_var_4":1.95,"name_shoulder_bench_var_5":2.89,"name_shoulder_bench_var_6":2.65,"name_shoulder_bench_var_7":2.74,"name_shoulder_bench_var_8":2.36,"name_shoulder_bench_var_9":2.25,"name_spine_back_extension_on_exercise_ball":2.79,"name_spine_exercise_ball_back_extension_with_arms_extended":3.79,"name_traps_dumbbell_decline_shrug":1.75,"name_traps_dumbbell_decline_shrug_v_2":2.36,"name_traps_dumbbell_incline_shrug":1.83,"name_traps_dumbbell_shrug":1.22,"name_traps_scapula_dips":1.3,"name_triceps_assisted_standing_triceps_extension_with_towel":3.41,"name_triceps_assisted_triceps_dip_kneeling":2.45,"name_triceps_bench_dip_knees_bent":1.88,"name_triceps_bench_dip_on_floor":1.64,"name_triceps_body_up":0.92,"name_upper_back_dumbbell_side_plank_with_rear_fly":2.65,"paused":0.82,"phase_hold":0.75,"phase_lift":1.11,"phase_lower":1.34,"plus_15":1.94,"ready":0.91,"rem_2":0.87,"rem_3":0.98,"rem_half":1.18,"rem_last":1.83,"rest_10":2.37,"rest_15":1.32,"rest_30":1.55,"rest_day":2.97,"rest_tip_1":2.23,"rest_tip_2":3.49,"rest_tip_3":1.56,"rest_tip_4":2.32,"rest_tip_5":1.62,"resumed":1.11,"same_next":2.8,"set_1":0.87,"set_10":0.97,"set_2":0.94,"set_3":0.99,"set_4":0.96,"set_5":1.03,"set_6":0.93,"set_7":1.03,"set_8":0.92,"set_9":0.99,"set_done_1":1.65,"set_done_2":1.75,"set_done_3":1.85,"set_final":1.11,"sets_1":1.04,"sets_10":1.08,"sets_2":0.95,"sets_3":1.03,"sets_4":1.01,"sets_5":1.03,"sets_6":0.97,"sets_7":1.13,"sets_8":0.94,"sets_9":1.12,"skip":1.17,"slower":1.34,"start":1.35,"up_next":0.98,"voice_off":1.69,"voice_on":1.5,"welcome":1.92,"workout_done":2.75};
+        // Generated at build time: clip id -> the words, shown as captions.
+        const COACH_TEXT = {"count_1":"One.","count_2":"Two.","count_3":"Three.","count_4":"Four.","count_5":"Five.","count_6":"Six.","count_7":"Seven.","count_8":"Eight.","count_9":"Nine.","count_10":"Ten.","count_11":"Eleven.","count_12":"Twelve.","count_13":"Thirteen.","count_14":"Fourteen.","count_15":"Fifteen.","count_16":"Sixteen.","count_17":"Seventeen.","count_18":"Eighteen.","count_19":"Nineteen.","count_20":"Twenty.","set_1":"Set one.","sets_1":"One set.","set_2":"Set two.","sets_2":"Two sets.","set_3":"Set three.","sets_3":"Three sets.","set_4":"Set four.","sets_4":"Four sets.","set_5":"Set five.","sets_5":"Five sets.","set_6":"Set six.","sets_6":"Six sets.","set_7":"Set seven.","sets_7":"Seven sets.","set_8":"Set eight.","sets_8":"Eight sets.","set_9":"Set nine.","sets_9":"Nine sets.","set_10":"Set ten.","sets_10":"Ten sets.","set_final":"Final set.","phase_lower":"Lower, slowly.","phase_hold":"Hold.","phase_lift":"And drive up.","rem_half":"Halfway there.","rem_3":"Three more.","rem_2":"Two more.","rem_last":"Last one. Make it count.","enc_1":"Good. Nice and smooth.","enc_2":"That's it. Stay with the tempo.","enc_3":"Strong. Keep going.","enc_4":"Great control.","enc_5":"Own the slow part.","enc_6":"Lovely. Same again.","enc_7":"You've got this.","enc_8":"Steady. Don't rush it.","breath_1":"Breathe in on the way down.","breath_2":"Breathe out as you push.","breath_3":"Keep breathing, nice and steady.","ready":"Get ready.","go":"Go!","up_next":"Up next.","same_next":"Same exercise. Next set coming up.","set_done_1":"Set done. Rest up.","set_done_2":"Good set. Take a breather.","set_done_3":"Nice work. Rest now.","rest_tip_1":"Shake out your arms and legs.","rest_tip_2":"Slow breath in through the nose, and out through the mouth.","rest_tip_3":"Have a sip of water.","rest_tip_4":"Roll your shoulders, and relax.","rest_tip_5":"Let your heart rate settle.","rest_30":"Thirty seconds left.","rest_15":"Fifteen seconds.","rest_10":"Ten seconds. Get into position.","hr_down":"Heart rate's coming down nicely.","hr_high":"Heart rate is still high. Take the full rest.","hr_connected":"Heart rate monitor connected.","start":"Let's get started.","exercise_done":"Exercise complete.","workout_done":"Workout complete. Brilliant work today.","paused":"Paused.","resumed":"And we're back.","faster":"Picking up the pace.","slower":"Slowing it down.","plus_15":"Fifteen seconds added.","minus_15":"Fifteen seconds off.","skip":"Skipping ahead.","welcome":"Welcome to DumbbellFit.","voice_on":"Voice control on.","voice_off":"Voice control off.","rest_day":"Rest day today. Let your tendons recover.","form_squat_1":"Chest tall, weight in your heels.","form_squat_2":"Knees track over your toes.","form_squat_3":"Sit back between your hips.","form_squat_4":"Brace your core before you go down.","form_static_1":"Stay still and hold the position.","form_static_2":"Thighs parallel, knees pushing out.","form_static_3":"Breathe. Don't hold your breath.","form_static_4":"Push the floor away.","form_lunge_1":"Front knee stays over your ankle.","form_lunge_2":"Drop the back knee straight down.","form_lunge_3":"Push through your front heel.","form_lunge_4":"Keep your hips square.","form_hinge_1":"Push your hips back, not down.","form_hinge_2":"Flat back, long spine.","form_hinge_3":"Keep the dumbbells close to your legs.","form_hinge_4":"Feel the stretch in your hamstrings.","form_bridge_1":"Drive through your heels.","form_bridge_2":"Squeeze your glutes at the top.","form_bridge_3":"Ribs down. Don't arch your back.","form_bridge_4":"Knees stay in line with your hips.","form_calf_1":"Rise all the way up onto your toes.","form_calf_2":"Lower your heels slowly, below the step.","form_calf_3":"Keep your knees soft.","form_calf_4":"Balance through the big toe.","form_press_1":"Elbows at about forty-five degrees.","form_press_2":"Shoulder blades pinned back.","form_press_3":"Press up, and slightly in.","form_press_4":"Control the weight on the way down.","form_overhead_1":"Squeeze your glutes. Don't lean back.","form_overhead_2":"Press straight up, biceps by your ears.","form_overhead_3":"Ribs down, core tight.","form_overhead_4":"Lower to shoulder height with control.","form_row_1":"Pull your elbows past your ribs.","form_row_2":"Squeeze your shoulder blades together.","form_row_3":"Flat back, neck long.","form_row_4":"Don't shrug. Keep your shoulders down.","form_curl_1":"Elbows pinned to your sides.","form_curl_2":"No swinging. Just your arms.","form_curl_3":"Squeeze at the top.","form_curl_4":"Fight the weight on the way down.","form_raise_1":"Thumbs up, slightly forward.","form_raise_2":"Raise to shoulder height, no higher.","form_raise_3":"Shoulders down, away from your ears.","form_raise_4":"Light weight, perfect form.","form_core_1":"Lean back, chest proud.","form_core_2":"Rotate from your ribs, not your arms.","form_core_3":"Breathe out as you twist.","form_core_4":"Keep your core tight the whole time.","form_bike_1":"Keep your cadence smooth.","form_bike_2":"Relax your shoulders and your grip.","form_bike_3":"Push and pull through the whole pedal stroke.","form_bike_4":"Steady breathing. Stay in control."};
 
-        const CoachVoice = {
-            speak(text, priority = false) {
-                updateCoachSubtitle(text);
-                if (!voiceCoachEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+        // Priorities: a new clip only interrupts one of the same or lower priority.
+        const P_FILLER = 1;    // form tips, encouragement
+        const P_INFO = 2;      // set done, up next, paused
+        const P_TIMING = 3;    // rep counts, 3-2-1, go
 
-                try {
-                    if (priority) window.speechSynthesis.cancel();
-                    const utter = new SpeechSynthesisUtterance(text);
-                    utter.rate = 0.95;
-                    utter.pitch = 1.0;
-                    utter.volume = 1.0;
+        const Coach = {
+            ctx: null,
+            buffers: {},
+            pending: {},
+            playing: null,          // { priority, sources: [], timer }
+            speakingUntil: 0,       // used to stop voice control hearing the coach
+            seq: 0,
 
-                    const voices = window.speechSynthesis.getVoices();
-                    const naturalVoice = voices.find(v => (
-                        v.lang.startsWith('en') &&
-                        (v.name.includes('Samantha') || v.name.includes('Daniel') || v.name.includes('Karen') || v.name.includes('Natural'))
-                    ));
-                    if (naturalVoice) utter.voice = naturalVoice;
-
-                    window.speechSynthesis.speak(utter);
-                } catch (err) {}
+            has(id) {
+                return Object.prototype.hasOwnProperty.call(COACH_CLIPS, id);
             },
-            cancel() {
-                if (typeof window !== 'undefined' && 'speechSynthesis' in window) window.speechSynthesis.cancel();
+
+            // Must run inside a tap (iOS only allows audio to start from a user gesture).
+            unlock() {
+                if (typeof window === 'undefined') return;
+                try {
+                    if (HAS_NAVIGATOR && navigator.audioSession) {
+                        // Short announcements that duck your music instead of stopping it.
+                        navigator.audioSession.type = 'transient';
+                    }
+                } catch (e) {}
+                const AC = window.AudioContext || window.webkitAudioContext;
+                if (!AC) return;
+                if (!this.ctx) {
+                    try { this.ctx = new AC(); } catch (e) { this.ctx = null; return; }
+                }
+                if (this.ctx.state === 'suspended') {
+                    try { this.ctx.resume(); } catch (e) {}
+                }
+                // Play one silent sample: completes the unlock on older iOS.
+                try {
+                    const b = this.ctx.createBuffer(1, 1, 22050);
+                    const s = this.ctx.createBufferSource();
+                    s.buffer = b;
+                    s.connect(this.ctx.destination);
+                    s.start(0);
+                } catch (e) {}
+            },
+
+            load(id) {
+                if (this.buffers[id]) return Promise.resolve(this.buffers[id]);
+                if (this.pending[id]) return this.pending[id];
+                if (!this.ctx || !this.has(id) || typeof fetch === 'undefined') return Promise.resolve(null);
+                const ctx = this.ctx;
+                this.pending[id] = fetch(`audio/coach/${id}.m4a`)
+                    .then(r => (r.ok ? r.arrayBuffer() : null))
+                    .then(data => (data ? new Promise((resolve) => {
+                        // Callback form works on older Safari as well as newer browsers.
+                        const p = ctx.decodeAudioData(data, resolve, () => resolve(null));
+                        if (p && typeof p.catch === 'function') p.catch(() => resolve(null));
+                    }) : null))
+                    .then(buf => {
+                        delete this.pending[id];
+                        if (buf) this.buffers[id] = buf;
+                        return buf;
+                    })
+                    .catch(() => { delete this.pending[id]; return null; });
+                return this.pending[id];
+            },
+
+            preload(ids) {
+                ids.forEach(id => { if (this.has(id)) this.load(id); });
+            },
+
+            isSpeaking() {
+                return Date.now() < this.speakingUntil;
+            },
+
+            // True while sound is actually coming out (isSpeaking adds a safety margin).
+            isAudible() {
+                return Date.now() < this.speakingUntil - 600;
+            },
+
+            stop() {
+                if (this.playing) {
+                    this.playing.sources.forEach(s => { try { s.stop(); } catch (e) {} });
+                    clearTimeout(this.playing.timer);
+                    this.playing = null;
+                }
+                CoachVoice.cancel();
+                this.speakingUntil = 0;
+            },
+
+            // items: clip ids, or { text } for words without a recording.
+            say(items, priority = P_INFO) {
+                const list = (Array.isArray(items) ? items : [items]).filter(Boolean);
+                if (!list.length) return;
+                const caption = list.map(it => (typeof it === 'string' ? (COACH_TEXT[it] || clipCaption(it)) : it.text)).join(' ');
+                if (caption) updateCoachSubtitle(caption);
+                if (!voiceCoachEnabled) return;
+
+                if (this.playing && Date.now() < this.speakingUntil) {
+                    if (priority < this.playing.priority) return;
+                    if (priority === P_FILLER) return;   // never cut a sentence off for small talk
+                }
+                this.stop();
+
+                const allClips = list.every(it => typeof it === 'string' && this.has(it));
+                if (!this.ctx || !allClips) {
+                    // Device voice for the whole message, so it is not split across two voices.
+                    const text = list.map(it => (typeof it === 'string' ? (COACH_TEXT[it] || clipCaption(it)) : it.text)).join(' ');
+                    const seconds = CoachVoice.speak(text, true);
+                    this.playing = { priority, sources: [], timer: null };
+                    this.speakingUntil = Date.now() + seconds * 1000 + 600;
+                    return;
+                }
+
+                const token = ++this.seq;
+                const totalSeconds = list.reduce((sum, id) => sum + (COACH_CLIPS[id] || 0) + 0.12, 0);
+                this.playing = { priority, sources: [], timer: null };
+                this.speakingUntil = Date.now() + totalSeconds * 1000 + 600;
+
+                Promise.all(list.map(id => this.load(id))).then(buffers => {
+                    if (token !== this.seq || !this.ctx) return;
+                    if (buffers.some(b => !b)) {
+                        // A clip failed to load: say the words with the device voice instead.
+                        const text = list.map(id => COACH_TEXT[id] || clipCaption(id)).join(' ');
+                        CoachVoice.speak(text, true);
+                        return;
+                    }
+                    let t = this.ctx.currentTime + 0.02;
+                    buffers.forEach(buf => {
+                        const src = this.ctx.createBufferSource();
+                        src.buffer = buf;
+                        src.connect(this.ctx.destination);
+                        src.start(t);
+                        this.playing.sources.push(src);
+                        t += buf.duration + 0.12;
+                    });
+                    const ms = (t - this.ctx.currentTime) * 1000;
+                    this.speakingUntil = Date.now() + ms + 600;
+                    this.playing.timer = setTimeout(() => {
+                        if (token === this.seq) this.playing = null;
+                    }, ms);
+                });
+            },
+
+            // Seconds a list of items takes to say (recorded length, or an estimate).
+            duration(items) {
+                return (Array.isArray(items) ? items : [items]).filter(Boolean).reduce((sum, it) => {
+                    if (typeof it === 'string' && this.has(it)) return sum + COACH_CLIPS[it] + 0.12;
+                    const text = typeof it === 'string' ? (COACH_TEXT[it] || '') : it.text;
+                    return sum + String(text).split(/\s+/).length / 2.6;
+                }, 0);
             }
         };
 
-        // Say a status message that has no recorded clip.
-        function announce(text) {
-            CoachVoice.speak(text);
+        // Caption for exercise clips (name_<id> / howto_<id>), which are not in COACH_TEXT.
+        function clipCaption(id) {
+            const m = /^(name|howto)_(.+)$/.exec(id);
+            if (!m) return '';
+            const ex = exercisesDB.find(e => e.id === m[2]);
+            if (!ex) return '';
+            return m[1] === 'name' ? ex.name : ex.desc;
+        }
+
+        // Device text-to-speech, used only when there is no recording.
+        const CoachVoice = {
+            voice: null,
+
+            // Prefer downloaded "Premium" / "Enhanced" voices, British English to match the recordings.
+            pickVoice() {
+                if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
+                const voices = window.speechSynthesis.getVoices() || [];
+                let best = null;
+                let bestScore = -1;
+                voices.forEach(v => {
+                    if (!v.lang || !v.lang.toLowerCase().startsWith('en')) return;
+                    let score = 0;
+                    if (/premium/i.test(v.name)) score += 6;
+                    if (/enhanced|natural|neural/i.test(v.name)) score += 4;
+                    if (/en[-_]gb/i.test(v.lang)) score += 3;
+                    if (/daniel|arthur|oliver|jamie|george|google uk english male/i.test(v.name)) score += 2;
+                    if (/compact|novelty|bells|bubbles|zarvox|whisper|bad news|good news|organ|jester|trinoids|cellos|superstar|wobble|boing|albert|fred|junior|ralph|kathy|bahh/i.test(v.name)) score -= 10;
+                    if (score > bestScore) { best = v; bestScore = score; }
+                });
+                this.voice = best;
+                return best;
+            },
+
+            // Returns an estimate of how many seconds the text takes to say.
+            speak(text, interrupt = false) {
+                const seconds = String(text).split(/\s+/).length / 2.6;
+                if (!voiceCoachEnabled || typeof window === 'undefined' || !('speechSynthesis' in window)) return seconds;
+                try {
+                    if (interrupt) window.speechSynthesis.cancel();
+                    const utter = new SpeechSynthesisUtterance(text);
+                    utter.rate = 1.0;
+                    utter.pitch = 1.0;
+                    utter.volume = 1.0;
+                    const voice = this.voice || this.pickVoice();
+                    if (voice) {
+                        utter.voice = voice;
+                        utter.lang = voice.lang;
+                    }
+                    window.speechSynthesis.speak(utter);
+                } catch (err) {}
+                return seconds;
+            },
+
+            cancel() {
+                if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+                    try { window.speechSynthesis.cancel(); } catch (e) {}
+                }
+            }
+        };
+
+        if (typeof window !== 'undefined' && window.speechSynthesis && typeof window.speechSynthesis.addEventListener === 'function') {
+            window.speechSynthesis.addEventListener('voiceschanged', () => CoachVoice.pickVoice());
+        }
+
+        // Say a status message. Uses a recording when one exists for it.
+        function announce(text, clipId, priority = P_INFO) {
+            if (clipId && Coach.has(clipId)) Coach.say(clipId, priority);
+            else Coach.say({ text }, priority);
         }
 
         function updateCoachSubtitle(msg) {
@@ -12772,48 +12973,150 @@
             const btn = $('audio-coach-toggle-btn');
             if (!btn) return;
             btn.innerHTML = icon(voiceCoachEnabled ? 'sound' : 'mute');
+            btn.setAttribute('aria-label', voiceCoachEnabled ? 'Mute coach' : 'Unmute coach');
             if (voiceCoachEnabled) btn.classList.remove('is-off');
             else btn.classList.add('is-off');
         }
 
         function toggleAudioCoach() {
+            Coach.unlock();
             voiceCoachEnabled = !voiceCoachEnabled;
+            try { localStorage.setItem('dumbbell_coach_sound_on', voiceCoachEnabled ? '1' : '0'); } catch (e) {}
             updateSoundButton();
             if (voiceCoachEnabled) {
-                announce('Coach sound on');
+                announce('Coach sound on', 'resumed');
             } else {
-                CoachVoice.cancel();
+                Coach.stop();
                 updateCoachSubtitle('Coach sound off');
             }
         }
 
-        // Recorded intros exist for these exercises only; everything else is spoken.
-        const INTRO_CLIPS = {
-            goblet_squat: 'squat_intro',
-            floor_press: 'press_intro',
-            bent_row: 'row_intro',
-            lunges: 'lunge_intro',
-            overhead_press: 'overhead_intro',
-            rdl: 'rdl_intro',
-            iso_squat_hold: 'iso_squat_intro',
-            calf_eccentric: 'calf_eccentric_intro',
-            scaption_raise: 'scaption_intro',
-            eccentric_hammer: 'hammer_curl_intro'
-        };
+        // ---------- What the coach says about each exercise ----------
+
+        // Movement pattern, from the exercise's animation, picks the form tips.
+        function exercisePattern(ex) {
+            const gif = (ex && ex.gifUrl) || '';
+            if (gif.includes('peloton')) return 'bike';
+            if (gif.includes('iso_squat')) return 'static';
+            if (gif.includes('goblet_squat')) return 'squat';
+            if (gif.includes('lunge')) return 'lunge';
+            if (gif.includes('rdl')) return 'hinge';
+            if (gif.includes('glute_bridge')) return 'bridge';
+            if (gif.includes('calf')) return 'calf';
+            if (gif.includes('floor_press')) return 'press';
+            if (gif.includes('overhead_press')) return 'overhead';
+            if (gif.includes('bent_row')) return 'row';
+            if (gif.includes('hammer')) return 'curl';
+            if (gif.includes('scaption')) return 'raise';
+            if (gif.includes('russian_twist')) return 'core';
+            return 'squat';
+        }
+
+        // Bike intervals and static holds have no lower / hold / lift phases.
+        function exerciseHasPhases(ex) {
+            const p = exercisePattern(ex);
+            return p !== 'bike' && p !== 'static';
+        }
+
+        function exerciseNameItems(ex) {
+            if (!ex) return [];
+            return Coach.has(`name_${ex.id}`) ? [`name_${ex.id}`] : [{ text: ex.name }];
+        }
+
+        // How-to instructions are only spoken when recorded, so a workout stays in one voice.
+        function exerciseHowtoItems(ex) {
+            return ex && Coach.has(`howto_${ex.id}`) ? [`howto_${ex.id}`] : [];
+        }
 
         function introduceExercise(ex, lead) {
             if (!ex) return;
-            const text = `${lead ? lead + ' ' : ''}${ex.name}`;
-            if (INTRO_CLIPS[ex.id]) playHumanVoiceClip(INTRO_CLIPS[ex.id], text);
-            else announce(text);
+            Coach.say([lead].concat(exerciseNameItems(ex), exerciseHowtoItems(ex)), P_INFO);
         }
 
         function speakExerciseInstructions(exId) {
+            Coach.unlock();
             const ex = exercisesDB.find(e => e.id === exId);
             if (!ex) return;
-            const text = `${ex.name}. ${ex.desc}`;
-            if (INTRO_CLIPS[ex.id]) playHumanVoiceClip(INTRO_CLIPS[ex.id], text);
-            else CoachVoice.speak(text, true);
+            if (Coach.has(`howto_${ex.id}`)) Coach.say(exerciseNameItems(ex).concat(exerciseHowtoItems(ex)), P_TIMING);
+            else Coach.say({ text: `${ex.name}. ${ex.desc}` }, P_TIMING);
+        }
+
+        function pickFrom(prefix, count, n) {
+            return `${prefix}${(n % count) + 1}`;
+        }
+
+        // The line said at the start of rep n (1-based). Returns null for silence.
+        function repCoachingLine(ex, n, target) {
+            const left = target - n + 1;   // including this rep
+            if (left === 1 && target > 1) return 'rem_last';
+            if (left === 2 && target >= 4) return 'rem_2';
+            if (left === 3 && target >= 6) return 'rem_3';
+            if (target >= 8 && n === Math.floor(target / 2) + 1) return 'rem_half';
+
+            // At a fast tempo there is only time for a line every other rep.
+            if (activeWorkout.repSpeedSeconds < 3 && n % 2 === 1) return null;
+
+            const pattern = exercisePattern(ex);
+            const turn = n % 4;
+            if (turn === 3) return pickFrom(`form_${pattern}_`, 4, Math.floor(n / 4) + activeWorkout.currentSet);
+            if (turn === 0) return pickFrom('enc_', 8, n + activeWorkout.currentSet * 3);
+            if (turn === 1) return pickFrom(`form_${pattern}_`, 4, Math.floor(n / 4) + activeWorkout.currentSet + 2);
+            return pattern === 'bike' || pattern === 'static'
+                ? pickFrom('enc_', 8, n + 5)
+                : pickFrom('breath_', 3, n + activeWorkout.currentSet);
+        }
+
+        // Called on every tick of the rep metronome.
+        function coachRepTick() {
+            if (!hasActiveWorkout()) return;
+            const ex = currentExerciseData();
+            const cue = activeWorkout.cue || (activeWorkout.cue = {});
+            const n = activeWorkout.currentRep + 1;
+            const progress = activeWorkout.repCycleProgress;
+            const phased = exerciseHasPhases(ex);
+
+            if (cue.rep !== n) {
+                // Wait for the rep count (or "go") to finish, but give up if the moment has passed.
+                if (Coach.isAudible() && progress < (phased && n <= 2 ? 30 : 60)) return;
+                activeWorkout.cue = { rep: n };
+                if (phased && n <= 2 && progress >= 30) {
+                    // Too late for "lower": the hold and lift cues still follow.
+                } else if (phased && n <= 2) {
+                    Coach.say('phase_lower', P_INFO);
+                } else {
+                    const line = repCoachingLine(ex, n, activeWorkout.targetReps);
+                    if (line) Coach.say(line, line.startsWith('rem_') ? P_INFO : P_FILLER);
+                }
+                return;
+            }
+            if (phased && n <= 2) {
+                if (progress >= 40 && !cue.hold) { cue.hold = true; Coach.say('phase_hold', P_INFO); }
+                if (progress >= 60 && !cue.lift) { cue.lift = true; Coach.say('phase_lift', P_INFO); }
+            }
+        }
+
+        function coachSayCount(n) {
+            if (n >= 1 && n <= 20) Coach.say(`count_${n}`, P_TIMING);
+        }
+
+        // Clips needed for the current exercise: loaded ahead so cues are on time.
+        function preloadExerciseCoaching(ex) {
+            const pattern = exercisePattern(ex);
+            const ids = ['phase_lower', 'phase_hold', 'phase_lift', 'rem_half', 'rem_3', 'rem_2', 'rem_last', 'go', 'ready'];
+            for (let i = 1; i <= Math.min(20, activeWorkout.targetReps || 10); i++) ids.push(`count_${i}`);
+            for (let i = 1; i <= 4; i++) ids.push(`form_${pattern}_${i}`);
+            for (let i = 1; i <= 8; i++) ids.push(`enc_${i}`);
+            for (let i = 1; i <= 3; i++) ids.push(`breath_${i}`);
+            if (ex) ids.push(`name_${ex.id}`, `howto_${ex.id}`);
+            Coach.preload(ids);
+        }
+
+        function preloadRestCoaching(nextEx) {
+            const ids = ['set_done_1', 'set_done_2', 'set_done_3', 'rest_30', 'rest_15', 'rest_10', 'same_next', 'up_next', 'hr_down', 'hr_high', 'count_1', 'count_2', 'count_3', 'go', 'set_final'];
+            for (let i = 1; i <= 5; i++) ids.push(`rest_tip_${i}`);
+            for (let i = 1; i <= 10; i++) ids.push(`set_${i}`);
+            if (nextEx) ids.push(`name_${nextEx.id}`, `howto_${nextEx.id}`);
+            Coach.preload(ids);
         }
 
         // ==========================================
@@ -12842,9 +13145,43 @@
             if (activeWorkout.cadenceTimerId) clearInterval(activeWorkout.cadenceTimerId);
             if (activeWorkout.totalTimerId) clearInterval(activeWorkout.totalTimerId);
             if (activeWorkout.restTimerId) clearInterval(activeWorkout.restTimerId);
+            if (activeWorkout.getReadyTimerId) clearInterval(activeWorkout.getReadyTimerId);
             activeWorkout.cadenceTimerId = null;
             activeWorkout.totalTimerId = null;
             activeWorkout.restTimerId = null;
+            activeWorkout.getReadyTimerId = null;
+        }
+
+        // ---------- "Get ready": the coach introduces the exercise, then 3, 2, 1, go ----------
+        function startGetReady(introItems) {
+            if (activeWorkout.getReadyTimerId) clearInterval(activeWorkout.getReadyTimerId);
+            const seconds = Math.max(5, Math.ceil(Coach.duration(introItems)) + 4);
+            activeWorkout.isGetReady = true;
+            activeWorkout.getReadyRemaining = seconds;
+            activeWorkout.getReadyInitial = seconds;
+            Coach.say(introItems, P_INFO);
+
+            activeWorkout.getReadyTimerId = setInterval(() => {
+                if (!activeWorkout.isGetReady || activeWorkout.isPaused) return;
+                activeWorkout.getReadyRemaining--;
+                const r = activeWorkout.getReadyRemaining;
+                if (r >= 1 && r <= 3) Coach.say(`count_${r}`, P_TIMING);
+                const el = $('getready-display');
+                if (el) el.textContent = Math.max(0, r);
+                if (r <= 0) endGetReady();
+            }, 1000);
+            refreshActiveView();
+        }
+
+        function endGetReady() {
+            if (!activeWorkout.isGetReady) return;
+            if (activeWorkout.getReadyTimerId) clearInterval(activeWorkout.getReadyTimerId);
+            activeWorkout.getReadyTimerId = null;
+            activeWorkout.isGetReady = false;
+            activeWorkout.cue = null;
+            Coach.say('go', P_TIMING);
+            startCadenceMetronome();
+            refreshActiveView();
         }
 
         function pauseActiveWorkout() {
@@ -12861,20 +13198,21 @@
                 activeWorkout.restTimerId = null;
             }
 
-            playHumanVoiceClip('paused', 'Paused');
+            announce('Paused', 'paused', P_TIMING);
             refreshActiveView();
         }
 
         function resumeActiveWorkout() {
             if (!hasActiveWorkout() || !activeWorkout.isPaused) return;
+            Coach.unlock();
             activeWorkout.isPaused = false;
             startTotalTimer();
 
-            playHumanVoiceClip('resumed', 'Resumed');
+            announce('Resumed', 'resumed', P_TIMING);
 
             if (activeWorkout.isRestMode) {
                 startRestCountdown();
-            } else {
+            } else if (!activeWorkout.isGetReady) {
                 startCadenceMetronome(true);
             }
 
@@ -12883,11 +13221,19 @@
 
         // ==========================================
         // 5. VOICE CONTROL (SPEECH RECOGNITION)
+        // Off until the user turns it on. It only listens while the app is on
+        // screen: it stops as soon as the app is closed or put in the background.
         // ==========================================
         const STORAGE_KEY_VOICE = 'dumbbell_voice_control_on';
+        let voiceControlWanted = false;   // the user's choice
+        let voiceTapAt = 0;
 
         function isVoiceControlSupported() {
             return typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+        }
+
+        function isAppVisible() {
+            return typeof document === 'undefined' || !document.visibilityState || document.visibilityState === 'visible';
         }
 
         function initVoiceRecognition() {
@@ -12901,11 +13247,13 @@
                 speechRecognitionInstance = new SpeechRecognitionClass();
                 speechRecognitionInstance.continuous = true;
                 speechRecognitionInstance.interimResults = false;
-                speechRecognitionInstance.lang = 'en-US';
+                speechRecognitionInstance.lang = 'en-GB';
 
                 speechRecognitionInstance.onresult = (event) => {
                     const lastResult = event.results[event.results.length - 1];
                     if (lastResult.isFinal) {
+                        // Ignore anything heard while the coach is talking: it is the coach's own voice.
+                        if (Coach.isSpeaking()) return;
                         const transcript = lastResult[0].transcript.trim().toLowerCase();
                         handleVoiceCommand(transcript);
                     }
@@ -12914,13 +13262,22 @@
                 speechRecognitionInstance.onerror = (event) => {
                     if (event && (event.error === 'not-allowed' || event.error === 'service-not-allowed')) {
                         voiceRecognitionActive = false;
-                        updateVoiceStatus('Microphone access is off', false);
+                        // iPhone may refuse to restart the microphone without a tap, e.g. on returning to the app.
+                        const fromTap = Date.now() - voiceTapAt < 3000;
+                        if (fromTap) setVoiceControlWanted(false);
+                        updateVoiceStatus(fromTap
+                            ? 'Microphone access is off. Allow it for this site in Settings to use voice control.'
+                            : 'Voice control paused. Tap Voice to turn it back on.', false);
                     }
                 };
 
                 speechRecognitionInstance.onend = () => {
-                    if (voiceRecognitionActive) {
+                    // Browsers end recognition every so often; restart only if still wanted and on screen.
+                    if (voiceRecognitionActive && voiceControlWanted && isAppVisible()) {
                         try { speechRecognitionInstance.start(); } catch (e) {}
+                    } else {
+                        voiceRecognitionActive = false;
+                        updateVoiceStatus(null, false);
                     }
                 };
 
@@ -12929,7 +13286,7 @@
         }
 
         function startListening() {
-            if (!speechRecognitionInstance) return;
+            if (!speechRecognitionInstance || voiceRecognitionActive) return;
             try {
                 speechRecognitionInstance.start();
                 voiceRecognitionActive = true;
@@ -12938,48 +13295,76 @@
         }
 
         function stopListening() {
+            voiceRecognitionActive = false;
+            updateVoiceStatus(null, false);
             if (!speechRecognitionInstance) return;
-            try {
-                voiceRecognitionActive = false;
-                speechRecognitionInstance.stop();
-                updateVoiceStatus(null, false);
-            } catch (e) {}
+            try { speechRecognitionInstance.abort(); } catch (e) {
+                try { speechRecognitionInstance.stop(); } catch (e2) {}
+            }
+        }
+
+        function setVoiceControlWanted(on) {
+            voiceControlWanted = !!on;
+            try { localStorage.setItem(STORAGE_KEY_VOICE, on ? '1' : '0'); } catch (e) {}
+            updateVoiceStatus(null, voiceRecognitionActive);
         }
 
         function toggleVoiceRecognition() {
+            if (voiceControlWanted || voiceRecognitionActive) {
+                stopVoiceControl();
+                return;
+            }
             if (!isVoiceControlSupported()) {
                 showModal('Voice control', 'This browser does not support voice commands. Use the on-screen buttons instead.');
                 return;
             }
-            if (voiceRecognitionActive) {
-                stopListening();
-                try { localStorage.setItem(STORAGE_KEY_VOICE, '0'); } catch (e) {}
-                updateCoachSubtitle('Voice control off');
-            } else {
-                try { localStorage.setItem(STORAGE_KEY_VOICE, '1'); } catch (e) {}
+            Coach.unlock();
+            voiceTapAt = Date.now();
+            setVoiceControlWanted(true);
+            if (!speechRecognitionInstance) initVoiceRecognition();
+            else startListening();
+            announce('Voice control on', 'voice_on');
+            updateCoachSubtitle('Listening. Say "pause", "resume", "faster", "slower", "skip" or "3 sets".');
+        }
+
+        function stopVoiceControl() {
+            setVoiceControlWanted(false);
+            stopListening();
+            updateCoachSubtitle('Voice control off');
+        }
+
+        // Stop the microphone whenever the app leaves the screen; pick up again on return.
+        function onAppVisibilityChange() {
+            if (!isAppVisible()) {
+                if (voiceRecognitionActive) stopListening();
+            } else if (voiceControlWanted && isVoiceControlSupported()) {
                 if (!speechRecognitionInstance) initVoiceRecognition();
                 else startListening();
-                updateCoachSubtitle('Listening. Say "pause", "resume", "faster", "slower" or "skip".');
             }
         }
 
         function updateVoiceStatus(message, isListening) {
-            const micBtn = $('mic-toggle-btn');
-            if (micBtn) {
-                micBtn.innerHTML = icon(isListening ? 'mic' : 'micOff');
-                if (isListening) {
-                    micBtn.classList.add('is-on');
-                    micBtn.classList.remove('is-off');
-                } else {
-                    micBtn.classList.remove('is-on');
-                    micBtn.classList.add('is-off');
-                }
+            const btn = $('mic-toggle-btn');
+            if (btn) {
+                btn.innerHTML = isListening
+                    ? `${icon('mic')}<span>Listening</span><span class="voice-stop">Stop</span>`
+                    : `${icon('micOff')}<span>Voice</span>`;
+                btn.setAttribute('aria-label', isListening ? 'Stop voice control' : 'Turn on voice control');
+                if (isListening) btn.classList.add('is-on');
+                else btn.classList.remove('is-on');
             }
+            const card = $('voice-card');
+            if (card) card.innerHTML = voiceCardInner();
             if (message) updateCoachSubtitle(message);
         }
 
+        // Whole-word match, so "go" does not match "going" and the like.
+        function heard(text, phrases) {
+            return phrases.some(p => new RegExp(`(^|\\s)${p.replace(/[+]/g, '\\+')}(\\s|$)`).test(text));
+        }
+
         function handleVoiceCommand(rawText) {
-            const text = rawText.toLowerCase().trim();
+            const text = rawText.toLowerCase().replace(/[.,!?]/g, '').trim();
             const badge = $('recognized-speech-badge');
             if (badge) {
                 badge.textContent = `Heard "${text}"`;
@@ -12988,69 +13373,61 @@
                 handleVoiceCommand.hideTimer = setTimeout(() => badge.classList.add('hidden'), 2500);
             }
 
-            // Set commands
-            if (text.includes('1 set') || text.includes('one set')) {
-                setGlobalSets(1);
+            if (heard(text, ['stop listening', 'voice off', 'stop voice control'])) {
+                stopVoiceControl();
                 return;
             }
-            if (text.includes('2 sets') || text.includes('two sets') || text.includes('default set')) {
+
+            // Set commands
+            const words = ['one', 'two', 'three', 'four', 'five'];
+            for (let n = 5; n >= 1; n--) {
+                if (heard(text, [`${n} sets?`, `${words[n - 1]} sets?`])) {
+                    setGlobalSets(n);
+                    return;
+                }
+            }
+            if (heard(text, ['default sets?'])) {
                 setGlobalSets(2);
                 return;
             }
-            if (text.includes('3 sets') || text.includes('three sets')) {
-                setGlobalSets(3);
-                return;
-            }
-            if (text.includes('4 sets') || text.includes('four sets')) {
-                setGlobalSets(4);
-                return;
-            }
-            if (text.includes('5 sets') || text.includes('five sets')) {
-                setGlobalSets(5);
-                return;
-            }
-            if (text.includes('more set') || text.includes('add set') || text.includes('plus set') || text.includes('extra set')) {
+            if (heard(text, ['more sets?', 'add (a )?sets?', 'plus (a )?sets?', 'extra sets?'])) {
                 adjustGlobalSets(1);
                 return;
             }
-            if (text.includes('less set') || text.includes('fewer set') || text.includes('minus set') || text.includes('reduce set')) {
+            if (heard(text, ['less sets?', 'fewer sets?', 'minus (a )?sets?', 'reduce sets?', 'remove (a )?sets?'])) {
                 adjustGlobalSets(-1);
                 return;
             }
 
-            if (text.includes('pause') || text.includes('stop') || text.includes('wait') || text.includes('hold')) {
+            // Words the coach says ("hold", "go", "next", "slowly") are deliberately not commands.
+            if (heard(text, ['pause', 'stop', 'wait'])) {
                 pauseActiveWorkout();
                 return;
             }
-
-            if (text.includes('resume') || text.includes('play') || text.includes('continue') || text.includes('start') || text.includes('go')) {
+            if (heard(text, ['resume', 'play', 'continue', 'unpause'])) {
                 resumeActiveWorkout();
                 return;
             }
-
-            if (text.includes('faster') || text.includes('speed up') || text.includes('quicker') || text.includes('fast')) {
+            if (heard(text, ['faster', 'speed up', 'quicker'])) {
                 adjustRepCadence(-1.0);
                 return;
             }
-
-            if (text.includes('slower') || text.includes('slow down') || text.includes('more slow') || text.includes('slow')) {
+            if (heard(text, ['slower', 'slow down'])) {
                 adjustRepCadence(1.0);
                 return;
             }
-
-            if (text.includes('add 15') || text.includes('plus 15') || text.includes('+15') || text.includes('more rest') || text.includes('increase rest')) {
+            if (heard(text, ['add 15( seconds)?', 'plus 15( seconds)?', '\\+15', 'more rest', 'increase rest', 'add fifteen( seconds)?'])) {
                 adjustBreakTime(15);
                 return;
             }
-
-            if (text.includes('minus 15') || text.includes('less rest') || text.includes('-15') || text.includes('reduce rest')) {
+            if (heard(text, ['minus 15( seconds)?', 'less rest', '-15', 'reduce rest', 'minus fifteen( seconds)?'])) {
                 adjustBreakTime(-15);
                 return;
             }
-
-            if (text.includes('skip') || text.includes('next')) {
+            if (heard(text, ['skip', 'skip it', 'skip rest', 'next exercise'])) {
                 if (!hasActiveWorkout()) return;
                 if (activeWorkout.isRestMode) skipRestBreak();
+                else if (activeWorkout.isGetReady) endGetReady();
                 else skipExercise();
                 return;
             }
@@ -13063,9 +13440,15 @@
         let lastCadencePhaseKey = null;
 
         // Which part of the rep are we in? progress is 0-100.
-        function getCadencePhase(progress, speedSeconds, isBike) {
+        // noPhases: true, or the exercise itself (bike = "Ride", static hold = "Hold").
+        function getCadencePhase(progress, speedSeconds, noPhases) {
             const speed = speedSeconds || 5.0;
-            if (isBike) {
+            if (noPhases && typeof noPhases === 'object') {
+                const pattern = exercisePattern(noPhases);
+                if (pattern === 'static') return { key: 'hold', label: 'Hold', detail: 'Stay still, keep breathing' };
+                if (pattern !== 'bike') noPhases = false;
+            }
+            if (noPhases) {
                 return { key: 'lower', label: 'Ride', detail: `${speed.toFixed(1)} s intervals` };
             }
             if (progress < 40) return { key: 'lower', label: 'Lower', detail: `${(speed * 0.4).toFixed(1)} s down, slow` };
@@ -13082,11 +13465,8 @@
             activeWorkout.repSpeedSeconds = Math.max(2.0, Math.min(10.0, activeWorkout.repSpeedSeconds + deltaSeconds));
             const speedFormatted = activeWorkout.repSpeedSeconds.toFixed(1);
 
-            if (deltaSeconds < 0) {
-                playHumanVoiceClip('faster', `Faster: ${speedFormatted} s per rep`);
-            } else {
-                playHumanVoiceClip('slower', `Slower: ${speedFormatted} s per rep`);
-            }
+            if (deltaSeconds < 0) announce(`Faster: ${speedFormatted} s per rep`, 'faster');
+            else announce(`Slower: ${speedFormatted} s per rep`, 'slower');
 
             const speedDisp = $('active-rep-speed-display');
             if (speedDisp) speedDisp.innerHTML = `${speedFormatted}<small> s</small>`;
@@ -13097,12 +13477,15 @@
         function startCadenceMetronome(keepProgress = false) {
             if (activeWorkout.cadenceTimerId) clearInterval(activeWorkout.cadenceTimerId);
             activeWorkout.isCadenceRunning = true;
-            if (!keepProgress) activeWorkout.repCycleProgress = 0;
+            if (!keepProgress) {
+                activeWorkout.repCycleProgress = 0;
+                activeWorkout.cue = null;
+            }
 
             const updateIntervalMs = 50;
 
             activeWorkout.cadenceTimerId = setInterval(() => {
-                if (!activeWorkout.isCadenceRunning || activeWorkout.isRestMode || activeWorkout.isPaused) return;
+                if (!activeWorkout.isCadenceRunning || activeWorkout.isRestMode || activeWorkout.isPaused || activeWorkout.isGetReady) return;
 
                 const stepPercentage = (updateIntervalMs / (activeWorkout.repSpeedSeconds * 1000)) * 100;
                 activeWorkout.repCycleProgress += stepPercentage;
@@ -13110,8 +13493,10 @@
                 if (activeWorkout.repCycleProgress >= 100) {
                     activeWorkout.repCycleProgress = 0;
                     incrementRepCount();
+                    if (!activeWorkout.isCadenceRunning) return;
                 }
 
+                coachRepTick();
                 updateCadenceUI();
             }, updateIntervalMs);
         }
@@ -13127,13 +13512,12 @@
 
         function incrementRepCount() {
             activeWorkout.currentRep++;
-
-            const clipNum = Math.min(10, activeWorkout.currentRep);
-            playHumanVoiceClip(`rep_${clipNum}`, `Rep ${activeWorkout.currentRep}`);
+            activeWorkout.cue = null;
 
             if (activeWorkout.currentRep >= activeWorkout.targetReps) {
-                completeSetAndTriggerBreak();
+                completeSetAndTriggerBreak(activeWorkout.currentRep);
             } else {
+                coachSayCount(activeWorkout.currentRep);
                 // Update the number in place so the demo animation is not restarted every rep.
                 const repEl = $('active-current-rep-display');
                 if (repEl) repEl.textContent = activeWorkout.currentRep;
@@ -13141,9 +13525,9 @@
         }
 
         function updateCadenceUI() {
-            if (!hasActiveWorkout()) return;
+            if (!hasActiveWorkout() || activeWorkout.isGetReady) return;
             const ex = currentExerciseData();
-            const phase = getCadencePhase(activeWorkout.repCycleProgress, activeWorkout.repSpeedSeconds, (ex.category || '').includes('Peloton'));
+            const phase = getCadencePhase(activeWorkout.repCycleProgress, activeWorkout.repSpeedSeconds, ex);
 
             const ring = $('cadence-progress-ring');
             if (ring) {
@@ -13169,17 +13553,87 @@
         // ==========================================
         // 7. REST BETWEEN SETS (60s DEFAULT, REMEMBERED)
         // ==========================================
-        function completeSetAndTriggerBreak() {
+        function isLastSetOfWorkout() {
+            return activeWorkout.currentSet >= activeWorkout.sets &&
+                activeWorkout.currentExIndex >= activeWorkout.exercises.length - 1;
+        }
+
+        // finalRep: the rep number just completed, so its count is said before "set done".
+        function completeSetAndTriggerBreak(finalRep) {
             if (!hasActiveWorkout()) return;
             stopCadenceMetronome();
-            activeWorkout.isRestMode = true;
+            const countItem = (typeof finalRep === 'number' && finalRep >= 1 && finalRep <= 20) ? `count_${finalRep}` : null;
 
+            // No rest after the very last set: the workout is done.
+            if (isLastSetOfWorkout()) {
+                Coach.say([countItem, 'workout_done'], P_TIMING);
+                finishWorkout();
+                return;
+            }
+
+            activeWorkout.isRestMode = true;
             activeWorkout.restRemainingSeconds = rememberedDefaultRest;
             activeWorkout.restInitialSeconds = rememberedDefaultRest;
+            planRestCoaching();
 
-            playHumanVoiceClip('rest_start', `Rest for ${rememberedDefaultRest} seconds`);
+            const sameExercise = activeWorkout.currentSet < activeWorkout.sets;
+            const doneLine = sameExercise ? `set_done_${(activeWorkout.currentSet % 3) + 1}` : 'exercise_done';
+            Coach.say([countItem, doneLine], P_TIMING);
+
             if (!activeWorkout.isPaused) startRestCountdown();
             refreshActiveView();
+        }
+
+        // Decide, at the start of a rest, what the coach will say and when.
+        function planRestCoaching() {
+            const R = activeWorkout.restInitialSeconds;
+            const sameExercise = activeWorkout.currentSet < activeWorkout.sets;
+            const nextEx = sameExercise ? currentExerciseData()
+                : exercisesDB.find(e => e.id === activeWorkout.exercises[activeWorkout.currentExIndex + 1]);
+            const plan = {
+                sameExercise,
+                nextSet: sameExercise ? activeWorkout.currentSet + 1 : 1,
+                hrAtStart: (HeartRate.status === 'on' && HeartRate.bpm) ? HeartRate.bpm : null,
+                tip: `rest_tip_${((activeWorkout.currentExIndex * 2 + activeWorkout.currentSet) % 5) + 1}`
+            };
+            if (!sameExercise && nextEx) {
+                const full = ['up_next'].concat(exerciseNameItems(nextEx), exerciseHowtoItems(nextEx));
+                const need = Math.ceil(Coach.duration(full)) + 6;
+                if (R - 8 >= need) {
+                    plan.previewItems = full;
+                    plan.previewAt = Math.min(R - 8, Math.max(20, need));
+                } else {
+                    plan.previewItems = ['up_next'].concat(exerciseNameItems(nextEx));
+                    plan.previewAt = Math.max(5, Math.min(R - 2, 12));
+                }
+            }
+            activeWorkout.restPlan = plan;
+            preloadRestCoaching(nextEx);
+        }
+
+        // Called once a second during rest with the seconds left.
+        function coachRestTick(r) {
+            const plan = activeWorkout.restPlan || {};
+            const R = activeWorkout.restInitialSeconds;
+            const elapsed = R - r;
+
+            if (r >= 1 && r <= 3) { Coach.say(`count_${r}`, P_TIMING); return; }
+            if (r === 4 && plan.sameExercise) {
+                Coach.say(plan.nextSet >= activeWorkout.sets ? 'set_final' : `set_${Math.min(10, plan.nextSet)}`, P_INFO);
+                return;
+            }
+            if (plan.previewAt && r === plan.previewAt) { Coach.say(plan.previewItems, P_INFO); return; }
+            if (plan.sameExercise && r === 15 && R >= 25) { Coach.say('same_next', P_INFO); return; }
+            if (r === 10) { Coach.say('rest_10', P_FILLER); return; }
+            if (r === 30 && R >= 50 && !(plan.previewAt >= 22 && plan.previewAt <= 40)) { Coach.say('rest_30', P_INFO); return; }
+            if (elapsed === 5 && R >= 30) { Coach.say(plan.tip, P_FILLER); return; }
+
+            // Heart rate check-in halfway through a longer rest.
+            if (elapsed === Math.floor(R / 2) && R >= 40 && HeartRate.status === 'on' && HeartRate.bpm) {
+                const zone = getHeartRateZone(HeartRate.bpm, getMaxHeartRate());
+                if (zone.id === 'anaerobic') Coach.say('hr_high', P_FILLER);
+                else if (plan.hrAtStart && plan.hrAtStart - HeartRate.bpm >= 10) Coach.say('hr_down', P_FILLER);
+            }
         }
 
         function startRestCountdown() {
@@ -13188,15 +13642,12 @@
             activeWorkout.restTimerId = setInterval(() => {
                 if (!activeWorkout.isRestMode || activeWorkout.isPaused) return;
 
-                if (activeWorkout.restRemainingSeconds > 0) {
+                if (activeWorkout.restRemainingSeconds > 1) {
                     activeWorkout.restRemainingSeconds--;
-
-                    if (activeWorkout.restRemainingSeconds === 3) playHumanVoiceClip('rest_3', '3');
-                    if (activeWorkout.restRemainingSeconds === 2) playHumanVoiceClip('rest_2', '2');
-                    if (activeWorkout.restRemainingSeconds === 1) playHumanVoiceClip('rest_1', '1');
-
+                    coachRestTick(activeWorkout.restRemainingSeconds);
                     updateRestUI();
                 } else {
+                    activeWorkout.restRemainingSeconds = 0;
                     clearInterval(activeWorkout.restTimerId);
                     activeWorkout.restTimerId = null;
                     onRestCountdownComplete();
@@ -13213,9 +13664,6 @@
 
                 updateRememberedDefaultRest(activeWorkout.restInitialSeconds);
                 updateRestUI();
-
-                if (step > 0) playHumanVoiceClip('plus_15', `Added 15 seconds. Rest is now ${rememberedDefaultRest} s`);
-                else playHumanVoiceClip('minus_15', `Removed 15 seconds. Rest is now ${rememberedDefaultRest} s`);
             } else {
                 const newDefault = Math.max(15, rememberedDefaultRest + step);
                 updateRememberedDefaultRest(newDefault);
@@ -13223,12 +13671,11 @@
                     standaloneTimer.seconds = newDefault;
                     standaloneTimer.initialSeconds = newDefault;
                 }
-
-                if (step > 0) playHumanVoiceClip('plus_15', `Rest between sets: ${rememberedDefaultRest} s`);
-                else playHumanVoiceClip('minus_15', `Rest between sets: ${rememberedDefaultRest} s`);
-
                 if (currentTab === 'timer' || currentTab === 'profile') refreshCurrentTab();
             }
+
+            if (step > 0) announce(`Added 15 seconds. Rest is ${rememberedDefaultRest} s`, 'plus_15');
+            else announce(`15 seconds off. Rest is ${rememberedDefaultRest} s`, 'minus_15');
         }
 
         function updateRememberedDefaultRest(newDurationSeconds) {
@@ -13240,6 +13687,7 @@
 
         function skipRestBreak() {
             if (!hasActiveWorkout()) return;
+            Coach.unlock();
             if (activeWorkout.restTimerId) {
                 clearInterval(activeWorkout.restTimerId);
                 activeWorkout.restTimerId = null;
@@ -13259,6 +13707,7 @@
             activeWorkout.exercises = [];
             activeWorkout.isPaused = false;
             activeWorkout.isRestMode = false;
+            activeWorkout.isGetReady = false;
             showModal('Workout complete', summary);
             switchTab('profile');
         }
@@ -13269,19 +13718,17 @@
 
             if (activeWorkout.currentSet < activeWorkout.sets) {
                 activeWorkout.currentSet++;
-                announce(`Set ${activeWorkout.currentSet}`);
-                startCadenceMetronome();
-                refreshActiveView();
             } else if (activeWorkout.currentExIndex < activeWorkout.exercises.length - 1) {
                 activeWorkout.currentExIndex++;
                 activeWorkout.currentSet = 1;
-                const nextEx = currentExerciseData();
-                introduceExercise(nextEx, 'Next:');
-                startCadenceMetronome();
-                refreshActiveView();
             } else {
                 finishWorkout();
+                return;
             }
+            preloadExerciseCoaching(currentExerciseData());
+            Coach.say('go', P_TIMING);
+            startCadenceMetronome();
+            refreshActiveView();
         }
 
         function updateRestUI() {
@@ -13301,18 +13748,21 @@
         window.addEventListener('DOMContentLoaded', () => {
             initUserProfiles();
             updateSoundButton();
-            updateVoiceStatus(null, false);
             switchTab('programs');
             initOfflineSupport();
 
-            // Voice control stays on unless the user switched it off.
-            let voicePref = null;
-            try { voicePref = localStorage.getItem(STORAGE_KEY_VOICE); } catch (e) {}
-            if (voicePref !== '0' && isVoiceControlSupported()) initVoiceRecognition();
+            // Voice control is off unless the user turned it on, and only runs while the app is on screen.
+            try { voiceControlWanted = localStorage.getItem(STORAGE_KEY_VOICE) === '1'; } catch (e) {}
+            updateVoiceStatus(null, false);
+            if (voiceControlWanted && isVoiceControlSupported() && isAppVisible()) initVoiceRecognition();
+            document.addEventListener('visibilitychange', onAppVisibilityChange);
+            window.addEventListener('pagehide', () => { if (voiceRecognitionActive) stopListening(); });
+            window.addEventListener('pageshow', onAppVisibilityChange);
 
-            setTimeout(() => {
-                announce('Welcome to DumbbellFit');
-            }, 600);
+            // Audio can only start after a tap on iPhone: unlock it on the first one.
+            const unlockOnce = () => Coach.unlock();
+            document.addEventListener('touchend', unlockOnce, { passive: true });
+            document.addEventListener('click', unlockOnce);
         });
 
         function updateWorkoutTabDot() {
@@ -13457,13 +13907,12 @@
 
             resetHeartRateSession();
             startTotalTimer();
+            Coach.unlock();
 
             const firstEx = currentExerciseData();
-            if (options.introClip) playHumanVoiceClip(options.introClip, `Starting ${firstEx.name}`);
-            else introduceExercise(firstEx, 'Starting');
-
+            preloadExerciseCoaching(firstEx);
             switchTab('active');
-            startCadenceMetronome();
+            startGetReady(['ready'].concat(exerciseNameItems(firstEx), exerciseHowtoItems(firstEx)));
         }
 
         function startScheduledWorkout(tierId, weekNum, dayNum) {
@@ -13484,7 +13933,6 @@
                 exercises: dayData.exercises,
                 targetReps: dayData.reps || 10,
                 repSpeedSeconds: 5.0,
-                introClip: tag.includes('Peloton') ? 'peloton_intro' : (tag.includes('HSR') || tag.includes('Tendon') ? 'tendon_intro' : null),
                 scheduleMeta: { tierId, weekNum, dayNum, title: dayData.title, programTitle: prog.title }
             });
         }
@@ -13831,7 +14279,6 @@
                 exercises: [ex.id],
                 targetReps: 10,
                 repSpeedSeconds: ex.repPacing || 5.0,
-                introClip: INTRO_CLIPS[ex.id] ? null : (category.includes('Peloton') ? 'peloton_intro' : (category.includes('Tendon') ? 'tendon_intro' : null))
             });
         }
 
@@ -13850,7 +14297,6 @@
                 exercises: prog.exercises,
                 targetReps: 10,
                 repSpeedSeconds: 5.0,
-                introClip: prog.category === 'Peloton' ? 'peloton_intro' : (prog.category === 'Tendon' ? 'tendon_intro' : null)
             });
         }
 
@@ -13906,14 +14352,14 @@
             }
 
             const exData = currentExerciseData();
-            const isBike = (exData.category || '').includes('Peloton');
+            const isBike = !exerciseHasPhases(exData);
 
             if (activeWorkout.isRestMode) {
                 renderRestCountdownScreen(container, exData);
                 return;
             }
 
-            const phase = getCadencePhase(activeWorkout.repCycleProgress, activeWorkout.repSpeedSeconds, isBike);
+            const phase = getCadencePhase(activeWorkout.repCycleProgress, activeWorkout.repSpeedSeconds, exData);
             const ringOffset = RING_CIRCUMFERENCE - (activeWorkout.repCycleProgress / 100) * RING_CIRCUMFERENCE;
             const ringColor = phase.key === 'hold' ? 'var(--hold)' : (phase.key === 'lift' ? 'var(--lift)' : 'var(--accent)');
             lastCadencePhaseKey = phase.key;
@@ -13949,6 +14395,24 @@
                     </div>
 
                     <div class="card">
+                        ${activeWorkout.isGetReady ? `
+                        <div class="tempo">
+                            <div class="dial">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="track t-lower" cx="50" cy="50" r="46"/>
+                                    <circle id="cadence-progress-ring" class="cadence-circle" cx="50" cy="50" r="46" stroke-dasharray="${C.toFixed(2)}" style="stroke-dashoffset:0"/>
+                                </svg>
+                                <div class="dial-center">
+                                    <span id="getready-display" class="num">${Math.max(0, activeWorkout.getReadyRemaining || 0)}</span>
+                                    <span class="meta">seconds</span>
+                                </div>
+                            </div>
+                            <div class="grow stack-sm">
+                                <p class="phase phase-lower">Get ready</p>
+                                <p class="meta">Set ${activeWorkout.currentSet} of ${activeWorkout.sets}, ${activeWorkout.targetReps} reps at ${activeWorkout.repSpeedSeconds.toFixed(1)} s each. Listen for the coach.</p>
+                            </div>
+                        </div>
+                        ` : `
                         <div class="tempo">
                             <div class="dial">
                                 <svg viewBox="0 0 100 100">
@@ -13969,6 +14433,7 @@
                                 </div>
                             </div>
                         </div>
+                        `}
                     </div>
 
                     <div class="hud-grid">
@@ -13993,7 +14458,9 @@
                         ${activeWorkout.isPaused
                             ? `<button onclick="resumeActiveWorkout()" class="btn btn-go btn-lg">${icon('play')}<span>Resume</span></button>`
                             : `<button onclick="pauseActiveWorkout()" class="btn btn-hold btn-lg">${icon('pause')}<span>Pause</span></button>`}
-                        <button onclick="completeSetAndTriggerBreak()" class="btn btn-primary btn-lg">${icon('check')}<span>Finish set</span></button>
+                        ${activeWorkout.isGetReady
+                            ? `<button onclick="endGetReady()" class="btn btn-primary btn-lg">${icon('play')}<span>Start now</span></button>`
+                            : `<button onclick="completeSetAndTriggerBreak()" class="btn btn-primary btn-lg">${icon('check')}<span>Finish set</span></button>`}
                     </div>
                 </div>
             `;
@@ -14076,8 +14543,11 @@
                     activeWorkout.isPaused = false;
                     startTotalTimer();
                 }
-                introduceExercise(currentExerciseData(), 'Next:');
-                startCadenceMetronome();
+                Coach.unlock();
+                stopCadenceMetronome();
+                const nextEx = currentExerciseData();
+                preloadExerciseCoaching(nextEx);
+                startGetReady(['up_next'].concat(exerciseNameItems(nextEx), exerciseHowtoItems(nextEx)));
                 refreshActiveView();
             } else {
                 finishWorkout();
@@ -14306,14 +14776,12 @@
                         const disp = $('standalone-rest-display');
                         if (disp) disp.textContent = formatTime(standaloneTimer.seconds);
 
-                        if (standaloneTimer.seconds === 3) playHumanVoiceClip('rest_3', '3');
-                        if (standaloneTimer.seconds === 2) playHumanVoiceClip('rest_2', '2');
-                        if (standaloneTimer.seconds === 1) playHumanVoiceClip('rest_1', '1');
+                        if (standaloneTimer.seconds >= 1 && standaloneTimer.seconds <= 3) Coach.say(`count_${standaloneTimer.seconds}`, P_TIMING);
                     } else {
                         clearInterval(standaloneTimer.interval);
                         standaloneTimer.running = false;
                         standaloneTimer.seconds = standaloneTimer.initialSeconds;
-                        announce('Rest over. Time for your next set.');
+                        Coach.say('go', P_TIMING);
                         if (currentTab === 'timer') renderTimerView($('main-content'));
                     }
                 }, 1000);
@@ -14407,7 +14875,7 @@
             clearWorkoutTimers();
 
             recordWorkoutSession(false);
-            announce('Workout ended and saved');
+            Coach.say('workout_done', P_TIMING);
 
             activeWorkout.exercises = [];
             activeWorkout.inProgress = false;
@@ -14561,7 +15029,7 @@
                 device.addEventListener('gattserverdisconnected', onHeartRateDisconnected);
 
                 await subscribeToHeartRate(device);
-                announce(`Heart rate monitor connected`);
+                announce('Heart rate monitor connected', 'hr_connected');
             } catch (err) {
                 HeartRate.status = 'off';
                 HeartRate.bpm = null;
@@ -14615,7 +15083,20 @@
         }
 
         function heartRateUnsupportedText() {
-            return 'This browser cannot connect to Bluetooth heart rate monitors. It works in Chrome or Edge on a Mac, Windows PC or Android phone. Safari on iPhone and iPad does not support it.';
+            return 'Safari (on iPhone, iPad and Mac) cannot connect to Bluetooth heart rate monitors, and web apps cannot read Apple Watch heart rate directly. To see your Apple Watch heart rate here: install a free broadcaster app such as HeartCast on your iPhone and Apple Watch and start it on the watch, then open DumbbellFit in Chrome on a Mac, Windows PC or Android device and tap "Connect heart rate". From a Mac you can AirPlay the screen to your Apple TV.';
+        }
+
+        function appleWatchHelpHtml() {
+            return `
+                <details class="help">
+                    <summary>Using an Apple Watch</summary>
+                    <ol class="steps-guide">
+                        <li><span class="n">1</span><div>Install a free heart rate broadcaster, such as <b>HeartCast</b>, from the App Store on your iPhone. It adds itself to your Apple Watch.</div></li>
+                        <li><span class="n">2</span><div>Start it on the watch. It sends your heart rate out over Bluetooth like a chest strap.</div></li>
+                        <li><span class="n">3</span><div>Open DumbbellFit in <b>Chrome</b> on your Mac (Safari can't do Bluetooth), tap <b>Connect heart rate</b> and choose the broadcaster.</div></li>
+                        <li><span class="n">4</span><div>Your pulse shows on the exercise demo. AirPlay the Mac's screen to the TV to see it big.</div></li>
+                    </ol>
+                </details>`;
         }
 
         function heartRateChipInner() {
@@ -14624,7 +15105,7 @@
                     return `${icon('heart')}<span>${HeartRate.contactLost ? 'No skin contact' : 'Waiting for pulse'}</span>`;
                 }
                 const zone = getHeartRateZone(HeartRate.bpm, getMaxHeartRate());
-                return `${icon('heart')}<span class="num">${HeartRate.bpm}</span><span class="meta">bpm</span><span class="hr-zone-${zone.id}">${zone.label}</span>`;
+                return `${icon('heart')}<span class="hr-bpm num">${HeartRate.bpm}</span><span class="hr-unit">bpm<br><b class="hr-zone-${zone.id}">${zone.label}</b></span>`;
             }
             if (HeartRate.status === 'connecting') return `${icon('heart')}<span>Connecting</span>`;
             if (HeartRate.status === 'reconnecting') return `${icon('heart')}<span>Reconnecting</span>`;
@@ -14633,7 +15114,7 @@
 
         function heartRateChipHtml() {
             const live = HeartRate.status === 'on' && HeartRate.bpm !== null;
-            return `<button id="hr-chip" class="hr-chip ${live ? 'is-live' : ''}" onclick="onHeartRateChipTap()">${heartRateChipInner()}</button>`;
+            return `<button id="hr-chip" class="hr-chip ${live ? 'is-live' : ''}" onclick="onHeartRateChipTap()" aria-label="Heart rate">${heartRateChipInner()}</button>`;
         }
 
         function onHeartRateChipTap() {
@@ -14669,7 +15150,7 @@
             let statusHtml;
 
             if (!isHeartRateSupported()) {
-                statusHtml = `<p class="meta" style="font-size:14px">${heartRateUnsupportedText()}</p>`;
+                statusHtml = `<p class="meta" style="font-size:14px">This browser can't connect to Bluetooth heart rate monitors. That includes Safari on iPhone, iPad and Mac. Chrome or Edge on a Mac, Windows PC or Android device can.</p>${appleWatchHelpHtml()}`;
             } else if (HeartRate.status === 'on') {
                 const zone = HeartRate.bpm !== null ? getHeartRateZone(HeartRate.bpm, max) : null;
                 statusHtml = `
@@ -14684,8 +15165,9 @@
                 statusHtml = `<p class="meta" style="font-size:14px">${HeartRate.status === 'connecting' ? 'Connecting…' : 'Connection lost. Reconnecting…'}</p>`;
             } else {
                 statusHtml = `
-                    <p class="meta" style="font-size:14px">Put on your Peloton, Polar, Garmin or other Bluetooth strap, then connect. Your pulse shows on the workout screen.</p>
-                    <button onclick="connectHeartRateMonitor()" class="btn btn-primary btn-block">${icon('heart')}<span>Connect heart rate monitor</span></button>`;
+                    <p class="meta" style="font-size:14px">Put on your Peloton, Polar, Garmin or other Bluetooth strap, then connect. Your pulse shows on the exercise demo during workouts.</p>
+                    <button onclick="connectHeartRateMonitor()" class="btn btn-primary btn-block">${icon('heart')}<span>Connect heart rate monitor</span></button>
+                    ${appleWatchHelpHtml()}`;
             }
 
             return `
@@ -14698,6 +15180,31 @@
                     </div>
                     ${stepperHtml(`${max}`, 'adjustMaxHeartRate(-5)', 'adjustMaxHeartRate(5)', 'max heart rate')}
                 </div>`;
+        }
+
+        function voiceCardInner() {
+            const supported = isVoiceControlSupported();
+            return `
+                <h2 class="h3">Coach and voice control</h2>
+                <div>
+                    <div class="setting">
+                        <div>
+                            <p class="label">Coach voice</p>
+                            <p class="meta">Counts every rep, gives form tips and talks you through rests</p>
+                        </div>
+                        <button onclick="toggleAudioCoach(); refreshCurrentTab();" class="btn btn-sm ${voiceCoachEnabled ? 'btn-primary' : ''}">${voiceCoachEnabled ? 'On' : 'Off'}</button>
+                    </div>
+                    <div class="setting">
+                        <div>
+                            <p class="label">Voice control</p>
+                            <p class="meta">${supported
+                                ? (voiceRecognitionActive ? 'Listening now. Stops by itself when you leave the app.' : 'Say "pause", "resume", "faster", "slower", "skip" or "3 sets". Only listens while the app is open.')
+                                : 'Not available in this browser'}</p>
+                        </div>
+                        ${supported ? `<button onclick="toggleVoiceRecognition()" class="btn btn-sm ${voiceRecognitionActive ? 'btn-danger' : ''}">${voiceRecognitionActive ? 'Stop' : 'Turn on'}</button>` : ''}
+                    </div>
+                </div>
+                <button onclick="Coach.unlock(); Coach.say(['welcome', 'form_squat_1', 'enc_7'], P_TIMING)" class="btn btn-plain btn-sm btn-block">${icon('sound')}<span>Play a sample</span></button>`;
         }
 
         // ==========================================
@@ -14891,6 +15398,8 @@
                             </div>
                         </div>
                     </section>
+
+                    <section class="card" id="voice-card">${voiceCardInner()}</section>
 
                     <section class="card" id="hr-card">${heartRateCardInner()}</section>
 
