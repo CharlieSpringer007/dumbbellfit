@@ -1,0 +1,2077 @@
+{
+  "beginner_foundation": {
+    "id": "beginner_foundation",
+    "title": "Beginner Muscle & Tendon Foundation",
+    "subtitle": "Foundational Hypertrophy & Connective Tissue Armor",
+    "durationWeeks": 8,
+    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "tier": "Beginner",
+    "category": "Beginner",
+    "badgeColor": "border-emerald-500/50 bg-emerald-500/10 text-emerald-400",
+    "accentColor": "from-emerald-600/30 to-ios-card",
+    "icon": "\ud83c\udf31",
+    "desc": "Designed for lifters establishing base strength. Combines gentle dumbbell hypertrophy with 5-second Heavy Slow Resistance (HSR) to build tendon tensile stiffness and joint durability.",
+    "weeklySplit": "3 Days Muscle/Tendon + 2 Days Peloton Flush + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Muscle & Rotator Cuff Armor",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator HSR",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "scaption_raise",
+          "eccentric_hammer",
+          "mat_side_lying_db_external_rotation"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Synovial Flush & Core",
+        "tag": "\ud83d\udeb4 Peloton + \ud83e\ude7a Synovial Flush",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "russian_twist",
+          "db_mat_deadbug_press",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Muscle & Patellar Tendon HSR",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar HSR",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "iso_squat_hold",
+          "goblet_squat",
+          "rdl",
+          "lunges",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Matrix Synthesis Rest",
+        "tag": "\ud83d\udca4 Tendon Rest Window",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Armor & Achilles HSR",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "overhead_press",
+          "calf_eccentric",
+          "floor_press",
+          "bent_row",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Zone 2 Base Ride",
+        "tag": "\ud83d\udeb4 Peloton Cardio",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base",
+          "peloton_achilles_low_tension_spin",
+          "peloton_hip_knee_mobility_spin",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Recovery & Rest",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "intermediate_armor": {
+    "id": "intermediate_armor",
+    "title": "Intermediate Kinetic Armor & Overload",
+    "subtitle": "Progressive Overload & Dense Tendon Remodeling",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Intermediate",
+    "category": "Intermediate",
+    "badgeColor": "border-amber-500/50 bg-amber-500/10 text-amber-400",
+    "accentColor": "from-amber-600/30 to-ios-card",
+    "icon": "\u26a1",
+    "desc": "A 3-month periodized split. 4 high-tension muscle days combined with Heavy Slow Resistance (HSR) tendon protocols, plus 2 Peloton interval and synovial flush rides.",
+    "weeklySplit": "4 Days Muscle/Tendon + 2 Days Peloton + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Hypertrophy + Shoulder/Elbow Armor",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator/Elbow HSR",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "db_seated_arnold_press_bench",
+          "incline_bench_db_y_raise",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Quad Drive & Patellar Tendon HSR",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar HSR",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "db_patellar_decline_squat_hsr",
+          "db_bulgarian_split_squat_bench",
+          "goblet_squat",
+          "db_tempo_rdl_eccentric",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Peloton Cadence Intervals & Core Armor",
+        "tag": "\ud83d\udeb4 Peloton HIIT + \u26a1 Core",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "peloton_spin_ups_80_110",
+          "peloton_hiit_30_30_interval",
+          "db_mat_plank_pull_through",
+          "copenhagen_side_plank_bench",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Upper Kinetic Power + Rotator Shield",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator Shield",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_neutral_grip_overhead_press_bench",
+          "bent_row",
+          "scaption_raise",
+          "db_seated_90_90_external_rotation_bench",
+          "db_incline_spider_curl_bench"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Hypertrophy & Achilles Elasticity",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "rdl",
+          "calf_eccentric",
+          "lunges",
+          "mat_single_leg_glute_bridge_db",
+          "db_elevated_calf_raise_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Power Zone Ride & Synovial Flush",
+        "tag": "\ud83d\udeb4 Peloton PZ + \ud83e\ude7a Joint Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz3_tempo_cruise",
+          "peloton_patellar_synovial_flush",
+          "peloton_post_leg_day_flush",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Complete Collagen Remodeling Rest",
+        "tag": "\ud83d\udca4 Tendon Rest Window",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "advanced_power": {
+    "id": "advanced_power",
+    "title": "Advanced Periodized Power & Tendon Armor",
+    "subtitle": "Periodized Hypertrophy & Maximum Tendon Armor",
+    "durationWeeks": 20,
+    "durationMonths": "4\u20135 Months (20 Weeks \u2022 140 Days)",
+    "tier": "Advanced",
+    "category": "Advanced",
+    "badgeColor": "border-purple-500/50 bg-purple-500/10 text-purple-400",
+    "accentColor": "from-purple-600/30 to-ios-card",
+    "icon": "\ud83d\udc51",
+    "desc": "Elite 5-month periodized protocol. Combines high-load dumbbell hypertrophy splits with advanced Heavy Slow Resistance (HSR) and high-power Peloton intervals.",
+    "weeklySplit": "5 Days Muscle/Tendon + 1 Day Peloton Bootcamp + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Chest Hypertrophy & Rotator Cuff Armor",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator HSR",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "floor_press",
+          "db_close_grip_floor_press",
+          "db_seated_arnold_press_bench",
+          "incline_bench_db_y_raise",
+          "mat_side_lying_db_external_rotation"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Back Thickness & Epicondyle Armor",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Elbow HSR",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "bent_row",
+          "db_incline_chest_supported_rear_delt_row",
+          "db_incline_spider_curl_bench",
+          "eccentric_hammer",
+          "db_reverse_fly_isometric_pinch_bench"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Quad Overload & Patellar Tendon HSR",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar Overload",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "db_patellar_decline_squat_hsr",
+          "db_bulgarian_split_squat_bench",
+          "iso_squat_hold",
+          "goblet_squat",
+          "db_quad_sissy_squat_progression"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Peloton Anaerobic Engine & Core Rotational Power",
+        "tag": "\ud83d\udeb4 Peloton Tabata + \u26a1 Core",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "peloton_tabata_20_10_sprint",
+          "peloton_hiit_15s_super_sprint",
+          "db_mat_russian_twist_elevated",
+          "copenhagen_side_plank_bench",
+          "db_standing_woodchopper_low_high"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Chain Power & Achilles Elasticity",
+        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "rdl",
+          "calf_eccentric",
+          "db_bench_nordic_curl_progression",
+          "db_tempo_rdl_eccentric",
+          "db_elevated_calf_raise_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Bike & Dumbbell Fusion + Synovial Flush",
+        "tag": "\ud83d\udeb4 Hybrid + \ud83e\ude7a Synovial Flush",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "peloton_bike_goblet_squat_fusion",
+          "peloton_bike_floor_press_fusion",
+          "peloton_bike_bent_row_fusion",
+          "peloton_patellar_synovial_flush",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Regeneration & Hydro-Recovery",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "patellar_knee_focus": {
+    "id": "patellar_knee_focus",
+    "title": "Patellar Tendinopathy & Knee Armor",
+    "subtitle": "Jumper's Knee & Quad Tendon Heavy Slow Resistance",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Tendon Focus",
+    "category": "Tendon",
+    "badgeColor": "border-cyan-500/50 bg-cyan-500/10 text-cyan-400",
+    "accentColor": "from-cyan-600/30 to-ios-card",
+    "icon": "\ud83e\ude7a",
+    "desc": "Dedicated protocol for patellar tendonitis and runner's knee. Features 5-second decline squats, isometrics, and Peloton synovial fluid circulation without joint impacts.",
+    "weeklySplit": "3 Days Knee Armor + 2 Days Peloton Synovial + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Patellar HSR Eccentric Overload",
+        "tag": "\ud83e\ude7a Patellar HSR 5s",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "iso_squat_hold",
+          "db_patellar_decline_squat_hsr",
+          "goblet_squat",
+          "db_quad_sissy_squat_progression",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Low-Resistance Peloton Synovial Flush",
+        "tag": "\ud83d\udeb4 Joint Circulation",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_hip_knee_mobility_spin",
+          "db_mat_deadbug_press",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body Compound Strength",
+        "tag": "\ud83d\udcaa Upper Muscle",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "overhead_press",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Patellar Collagen Synthesis Window",
+        "tag": "\ud83d\udca4 Knee Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Quadriceps Eccentric & Hamstring Antagonist",
+        "tag": "\ud83d\udcaa Quad & Hamstring",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_tempo_rdl_eccentric",
+          "iso_squat_hold",
+          "db_elevated_calf_raise_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Knee Decompression Spin",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_post_squat_knee_decompression",
+          "peloton_active_recovery_cruise",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest & Connective Tissue Stiffening",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "rotator_shoulder_focus": {
+    "id": "rotator_shoulder_focus",
+    "title": "Rotator Cuff & Shoulder Capsule Shield",
+    "subtitle": "Supraspinatus, Infraspinatus & Scapular Armor",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Tendon Focus",
+    "category": "Tendon",
+    "badgeColor": "border-blue-500/50 bg-blue-500/10 text-blue-400",
+    "accentColor": "from-blue-600/30 to-ios-card",
+    "icon": "\ud83d\udee1\ufe0f",
+    "desc": "Fortifies the 4 rotator cuff tendons and scapular stabilizers. Eliminates shoulder impingement through strict scapular-plane raises, external rotations, and supported rows.",
+    "weeklySplit": "3 Days Shoulder Armor + 2 Days Peloton + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Supraspinatus & Scapular Plane Armor",
+        "tag": "\ud83e\ude7a Rotator Cuff HSR",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "scaption_raise",
+          "incline_bench_db_y_raise",
+          "mat_side_lying_db_external_rotation",
+          "db_neutral_grip_overhead_press_bench"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Zone 2 Base Cruise & Core",
+        "tag": "\ud83d\udeb4 Peloton Base",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base",
+          "peloton_spin_90_rpm",
+          "russian_twist",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body Dumbbell Strength",
+        "tag": "\ud83d\udcaa Lower Muscle",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "lunges",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Infraspinatus & Teres Minor HSR",
+        "tag": "\ud83e\ude7a Posterior Cuff",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "db_seated_90_90_external_rotation_bench",
+          "incline_bench_db_w_raise",
+          "db_reverse_fly_isometric_pinch_bench",
+          "bent_row"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Chest & Triceps Pressing Armor",
+        "tag": "\ud83d\udcaa Chest & Arm",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "floor_press",
+          "db_close_grip_floor_press",
+          "db_seated_arnold_press_bench",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Low-Impact Flush & Scapular Mobility",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "mat_prone_floor_angel",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Shoulder Capsule Synthesis Rest",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "achilles_elasticity": {
+    "id": "achilles_elasticity",
+    "title": "Achilles Tendon & Lower Kinetic Elasticity",
+    "subtitle": "Achilles Tendon Collagen Remodeling & Elastic Recoil",
+    "durationWeeks": 10,
+    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "tier": "Tendon Focus",
+    "category": "Tendon",
+    "badgeColor": "border-orange-500/50 bg-orange-500/10 text-orange-400",
+    "accentColor": "from-orange-600/30 to-ios-card",
+    "icon": "\u26a1",
+    "desc": "Heavy Slow Resistance eccentric calf drops and hamstring loading to remodel collagen fibers in the Achilles tendon and prevent running/jumping injuries.",
+    "weeklySplit": "3 Days Achilles Armor + 2 Days Peloton Cadence + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Achilles Heavy Eccentric Drops & Soleus Load",
+        "tag": "\ud83e\ude7a Achilles HSR 5s",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "calf_eccentric",
+          "db_elevated_calf_raise_bench",
+          "rdl",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Low-Tension Cadence Spin",
+        "tag": "\ud83d\udeb4 Tendon Cadence",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_achilles_low_tension_spin",
+          "peloton_ankle_capillary_flush",
+          "db_mat_deadbug_press"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body Muscle Hypertrophy",
+        "tag": "\ud83d\udcaa Upper Muscle",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "scaption_raise",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Achilles Collagen Synthesis Rest",
+        "tag": "\ud83d\udca4 Achilles Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Hamstring & Calf Kinetic Chain Armor",
+        "tag": "\ud83d\udcaa Posterior Chain",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "db_tempo_rdl_eccentric",
+          "calf_eccentric",
+          "lunges",
+          "db_bench_nordic_curl_progression"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Cadence Drill & Ankle Mobilization",
+        "tag": "\ud83d\udeb4 Ankle Mobility",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_spin_ups_80_110",
+          "peloton_achilles_low_tension_spin",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Lower Kinetic Chain Rest Day",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "elbow_epicondyle_rehab": {
+    "id": "elbow_epicondyle_rehab",
+    "title": "Tennis & Golfer's Elbow Epicondyle Armor",
+    "subtitle": "Common Extensor & Flexor Tendon Regeneration",
+    "durationWeeks": 8,
+    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "tier": "Tendon Focus",
+    "category": "Tendon",
+    "badgeColor": "border-rose-500/50 bg-rose-500/10 text-rose-400",
+    "accentColor": "from-rose-600/30 to-ios-card",
+    "icon": "\ud83e\ude79",
+    "desc": "Treats lateral and medial epicondylalgia. Strict 5-second eccentric hammer curls and floor press pauses stimulate healthy collagen alignment in forearm tendons.",
+    "weeklySplit": "3 Days Forearm/Arm + 2 Days Peloton + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Common Extensor 5s Eccentric Negatives",
+        "tag": "\ud83e\ude7a Elbow HSR 5s",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "eccentric_hammer",
+          "biceps_dumbbell_hammer_curl",
+          "bent_row",
+          "floor_press"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton HIIT Sprints & Core",
+        "tag": "\ud83d\udeb4 Cardio & Core",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_hiit_30_30_interval",
+          "russian_twist",
+          "copenhagen_side_plank_bench"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body Compound Strength",
+        "tag": "\ud83d\udcaa Lower Muscle",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "lunges",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Forearm Tendon Matrix Synthesis Rest",
+        "tag": "\ud83d\udca4 Elbow Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Biceps Brachii & Forearm Flexor Stiffening",
+        "tag": "\ud83d\udcaa Biceps & Forearm",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "db_incline_spider_curl_bench",
+          "eccentric_hammer",
+          "scaption_raise",
+          "db_close_grip_floor_press"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Synovial Flush & Arm Unloading",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_pz2_endurance_base"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Recovery Rest",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "total_body_longevity": {
+    "id": "total_body_longevity",
+    "title": "4-Month Total Body Connective Tissue Armor",
+    "subtitle": "Full Connective Tissue Longevity & Kinetic Armor",
+    "durationWeeks": 16,
+    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "tier": "Longevity",
+    "category": "Longevity",
+    "badgeColor": "border-teal-500/50 bg-teal-500/10 text-teal-400",
+    "accentColor": "from-teal-600/30 to-ios-card",
+    "icon": "\ud83e\uddec",
+    "desc": "A master longevity program hitting patellar, Achilles, rotator cuff, and epicondyle tendons every single week with 5.0-second controlled time-under-tension.",
+    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Peloton Flush + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Kinetic Matrix (Chest/Lats/Rotator)",
+        "tag": "\ud83d\udcaa Upper Matrix",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "scaption_raise",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Low-Impact Knee Flush & Core",
+        "tag": "\ud83d\udeb4 Knee Flush",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "db_mat_deadbug_press",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Kinetic Matrix (Knees/Hips/Patellar)",
+        "tag": "\ud83d\udcaa Lower Matrix",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "iso_squat_hold",
+          "goblet_squat",
+          "rdl",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Window",
+        "tag": "\ud83d\udca4 Tendon Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Chain & Achilles Elasticity",
+        "tag": "\ud83d\udcaa Achilles Matrix",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "calf_eccentric",
+          "db_tempo_rdl_eccentric",
+          "overhead_press",
+          "lunges"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Active Recovery Cruise",
+        "tag": "\ud83d\udeb4 Aerobic Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base",
+          "peloton_hip_knee_mobility_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Systemic Rest",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "peloton_db_fusion": {
+    "id": "peloton_db_fusion",
+    "title": "Peloton Bike & Dumbbell Muscle Fusion Hybrid",
+    "subtitle": "Cardio Cadence + Hypertrophy Bootcamp Intervals",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Hybrid",
+    "category": "Peloton",
+    "badgeColor": "border-yellow-500/50 bg-yellow-500/10 text-yellow-400",
+    "accentColor": "from-yellow-600/30 to-ios-card",
+    "icon": "\ud83d\udeb4",
+    "desc": "High-output hybrid training: combines Peloton cycling cadence surges directly with Dumbbell Goblet Squats, Floor Presses, and Bent-Over Rows.",
+    "weeklySplit": "4 Days Bike/DB Fusion + 1 Day Active Flush + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Bike Intervals + Upper DB Compound",
+        "tag": "\u26a1 Hybrid Upper",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "peloton_spin_ups_80_110",
+          "peloton_bike_floor_press_fusion",
+          "peloton_bike_bent_row_fusion"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Bike Climb + Lower DB Power",
+        "tag": "\u26a1 Hybrid Lower",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "peloton_seated_climb_heavy",
+          "peloton_bike_goblet_squat_fusion",
+          "peloton_bike_rdl_fusion"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Mat Core Stability & Active Recovery",
+        "tag": "\u26a1 Mat Core",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "russian_twist",
+          "db_mat_plank_pull_through",
+          "db_mat_deadbug_press"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Bike HIIT Sprints + DB Arm Armor",
+        "tag": "\u26a1 Hybrid Arms",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "peloton_hiit_30_30_interval",
+          "peloton_bike_bicep_curl_fusion",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Bike Climb + DB Shoulder Fusion",
+        "tag": "\u26a1 Hybrid Delts",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "peloton_standing_climb_heavy",
+          "peloton_bike_overhead_press_fusion",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Synovial Flush & Quad Decompression",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_post_squat_knee_decompression"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day & Recovery",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "ppl_joint_armor": {
+    "id": "ppl_joint_armor",
+    "title": "Push / Pull / Legs (PPL) + Joint Armor Split",
+    "subtitle": "Classic 6-Day Hypertrophy with Built-In 5s Tendon HSR",
+    "durationWeeks": 16,
+    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "tier": "Hypertrophy",
+    "category": "Hypertrophy",
+    "badgeColor": "border-red-500/50 bg-red-500/10 text-red-400",
+    "accentColor": "from-red-600/30 to-ios-card",
+    "icon": "\ud83d\udcaa",
+    "desc": "Periodized Push/Pull/Legs routine enhanced with targeted Heavy Slow Resistance on tendons to prevent overuse injuries while building max muscle.",
+    "weeklySplit": "3 Days PPL + 1 Day Flush + 2 Days Upper/Lower + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Push: Chest, Delts & Rotator HSR",
+        "tag": "\ud83d\udcaa Push Day",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "floor_press",
+          "db_seated_arnold_press_bench",
+          "db_close_grip_floor_press",
+          "incline_bench_db_y_raise"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Pull: Back, Biceps & Elbow HSR",
+        "tag": "\ud83d\udcaa Pull Day",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "bent_row",
+          "db_incline_spider_curl_bench",
+          "eccentric_hammer",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Legs: Quads, Hams & Patellar HSR",
+        "tag": "\ud83d\udcaa Legs Day",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "db_patellar_decline_squat_hsr",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Peloton Synovial Flush & Core",
+        "tag": "\ud83d\udeb4 Active Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "russian_twist",
+          "db_mat_deadbug_press"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Upper Kinetic Hybrid (Push/Pull)",
+        "tag": "\ud83d\udcaa Upper Hybrid",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "db_neutral_grip_overhead_press_bench",
+          "mat_side_lying_db_external_rotation"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Lower Kinetic Power & Glutes",
+        "tag": "\ud83d\udcaa Lower Power",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "glute_bridge",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Collagen Rebuilding",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "upper_lower_split": {
+    "id": "upper_lower_split",
+    "title": "4-Day Upper / Lower Heavy Overload Split",
+    "subtitle": "High-Load Hypertrophy with Synovial Recovery",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Strength",
+    "category": "Strength",
+    "badgeColor": "border-indigo-500/50 bg-indigo-500/10 text-indigo-400",
+    "accentColor": "from-indigo-600/30 to-ios-card",
+    "icon": "\ud83c\udfcb\ufe0f",
+    "desc": "Classic 4-day Upper/Lower split allowing intense dumbbell mechanical loading with dedicated 48-hour tendon recovery days and Peloton flushes.",
+    "weeklySplit": "4 Days Upper/Lower + 2 Days Peloton + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Strength & Tendon Armor 1",
+        "tag": "\ud83d\udcaa Upper Strength",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "overhead_press",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Lower Strength & Patellar HSR 1",
+        "tag": "\ud83d\udcaa Lower Strength",
+        "isRest": false,
+        "duration": "28 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "db_patellar_decline_squat_hsr",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Peloton Active Flush Ride",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base",
+          "peloton_patellar_synovial_flush"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Upper Volume & Rotator Shield 2",
+        "tag": "\ud83d\udcaa Upper Volume",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_close_grip_floor_press",
+          "db_seated_arnold_press_bench",
+          "scaption_raise",
+          "db_incline_spider_curl_bench"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Lower Volume & Glute Power 2",
+        "tag": "\ud83d\udcaa Lower Volume",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "db_tempo_rdl_eccentric",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Cadence Pyramid",
+        "tag": "\ud83d\udeb4 Peloton Cadence",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_cadence_ladder_up",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest & Restoration",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "express_7min_daily": {
+    "id": "express_7min_daily",
+    "title": "7-Minute High-Intensity Express Daily Blitz",
+    "subtitle": "Short, Intense Daily Scientific Dumbbell Pacing",
+    "durationWeeks": 8,
+    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "tier": "Time-Saver",
+    "category": "Beginner",
+    "badgeColor": "border-orange-400/50 bg-orange-400/10 text-orange-400",
+    "accentColor": "from-orange-600/30 to-ios-card",
+    "icon": "\u23f1\ufe0f",
+    "desc": "Perfect for hectic schedules. 7-minute daily scientific blitzes alternating upper body, lower body, and Peloton sprints with zero wasted time.",
+    "weeklySplit": "5 Days Express DB + 1 Day Peloton + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "7-Min Full Body Blitz A",
+        "tag": "\u26a1 7-Min Blitz",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "goblet_squat",
+          "floor_press",
+          "bent_row",
+          "overhead_press",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "7-Min Lower & Knee Armor",
+        "tag": "\u26a1 7-Min Lower",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "iso_squat_hold",
+          "lunges",
+          "rdl",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "7-Min Peloton Fast Legs Blast",
+        "tag": "\ud83d\udeb4 7-Min Sprints",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "peloton_hiit_30_30_interval",
+          "peloton_spin_100_rpm"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "7-Min Upper & Rotator Cuff",
+        "tag": "\u26a1 7-Min Upper",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "scaption_raise",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "7-Min Full Body Blitz B",
+        "tag": "\u26a1 7-Min Blitz",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "overhead_press",
+          "calf_eccentric",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "7-Min Peloton Synovial Flush",
+        "tag": "\ud83d\udeb4 7-Min Flush",
+        "isRest": false,
+        "duration": "7 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Active Rest Day",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "low_impact_joint_rebuild": {
+    "id": "low_impact_joint_rebuild",
+    "title": "Low-Impact Joint Rebuild & Cartilage Preservation",
+    "subtitle": "Zero-Impact Hypertrophy with Pure Isometrics & Flushes",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Joint Longevity",
+    "category": "Longevity",
+    "badgeColor": "border-green-500/50 bg-green-500/10 text-green-400",
+    "accentColor": "from-green-600/30 to-ios-card",
+    "icon": "\ud83c\udf31",
+    "desc": "Protects degenerative joints, cartilage wear, and sensitive tendons. Uses bench/floor supported angles, slow tempos, and smooth circular cycling.",
+    "weeklySplit": "3 Days Low-Impact + 2 Days Peloton Unload + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Controlled Isometric Lower Body",
+        "tag": "\ud83e\ude7a Knee Isometric",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "iso_squat_hold",
+          "glute_bridge",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Low-Impact Synovial Unloading",
+        "tag": "\ud83d\udeb4 Joint Unloading",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_low_impact_joint_unloading",
+          "peloton_patellar_synovial_flush"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Floor & Bench Supported Upper Body",
+        "tag": "\ud83d\udcaa Supported Upper",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "floor_press",
+          "scaption_raise",
+          "mat_side_lying_db_external_rotation"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Rest & Connective Tissue Synthesis",
+        "tag": "\ud83d\udca4 Joint Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Slow Eccentric Kinetic Chain",
+        "tag": "\ud83d\udcaa Slow Eccentric",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "db_tempo_rdl_eccentric",
+          "eccentric_hammer",
+          "db_seated_arnold_press_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Smooth Circles & Mobility Spin",
+        "tag": "\ud83d\udeb4 Smooth Circles",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_smooth_circles",
+          "peloton_hip_knee_mobility_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "peloton_vo2_cadence": {
+    "id": "peloton_vo2_cadence",
+    "title": "Peloton VO2 Max Cadence & Core Engine",
+    "subtitle": "High-Cadence Anaerobic Power & 360\u00b0 Core Stability",
+    "durationWeeks": 10,
+    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "tier": "Cardio & Core",
+    "category": "Peloton",
+    "badgeColor": "border-rose-400/50 bg-rose-400/10 text-rose-400",
+    "accentColor": "from-rose-600/30 to-ios-card",
+    "icon": "\ud83d\udeb4",
+    "desc": "Supercharges cardiovascular engine and threshold cadence on the Peloton bike while building bulletproof abdominal wall and lumbar stability on mat.",
+    "weeklySplit": "3 Days Peloton Power + 2 Days DB Strength + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "High RPM Spin-Ups & Core Planks",
+        "tag": "\ud83d\udeb4 Cadence & Core",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "peloton_spin_ups_80_110",
+          "copenhagen_side_plank_bench",
+          "db_mat_plank_pull_through"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Dumbbell Upper Kinetic Foundation",
+        "tag": "\ud83d\udcaa Upper Strength",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "overhead_press"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Peloton Tabata Max Wattage Output",
+        "tag": "\ud83d\udeb4 Tabata Max",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_tabata_20_10_sprint",
+          "peloton_hiit_15s_super_sprint"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Dumbbell Lower Kinetic Foundation",
+        "tag": "\ud83d\udcaa Lower Strength",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Peloton Steep Hill Climb & Torque Push",
+        "tag": "\ud83d\udeb4 Heavy Torque",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "peloton_seated_climb_heavy",
+          "peloton_standing_climb_heavy"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Synovial Flush & Deep Core",
+        "tag": "\ud83d\udeb4 Flush & Core",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "russian_twist",
+          "db_mat_deadbug_press"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "timesaver_3day_split": {
+    "id": "timesaver_3day_split",
+    "title": "3-Day Full Body Time-Saver Split",
+    "subtitle": "Maximum Efficiency Full-Body Compound Stimulus",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Time-Saver",
+    "category": "Strength",
+    "badgeColor": "border-sky-500/50 bg-sky-500/10 text-sky-400",
+    "accentColor": "from-sky-600/30 to-ios-card",
+    "icon": "\u26a1",
+    "desc": "The ultimate schedule for busy professionals: 3 high-yield full-body compound workouts per week (Mon/Wed/Fri) with optional weekend Peloton recovery.",
+    "weeklySplit": "3 Days Full Body + 2 Days Optional Flush + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Full Body Compound A",
+        "tag": "\ud83d\udcaa Full Body A",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "goblet_squat",
+          "floor_press",
+          "bent_row",
+          "overhead_press",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Optional Peloton Flush Ride",
+        "tag": "\ud83d\udeb4 Active Flush",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Full Body Compound B",
+        "tag": "\ud83d\udcaa Full Body B",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "rdl",
+          "db_close_grip_floor_press",
+          "lunges",
+          "eccentric_hammer",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Rest",
+        "tag": "\ud83d\udca4 Tendon Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Compound C",
+        "tag": "\ud83d\udcaa Full Body C",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_seated_arnold_press_bench",
+          "glute_bridge",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Optional Peloton Zone 2 Base",
+        "tag": "\ud83d\udeb4 Aerobic Base",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Weekly Restoration Rest",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "glute_hamstring_hip": {
+    "id": "glute_hamstring_hip",
+    "title": "Glute, Hamstring & Hip Stability Armor",
+    "subtitle": "Posterior Chain Power & Pelvic Alignment",
+    "durationWeeks": 10,
+    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "tier": "Hypertrophy",
+    "category": "Hypertrophy",
+    "badgeColor": "border-pink-500/50 bg-pink-500/10 text-pink-400",
+    "accentColor": "from-pink-600/30 to-ios-card",
+    "icon": "\ud83c\udf51",
+    "desc": "Builds glute max/medius and hamstring hypertrophy while protecting sacroiliac joints, lower back, and distal hamstring tendons.",
+    "weeklySplit": "3 Days Posterior Chain + 2 Days Peloton + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Posterior Chain Drive (RDL & Glutes)",
+        "tag": "\ud83d\udcaa Glutes & RDL",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "rdl",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Out-of-Saddle Glute Climb",
+        "tag": "\ud83d\udeb4 Glute Climb",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_glute_focused_climb",
+          "peloton_standing_climb_heavy"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body DB Strength",
+        "tag": "\ud83d\udcaa Upper Body",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "overhead_press",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Glute Collagen Rest Window",
+        "tag": "\ud83d\udca4 Posterior Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Unilateral Glute & Adductor Armor",
+        "tag": "\ud83d\udcaa Unilateral Power",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "copenhagen_side_plank_bench",
+          "lunges",
+          "db_tempo_rdl_eccentric"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Post-Leg-Day Flush",
+        "tag": "\ud83d\udeb4 Leg Flush",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_post_leg_day_flush",
+          "peloton_hip_knee_mobility_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "chest_back_antagonist": {
+    "id": "chest_back_antagonist",
+    "title": "Chest & Back Antagonist Hypertrophy",
+    "subtitle": "Opposing Muscle Push-Pull Balance & Scapular Armor",
+    "durationWeeks": 12,
+    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "tier": "Hypertrophy",
+    "category": "Hypertrophy",
+    "badgeColor": "border-cyan-400/50 bg-cyan-400/10 text-cyan-400",
+    "accentColor": "from-cyan-600/30 to-ios-card",
+    "icon": "\ud83d\udee1\ufe0f",
+    "desc": "Pairing chest and back antagonist supersets creates maximum muscular pump and upper-body posture symmetry while protecting shoulder capsules.",
+    "weeklySplit": "3 Days Antagonist + 2 Days Peloton + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Horizontal Push/Pull Supersets",
+        "tag": "\ud83d\udcaa Horizontal Antagonist",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "floor_press",
+          "bent_row",
+          "db_close_grip_floor_press",
+          "incline_bench_db_y_raise"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton Cadence Intervals",
+        "tag": "\ud83d\udeb4 Peloton Sprints",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_hiit_30_30_interval",
+          "peloton_spin_100_rpm",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body HSR & Quads",
+        "tag": "\ud83d\udcaa Lower Body",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "goblet_squat",
+          "rdl",
+          "iso_squat_hold",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Antagonist Rest Window",
+        "tag": "\ud83d\udca4 Upper Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Vertical Push/Pull Supersets",
+        "tag": "\ud83d\udcaa Vertical Antagonist",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "overhead_press",
+          "bent_row",
+          "db_seated_arnold_press_bench",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Synovial Flush Ride",
+        "tag": "\ud83d\udeb4 Active Flush",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_cooldown_heart_decel"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "arms_delts_definition": {
+    "id": "arms_delts_definition",
+    "title": "Arms & Deltoid Definition + Tendon Shield",
+    "subtitle": "Biceps, Triceps, 3D Deltoids & Elbow Armor",
+    "durationWeeks": 8,
+    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "tier": "Hypertrophy",
+    "category": "Hypertrophy",
+    "badgeColor": "border-violet-500/50 bg-violet-500/10 text-violet-400",
+    "accentColor": "from-violet-600/30 to-ios-card",
+    "icon": "\ud83d\udcaa",
+    "desc": "Direct arm and shoulder focus. Maximizes biceps, triceps, and side delt definition with strict slow negatives that strengthen elbow epicondyles.",
+    "weeklySplit": "3 Days Arms/Delts + 2 Days Peloton + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Biceps, Triceps & Common Extensor HSR",
+        "tag": "\ud83d\udcaa Arm Hypertrophy",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "eccentric_hammer",
+          "db_close_grip_floor_press",
+          "db_incline_spider_curl_bench"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton HIIT Sprints & Core",
+        "tag": "\ud83d\udeb4 HIIT & Core",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_hiit_30_30_interval",
+          "russian_twist"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Deltoids & Rotator Cuff Shield",
+        "tag": "\ud83d\udcaa 3D Delts",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "db_seated_arnold_press_bench",
+          "scaption_raise",
+          "incline_bench_db_y_raise",
+          "mat_side_lying_db_external_rotation"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Arm Tendon Synthesis Rest",
+        "tag": "\ud83d\udca4 Arm Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Kinetic Armor",
+        "tag": "\ud83d\udcaa Full Body",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "goblet_squat",
+          "floor_press",
+          "bent_row",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Active Synovial Flush",
+        "tag": "\ud83d\udeb4 Joint Recovery",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_achilles_low_tension_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "athletic_performance_speed": {
+    "id": "athletic_performance_speed",
+    "title": "Athletic Performance, Power & Rotational Speed",
+    "subtitle": "Unilateral Strength, Explosive Cadence & Core",
+    "durationWeeks": 16,
+    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "tier": "Athletic",
+    "category": "Advanced",
+    "badgeColor": "border-orange-500/50 bg-orange-500/10 text-orange-400",
+    "accentColor": "from-orange-600/30 to-ios-card",
+    "icon": "\u26a1",
+    "desc": "Built for competitive athletes. Combines explosive single-arm push presses, unilateral Bulgarian squats, rotational woodchoppers, and high-wattage Peloton Tabatas.",
+    "weeklySplit": "4 Days Athletic DB + 2 Days Peloton Sprints + 1 Day Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Explosive Dumbbell Power & Push Press",
+        "tag": "\u26a1 Athletic Power",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "db_single_arm_push_press_kg",
+          "goblet_squat",
+          "floor_press"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Peloton High-Wattage Tabata Attack",
+        "tag": "\ud83d\udeb4 Tabata Power",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_tabata_20_10_sprint",
+          "peloton_hiit_15s_super_sprint"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Unilateral Strength & Tendon HSR",
+        "tag": "\ud83d\udcaa Unilateral Leg",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_tempo_rdl_eccentric",
+          "calf_eccentric"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Rotational Core & Scapular Stability",
+        "tag": "\u26a1 Rotational Core",
+        "isRest": false,
+        "duration": "22 min",
+        "exercises": [
+          "db_standing_woodchopper_low_high",
+          "copenhagen_side_plank_bench",
+          "scaption_raise"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Heavy Upper Pull & Posterior Chain",
+        "tag": "\ud83d\udcaa Pull & Posterior",
+        "isRest": false,
+        "duration": "26 min",
+        "exercises": [
+          "bent_row",
+          "rdl",
+          "eccentric_hammer",
+          "lunges"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Active Flushing & Hip Mobility",
+        "tag": "\ud83d\udeb4 Hip Mobility",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_hip_knee_mobility_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  },
+  "collagen_joint_longevity": {
+    "id": "collagen_joint_longevity",
+    "title": "5-Month Master Collagen & Joint Longevity Protocol",
+    "subtitle": "Complete Kinetic Chain Resilience & Lifelong Cartilage Health",
+    "durationWeeks": 20,
+    "durationMonths": "4\u20135 Months (20 Weeks \u2022 140 Days)",
+    "tier": "Master Longevity",
+    "category": "Longevity",
+    "badgeColor": "border-emerald-400/50 bg-emerald-400/10 text-emerald-400",
+    "accentColor": "from-emerald-600/30 to-ios-card",
+    "icon": "\ud83e\uddec",
+    "desc": "The ultimate 20-week longevity curriculum. Methodically rotates mechanical tension across knee, shoulder, elbow, ankle, and hip connective tissues for permanent joint armor.",
+    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Peloton Synovial + 2 Days Rest",
+    "days": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Knee & Patellar Matrix HSR",
+        "tag": "\ud83e\ude7a Knee Matrix",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "iso_squat_hold",
+          "db_patellar_decline_squat_hsr",
+          "goblet_squat",
+          "glute_bridge"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Shoulder & Rotator Cuff Matrix HSR",
+        "tag": "\ud83e\ude7a Shoulder Matrix",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "scaption_raise",
+          "incline_bench_db_y_raise",
+          "mat_side_lying_db_external_rotation",
+          "floor_press"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Peloton Low-Impact Joint Synovial Flush",
+        "tag": "\ud83d\udeb4 Joint Circulation",
+        "isRest": false,
+        "duration": "18 min",
+        "exercises": [
+          "peloton_patellar_synovial_flush",
+          "peloton_hip_knee_mobility_spin",
+          "db_mat_deadbug_press"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Rest Window",
+        "tag": "\ud83d\udca4 Collagen Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Achilles, Foot & Elbow Tendon Matrix HSR",
+        "tag": "\ud83e\ude7a Achilles & Elbow",
+        "isRest": false,
+        "duration": "24 min",
+        "exercises": [
+          "calf_eccentric",
+          "eccentric_hammer",
+          "rdl",
+          "db_incline_spider_curl_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Peloton Zone 2 Base Capillary Flush",
+        "tag": "\ud83d\udeb4 Aerobic Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "peloton_pz2_endurance_base",
+          "peloton_achilles_low_tension_spin"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Complete Rest & Restorative Sleep",
+        "tag": "\ud83d\udca4 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ]
+  }
+}
