@@ -13,7 +13,7 @@
  * CACHE_VERSION and PRECACHE_URLS are generated from the files in this folder.
  * If you add or rename GIFs or audio clips, add them to the list and bump the version.
  */
-const CACHE_VERSION = 'v2-8aa85d7cef';
+const CACHE_VERSION = 'v2-7809091880';
 const CACHE_NAME = 'dumbbellfit-' + CACHE_VERSION;
 const APP_SHELL = './dumbbell_workout_ios_app.html';
 

@@ -226,6 +226,7 @@
         }
         .voice-btn svg { width: 18px; height: 18px; }
         .voice-btn.is-on { background: rgba(61, 220, 132, .16); color: var(--lift); padding-right: 4px; }
+        .voice-btn.is-unavailable { opacity: .55; }
         .voice-btn .voice-stop { margin-left: 4px; height: 32px; padding: 0 10px; border-radius: 16px; display: inline-grid; place-items: center; background: var(--danger); color: #2a0503; }
         details.help { background: var(--ink); border-radius: 12px; padding: 10px 12px; font-size: 14px; }
         details.help summary { cursor: pointer; font-weight: 700; color: var(--accent); }
@@ -12928,6 +12929,9 @@
                 const caption = list.map(it => (typeof it === 'string' ? (COACH_TEXT[it] || clipCaption(it)) : it.text)).join(' ');
                 if (caption) updateCoachSubtitle(caption);
                 if (!voiceCoachEnabled) return;
+                const recentlySpoke = this.lastSpokenAt && Date.now() - this.lastSpokenAt < 4000;
+                this.lastSpoken = (recentlySpoke ? (this.lastSpoken || '') + ' ' : '') + caption;
+                this.lastSpokenAt = Date.now();
 
                 if (this.playing && Date.now() < this.speakingUntil) {
                     if (priority < this.playing.priority) return;
@@ -13375,79 +13379,150 @@
         let voiceControlWanted = false;   // the user's choice
         let voiceTapAt = 0;
 
+        function isIOSDevice() {
+            if (!HAS_NAVIGATOR) return false;
+            return /iPad|iPhone|iPod/.test(navigator.userAgent || '') || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        }
+
+        // Apple does not allow speech recognition in web apps opened from the Home Screen.
+        function voiceBlockedHere() {
+            return isIOSDevice() && isStandaloneApp();
+        }
+
         function isVoiceControlSupported() {
-            return typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+            return typeof window !== 'undefined' && !!(window.SpeechRecognition || window.webkitSpeechRecognition) && !voiceBlockedHere();
         }
 
         function isAppVisible() {
             return typeof document === 'undefined' || !document.visibilityState || document.visibilityState === 'visible';
         }
 
-        function initVoiceRecognition() {
+        function voiceUnavailableText() {
+            if (voiceBlockedHere()) {
+                const url = (typeof location !== 'undefined') ? location.origin + location.pathname : 'this page';
+                return `Voice control doesn't work in apps opened from the Home Screen: Apple blocks it. To use it, open ${url} in Safari and tap Voice there. Dictation must be on (Settings > General > Keyboard > Dictation). Everything else works the same.`;
+            }
+            return 'This browser does not support voice commands. Use Safari or Chrome, or the on-screen buttons.';
+        }
+
+        // ---------- Recognising the coach's own voice ----------
+        function normaliseSpeech(t) {
+            return String(t || '').toLowerCase().replace(/[^a-z0-9 ]+/g, ' ').replace(/\s+/g, ' ').trim();
+        }
+
+        // True if what the microphone heard is just the coach talking (so it is not a command).
+        function isCoachEcho(text) {
+            if (!Coach.lastSpokenAt || Date.now() - Coach.lastSpokenAt > 6000) return false;
+            const heardText = normaliseSpeech(text);
+            const said = normaliseSpeech(Coach.lastSpoken);
+            if (!heardText || !said) return false;
+            if (said.includes(heardText)) return true;
+            const saidWords = new Set(said.split(' '));
+            const words = heardText.split(' ');
+            const overlap = words.filter(w => saidWords.has(w)).length;
+            return words.length >= 2 && overlap / words.length >= 0.75;
+        }
+
+        // ---------- Listening ----------
+        // Each phrase gets its own short recognition session, restarted straight after.
+        // On iPhone this is far more reliable than one long "continuous" session.
+        let recognitionSession = 0;
+        let recognitionFailures = 0;
+
+        function startRecognitionSession() {
             const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
-            if (!SpeechRecognitionClass) {
-                updateVoiceStatus('Voice control is not available in this browser', false);
+            if (!SpeechRecognitionClass) return;
+            const id = ++recognitionSession;
+            let rec;
+            try {
+                rec = new SpeechRecognitionClass();
+            } catch (e) {
                 return;
             }
+            rec.continuous = !isIOSDevice();
+            rec.interimResults = false;
+            rec.maxAlternatives = 3;
+            rec.lang = 'en-GB';
+
+            rec.onresult = (event) => {
+                recognitionFailures = 0;
+                for (let i = event.resultIndex || 0; i < event.results.length; i++) {
+                    const result = event.results[i];
+                    if (!result.isFinal) continue;
+                    const options = [];
+                    for (let a = 0; a < result.length; a++) options.push(String(result[a].transcript || '').trim().toLowerCase());
+                    if (!options.length || isCoachEcho(options[0])) continue;
+                    // Try each guess until one is a command.
+                    let done = false;
+                    for (let a = 0; a < options.length && !done; a++) done = handleVoiceCommand(options[a], a > 0);
+                    if (!done) showHeard(options[0], false);
+                }
+            };
+
+            rec.onerror = (event) => {
+                const err = event && event.error;
+                if (err === 'not-allowed' || err === 'service-not-allowed') {
+                    recognitionSession++;
+                    voiceRecognitionActive = false;
+                    const fromTap = Date.now() - voiceTapAt < 4000;
+                    if (fromTap) setVoiceControlWanted(false);
+                    updateVoiceStatus(fromTap
+                        ? 'Voice control needs the microphone and Dictation. Allow the microphone for this site, and turn on Settings > General > Keyboard > Dictation.'
+                        : 'Voice control paused. Tap Voice to turn it back on.', false);
+                } else if (err && err !== 'no-speech' && err !== 'aborted') {
+                    recognitionFailures++;
+                }
+            };
+
+            rec.onend = () => {
+                if (id !== recognitionSession) return;
+                if (voiceControlWanted && isAppVisible() && recognitionFailures < 6) {
+                    setTimeout(() => {
+                        if (id === recognitionSession && voiceControlWanted && isAppVisible()) startRecognitionSession();
+                    }, recognitionFailures ? 1000 : 150);
+                } else {
+                    voiceRecognitionActive = false;
+                    updateVoiceStatus(recognitionFailures >= 6 ? 'Voice control stopped: speech recognition is not responding. Tap Voice to try again.' : null, false);
+                    recognitionFailures = 0;
+                }
+            };
 
             try {
-                speechRecognitionInstance = new SpeechRecognitionClass();
-                speechRecognitionInstance.continuous = true;
-                speechRecognitionInstance.interimResults = false;
-                speechRecognitionInstance.lang = 'en-GB';
+                rec.start();
+                speechRecognitionInstance = rec;
+                if (!voiceRecognitionActive) {
+                    voiceRecognitionActive = true;
+                    updateVoiceStatus(null, true);
+                }
+            } catch (e) {
+                recognitionFailures++;
+            }
+        }
 
-                speechRecognitionInstance.onresult = (event) => {
-                    const lastResult = event.results[event.results.length - 1];
-                    if (lastResult.isFinal) {
-                        // Ignore anything heard while the coach is talking: it is the coach's own voice.
-                        if (Coach.isSpeaking()) return;
-                        const transcript = lastResult[0].transcript.trim().toLowerCase();
-                        handleVoiceCommand(transcript);
-                    }
-                };
-
-                speechRecognitionInstance.onerror = (event) => {
-                    if (event && (event.error === 'not-allowed' || event.error === 'service-not-allowed')) {
-                        voiceRecognitionActive = false;
-                        // iPhone may refuse to restart the microphone without a tap, e.g. on returning to the app.
-                        const fromTap = Date.now() - voiceTapAt < 3000;
-                        if (fromTap) setVoiceControlWanted(false);
-                        updateVoiceStatus(fromTap
-                            ? 'Microphone access is off. Allow it for this site in Settings to use voice control.'
-                            : 'Voice control paused. Tap Voice to turn it back on.', false);
-                    }
-                };
-
-                speechRecognitionInstance.onend = () => {
-                    // Browsers end recognition every so often; restart only if still wanted and on screen.
-                    if (voiceRecognitionActive && voiceControlWanted && isAppVisible()) {
-                        try { speechRecognitionInstance.start(); } catch (e) {}
-                    } else {
-                        voiceRecognitionActive = false;
-                        updateVoiceStatus(null, false);
-                    }
-                };
-
-                startListening();
-            } catch (err) {}
+        function initVoiceRecognition() {
+            if (!isVoiceControlSupported()) {
+                updateVoiceStatus(voiceUnavailableText(), false);
+                return;
+            }
+            startListening();
         }
 
         function startListening() {
-            if (!speechRecognitionInstance || voiceRecognitionActive) return;
-            try {
-                speechRecognitionInstance.start();
-                voiceRecognitionActive = true;
-                updateVoiceStatus(null, true);
-            } catch (e) {}
+            if (voiceRecognitionActive) return;
+            recognitionFailures = 0;
+            startRecognitionSession();
         }
 
         function stopListening() {
+            recognitionSession++;   // stops the restart loop
             voiceRecognitionActive = false;
             updateVoiceStatus(null, false);
             setTimeout(() => Coach.applySession(), 300);
-            if (!speechRecognitionInstance) return;
-            try { speechRecognitionInstance.abort(); } catch (e) {
-                try { speechRecognitionInstance.stop(); } catch (e2) {}
+            const rec = speechRecognitionInstance;
+            speechRecognitionInstance = null;
+            if (!rec) return;
+            try { rec.abort(); } catch (e) {
+                try { rec.stop(); } catch (e2) {}
             }
         }
 
@@ -13463,14 +13538,13 @@
                 return;
             }
             if (!isVoiceControlSupported()) {
-                showModal('Voice control', 'This browser does not support voice commands. Use the on-screen buttons instead.');
+                showModal('Voice control', voiceUnavailableText());
                 return;
             }
             Coach.unlock();
             voiceTapAt = Date.now();
             setVoiceControlWanted(true);
-            if (!speechRecognitionInstance) initVoiceRecognition();
-            else startListening();
+            startListening();
             announce('Voice control on', 'voice_on');
             updateCoachSubtitle('Listening. Say "pause", "resume", "12 reps", "more reps", "3 sets", "faster" or "skip".');
         }
@@ -13486,9 +13560,17 @@
             if (!isAppVisible()) {
                 if (voiceRecognitionActive) stopListening();
             } else if (voiceControlWanted && isVoiceControlSupported()) {
-                if (!speechRecognitionInstance) initVoiceRecognition();
-                else startListening();
+                startListening();
             }
+        }
+
+        function showHeard(text, matched) {
+            const badge = $('recognized-speech-badge');
+            if (!badge) return;
+            badge.textContent = matched ? `Heard "${text}"` : `Heard "${text}" (not a command)`;
+            badge.className = `pill ${matched ? 'pill-ok' : ''}`;
+            clearTimeout(showHeard.hideTimer);
+            showHeard.hideTimer = setTimeout(() => badge.classList.add('hidden'), 3000);
         }
 
         function updateVoiceStatus(message, isListening) {
@@ -13500,6 +13582,7 @@
                 btn.setAttribute('aria-label', isListening ? 'Stop voice control' : 'Turn on voice control');
                 if (isListening) btn.classList.add('is-on');
                 else btn.classList.remove('is-on');
+                if (voiceBlockedHere()) btn.classList.add('is-unavailable');
             }
             const card = $('voice-card');
             if (card) card.innerHTML = voiceCardInner();
@@ -13511,26 +13594,26 @@
             return phrases.some(p => new RegExp(`(^|\\s)${p.replace(/[+]/g, '\\+')}(\\s|$)`).test(text));
         }
 
-        function handleVoiceCommand(rawText) {
+        // Returns true if the words were a command (and carries it out).
+        function handleVoiceCommand(rawText, quiet) {
             const text = rawText.toLowerCase().replace(/[.,!?]/g, '').trim();
-            const badge = $('recognized-speech-badge');
-            if (badge) {
-                badge.textContent = `Heard "${text}"`;
-                badge.classList.remove('hidden');
-                clearTimeout(handleVoiceCommand.hideTimer);
-                handleVoiceCommand.hideTimer = setTimeout(() => badge.classList.add('hidden'), 2500);
-            }
+            const acted = runVoiceCommand(text);
+            if (acted || !quiet) showHeard(text, acted);
+            return acted;
+        }
+
+        function runVoiceCommand(text) {
 
             if (heard(text, ['stop listening', 'voice off', 'stop voice control'])) {
                 stopVoiceControl();
-                return;
+                return true;
             }
 
             // Rep commands: "12 reps", "twelve reps", "more reps", "fewer reps"
             const repNumber = /(^|\s)(\d{1,2})\s*(reps?|repetitions?)(\s|$)/.exec(text);
             if (repNumber) {
                 setRepTarget(Number(repNumber[2]));
-                return;
+                return true;
             }
             const repWords = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve',
                 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty',
@@ -13539,16 +13622,16 @@
             for (let n = repWords.length; n >= 1; n--) {
                 if (heard(spoken, [`${repWords[n - 1]} reps?`])) {
                     setRepTarget(n);
-                    return;
+                    return true;
                 }
             }
             if (heard(text, ['more reps?', 'add (a |one )?reps?', 'plus (a |one )?reps?', 'extra reps?', 'one more rep'])) {
                 adjustRepTarget(1);
-                return;
+                return true;
             }
             if (heard(text, ['less reps?', 'fewer reps?', 'minus (a |one )?reps?', 'remove (a |one )?reps?', 'reduce reps?', 'one less rep'])) {
                 adjustRepTarget(-1);
-                return;
+                return true;
             }
 
             // Set commands
@@ -13556,54 +13639,55 @@
             for (let n = 5; n >= 1; n--) {
                 if (heard(text, [`${n} sets?`, `${words[n - 1]} sets?`])) {
                     setGlobalSets(n);
-                    return;
+                    return true;
                 }
             }
             if (heard(text, ['default sets?'])) {
                 setGlobalSets(2);
-                return;
+                return true;
             }
             if (heard(text, ['more sets?', 'add (a )?sets?', 'plus (a )?sets?', 'extra sets?'])) {
                 adjustGlobalSets(1);
-                return;
+                return true;
             }
             if (heard(text, ['less sets?', 'fewer sets?', 'minus (a )?sets?', 'reduce sets?', 'remove (a )?sets?'])) {
                 adjustGlobalSets(-1);
-                return;
+                return true;
             }
 
             // Words the coach says ("hold", "go", "next", "slowly") are deliberately not commands.
             if (heard(text, ['pause', 'stop', 'wait'])) {
                 pauseActiveWorkout();
-                return;
+                return true;
             }
             if (heard(text, ['resume', 'play', 'continue', 'unpause'])) {
                 resumeActiveWorkout();
-                return;
+                return true;
             }
             if (heard(text, ['faster', 'speed up', 'quicker'])) {
                 adjustRepCadence(-1.0);
-                return;
+                return true;
             }
             if (heard(text, ['slower', 'slow down'])) {
                 adjustRepCadence(1.0);
-                return;
+                return true;
             }
             if (heard(text, ['add 15( seconds)?', 'plus 15( seconds)?', '\\+15', 'more rest', 'increase rest', 'add fifteen( seconds)?'])) {
                 adjustBreakTime(15);
-                return;
+                return true;
             }
             if (heard(text, ['minus 15( seconds)?', 'less rest', '-15', 'reduce rest', 'minus fifteen( seconds)?'])) {
                 adjustBreakTime(-15);
-                return;
+                return true;
             }
             if (heard(text, ['skip', 'skip it', 'skip rest', 'next exercise'])) {
                 if (!hasActiveWorkout()) return;
                 if (activeWorkout.isRestMode) skipRestBreak();
                 else if (activeWorkout.isGetReady) endGetReady();
                 else skipExercise();
-                return;
+                return true;
             }
+            return false;
         }
 
         // ==========================================
@@ -15585,7 +15669,7 @@
                             <p class="label">Voice control</p>
                             <p class="meta">${supported
                                 ? (voiceRecognitionActive ? 'Listening now. Stops by itself when you leave the app.' : 'Say "pause", "resume", "12 reps", "more reps", "fewer reps", "3 sets", "faster", "slower" or "skip". Only listens while the app is open.')
-                                : 'Not available in this browser'}</p>
+                                : voiceUnavailableText()}</p>
                         </div>
                         ${supported ? `<button onclick="toggleVoiceRecognition()" class="btn btn-sm ${voiceRecognitionActive ? 'btn-danger' : ''}">${voiceRecognitionActive ? 'Stop' : 'Turn on'}</button>` : ''}
                     </div>
