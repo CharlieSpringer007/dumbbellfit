@@ -198,14 +198,14 @@
     "gifUrl": "animations/russian_twist.gif"
   },
   {
-    "id": "abs_vertical_leg_raise_on_parallel_bars",
-    "name": "Vertical Leg Raise On Parallel Bars",
+    "id": "tendon_bench_lying_leg_raise",
+    "name": "Bench Lying Leg Raise (Slow Eccentric)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Abs",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Lower Abs, Hip Flexor Tendons",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the core before initiating the movement.",
+    "desc": "Lie on a flat bench holding the edge behind your head. Raise straight legs to vertical, then lower them over 5 seconds without arching your back.",
     "gifUrl": "animations/russian_twist.gif"
   },
   {
@@ -231,25 +231,25 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_alternating_bicep_curl_with_leg_raised_on_exercise_ball",
-    "name": "Dumbbell Alternating Bicep Curl With Leg Raised On Exercise Ball",
+    "id": "tendon_seated_bench_curl",
+    "name": "Seated Bench Curl (5s Eccentric)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Distal Biceps Tendon",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit tall on the end of a flat bench. Curl both dumbbells up in 2 seconds, pause for 1, then lower over 3 seconds to load the biceps tendon.",
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_bicep_curl_on_exercise_ball_with_leg_raised",
-    "name": "Dumbbell Bicep Curl On Exercise Ball With Leg Raised",
+    "id": "tendon_standing_single_arm_curl",
+    "name": "Standing Single-Arm Curl (Distal Biceps HSR)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Distal Biceps Tendon",
+    "equipment": "Single Dumbbell (KG)",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Stand tall with your elbow pinned to your side. Curl up for 2 seconds, hold for 1, and lower for 3 seconds. Finish all reps, then switch arms.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -286,14 +286,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_hammer_curl_on_exercise_ball",
-    "name": "Dumbbell Hammer Curl On Exercise Ball",
+    "id": "tendon_seated_bench_hammer_curl",
+    "name": "Seated Bench Hammer Curl (Elbow Tendon HSR)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Brachioradialis, Common Extensor Tendon",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit on a flat bench with palms facing in. Curl both dumbbells up, pause, and lower over 3 seconds to strengthen the elbow tendons.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -407,14 +407,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_seated_alternate_hammer_curl_on_exercise_ball",
-    "name": "Dumbbell Seated Alternate Hammer Curl On Exercise Ball",
+    "id": "tendon_incline_bench_alternate_hammer_curl",
+    "name": "Incline Bench Alternate Hammer Curl",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Brachialis, Brachioradialis",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Lie back on a 45-degree incline bench with arms straight down by your sides. Hammer curl one arm at a time, lowering slowly over 3 seconds.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -429,14 +429,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_seated_one_arm_bicep_curl_on_exercise_ball_with_leg_raised",
-    "name": "Dumbbell Seated One Arm Bicep Curl On Exercise Ball With Leg Raised",
+    "id": "tendon_bench_concentration_curl",
+    "name": "Bench Concentration Curl (Slow Eccentric)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Biceps Tendon",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit on the end of a bench with your elbow braced on your inner thigh. Curl up, squeeze for 1 second, then lower over 4 seconds.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -561,36 +561,36 @@
     "gifUrl": "animations/calf.gif"
   },
   {
-    "id": "calves_exercise_ball_on_the_wall_calf_raise_tennis_ball_between_ankles",
-    "name": "Exercise Ball On The Wall Calf Raise Tennis Ball Between Ankles",
+    "id": "tendon_single_leg_dumbbell_calf_raise",
+    "name": "Single-Leg Dumbbell Calf Raise (Achilles HSR)",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Calves",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Achilles Tendon, Gastrocnemius, Soleus",
+    "equipment": "Single Dumbbell (KG)",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the calves before initiating the movement.",
+    "desc": "Stand on one leg holding a dumbbell at your side, other hand on a wall. Rise up in 2 seconds, hold for 1, and lower for 3 seconds.",
+    "gifUrl": "animations/calf_eccentric.gif"
+  },
+  {
+    "id": "tendon_seated_bench_calf_raise",
+    "name": "Seated Bench Calf Raise (Soleus HSR)",
+    "category": "Tendon Health (HSR)",
+    "primaryMuscles": "Soleus, Achilles Tendon",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
+    "difficulty": "All Levels",
+    "repPacing": 5.0,
+    "desc": "Sit on a bench with dumbbells resting on your knees. Raise your heels as high as you can, hold for 1 second, and lower over 3 seconds.",
     "gifUrl": "animations/calf.gif"
   },
   {
-    "id": "calves_exercise_ball_on_the_wall_calf_raise_tennis_ball_between_knees",
-    "name": "Exercise Ball On The Wall Calf Raise Tennis Ball Between Knees",
+    "id": "tendon_bent_knee_wall_calf_raise",
+    "name": "Bent-Knee Wall Calf Raise",
     "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Calves",
+    "primaryMuscles": "Soleus, Achilles Tendon",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the calves before initiating the movement.",
-    "gifUrl": "animations/calf.gif"
-  },
-  {
-    "id": "calves_exercise_ball_on_the_wall_calf_raise",
-    "name": "Exercise Ball On The Wall Calf Raise",
-    "category": "Tendon Health (HSR)",
-    "primaryMuscles": "Calves",
-    "equipment": "Mat & Bodyweight",
-    "difficulty": "All Levels",
-    "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the calves before initiating the movement.",
+    "desc": "Face a wall with your knees slightly bent and hands on the wall. Rise onto your toes, hold for 1 second, and lower over 3 seconds, keeping the knee bend.",
     "gifUrl": "animations/calf.gif"
   },
   {
@@ -1232,15 +1232,15 @@
     "gifUrl": "animations/goblet_squat.gif"
   },
   {
-    "id": "calves_box_jump_down_with_one_leg_stabilization",
-    "name": "Box Jump Down With One Leg Stabilization",
+    "id": "legs_single_leg_step_down_from_bench",
+    "name": "Single-Leg Step-Down From Bench",
     "category": "Legs, Quads & Glutes",
-    "primaryMuscles": "Calves",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Quadriceps, Glutes, Patellar Tendon",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Perform a brief dip to load tension.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Stand on one leg on a flat bench holding a light dumbbell. Lower the free heel to tap the floor over 3 seconds, then drive back up.",
+    "gifUrl": "animations/lunge.gif"
   },
   {
     "id": "calves_circles_knee_stretch",
@@ -1496,37 +1496,37 @@
     "gifUrl": "animations/goblet_squat.gif"
   },
   {
-    "id": "glutes_exercise_ball_hip_flexor_stretch",
-    "name": "Exercise Ball Hip Flexor Stretch",
+    "id": "legs_half_kneeling_hip_flexor_stretch",
+    "name": "Half-Kneeling Hip Flexor Stretch",
     "category": "Legs, Quads & Glutes",
-    "primaryMuscles": "Glutes",
+    "primaryMuscles": "Hip Flexors, Quadriceps",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the glutes stretch position.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Kneel on the mat in a lunge. Squeeze the back glute and shift your hips forward. Hold for 30 seconds each side, breathing slowly.",
+    "gifUrl": "animations/lunge.gif"
   },
   {
-    "id": "glutes_exercise_ball_one_leg_prone_lower_body_rotation",
-    "name": "Exercise Ball One Leg Prone Lower Body Rotation",
+    "id": "legs_prone_hip_rotation_on_mat",
+    "name": "Prone Hip Rotation On Mat",
     "category": "Legs, Quads & Glutes",
-    "primaryMuscles": "Glutes",
+    "primaryMuscles": "Glutes, Deep Hip Rotators",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the glutes before initiating the movement.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Lie face down with knees bent to 90 degrees. Let your feet fall slowly outward and back in, keeping your hips pressed into the mat.",
+    "gifUrl": "animations/glute_bridge.gif"
   },
   {
-    "id": "glutes_exercise_ball_one_legged_diagonal_kick_hamstring_curl",
-    "name": "Exercise Ball One Legged Diagonal Kick Hamstring Curl",
+    "id": "legs_single_leg_glute_bridge_with_dumbbell",
+    "name": "Single-Leg Glute Bridge With Dumbbell",
     "category": "Legs, Quads & Glutes",
-    "primaryMuscles": "Glutes",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Glutes, Hamstrings",
+    "equipment": "Single Dumbbell (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the glutes before initiating the movement.",
-    "gifUrl": "animations/rdl.gif"
+    "desc": "Lie on the mat with a dumbbell on one hip and that foot planted. Drive up through the heel, pause at the top, and lower over 3 seconds.",
+    "gifUrl": "animations/glute_bridge.gif"
   },
   {
     "id": "glutes_flutter_kicks",
@@ -1793,14 +1793,14 @@
     "gifUrl": "animations/rdl.gif"
   },
   {
-    "id": "hamstrings_exercise_ball_seated_hamstring_stretch",
-    "name": "Exercise Ball Seated Hamstring Stretch",
+    "id": "legs_seated_mat_hamstring_stretch",
+    "name": "Seated Mat Hamstring Stretch",
     "category": "Legs, Quads & Glutes",
-    "primaryMuscles": "Hamstrings",
+    "primaryMuscles": "Hamstrings, Calves",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the hamstrings stretch position.",
+    "desc": "Sit tall on the mat with one leg straight. Hinge forward from the hips with a flat back and hold for 30 seconds each side.",
     "gifUrl": "animations/rdl.gif"
   },
   {
@@ -2288,14 +2288,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_chest_stretch_with_exercise_ball",
-    "name": "Chest Stretch With Exercise Ball",
+    "id": "chest_bench_chest_stretch",
+    "name": "Bench Chest Stretch",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Pectorals, Front Deltoids",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the chest stretch position.",
+    "desc": "Kneel facing a bench with elbows resting on it and hands together. Sink your chest toward the floor and hold for 30 seconds.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2431,14 +2431,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_fly_on_exercise_ball",
-    "name": "Dumbbell Fly On Exercise Ball",
+    "id": "chest_flat_bench_dumbbell_fly",
+    "name": "Flat Bench Dumbbell Fly",
     "category": "Chest & Triceps",
     "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on a flat bench with dumbbells above your chest and a soft bend in the elbows. Open wide over 3 seconds, then bring them back together.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2486,14 +2486,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_incline_fly_on_exercise_ball",
-    "name": "Dumbbell Incline Fly On Exercise Ball",
+    "id": "chest_incline_bench_dumbbell_fly",
+    "name": "Incline Bench Dumbbell Fly",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbell (KG) & Bench",
+    "primaryMuscles": "Upper Pectorals",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Set the bench to a 30-degree incline. With soft elbows, open the dumbbells wide over 3 seconds, feel the stretch, and bring them back up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2508,14 +2508,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_incline_one_arm_fly_on_exercise_ball",
-    "name": "Dumbbell Incline One Arm Fly On Exercise Ball",
+    "id": "chest_incline_bench_single_arm_fly",
+    "name": "Incline Bench Single-Arm Fly",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Upper Pectorals, Core",
     "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "On a 30-degree incline bench, fly one dumbbell out to the side over 3 seconds and back up. Keep your hips level. Switch arms after the set.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2530,14 +2530,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_incline_one_arm_press_on_exercise_ball",
-    "name": "Dumbbell Incline One Arm Press On Exercise Ball",
+    "id": "chest_incline_bench_single_arm_press",
+    "name": "Incline Bench Single-Arm Press",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Upper Pectorals, Triceps, Core",
     "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "On a 30-degree incline bench, lower one dumbbell to your chest over 3 seconds, then press it up. Brace your core so you don't tip.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2563,14 +2563,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_incline_press_on_exercise_ball",
-    "name": "Dumbbell Incline Press On Exercise Ball",
+    "id": "chest_low_incline_bench_dumbbell_press",
+    "name": "Low-Incline Bench Dumbbell Press",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbell (KG) & Bench",
+    "primaryMuscles": "Upper Pectorals, Front Deltoids, Triceps",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Set the bench to a low 15 to 20 degree incline. Lower the dumbbells to your chest over 3 seconds, pause, then press up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2607,14 +2607,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_lying_pullover_on_exercise_ball",
-    "name": "Dumbbell Lying Pullover On Exercise Ball",
+    "id": "chest_flat_bench_dumbbell_pullover",
+    "name": "Flat Bench Dumbbell Pullover",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbell (KG) & Mat",
+    "primaryMuscles": "Lats, Pectorals, Triceps Long Head",
+    "equipment": "Single Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on a flat bench holding one dumbbell above your chest with both hands. Lower it behind your head over 3 seconds, then pull it back over.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
@@ -2629,14 +2629,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_one_arm_chest_fly_on_exercise_ball",
-    "name": "Dumbbell One Arm Chest Fly On Exercise Ball",
+    "id": "chest_floor_single_arm_fly",
+    "name": "Floor Single-Arm Fly",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Pectorals, Core",
+    "equipment": "Dumbbell (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on the mat with one dumbbell above your chest. Open the arm out until your elbow touches the floor, then bring it back up slowly.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2651,14 +2651,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_one_arm_fly_on_exercise_ball",
-    "name": "Dumbbell One Arm Fly On Exercise Ball",
+    "id": "chest_flat_bench_single_arm_fly",
+    "name": "Flat Bench Single-Arm Fly",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Pectorals, Core",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on a flat bench with one dumbbell above your chest. Open it out to the side over 3 seconds and back up, keeping the other hand on your hip.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -2673,25 +2673,25 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_one_arm_press_on_exercise_ball",
-    "name": "Dumbbell One Arm Press On Exercise Ball",
+    "id": "chest_flat_bench_single_arm_press",
+    "name": "Flat Bench Single-Arm Press",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Pectorals, Triceps, Core",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on a flat bench pressing one dumbbell. Lower it over 3 seconds and press up without letting your body twist.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_one_arm_pullover_on_exercise_ball",
-    "name": "Dumbbell One Arm Pullover On Exercise Ball",
+    "id": "chest_single_arm_bench_pullover",
+    "name": "Single-Arm Bench Pullover",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Lats, Pectorals",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on a flat bench with one dumbbell above your chest. Lower it in an arc behind your head over 3 seconds, then pull it back over.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
@@ -2706,47 +2706,47 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_one_leg_fly_on_exercise_ball",
-    "name": "Dumbbell One Leg Fly On Exercise Ball",
+    "id": "chest_floor_fly_with_glute_bridge",
+    "name": "Floor Fly With Glute Bridge",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Pectorals, Glutes",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Hold a glute bridge on the mat with dumbbells above your chest. Open your arms wide over 3 seconds and bring them back, keeping your hips up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_press_on_exercise_ball",
-    "name": "Dumbbell Press On Exercise Ball",
+    "id": "chest_floor_press_with_glute_bridge",
+    "name": "Floor Press With Glute Bridge",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Pectorals, Triceps, Glutes",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lift your hips into a glute bridge on the mat. Lower the dumbbells over 3 seconds until your upper arms touch the floor, then press up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_dumbbell_pullover_hip_extension_on_exercise_ball",
-    "name": "Dumbbell Pullover Hip Extension On Exercise Ball",
+    "id": "chest_cross_bench_dumbbell_pullover",
+    "name": "Cross-Bench Dumbbell Pullover",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Lats, Pectorals, Serratus",
+    "equipment": "Single Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie across a flat bench with only your upper back on it and hips low. Lower one dumbbell behind your head over 3 seconds, then pull it back over your chest.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "pectorals_dumbbell_pullover_on_exercise_ball",
-    "name": "Dumbbell Pullover On Exercise Ball",
+    "id": "chest_floor_dumbbell_pullover",
+    "name": "Floor Dumbbell Pullover",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Lats, Pectorals",
+    "equipment": "Single Dumbbell (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on the mat with knees bent, holding one dumbbell above your chest. Lower it behind your head until it nearly touches the floor, then bring it back.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
@@ -2794,15 +2794,15 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_exercise_ball_pike_push_up",
-    "name": "Exercise Ball Pike Push Up",
+    "id": "chest_bench_pike_push_up",
+    "name": "Bench Pike Push Up",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Shoulders, Upper Pectorals, Triceps",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
-    "gifUrl": "animations/floor_press.gif"
+    "desc": "Place your feet on a bench and walk your hands back so your hips are high. Lower your head toward the floor over 3 seconds and press back up.",
+    "gifUrl": "animations/overhead_press.gif"
   },
   {
     "id": "pectorals_full_planche_push_up",
@@ -2926,58 +2926,58 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_medicine_ball_chest_pass",
-    "name": "Medicine Ball Chest Pass",
+    "id": "chest_explosive_floor_press",
+    "name": "Explosive Floor Press (Light Dumbbells)",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Pectorals, Triceps",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Lie on the mat with light dumbbells. Lower them over 3 seconds, then press up as fast as you can with control at the top.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_medicine_ball_chest_push_from_3_point_stance",
-    "name": "Medicine Ball Chest Push From 3 Point Stance",
+    "id": "chest_kneeling_push_up",
+    "name": "Kneeling Push Up (Slow Eccentric)",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Pectorals, Triceps",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Kneel on the mat with hands under your shoulders. Lower your chest to the floor over 3 seconds, then push back up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_medicine_ball_chest_push_multiple_response",
-    "name": "Medicine Ball Chest Push Multiple Response",
+    "id": "chest_incline_push_up_on_bench",
+    "name": "Incline Push Up On Bench",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Lower Pectorals, Triceps",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Put your hands on the edge of a bench with your body straight. Lower your chest to the bench over 3 seconds and press away.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_medicine_ball_chest_push_single_response",
-    "name": "Medicine Ball Chest Push Single Response",
+    "id": "chest_decline_push_up",
+    "name": "Decline Push Up (Feet On Bench)",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Upper Pectorals, Shoulders, Triceps",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Put your feet on a bench and hands on the floor. Lower your chest over 3 seconds, keeping your body in a straight line, then push up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_medicine_ball_chest_push_with_run_release",
-    "name": "Medicine Ball Chest Push With Run Release",
+    "id": "chest_diamond_push_up",
+    "name": "Diamond Push Up",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Triceps, Inner Pectorals",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Make a diamond with your thumbs and index fingers under your chest. Lower over 3 seconds with elbows close to your ribs, then push up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -3014,36 +3014,36 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_push_up_bosu_ball",
-    "name": "Push Up Bosu Ball",
+    "id": "chest_wide_push_up",
+    "name": "Wide Push Up (5s Lowering)",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Pectorals, Front Deltoids",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Place your hands wider than your shoulders. Take 5 full seconds to lower your chest to the floor, then push back up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_push_up_medicine_ball",
-    "name": "Push Up Medicine Ball",
+    "id": "chest_staggered_hand_push_up",
+    "name": "Staggered-Hand Push Up",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
+    "primaryMuscles": "Pectorals, Triceps, Core",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Place one hand slightly forward and one back. Lower over 3 seconds and push up. Swap hand positions halfway through the set.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_push_up_on_bosu_ball",
-    "name": "Push Up On Bosu Ball",
+    "id": "chest_dumbbell_handle_push_up",
+    "name": "Dumbbell Handle Push Up",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Pectorals, Triceps, Wrists",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Grip two hex dumbbells on the floor, shoulder-width apart. Lower your chest between them over 3 seconds for a deeper stretch, then push up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -3168,14 +3168,14 @@
     "gifUrl": "animations/floor_press.gif"
   },
   {
-    "id": "pectorals_wide_grip_chest_dip_on_high_parallel_bars",
-    "name": "Wide Grip Chest Dip On High Parallel Bars",
+    "id": "chest_bench_dip",
+    "name": "Bench Dip (Slow Eccentric)",
     "category": "Chest & Triceps",
-    "primaryMuscles": "Pectorals",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Triceps, Lower Pectorals",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the chest before initiating the movement.",
+    "desc": "Sit on the edge of a bench, hands beside your hips, and slide off. Lower until elbows reach 90 degrees over 3 seconds, then push up.",
     "gifUrl": "animations/floor_press.gif"
   },
   {
@@ -3399,14 +3399,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_alternating_seated_bicep_curl_on_exercise_ball",
-    "name": "Dumbbell Alternating Seated Bicep Curl On Exercise Ball",
+    "id": "back_seated_bench_alternating_bicep_curl",
+    "name": "Seated Bench Alternating Bicep Curl",
     "category": "Back & Biceps",
     "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit tall on a flat bench. Curl one dumbbell at a time, squeeze at the top, and lower over 3 seconds.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -3443,14 +3443,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_biceps_curl_v_sit_on_bosu_ball",
-    "name": "Dumbbell Biceps Curl V Sit On Bosu Ball",
+    "id": "back_v_sit_dumbbell_bicep_curl",
+    "name": "V-Sit Dumbbell Bicep Curl",
     "category": "Back & Biceps",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Core",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit on the mat leaning back with feet lifted in a V. Curl both dumbbells while holding the position, lowering over 3 seconds.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -3542,15 +3542,15 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_kneeling_bicep_curl_exercise_ball",
-    "name": "Dumbbell Kneeling Bicep Curl Exercise Ball",
+    "id": "back_tall_kneeling_dumbbell_curl",
+    "name": "Tall-Kneeling Dumbbell Curl",
     "category": "Back & Biceps",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Glutes, Core",
+    "equipment": "Pair of Dumbbells (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Kneel tall on the mat with hips locked forward. Curl both dumbbells without leaning back, then lower over 3 seconds.",
+    "gifUrl": "animations/hammer.gif"
   },
   {
     "id": "biceps_dumbbell_lunge_with_bicep_curl",
@@ -3630,14 +3630,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_one_arm_seated_bicep_curl_on_exercise_ball",
-    "name": "Dumbbell One Arm Seated Bicep Curl On Exercise Ball",
+    "id": "back_seated_bench_single_arm_curl",
+    "name": "Seated Bench Single-Arm Curl",
     "category": "Back & Biceps",
     "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Sit on a flat bench and curl one dumbbell with your elbow at your side. Lower over 3 seconds, finish the set, then switch arms.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -3685,14 +3685,14 @@
     "gifUrl": "animations/hammer.gif"
   },
   {
-    "id": "biceps_dumbbell_preacher_curl_over_exercise_ball",
-    "name": "Dumbbell Preacher Curl Over Exercise Ball",
+    "id": "back_incline_bench_preacher_curl",
+    "name": "Incline Bench Preacher Curl",
     "category": "Back & Biceps",
-    "primaryMuscles": "Biceps",
-    "equipment": "Dumbbells (KG)",
+    "primaryMuscles": "Biceps, Brachialis",
+    "equipment": "Dumbbell (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Grab a dumbbell in each hand (or the indicated one) with an appropriate weight. Pre-engage the biceps before initiating the movement.",
+    "desc": "Stand behind an incline bench with your upper arm resting on the back pad. Curl up, then lower over 3 seconds until the arm is nearly straight.",
     "gifUrl": "animations/hammer.gif"
   },
   {
@@ -4147,47 +4147,47 @@
     "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "lats_exercise_ball_alternating_arm_ups",
-    "name": "Exercise Ball Alternating Arm Ups",
+    "id": "back_prone_y_raise_on_mat",
+    "name": "Prone Y Raise On Mat",
     "category": "Back & Biceps",
-    "primaryMuscles": "Lats",
+    "primaryMuscles": "Lower Traps, Lats, Rear Deltoids",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the lats before initiating the movement.",
+    "desc": "Lie face down on the mat with arms overhead in a Y. Lift both arms a few centimetres, hold for 2 seconds, and lower slowly.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "lats_exercise_ball_lat_stretch",
-    "name": "Exercise Ball Lat Stretch",
+    "id": "back_child_s_pose_lat_stretch",
+    "name": "Child's Pose Lat Stretch",
     "category": "Back & Biceps",
-    "primaryMuscles": "Lats",
+    "primaryMuscles": "Lats, Lower Back",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the lats stretch position.",
+    "desc": "Kneel and sit back on your heels with arms reaching forward on the mat. Walk your hands to one side and hold for 30 seconds each side.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "lats_exercise_ball_lower_back_stretch_pyramid",
-    "name": "Exercise Ball Lower Back Stretch Pyramid",
+    "id": "back_cat_cow_spine_mobiliser",
+    "name": "Cat-Cow Spine Mobiliser",
     "category": "Back & Biceps",
-    "primaryMuscles": "Lats",
+    "primaryMuscles": "Spinal Erectors, Lower Back",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the lats stretch position.",
+    "desc": "On hands and knees, round your back slowly toward the ceiling, then let it sag and lift your chest. Move with your breath for 10 slow cycles.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "lats_exercise_ball_lying_side_lat_stretch",
-    "name": "Exercise Ball Lying Side Lat Stretch",
+    "id": "back_side_lying_open_book_stretch",
+    "name": "Side-Lying Open Book Stretch",
     "category": "Back & Biceps",
-    "primaryMuscles": "Lats",
+    "primaryMuscles": "Upper Back, Lats, Chest",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Move into the the lats stretch position.",
+    "desc": "Lie on your side with knees bent and arms together in front. Open the top arm across to the other side and hold for 5 seconds. Repeat each side.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
@@ -4224,14 +4224,14 @@
     "gifUrl": "animations/goblet_squat.gif"
   },
   {
-    "id": "lats_medicine_ball_catch_and_overhead_throw",
-    "name": "Medicine Ball Catch And Overhead Throw",
+    "id": "back_chest_supported_incline_dumbbell_row",
+    "name": "Chest-Supported Incline Dumbbell Row",
     "category": "Back & Biceps",
-    "primaryMuscles": "Lats",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Lats, Rhomboids, Rear Deltoids",
+    "equipment": "Pair of Dumbbells (KG) & Bench",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the lats before initiating the movement.",
+    "desc": "Lie face down on a 30-degree incline bench. Row both dumbbells to your ribs, squeeze for 1 second, and lower over 3 seconds.",
     "gifUrl": "animations/bent_row.gif"
   },
   {
@@ -4367,26 +4367,26 @@
     "gifUrl": "animations/goblet_squat.gif"
   },
   {
-    "id": "spine_back_extension_on_exercise_ball",
-    "name": "Back Extension On Exercise Ball",
+    "id": "back_prone_superman_hold",
+    "name": "Prone Superman Hold",
     "category": "Back & Biceps",
-    "primaryMuscles": "Spine",
+    "primaryMuscles": "Spinal Erectors, Glutes",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the lower back before initiating the movement.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Lie face down on the mat. Lift your arms, chest and legs a few centimetres off the floor and hold for 3 seconds, then lower.",
+    "gifUrl": "animations/bent_row.gif"
   },
   {
-    "id": "spine_exercise_ball_back_extension_with_arms_extended",
-    "name": "Exercise Ball Back Extension With Arms Extended",
+    "id": "back_bench_reverse_hyperextension",
+    "name": "Bench Reverse Hyperextension",
     "category": "Back & Biceps",
-    "primaryMuscles": "Spine",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Glutes, Hamstrings, Spinal Erectors",
+    "equipment": "Bench & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the lower back before initiating the movement.",
-    "gifUrl": "animations/goblet_squat.gif"
+    "desc": "Lie face down along a flat bench with your hips at the end, holding its sides. Lift both legs to level behind you, then lower over 3 seconds.",
+    "gifUrl": "animations/glute_bridge.gif"
   },
   {
     "id": "db_incline_spider_curl_bench",
@@ -5995,14 +5995,14 @@
     "gifUrl": "animations/russian_twist.gif"
   },
   {
-    "id": "abs_one_arm_slam_with_medicine_ball",
-    "name": "One Arm Slam With Medicine Ball",
+    "id": "core_kneeling_dumbbell_woodchop",
+    "name": "Kneeling Dumbbell Woodchop",
     "category": "Core & Functional Stability",
-    "primaryMuscles": "Abs",
-    "equipment": "Mat & Bodyweight",
+    "primaryMuscles": "Obliques, Core, Shoulders",
+    "equipment": "Single Dumbbell (KG) & Mat",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the core before initiating the movement.",
+    "desc": "Kneel on one knee holding a dumbbell with both hands by your hip. Chop it diagonally up across your body, then lower back over 3 seconds.",
     "gifUrl": "animations/russian_twist.gif"
   },
   {
@@ -6127,14 +6127,14 @@
     "gifUrl": "animations/russian_twist.gif"
   },
   {
-    "id": "abs_side_hip_on_parallel_bars",
-    "name": "Side Hip On Parallel Bars",
+    "id": "core_side_plank_hip_dip",
+    "name": "Side Plank Hip Dip",
     "category": "Core & Functional Stability",
-    "primaryMuscles": "Abs",
+    "primaryMuscles": "Obliques, Glutes",
     "equipment": "Mat & Bodyweight",
     "difficulty": "All Levels",
     "repPacing": 5.0,
-    "desc": "Adopt the starting position with proper body alignment. Pre-engage the core before initiating the movement.",
+    "desc": "Hold a side plank on your forearm. Lower your hip toward the mat over 2 seconds, then lift it back up. Switch sides halfway.",
     "gifUrl": "animations/russian_twist.gif"
   },
   {
