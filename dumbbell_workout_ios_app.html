@@ -325,7 +325,7 @@
             display: grid; place-items: center; overflow: hidden;
         }
         @media (max-height: 720px) { .stage { height: 21vh; min-height: 130px; } }
-        .stage img { max-width: 100%; max-height: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+        .stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
         .stage-overlay {
             position: absolute; inset: 0; background: rgba(10, 10, 12, .88);
             display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
@@ -369,6 +369,7 @@
         .hud-cell .meta { font-weight: 600; }
         .hud-cell .stepper { margin-top: 4px; }
         .hud-cell .stepper .value { min-width: 58px; font-size: 20px; }
+        .hud-text { margin-top: 10px; font-size: 16px; font-weight: 700; }
         .hud-actions { display: grid; grid-template-columns: 1fr 1.3fr; gap: 10px; }
 
         .hr-chip {
@@ -491,6 +492,16 @@
                 <h3 id="modal-title" class="h2">Notice</h3>
                 <p id="modal-message" class="meta" style="font-size:15px"></p>
                 <button onclick="closeModal()" class="btn btn-primary btn-lg btn-block">OK</button>
+            </div>
+        </div>
+
+        <!-- Warm-up / cool-down question -->
+        <div id="session-prompt-modal" class="modal hidden">
+            <div class="sheet">
+                <h3 id="session-prompt-title" class="h2">Warm up first?</h3>
+                <p id="session-prompt-message" class="meta" style="font-size:15px"></p>
+                <button id="session-prompt-primary" onclick="runSessionPrompt('primary')" class="btn btn-primary btn-lg btn-block">Warm up first</button>
+                <button id="session-prompt-secondary" onclick="runSessionPrompt('secondary')" class="btn btn-lg btn-block">Skip</button>
             </div>
         </div>
 
@@ -8286,6 +8297,357 @@
         "repPacing": 5.0,
         "desc": "20s bike sprint followed immediately by a 10s Dumbbell Isometric Squat Tendon Hold.",
         "gifUrl": "animations/peloton_tabata.gif"
+    },
+    {
+        "id": "wu_jumping_jacks",
+        "name": "Jumping Jacks",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Full Body, Calves, Shoulders",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Jump your feet out wide as your arms swing overhead, then jump back together. Land softly on the balls of your feet.",
+        "gifUrl": "animations/jumping_jack.gif",
+        "style": "flow",
+        "repPacing": 1.5,
+        "defaultReps": 20
+    },
+    {
+        "id": "wu_arm_circles",
+        "name": "Arm Circles",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Shoulders, Rotator Cuff",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Arms out to the sides at shoulder height. Draw small circles, growing bigger. Halfway through, reverse the direction.",
+        "gifUrl": "animations/arm_circles.gif",
+        "style": "flow",
+        "repPacing": 2.0,
+        "defaultReps": 16
+    },
+    {
+        "id": "wu_leg_swings",
+        "name": "Leg Swings",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Hips, Hamstrings, Hip Flexors",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Hold a wall for balance. Swing one leg forward and back, relaxed and controlled. Switch legs halfway through.",
+        "gifUrl": "animations/leg_swing.gif",
+        "style": "flow",
+        "repPacing": 2.0,
+        "defaultReps": 20,
+        "bilateral": true
+    },
+    {
+        "id": "wu_high_knees",
+        "name": "High Knees",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Hip Flexors, Calves, Heart",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Jog on the spot, driving each knee up to hip height. Pump your arms and stay light on your feet.",
+        "gifUrl": "animations/high_knees.gif",
+        "style": "flow",
+        "repPacing": 1.0,
+        "defaultReps": 30
+    },
+    {
+        "id": "wu_side_bends",
+        "name": "Standing Side Bends",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Obliques, Lats, Spine",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Reach both arms overhead and lean gently to one side, then the other. Keep your hips still and breathe out as you bend.",
+        "gifUrl": "animations/side_bend.gif",
+        "style": "flow",
+        "repPacing": 3.0,
+        "defaultReps": 10
+    },
+    {
+        "id": "wu_air_squats",
+        "name": "Warm-up Air Squats",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Quads, Glutes, Knees",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Feet shoulder width apart. Sit your hips back and down, arms forward for balance, then stand tall. Easy range to start, deeper each rep.",
+        "gifUrl": "animations/air_squat.gif",
+        "style": "flow",
+        "repPacing": 3.0,
+        "defaultReps": 10
+    },
+    {
+        "id": "cd_hamstring_stretch",
+        "name": "Seated Hamstring Stretch",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Hamstrings, Calves, Lower Back",
+        "equipment": "Exercise Mat",
+        "difficulty": "All Levels",
+        "desc": "Sit with your legs straight out in front. Hinge forward from the hips and reach towards your toes until you feel a gentle stretch. Relax and breathe.",
+        "gifUrl": "animations/stretch_hamstring.gif",
+        "style": "hold",
+        "holdSeconds": 40,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_quad_stretch",
+        "name": "Standing Quad Stretch",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Quadriceps, Hip Flexors, Patellar Tendon",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Stand tall and pull one heel towards your glutes, knees together. Hold a wall if you need balance. Switch legs halfway.",
+        "gifUrl": "animations/stretch_quad.gif",
+        "style": "hold",
+        "holdSeconds": 60,
+        "bilateral": true,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_chest_stretch",
+        "name": "Standing Chest Opener",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Chest, Front Shoulders, Biceps",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Clasp your hands behind your back, straighten your arms and lift your chest. Squeeze your shoulder blades gently together.",
+        "gifUrl": "animations/stretch_chest.gif",
+        "style": "hold",
+        "holdSeconds": 30,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_shoulder_stretch",
+        "name": "Cross-Body Shoulder Stretch",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Rear Shoulders, Rotator Cuff, Upper Back",
+        "equipment": "None (bodyweight)",
+        "difficulty": "All Levels",
+        "desc": "Bring one arm across your chest and hug it in with the other arm. Keep the shoulder down. Switch arms halfway.",
+        "gifUrl": "animations/stretch_shoulder.gif",
+        "style": "hold",
+        "holdSeconds": 40,
+        "bilateral": true,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_childs_pose",
+        "name": "Child's Pose",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Lower Back, Lats, Hips",
+        "equipment": "Exercise Mat",
+        "difficulty": "All Levels",
+        "desc": "Kneel, sit your hips back to your heels and walk your hands forward. Rest your forehead on the mat and breathe into your back.",
+        "gifUrl": "animations/stretch_child.gif",
+        "style": "hold",
+        "holdSeconds": 40,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_knee_hug",
+        "name": "Lying Knee-to-Chest Stretch",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Glutes, Lower Back, Hips",
+        "equipment": "Exercise Mat",
+        "difficulty": "All Levels",
+        "desc": "Lie on your back with one foot on the floor. Hug the other knee towards your chest and relax your shoulders. Switch legs halfway.",
+        "gifUrl": "animations/stretch_figure4.gif",
+        "style": "hold",
+        "holdSeconds": 40,
+        "bilateral": true,
+        "repPacing": 5.0
+    },
+    {
+        "id": "cd_breathing",
+        "name": "Box Breathing",
+        "category": "Warm-up & Cool-down",
+        "primaryMuscles": "Breathing, Recovery",
+        "equipment": "Exercise Mat",
+        "difficulty": "All Levels",
+        "desc": "Lie on your back, knees bent. Breathe in for four seconds, hold for two, and breathe out for four. Let your heart rate come down.",
+        "gifUrl": "animations/breathing.gif",
+        "style": "breath",
+        "repPacing": 10.0,
+        "defaultReps": 5
+    },
+    {
+        "id": "bw_air_squat",
+        "name": "Bodyweight Air Squat",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Quads, Glutes, Patellar Tendon",
+        "equipment": "None (bodyweight)",
+        "difficulty": "Beginner",
+        "desc": "Feet shoulder width apart, arms forward. Lower slowly for two seconds, pause at the bottom, then stand up tall.",
+        "gifUrl": "animations/air_squat.gif",
+        "repPacing": 5.0
+    },
+    {
+        "id": "bw_push_up",
+        "name": "Push-Up",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Chest, Triceps, Front Shoulders",
+        "equipment": "Exercise Mat",
+        "difficulty": "Intermediate",
+        "desc": "Hands under your shoulders, body in one straight line. Lower your chest to the floor slowly, pause, then press back up. Drop to your knees to make it easier.",
+        "gifUrl": "animations/push_up.gif",
+        "repPacing": 5.0
+    },
+    {
+        "id": "bw_reverse_lunge",
+        "name": "Bodyweight Reverse Lunge",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Quads, Glutes, Hamstrings",
+        "equipment": "None (bodyweight)",
+        "difficulty": "Beginner",
+        "desc": "Step one foot back and lower the back knee towards the floor. Pause, then push through the front heel to stand. Alternate legs.",
+        "gifUrl": "animations/reverse_lunge.gif",
+        "repPacing": 5.0,
+        "bilateral": true
+    },
+    {
+        "id": "bw_superman",
+        "name": "Superman Raise",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Lower Back, Glutes, Rear Shoulders",
+        "equipment": "Exercise Mat",
+        "difficulty": "Beginner",
+        "desc": "Lie face down, arms forward. Lift your arms, chest and legs off the mat, hold, then lower slowly.",
+        "gifUrl": "animations/superman.gif",
+        "repPacing": 5.0,
+        "upFirst": true
+    },
+    {
+        "id": "bw_plank",
+        "name": "Forearm Plank",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Core, Shoulders, Glutes",
+        "equipment": "Exercise Mat",
+        "difficulty": "All Levels",
+        "desc": "Elbows under your shoulders, body in one straight line from head to heels. Squeeze your glutes and brace your stomach. Breathe.",
+        "gifUrl": "animations/plank.gif",
+        "style": "hold",
+        "holdSeconds": 30,
+        "repPacing": 5.0
+    },
+    {
+        "id": "bw_side_plank",
+        "name": "Side Plank",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Obliques, Hips, Shoulder Stabilisers",
+        "equipment": "Exercise Mat",
+        "difficulty": "Intermediate",
+        "desc": "Lie on your side, elbow under your shoulder. Lift your hips so your body is straight. Switch sides halfway.",
+        "gifUrl": "animations/side_plank.gif",
+        "style": "hold",
+        "holdSeconds": 40,
+        "bilateral": true,
+        "repPacing": 5.0
+    },
+    {
+        "id": "bw_mountain_climber",
+        "name": "Mountain Climbers",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Core, Hip Flexors, Heart",
+        "equipment": "Exercise Mat",
+        "difficulty": "Intermediate",
+        "desc": "Start in a high plank. Drive one knee towards your chest, then switch legs in a steady running rhythm. Keep your hips low.",
+        "gifUrl": "animations/mountain_climber.gif",
+        "style": "flow",
+        "repPacing": 1.2,
+        "defaultReps": 20
+    },
+    {
+        "id": "bw_wall_sit",
+        "name": "Wall Sit (Isometric)",
+        "category": "Bodyweight (No Equipment)",
+        "primaryMuscles": "Quads, Patellar Tendon, Glutes",
+        "equipment": "Wall",
+        "difficulty": "All Levels",
+        "desc": "Back flat against a wall, slide down until your knees are at ninety degrees. Hold still. A long hold loads the patellar tendon safely.",
+        "gifUrl": "animations/wall_sit.gif",
+        "style": "hold",
+        "holdSeconds": 45,
+        "repPacing": 5.0
+    },
+    {
+        "id": "pb_dead_hang",
+        "name": "Dead Hang",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Grip, Forearms, Shoulders, Lats",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Beginner",
+        "desc": "Grip the bar just wider than your shoulders and hang with straight arms. Relax your legs, keep your shoulders active. Step down when your grip fades.",
+        "gifUrl": "animations/dead_hang.gif",
+        "style": "hold",
+        "holdSeconds": 20,
+        "repPacing": 5.0
+    },
+    {
+        "id": "pb_scap_pull",
+        "name": "Scapular Pull-Up",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Lower Traps, Lats, Rotator Cuff",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Beginner",
+        "desc": "Hang with straight arms. Pull your shoulder blades down and back to lift your body a few centimetres, hold, then lower slowly.",
+        "gifUrl": "animations/scap_pull.gif",
+        "repPacing": 4.0,
+        "upFirst": true,
+        "upWord": "pull",
+        "defaultReps": 8
+    },
+    {
+        "id": "pb_flexed_hang",
+        "name": "Flexed-Arm Hang",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Biceps, Lats, Grip",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Beginner",
+        "desc": "Step or jump up so your chin is over the bar. Hold there with your elbows bent and chest up, then lower slowly to finish.",
+        "gifUrl": "animations/flexed_hang.gif",
+        "style": "hold",
+        "holdSeconds": 15,
+        "repPacing": 5.0
+    },
+    {
+        "id": "pb_negative_pull_up",
+        "name": "Negative Pull-Up",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Lats, Biceps, Elbow Tendons",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Intermediate",
+        "desc": "Step up so your chin is over the bar. Lower yourself as slowly as you can until your arms are straight, then step back up and repeat.",
+        "gifUrl": "animations/pull_up.gif",
+        "repPacing": 6.0,
+        "defaultReps": 4
+    },
+    {
+        "id": "pb_pull_up",
+        "name": "Pull-Up",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Lats, Biceps, Upper Back",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Advanced",
+        "desc": "Hang with straight arms. Pull your chest towards the bar until your chin is over it, pause, then lower slowly to a full hang.",
+        "gifUrl": "animations/pull_up.gif",
+        "repPacing": 5.0,
+        "upFirst": true,
+        "upWord": "pull",
+        "defaultReps": 5
+    },
+    {
+        "id": "pb_knee_raise",
+        "name": "Hanging Knee Raise",
+        "category": "Pull-up Bar",
+        "primaryMuscles": "Abs, Hip Flexors, Grip",
+        "equipment": "Pull-up Bar",
+        "difficulty": "Intermediate",
+        "desc": "Hang from the bar. Raise your knees up to hip height without swinging, pause, then lower them slowly.",
+        "gifUrl": "animations/hanging_knee_raise.gif",
+        "repPacing": 4.0,
+        "upFirst": true,
+        "defaultReps": 8
     }
 ];
 
@@ -12289,7 +12651,16 @@
                 category: 'Peloton',
                 desc: 'Low-resistance, high-RPM (90-100) gentle spin to lubricate patellar and Achilles tendons with synovial fluid, accelerating tissue repair without joint compression.',
                 exercises: ['peloton_patellar_synovial_flush', 'peloton_achilles_low_tension_spin', 'peloton_hip_knee_mobility_spin', 'peloton_cooldown_heart_decel']
-            }
+            },
+            // NO-DUMBBELL SESSIONS: warm-up, cool-down, bodyweight and pull-up bar
+            {"id": "prog_warmup_full", "title": "Full-Body Warm-Up", "subtitle": "Raise your pulse, loosen your joints", "duration": "5 min", "level": "All Levels", "icon": "🔥", "category": "Warmup", "desc": "Five minutes of easy, rhythmic movement to warm your muscles and tendons before lifting: jacks, arm circles, leg swings, high knees, side bends and squats.", "exercises": ["wu_jumping_jacks", "wu_arm_circles", "wu_leg_swings", "wu_high_knees", "wu_side_bends", "wu_air_squats"], "sets": 1, "rest": 10},
+            {"id": "prog_cooldown_stretch", "title": "Cool-Down Stretch", "subtitle": "Stretch, breathe, recover", "duration": "6 min", "level": "All Levels", "icon": "🧘", "category": "Cooldown", "desc": "Gentle held stretches for the legs, hips, chest and shoulders, finishing with slow breathing to bring your heart rate down.", "exercises": ["cd_hamstring_stretch", "cd_quad_stretch", "cd_knee_hug", "cd_childs_pose", "cd_chest_stretch", "cd_shoulder_stretch", "cd_breathing"], "sets": 1, "rest": 10},
+            {"id": "prog_bw_full_body", "title": "Bodyweight Full Body", "subtitle": "No dumbbells needed", "duration": "20 min", "level": "Beginner", "icon": "🤸", "category": "Bodyweight", "desc": "A complete session with no equipment: slow squats, push-ups, reverse lunges, superman raises and a plank.", "exercises": ["bw_air_squat", "bw_push_up", "bw_reverse_lunge", "bw_superman", "bw_plank"]},
+            {"id": "prog_bw_core", "title": "Bodyweight Core & Stability", "subtitle": "Planks, climbers and holds", "duration": "15 min", "level": "Intermediate", "icon": "🎯", "category": "Bodyweight", "desc": "Builds a strong, stable middle with planks, side planks, mountain climbers, superman raises and a wall sit.", "exercises": ["bw_plank", "bw_side_plank", "bw_mountain_climber", "bw_superman", "bw_wall_sit"]},
+            {"id": "prog_bw_knee_tendon", "title": "Bodyweight Knee Tendon Armor", "subtitle": "Isometric wall sits and slow squats", "duration": "15 min", "level": "Tendon Rehab & Strength", "icon": "🩺", "category": "Bodyweight", "desc": "Long wall-sit holds and slow-tempo squats and lunges to load the patellar and quadriceps tendons with no equipment.", "exercises": ["bw_wall_sit", "bw_air_squat", "bw_reverse_lunge", "bw_wall_sit"]},
+            {"id": "prog_bar_foundation", "title": "Pull-Up Bar Foundations", "subtitle": "Grip, shoulders and first pull-ups", "duration": "15 min", "level": "Beginner", "icon": "🧗", "category": "Bar", "desc": "Build up to your first pull-up: dead hangs for grip, scapular pulls for the shoulders, flexed-arm hangs and hanging knee raises.", "exercises": ["pb_dead_hang", "pb_scap_pull", "pb_flexed_hang", "pb_knee_raise"]},
+            {"id": "prog_bar_negatives", "title": "Pull-Up Bar Negatives", "subtitle": "Slow lowering builds strength fast", "duration": "18 min", "level": "Intermediate", "icon": "⬇️", "category": "Bar", "desc": "Slow negative pull-ups load the lats and elbow tendons the way heavy slow resistance does, with scapular pulls and a dead hang to finish.", "exercises": ["pb_scap_pull", "pb_negative_pull_up", "pb_knee_raise", "pb_dead_hang"]},
+            {"id": "prog_bar_strength", "title": "Pull-Up Bar Strength", "subtitle": "Pull-ups, knee raises and hangs", "duration": "20 min", "level": "Advanced", "icon": "💪", "category": "Bar", "desc": "For when you can do a few pull-ups: slow pull-ups, flexed-arm hangs, hanging knee raises and push-ups to balance the pulling.", "exercises": ["pb_scap_pull", "pb_pull_up", "pb_flexed_hang", "pb_knee_raise", "bw_push_up"]}
         ];
 
         // ==========================================
@@ -12421,19 +12792,37 @@
         const REPS_MIN = 1;
         const REPS_MAX = 30;
 
+        // Timed holds (planks, stretches, hangs) count seconds instead of reps.
+        const HOLD_MIN = 10;
+        const HOLD_MAX = 180;
+        const HOLD_STEP = 5;
+
+        // Limits and default for an exercise's target: reps, or seconds for a hold.
+        function repLimits(exId) {
+            const ex = exercisesDB.find(e => e.id === exId);
+            if (ex && ex.style === 'hold') return { min: HOLD_MIN, max: HOLD_MAX, step: HOLD_STEP, def: ex.holdSeconds || 30, unit: 's' };
+            return { min: REPS_MIN, max: REPS_MAX, step: 1, def: (ex && ex.defaultReps) || REPS_DEFAULT, unit: 'reps' };
+        }
+
         function getRepTarget(exId, profile) {
             const p = profile || getActiveUserProfile();
+            const lim = repLimits(exId);
             const v = p && p.repTargets ? Number(p.repTargets[exId]) : NaN;
-            return (v >= REPS_MIN && v <= REPS_MAX) ? v : REPS_DEFAULT;
+            return (v >= lim.min && v <= lim.max) ? v : lim.def;
         }
 
         function rememberRepTarget(exId, n) {
             const p = getActiveUserProfile();
             if (!p || !exId) return;
             p.repTargets = p.repTargets || {};
-            if (n === REPS_DEFAULT) delete p.repTargets[exId];
+            if (n === repLimits(exId).def) delete p.repTargets[exId];
             else p.repTargets[exId] = n;
             saveUserProfiles();
+        }
+
+        // "12 reps" or "40 s" for an exercise's target.
+        function targetText(exId, n) {
+            return repLimits(exId).unit === 's' ? `${n} s hold` : (n === 1 ? '1 rep' : `${n} reps`);
         }
 
         // Which exercise the rep buttons and voice commands change: during a rest
@@ -12454,19 +12843,24 @@
                 return;
             }
             const target = repControlTarget();
-            let v = Math.max(REPS_MIN, Math.min(REPS_MAX, Math.round(n)));
+            const lim = repLimits(target.exId);
+            let v = Math.max(lim.min, Math.min(lim.max, Math.round(n)));
             // Mid-set, never go below the next rep (the set would end before you finished it).
             const midSet = target.isCurrent && !activeWorkout.isRestMode && !activeWorkout.isGetReady;
             if (midSet) v = Math.max(v, activeWorkout.currentRep + 1);
             rememberRepTarget(target.exId, v);
             if (target.isCurrent) activeWorkout.targetReps = v;
-            if (!silent) announce(v === 1 ? '1 rep' : `${v} reps`, `reps_${v}`);
+            if (!silent) {
+                if (lim.unit === 's') announce(`${v} seconds`, `secs_${v}`);
+                else announce(v === 1 ? '1 rep' : `${v} reps`, `reps_${v}`);
+            }
             updateRepsUI();
         }
 
         function adjustRepTarget(delta) {
             if (!hasActiveWorkout()) return;
-            setRepTarget(repControlTarget().reps + delta);
+            const t = repControlTarget();
+            setRepTarget(t.reps + delta * repLimits(t.exId).step);
         }
 
         // Update the numbers in place (re-drawing would restart the exercise animation).
@@ -12474,11 +12868,14 @@
             if (!hasActiveWorkout()) return;
             const t = repControlTarget();
             const set = (id, html) => { const el = $(id); if (el) el.innerHTML = html; };
-            set('active-reps-display', `${activeWorkout.targetReps}`);
-            set('active-reps-of', `of ${activeWorkout.targetReps} reps`);
-            set('next-reps-display', `${t.reps}`);
-            set('next-reps-text', `${t.reps} reps`);
-            set('getready-reps-text', `${activeWorkout.targetReps} reps`);
+            const curId = activeWorkout.exercises[activeWorkout.currentExIndex];
+            const curHold = repLimits(curId).unit === 's';
+            set('active-reps-display', curHold ? `${activeWorkout.targetReps}<small> s</small>` : `${activeWorkout.targetReps}`);
+            set('active-reps-of', curHold ? 'seconds left' : `of ${activeWorkout.targetReps} reps`);
+            if (curHold && !activeWorkout.isRestMode && !activeWorkout.isGetReady) set('active-current-rep-display', `${Math.max(0, activeWorkout.targetReps - activeWorkout.currentRep)}`);
+            set('next-reps-display', repLimits(t.exId).unit === 's' ? `${t.reps}<small> s</small>` : `${t.reps}`);
+            set('next-reps-text', targetText(t.exId, t.reps));
+            set('getready-reps-text', targetText(curId, activeWorkout.targetReps));
         }
 
         // ==========================================
@@ -12689,7 +13086,8 @@
             const heightM = (p.heightCm || 175) / 100;
             const bmi = (p.weightKg || 75) / (heightM * heightM);
             const history = p.history || [];
-            const lastSession = history.length > 0 ? history[0] : null;
+            // Warm-ups and cool-downs don't count as the last workout.
+            const lastSession = history.find(h => h.programId !== 'prog_warmup_full' && h.programId !== 'prog_cooldown_stretch') || null;
 
             let suggestedId = 'prog_7min_jj';
             let rationaleTitle = 'Balanced Fitness Protocol';
@@ -12819,9 +13217,9 @@
         // ==========================================
 
         // Generated at build time from audio/coach: clip id -> length in seconds.
-        const COACH_CLIPS = {"breath_1":2.15,"breath_2":1.75,"breath_3":2.38,"count_1":0.67,"count_10":0.69,"count_11":0.84,"count_12":0.74,"count_13":0.9,"count_14":0.9,"count_15":0.89,"count_16":0.95,"count_17":1.02,"count_18":0.83,"count_19":0.91,"count_2":0.68,"count_20":0.8,"count_21":0.94,"count_22":1.08,"count_23":1.03,"count_24":1.03,"count_25":1.1,"count_26":0.99,"count_27":1.1,"count_28":1.02,"count_29":1.03,"count_3":0.73,"count_30":0.8,"count_4":0.69,"count_5":0.78,"count_6":0.61,"count_7":0.75,"count_8":0.65,"count_9":0.79,"cue_lower":0.8,"cue_raise":0.84,"enc_1":1.88,"enc_2":2.04,"enc_3":1.53,"enc_4":1.26,"enc_5":1.47,"enc_6":1.51,"enc_7":1.09,"enc_8":1.55,"exercise_done":1.55,"faster":1.37,"form_bike_1":1.96,"form_bike_2":2.55,"form_bike_3":2.81,"form_bike_4":2.46,"form_bridge_1":1.87,"form_bridge_2":2.04,"form_bridge_3":2.24,"form_bridge_4":2.36,"form_calf_1":2.56,"form_calf_2":2.67,"form_calf_3":1.55,"form_calf_4":1.93,"form_core_1":1.77,"form_core_2":2.69,"form_core_3":1.83,"form_core_4":2.45,"form_curl_1":2.26,"form_curl_2":2.23,"form_curl_3":1.5,"form_curl_4":2.3,"form_hinge_1":2.12,"form_hinge_2":1.88,"form_hinge_3":2.39,"form_hinge_4":2.42,"form_lunge_1":2.51,"form_lunge_2":2.1,"form_lunge_3":1.98,"form_lunge_4":1.44,"form_overhead_1":2.4,"form_overhead_2":2.74,"form_overhead_3":1.78,"form_overhead_4":2.49,"form_press_1":2.74,"form_press_2":1.89,"form_press_3":1.84,"form_press_4":2.53,"form_raise_1":1.89,"form_raise_2":2.36,"form_raise_3":2.56,"form_raise_4":1.9,"form_row_1":2.29,"form_row_2":2.56,"form_row_3":1.65,"form_row_4":2.47,"form_squat_1":2.32,"form_squat_2":2.17,"form_squat_3":1.82,"form_squat_4":2.45,"form_static_1":2.31,"form_static_2":2.53,"form_static_3":1.84,"form_static_4":1.5,"go":0.77,"howto_bent_row":7.36,"howto_biceps_dumbbell_hammer_curl":8.77,"howto_calf_eccentric":7.8,"howto_copenhagen_side_plank_bench":8.99,"howto_db_bench_nordic_curl_progression":9.86,"howto_db_bulgarian_split_squat_bench":11.41,"howto_db_close_grip_floor_press":9.45,"howto_db_elevated_calf_raise_bench":11.17,"howto_db_incline_chest_supported_rear_delt_row":11.46,"howto_db_incline_spider_curl_bench":11.62,"howto_db_mat_deadbug_press":9.74,"howto_db_mat_plank_pull_through":9.05,"howto_db_mat_russian_twist_elevated":9.95,"howto_db_neutral_grip_overhead_press_bench":8.61,"howto_db_patellar_decline_squat_hsr":12.09,"howto_db_quad_sissy_squat_progression":9.72,"howto_db_reverse_fly_isometric_pinch_bench":9.19,"howto_db_seated_90_90_external_rotation_bench":10.07,"howto_db_seated_arnold_press_bench":9.4,"howto_db_single_arm_push_press_kg":11.11,"howto_db_standing_woodchopper_low_high":9.2,"howto_db_tempo_rdl_eccentric":10.62,"howto_eccentric_hammer":7.15,"howto_floor_press":8.12,"howto_glute_bridge":7.33,"howto_goblet_squat":7.47,"howto_incline_bench_db_w_raise":10.16,"howto_incline_bench_db_y_raise":11.43,"howto_iso_squat_hold":7.82,"howto_lunges":6.47,"howto_mat_prone_floor_angel":9.28,"howto_mat_side_lying_db_external_rotation":9.09,"howto_mat_single_leg_glute_bridge_db":9.43,"howto_overhead_press":6.53,"howto_peloton_achilles_low_tension_spin":6.79,"howto_peloton_active_recovery_cruise":5.65,"howto_peloton_ankle_capillary_flush":6.18,"howto_peloton_bike_bent_row_fusion":7.55,"howto_peloton_bike_bicep_curl_fusion":4.78,"howto_peloton_bike_floor_press_fusion":6.42,"howto_peloton_bike_goblet_squat_fusion":8.22,"howto_peloton_bike_overhead_press_fusion":5.52,"howto_peloton_bike_rdl_fusion":6.6,"howto_peloton_cadence_ladder_up":4.86,"howto_peloton_cooldown_heart_decel":8.88,"howto_peloton_glute_focused_climb":5.72,"howto_peloton_hiit_15s_super_sprint":8.34,"howto_peloton_hiit_30_30_interval":9.78,"howto_peloton_hip_knee_mobility_spin":7.26,"howto_peloton_low_impact_joint_unloading":6.44,"howto_peloton_patellar_synovial_flush":10.58,"howto_peloton_post_leg_day_flush":8.82,"howto_peloton_post_squat_knee_decompression":6.37,"howto_peloton_pz2_endurance_base":9.9,"howto_peloton_pz3_tempo_cruise":8.77,"howto_peloton_seated_climb_heavy":9.79,"howto_peloton_smooth_circles":7.92,"howto_peloton_spin_100_rpm":7.52,"howto_peloton_spin_90_rpm":9.14,"howto_peloton_spin_ups_80_110":9.08,"howto_peloton_standing_climb_heavy":8.35,"howto_peloton_tabata_20_10_sprint":9.64,"howto_rdl":6.99,"howto_russian_twist":8.29,"howto_scaption_raise":7.5,"hr_connected":2.24,"hr_down":2.16,"hr_high":2.85,"last_one":1.01,"minus_15":1.58,"name_abductors_side_bridge_hip_abduction":2.03,"name_abductors_side_hip_abduction":1.59,"name_abductors_straight_leg_outer_hip_abductor":2.21,"name_abs_3_4_sit_up":1.55,"name_abs_45_side_bend":1.93,"name_abs_air_bike":0.92,"name_abs_alternate_heel_touchers":1.71,"name_abs_arms_overhead_full_sit_up_male":2.6,"name_abs_assisted_lying_leg_raise_with_lateral_throw_down":3.69,"name_abs_assisted_lying_leg_raise_with_throw_down":3.04,"name_abs_assisted_motion_russian_twist":2.57,"name_abs_assisted_prone_rectus_femoris_stretch":2.95,"name_abs_assisted_sit_up":1.41,"name_abs_bodyweight_incline_side_plank":2.23,"name_abs_bottoms_up":1.08,"name_abs_bridge_mountain_climber_cross_body":2.54,"name_abs_butt_ups":0.87,"name_abs_cocoons":1.02,"name_abs_crab_twist_toe_touch":1.84,"name_abs_cross_body_crunch":1.47,"name_abs_crunch_floor":1.09,"name_abs_crunch_hands_overhead":1.81,"name_abs_curl_up":0.92,"name_abs_dead_bug":0.95,"name_abs_decline_crunch":1.35,"name_abs_decline_sit_up":1.47,"name_abs_dumbbell_side_bend":1.73,"name_abs_elbow_to_knee":1.32,"name_abs_flag":0.78,"name_abs_flexion_leg_sit_up_bent_knee":2.28,"name_abs_flexion_leg_sit_up_straight_arm":2.34,"name_abs_frog_crunch":1.12,"name_abs_frog_planche":1.12,"name_abs_front_plank_with_twist":1.67,"name_abs_full_maltese":1.23,"name_abs_full_planche":1.09,"name_abs_gorilla_chin":1.22,"name_abs_groin_crunch":1.21,"name_abs_half_sit_up_male":1.38,"name_abs_hip_raise_bent_knee":1.69,"name_abs_inchworm":0.89,"name_abs_inchworm_v_2":1.52,"name_abs_incline_leg_hip_raise_leg_straight":2.65,"name_abs_incline_twisting_sit_up":2.07,"name_abs_jackknife_sit_up":1.5,"name_abs_janda_sit_up":1.3,"name_abs_knee_touch_crunch":1.34,"name_abs_kneeling_plank_tap_shoulder_male":2.29,"name_abs_l_sit_on_floor":1.56,"name_abs_lean_planche":1.12,"name_abs_leg_pull_in_flat_bench":1.86,"name_abs_lunge_with_twist":1.48,"name_abs_lying_elbow_to_knee":1.67,"name_abs_lying_leg_hip_raise":1.62,"name_abs_lying_leg_raise_flat_bench":2.23,"name_abs_negative_crunch":1.29,"name_abs_oblique_crunch_v_2":1.8,"name_abs_oblique_crunches_floor":1.7,"name_abs_otis_up":1.15,"name_abs_pelvic_tilt":1.1,"name_abs_posterior_step_to_overhead_reach":2.54,"name_abs_potty_squat":1.05,"name_abs_power_point_plank":1.37,"name_abs_prisoner_half_sit_up_male":2.06,"name_abs_push_up_to_side_plank":1.62,"name_abs_quarter_sit_up":1.22,"name_abs_reverse_crunch":1.35,"name_abs_reverse_plank_with_leg_lift":2.28,"name_abs_russian_twist":1.26,"name_abs_seated_leg_raise":1.4,"name_abs_seated_side_crunch_wall":1.8,"name_abs_shoulder_tap":1.14,"name_abs_side_bridge_v_2":1.86,"name_abs_side_to_side_toe_touch_male":2.23,"name_abs_sit_up_v_2":1.36,"name_abs_sit_up_with_arms_on_chest":2.1,"name_abs_spell_caster":1.24,"name_abs_spine_twist":1.23,"name_abs_straddle_maltese":1.49,"name_abs_straddle_planche":1.23,"name_abs_suspended_abdominal_fallout":2.4,"name_abs_suspended_reverse_crunch":2.02,"name_abs_tuck_crunch":1.05,"name_abs_twisted_leg_raise":1.59,"name_abs_twisted_leg_raise_female":2.23,"name_abs_v_sit_on_floor":1.68,"name_abs_weighted_crunch":1.22,"name_abs_weighted_decline_sit_up":2.0,"name_abs_weighted_front_plank":1.47,"name_abs_weighted_russian_twist":1.81,"name_abs_weighted_russian_twist_legs_up":2.47,"name_abs_weighted_russian_twist_v_2":2.45,"name_abs_wind_sprints":1.18,"name_adductors_assisted_side_lying_adductor_stretch":2.84,"name_adductors_butterfly_yoga_pose":1.9,"name_adductors_side_lying_hip_adduction_male":2.36,"name_adductors_side_plank_hip_adduction":1.83,"name_back_bench_reverse_hyperextension":2.45,"name_back_cat_cow_spine_mobiliser":2.24,"name_back_chest_supported_incline_dumbbell_row":2.93,"name_back_child_s_pose_lat_stretch":1.88,"name_back_incline_bench_preacher_curl":2.17,"name_back_prone_superman_hold":1.84,"name_back_prone_y_raise_on_mat":2.13,"name_back_seated_bench_alternating_bicep_curl":2.99,"name_back_seated_bench_single_arm_curl":2.22,"name_back_side_lying_open_book_stretch":2.14,"name_back_tall_kneeling_dumbbell_curl":2.08,"name_back_v_sit_dumbbell_bicep_curl":2.44,"name_bench_elevated_feet_pike_pushup":2.37,"name_bench_flat_leg_raise_hip_lift":2.67,"name_bench_reverse_crunch_leg_extension":3.15,"name_bent_row":1.93,"name_biceps_biceps_leg_concentration_curl":2.67,"name_biceps_biceps_narrow_pull_ups":1.94,"name_biceps_bodyweight_side_lying_biceps_curl":2.83,"name_biceps_dumbbell_alternate_biceps_curl":2.44,"name_biceps_dumbbell_alternate_biceps_curl_with_arm_blaster":3.47,"name_biceps_dumbbell_alternate_hammer_preacher_curl":2.88,"name_biceps_dumbbell_alternate_preacher_curl":2.43,"name_biceps_dumbbell_alternate_seated_hammer_curl":2.76,"name_biceps_dumbbell_bicep_curl_lunge_with_bowling_motion":3.22,"name_biceps_dumbbell_bicep_curl_with_stork_stance":2.83,"name_biceps_dumbbell_biceps_curl":1.87,"name_biceps_dumbbell_biceps_curl_reverse":2.29,"name_biceps_dumbbell_biceps_curl_squat":2.18,"name_biceps_dumbbell_biceps_curl_with_arm_blaster":2.85,"name_biceps_dumbbell_concentration_curl":2.09,"name_biceps_dumbbell_cross_body_hammer_curl":2.41,"name_biceps_dumbbell_cross_body_hammer_curl_v_2":2.9,"name_biceps_dumbbell_hammer_curl":1.71,"name_biceps_dumbbell_hammer_curl_v_2":2.22,"name_biceps_dumbbell_hammer_curls_with_arm_blaster":2.61,"name_biceps_dumbbell_high_curl":1.53,"name_biceps_dumbbell_incline_biceps_curl":2.45,"name_biceps_dumbbell_incline_curl":1.88,"name_biceps_dumbbell_incline_curl_v_2":2.42,"name_biceps_dumbbell_incline_hammer_curl":2.24,"name_biceps_dumbbell_incline_inner_biceps_curl":2.76,"name_biceps_dumbbell_lunge_with_bicep_curl":2.52,"name_biceps_dumbbell_lying_supine_biceps_curl":2.58,"name_biceps_dumbbell_lying_supine_curl":2.12,"name_biceps_dumbbell_lying_wide_curl":2.07,"name_biceps_dumbbell_one_arm_hammer_preacher_curl":2.58,"name_biceps_dumbbell_one_arm_prone_curl":2.3,"name_biceps_dumbbell_one_arm_prone_hammer_curl":2.62,"name_biceps_dumbbell_one_arm_reverse_preacher_curl":2.9,"name_biceps_dumbbell_one_arm_reverse_spider_curl":2.77,"name_biceps_dumbbell_one_arm_seated_hammer_curl":2.65,"name_biceps_dumbbell_one_arm_standing_curl":2.42,"name_biceps_dumbbell_one_arm_standing_hammer_curl":2.82,"name_biceps_dumbbell_one_arm_zottman_preacher_curl":2.83,"name_biceps_dumbbell_over_bench_neutral_wrist_curl":2.74,"name_biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl":3.29,"name_biceps_dumbbell_peacher_hammer_curl":2.19,"name_biceps_dumbbell_preacher_curl":1.73,"name_biceps_dumbbell_prone_incline_curl":2.45,"name_biceps_dumbbell_prone_incline_hammer_curl":2.71,"name_biceps_dumbbell_revers_grip_biceps_curl":2.65,"name_biceps_dumbbell_reverse_preacher_curl":2.17,"name_biceps_dumbbell_reverse_spider_curl":2.15,"name_biceps_dumbbell_seated_bicep_curl":2.24,"name_biceps_dumbbell_seated_biceps_curl_to_shoulder_press":3.15,"name_biceps_dumbbell_seated_curl":1.65,"name_biceps_dumbbell_seated_hammer_curl":2.15,"name_biceps_dumbbell_seated_inner_biceps_curl":2.6,"name_biceps_dumbbell_seated_neutral_wrist_curl":2.5,"name_biceps_dumbbell_seated_preacher_curl":2.2,"name_biceps_dumbbell_seated_revers_grip_concentration_curl":3.52,"name_biceps_dumbbell_standing_alternate_hammer_curl_and_press":3.22,"name_biceps_dumbbell_standing_biceps_curl":2.3,"name_biceps_dumbbell_standing_concentration_curl":2.64,"name_biceps_dumbbell_standing_inner_biceps_curl_v_2":3.12,"name_biceps_dumbbell_standing_one_arm_concentration_curl":3.12,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench":3.51,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench_1680":5.78,"name_biceps_dumbbell_standing_one_arm_reverse_curl":2.75,"name_biceps_dumbbell_standing_preacher_curl":2.19,"name_biceps_dumbbell_standing_reverse_curl":2.31,"name_biceps_dumbbell_standing_zottman_preacher_curl":2.83,"name_biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl":3.59,"name_biceps_dumbbell_waiter_biceps_curl":2.33,"name_biceps_dumbbell_zottman_curl":1.72,"name_biceps_dumbbell_zottman_preacher_curl":2.25,"name_biceps_weighted_standing_curl":1.62,"name_calf_eccentric":2.57,"name_calves_ankle_circles":1.32,"name_calves_assisted_lying_calves_stretch":2.29,"name_calves_bodyweight_standing_calf_raise":2.18,"name_calves_calf_push_stretch_with_hands_against_wall":2.74,"name_calves_calf_stretch_with_hands_against_wall":2.56,"name_calves_circles_knee_stretch":1.57,"name_calves_donkey_calf_raise":1.59,"name_calves_dumbbell_seated_calf_raise":2.1,"name_calves_dumbbell_seated_one_leg_calf_raise":2.73,"name_calves_dumbbell_seated_one_leg_calf_raise_hammer_grip":3.35,"name_calves_dumbbell_seated_one_leg_calf_raise_palm_up":3.18,"name_calves_dumbbell_single_leg_calf_raise":2.38,"name_calves_dumbbell_standing_calf_raise":2.15,"name_calves_one_leg_donkey_calf_raise":2.18,"name_calves_one_leg_floor_calf_raise":1.99,"name_calves_peroneals_stretch":1.24,"name_calves_posterior_tibialis_stretch":2.21,"name_calves_seated_calf_stretch_male":1.8,"name_calves_single_leg_calf_raise_on_a_dumbbell":2.75,"name_calves_standing_calf_raise_on_a_staircase":2.62,"name_calves_standing_calves":1.36,"name_calves_standing_calves_calf_stretch":2.12,"name_calves_weighted_donkey_calf_raise":2.06,"name_cardio_semi_squat_jump_male":1.88,"name_chest_bench_chest_stretch":1.49,"name_chest_bench_dip":1.02,"name_chest_bench_pike_push_up":1.52,"name_chest_cross_bench_dumbbell_pullover":2.23,"name_chest_decline_push_up":1.45,"name_chest_diamond_push_up":1.38,"name_chest_dumbbell_handle_push_up":1.87,"name_chest_explosive_floor_press":1.74,"name_chest_flat_bench_dumbbell_fly":1.92,"name_chest_flat_bench_dumbbell_pullover":2.27,"name_chest_flat_bench_single_arm_fly":2.08,"name_chest_flat_bench_single_arm_press":2.02,"name_chest_floor_dumbbell_pullover":1.76,"name_chest_floor_fly_with_glute_bridge":2.18,"name_chest_floor_press_with_glute_bridge":2.12,"name_chest_floor_single_arm_fly":1.74,"name_chest_incline_bench_dumbbell_fly":2.22,"name_chest_incline_bench_single_arm_fly":2.47,"name_chest_incline_bench_single_arm_press":2.39,"name_chest_incline_push_up_on_bench":1.86,"name_chest_kneeling_push_up":1.3,"name_chest_low_incline_bench_dumbbell_press":2.52,"name_chest_single_arm_bench_pullover":2.05,"name_chest_staggered_hand_push_up":1.61,"name_chest_wide_push_up":1.22,"name_copenhagen_side_plank_bench":2.62,"name_core_kneeling_dumbbell_woodchop":1.86,"name_core_side_plank_hip_dip":1.68,"name_db_around_the_world_bench":2.76,"name_db_b-stance_rdl_mat":2.84,"name_db_bench_nordic_curl_progression":2.96,"name_db_bench_split_squat_isometric_hold":3.37,"name_db_bench_step_ups_kg":1.99,"name_db_bulgarian_split_squat_bench":2.13,"name_db_close_grip_floor_press":2.08,"name_db_cossack_squat_mat":2.18,"name_db_curtsy_lunge_mat":1.74,"name_db_eccentric_overhead_press_lowering":3.5,"name_db_elevated_calf_raise_bench":2.15,"name_db_floor_z_press_mat":2.36,"name_db_front_raise_isometric_pause":3.5,"name_db_half_kneeling_overhead_press_mat":2.59,"name_db_high_pull_upright_row":2.7,"name_db_hollow_body_hold_mat":3.54,"name_db_incline_chest_supported_rear_delt_row":3.32,"name_db_incline_prone_reverse_fly_bench":2.7,"name_db_incline_scapular_shrugs_bench":2.9,"name_db_incline_spider_curl_bench":2.25,"name_db_incline_tate_press_bench":2.06,"name_db_isometric_lateral_hold_mat":2.85,"name_db_kneeling_woodchopper_mat":2.77,"name_db_leaning_lateral_raise":2.9,"name_db_lu_raise_overhead_arc":2.01,"name_db_mat_bird_dog_row":2.27,"name_db_mat_deadbug_press":3.05,"name_db_mat_pallof_press_kneeling":3.19,"name_db_mat_plank_pull_through":1.97,"name_db_mat_renegade_plank_hold":2.62,"name_db_mat_russian_twist_elevated":2.04,"name_db_mat_windshield_wipers":2.79,"name_db_neutral_grip_overhead_press_bench":2.63,"name_db_overhead_situp_press_mat":3.02,"name_db_patellar_decline_squat_hsr":2.15,"name_db_quad_sissy_squat_progression":2.92,"name_db_reverse_fly_isometric_pinch_bench":3.53,"name_db_seated_90_90_external_rotation_bench":4.25,"name_db_seated_alternating_shoulder_press":3.02,"name_db_seated_arnold_press_bench":2.13,"name_db_seated_bradford_press_bench":2.31,"name_db_seated_cuban_press_bench":1.97,"name_db_seated_hammer_front_raise_bench":2.37,"name_db_seated_shrug_bench":1.54,"name_db_single_arm_push_press_kg":2.15,"name_db_standing_cuban_press":2.07,"name_db_standing_oblique_side_bend":2.97,"name_db_standing_shrug_pause":2.95,"name_db_standing_suitcase_carry_march":2.76,"name_db_standing_woodchopper_high_low":2.57,"name_db_standing_woodchopper_low_high":2.72,"name_db_straight_leg_situp_mat":2.4,"name_db_sumo_goblet_squat_kg":2.41,"name_db_tempo_rdl_eccentric":2.13,"name_db_tempo_scaption_hold_mat":1.78,"name_db_turkish_getup_quarter_roll_mat":1.95,"name_db_turkish_getup_sit_to_lunge_mat":1.95,"name_db_waiter_carry_isometric_mat":3.38,"name_db_windmill_shoulder_stabilizer_mat":2.77,"name_delts_dumbbell_alternate_side_press":2.13,"name_delts_dumbbell_arnold_press":1.62,"name_delts_dumbbell_arnold_press_v_2":2.28,"name_delts_dumbbell_bench_seated_press":2.11,"name_delts_dumbbell_cuban_press":1.61,"name_delts_dumbbell_cuban_press_v_2":2.45,"name_delts_dumbbell_front_raise":1.55,"name_delts_dumbbell_front_raise_v_2":2.33,"name_delts_dumbbell_full_can_lateral_raise":2.49,"name_delts_dumbbell_incline_one_arm_lateral_raise":3.02,"name_delts_dumbbell_incline_raise":1.87,"name_delts_dumbbell_incline_rear_lateral_raise":2.74,"name_delts_dumbbell_incline_t_raise":2.03,"name_delts_dumbbell_iron_cross":1.59,"name_delts_dumbbell_lateral_raise":1.74,"name_delts_dumbbell_lateral_to_front_raise":2.44,"name_delts_dumbbell_lying_external_shoulder_rotation":2.98,"name_delts_dumbbell_lying_on_floor_rear_delt_raise":2.97,"name_delts_dumbbell_lying_one_arm_deltoid_rear":2.85,"name_delts_dumbbell_lying_one_arm_rear_lateral_raise":3.13,"name_delts_dumbbell_lying_rear_lateral_raise":2.66,"name_delts_dumbbell_one_arm_lateral_raise":2.54,"name_delts_dumbbell_one_arm_lateral_raise_with_support":3.12,"name_delts_dumbbell_one_arm_reverse_fly_with_support":3.02,"name_delts_dumbbell_one_arm_shoulder_press":2.38,"name_delts_dumbbell_one_arm_shoulder_press_v_2":2.67,"name_delts_dumbbell_one_arm_upright_row":2.45,"name_delts_dumbbell_push_press":1.47,"name_delts_dumbbell_raise":1.19,"name_delts_dumbbell_rear_delt_raise":2.11,"name_delts_dumbbell_rear_delt_row_shoulder":2.45,"name_delts_dumbbell_rear_fly":1.57,"name_delts_dumbbell_rear_lateral_raise":2.31,"name_delts_dumbbell_rear_lateral_raise_support_head":2.93,"name_delts_dumbbell_reverse_fly":1.79,"name_delts_dumbbell_rotation_reverse_fly":2.67,"name_delts_dumbbell_scott_press":1.6,"name_delts_dumbbell_seated_alternate_front_raise":2.75,"name_delts_dumbbell_seated_alternate_press":2.34,"name_delts_dumbbell_seated_alternate_shoulder":2.45,"name_delts_dumbbell_seated_bent_arm_lateral_raise":2.99,"name_delts_dumbbell_seated_front_raise":1.98,"name_delts_dumbbell_seated_lateral_raise":2.36,"name_delts_dumbbell_seated_lateral_raise_v_2":2.95,"name_delts_dumbbell_seated_shoulder_press":2.01,"name_delts_dumbbell_seated_shoulder_press_parallel_grip":2.93,"name_delts_dumbbell_side_lying_one_hand_raise":2.79,"name_delts_dumbbell_single_arm_overhead_carry":2.63,"name_delts_dumbbell_standing_alternate_overhead_press":2.92,"name_delts_dumbbell_standing_alternate_raise":2.42,"name_delts_dumbbell_standing_around_world":2.22,"name_delts_dumbbell_standing_front_raise_above_head":2.58,"name_delts_dumbbell_standing_one_arm_palm_in_press":2.71,"name_delts_dumbbell_standing_overhead_press":2.32,"name_delts_dumbbell_standing_palms_in_press":2.27,"name_delts_dumbbell_upright_row":1.7,"name_delts_dumbbell_upright_row_back_pov":2.36,"name_delts_dumbbell_upright_shoulder_external_rotation":3.16,"name_delts_dumbbell_w_press":1.66,"name_delts_left_hook_boxing":1.42,"name_delts_rear_deltoid_stretch":1.68,"name_delts_standing_behind_neck_press":2.13,"name_delts_weighted_front_raise":1.54,"name_delts_weighted_kneeling_step_with_swing":2.27,"name_delts_weighted_round_arm":1.59,"name_eccentric_hammer":2.28,"name_floor_press":1.52,"name_forearms_dumbbell_finger_curls":1.87,"name_forearms_dumbbell_one_arm_reverse_wrist_curl":2.84,"name_forearms_dumbbell_one_arm_seated_neutral_wrist_curl":3.04,"name_forearms_dumbbell_one_arm_wrist_curl":2.22,"name_forearms_dumbbell_over_bench_one_arm_reverse_wrist_curl":3.45,"name_forearms_dumbbell_over_bench_one_arm_wrist_curl":2.88,"name_forearms_dumbbell_over_bench_revers_wrist_curl":2.77,"name_forearms_dumbbell_over_bench_wrist_curl":2.32,"name_forearms_dumbbell_reverse_wrist_curl":2.2,"name_forearms_dumbbell_seated_palms_up_wrist_curl":2.67,"name_forearms_finger_curls":1.28,"name_forearms_side_wrist_pull_stretch":1.87,"name_glute_bridge":1.99,"name_glutes_arms_apart_circular_toe_touch_male":2.58,"name_glutes_assisted_lying_glutes_stretch":2.11,"name_glutes_assisted_lying_gluteus_and_piriformis_stretch":3.36,"name_glutes_basic_toe_touch_male":1.82,"name_glutes_bench_hip_extension":1.66,"name_glutes_bent_knee_lying_twist_male":2.1,"name_glutes_bodyweight_drop_jump_squat":2.16,"name_glutes_curtsey_squat":1.17,"name_glutes_dumbbell_bench_squat":1.56,"name_glutes_dumbbell_clean":1.22,"name_glutes_dumbbell_contralateral_forward_lunge":2.64,"name_glutes_dumbbell_deadlift":1.31,"name_glutes_dumbbell_lunge":1.21,"name_glutes_dumbbell_one_arm_snatch":1.95,"name_glutes_dumbbell_plyo_squat":1.67,"name_glutes_dumbbell_rear_lunge":1.55,"name_glutes_dumbbell_romanian_deadlift":2.13,"name_glutes_dumbbell_single_leg_deadlift":2.04,"name_glutes_dumbbell_single_leg_deadlift_with_stepbox_support":3.36,"name_glutes_dumbbell_single_leg_squat":1.91,"name_glutes_dumbbell_squat":1.2,"name_glutes_dumbbell_step_up":1.32,"name_glutes_dumbbell_stiff_leg_deadlift":2.29,"name_glutes_dumbbell_straight_leg_deadlift":2.0,"name_glutes_dumbbell_sumo_pull_through":2.07,"name_glutes_flutter_kicks":1.06,"name_glutes_forward_lunge_male":1.63,"name_glutes_frankenstein_squat":1.65,"name_glutes_glute_bridge_march":1.45,"name_glutes_glute_bridge_two_legs_on_bench_male":2.75,"name_glutes_hands_clasped_circular_toe_touch_male":2.75,"name_glutes_hands_reversed_clasped_circular_toe_touch_male":3.23,"name_glutes_hug_keens_to_chest":1.65,"name_glutes_iron_cross_stretch":1.56,"name_glutes_jump_squat_v_2":1.64,"name_glutes_lunge_with_jump":1.39,"name_glutes_march_sit_wall":1.3,"name_glutes_monster_walk":1.23,"name_glutes_outside_leg_kick_push_up":2.02,"name_glutes_pike_to_cobra_push_up":1.79,"name_glutes_push_up_inside_leg_kick":2.06,"name_glutes_reverse_hyper_on_flat_bench":2.29,"name_glutes_rocking_frog_stretch":1.59,"name_glutes_seated_glute_stretch":1.44,"name_glutes_seated_piriformis_stretch":1.82,"name_glutes_spider_crawl_push_up":1.62,"name_glutes_swimmer_kicks_v_2_male":2.14,"name_glutes_twist_hip_lift":1.36,"name_glutes_walking_lunge":1.26,"name_glutes_weighted_lunge_with_swing":2.04,"name_glutes_weighted_stretch_lunge":1.55,"name_goblet_squat":1.59,"name_hamstrings_assisted_prone_hamstring":1.94,"name_hamstrings_dumbbell_lying_femoral":1.65,"name_hamstrings_hamstring_stretch":1.37,"name_hamstrings_inverse_leg_curl_bench_support":2.51,"name_hamstrings_kick_out_sit":1.09,"name_hamstrings_leg_up_hamstring_stretch":1.79,"name_hamstrings_power_clean":1.12,"name_hamstrings_runners_stretch":1.2,"name_hamstrings_seated_wide_angle_pose_sequence":2.61,"name_hamstrings_self_assisted_inverse_leg_curl":2.72,"name_hamstrings_self_assisted_inverse_leg_curl_1766":5.57,"name_hamstrings_self_assisted_inverse_leg_curl_on_floor":3.3,"name_hamstrings_world_greatest_stretch":1.58,"name_incline_bench_db_l_raise":3.85,"name_incline_bench_db_t_raise":2.37,"name_incline_bench_db_w_raise":2.68,"name_incline_bench_db_y_raise":2.43,"name_iso_squat_hold":2.33,"name_lats_alternate_lateral_pulldown":2.2,"name_lats_back_pec_stretch":1.29,"name_lats_bench_pull_ups":1.24,"name_lats_gironda_sternum_chin":1.89,"name_lats_kipping_muscle_up":1.47,"name_lats_kneeling_lat_stretch":1.5,"name_lats_muscle_up":1.06,"name_lats_muscle_up_on_vertical_bar":2.21,"name_lats_one_arm_against_wall":1.85,"name_lats_seated_lower_back_stretch":1.85,"name_lats_side_lying_floor_stretch":1.92,"name_lats_side_to_side_chin":1.65,"name_lats_standing_lateral_stretch":1.79,"name_lats_twin_handle_parallel_grip_lat_pulldown":3.01,"name_lats_weighted_muscle_up":1.56,"name_lats_weighted_muscle_up_on_bar":2.26,"name_legs_half_kneeling_hip_flexor_stretch":2.19,"name_legs_prone_hip_rotation_on_mat":2.36,"name_legs_seated_mat_hamstring_stretch":2.12,"name_legs_single_leg_glute_bridge_with_dumbbell":2.61,"name_legs_single_leg_step_down_from_bench":2.21,"name_levator_scapulae_neck_side_stretch":1.37,"name_levator_scapulae_side_push_neck_stretch":1.65,"name_lunges":1.81,"name_mat_bicycle_crunch_tempo_pause":2.91,"name_mat_dolphin_pushup_delts":1.99,"name_mat_flutter_kicks_db_hold":3.28,"name_mat_frog_pumps_db":2.06,"name_mat_pike_pushup_delts":1.41,"name_mat_plank_knee_to_elbow_spider":1.43,"name_mat_prone_cobra_scapular_squeeze":2.78,"name_mat_prone_floor_angel":3.15,"name_mat_side_lying_db_external_rotation":3.05,"name_mat_side_plank_hip_dip_db":2.56,"name_mat_single_leg_glute_bridge_db":2.69,"name_overhead_press":2.06,"name_pectorals_archer_push_up":1.28,"name_pectorals_assisted_chest_dip_kneeling":2.26,"name_pectorals_assisted_wide_grip_chest_dip_kneeling":2.84,"name_pectorals_behind_head_chest_stretch":1.88,"name_pectorals_chest_and_front_of_shoulder_stretch":2.51,"name_pectorals_chest_dip":1.05,"name_pectorals_chest_dip_on_straight_bar":1.94,"name_pectorals_chest_tap_push_up_male":1.83,"name_pectorals_clap_push_up":1.15,"name_pectorals_clock_push_up":1.15,"name_pectorals_decline_push_up":1.45,"name_pectorals_deep_push_up":1.13,"name_pectorals_drop_push_up":1.17,"name_pectorals_dumbbell_around_pullover":1.7,"name_pectorals_dumbbell_bench_press":1.53,"name_pectorals_dumbbell_decline_bench_press":2.2,"name_pectorals_dumbbell_decline_fly":1.8,"name_pectorals_dumbbell_decline_one_arm_fly":2.64,"name_pectorals_dumbbell_decline_twist_fly":2.17,"name_pectorals_dumbbell_fly":1.19,"name_pectorals_dumbbell_incline_alternate_press":2.52,"name_pectorals_dumbbell_incline_bench_press":2.19,"name_pectorals_dumbbell_incline_breeding":1.88,"name_pectorals_dumbbell_incline_fly":1.86,"name_pectorals_dumbbell_incline_one_arm_fly":2.48,"name_pectorals_dumbbell_incline_one_arm_press":2.38,"name_pectorals_dumbbell_incline_palm_in_press":2.25,"name_pectorals_dumbbell_incline_twisted_flyes":2.4,"name_pectorals_dumbbell_lying_one_arm_press":2.23,"name_pectorals_dumbbell_lying_one_arm_press_v_2":2.65,"name_pectorals_dumbbell_one_arm_bench_fly":2.17,"name_pectorals_dumbbell_one_arm_decline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_incline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_reverse_grip_press":2.73,"name_pectorals_dumbbell_pullover":1.3,"name_pectorals_dumbbell_reverse_bench_press":2.06,"name_pectorals_dumbbell_straight_arm_pullover":2.19,"name_pectorals_dynamic_chest_stretch_male":2.02,"name_pectorals_full_planche_push_up":1.58,"name_pectorals_hands_bike":1.08,"name_pectorals_hyght_dumbbell_fly":1.44,"name_pectorals_incline_push_up":1.43,"name_pectorals_incline_push_up_depth_jump":2.01,"name_pectorals_incline_push_up_on_box":1.88,"name_pectorals_incline_reverse_grip_push_up":2.15,"name_pectorals_isometric_chest_squeeze":1.85,"name_pectorals_isometric_wipers":1.68,"name_pectorals_kneeling_push_up_male":1.6,"name_pectorals_korean_dips":1.2,"name_pectorals_modified_hindu_push_up_male":2.36,"name_pectorals_plyo_push_up":1.31,"name_pectorals_push_and_pull_bodyweight":1.74,"name_pectorals_push_up":0.8,"name_pectorals_push_up_plus":1.13,"name_pectorals_push_up_wall":1.18,"name_pectorals_push_up_wall_v_2":1.8,"name_pectorals_shoulder_tap_push_up":1.67,"name_pectorals_single_arm_push_up":1.72,"name_pectorals_superman_push_up":1.48,"name_pectorals_suspended_push_up":1.5,"name_pectorals_weighted_drop_push_up":1.62,"name_pectorals_weighted_straight_bar_dip":1.73,"name_pectorals_weighted_svend_press":1.68,"name_pectorals_wide_hand_push_up":1.6,"name_peloton_achilles_low_tension_spin":3.04,"name_peloton_active_recovery_cruise":2.48,"name_peloton_alpine_pass_endurance":2.98,"name_peloton_ankle_capillary_flush":3.18,"name_peloton_bike_bench_dip_fusion":3.79,"name_peloton_bike_bent_row_fusion":4.25,"name_peloton_bike_bicep_curl_fusion":4.26,"name_peloton_bike_deadbug_fusion":3.53,"name_peloton_bike_floor_press_fusion":3.94,"name_peloton_bike_goblet_squat_fusion":3.81,"name_peloton_bike_mat_mountain_climber":3.65,"name_peloton_bike_overhead_press_fusion":4.09,"name_peloton_bike_pushup_fusion":3.77,"name_peloton_bike_rdl_fusion":4.42,"name_peloton_bike_renegade_row_fusion":4.55,"name_peloton_bike_russian_twist_fusion":3.94,"name_peloton_bike_split_squat_fusion":4.03,"name_peloton_bike_tabata_squat_blast":3.85,"name_peloton_bike_tendon_stretch_flush":3.99,"name_peloton_bike_walking_lunge_fusion":3.41,"name_peloton_cadence_ladder_up":2.51,"name_peloton_cadence_pyramid":2.58,"name_peloton_climb_cadence_surge":3.63,"name_peloton_climb_summit_push":3.06,"name_peloton_cooldown_heart_decel":3.48,"name_peloton_cooldown_spin":2.49,"name_peloton_evening_parasympathetic_spin":2.83,"name_peloton_glute_focused_climb":3.15,"name_peloton_hamstring_flush_spin":3.26,"name_peloton_heavy_climb":2.17,"name_peloton_hiit_10s_flying_start":3.11,"name_peloton_hiit_15s_super_sprint":3.43,"name_peloton_hiit_30_30_interval":3.94,"name_peloton_hiit_45s_vo2_blast":4.32,"name_peloton_hiit_60s_power_surge":2.88,"name_peloton_hiit_aerobic_surge_pyramid":2.88,"name_peloton_hiit_all_out_empty_tank":2.73,"name_peloton_hiit_cadence_drop_recover":3.35,"name_peloton_hiit_descending_ladder":2.34,"name_peloton_hiit_microbursts":2.65,"name_peloton_hiit_resistance_sprint":2.19,"name_peloton_hiit_sprints":3.19,"name_peloton_hiit_standing_seated_sprint":3.6,"name_peloton_hiit_tabata_quad_crush":3.26,"name_peloton_hill_attack_intervals":3.2,"name_peloton_hip_knee_mobility_spin":3.69,"name_peloton_low_cadence_strength_grind":3.67,"name_peloton_low_impact_joint_unloading":3.32,"name_peloton_morning_awakening_spin":2.59,"name_peloton_over_under_cadence":2.65,"name_peloton_patellar_synovial_flush":3.52,"name_peloton_post_leg_day_flush":3.09,"name_peloton_post_squat_knee_decompression":3.04,"name_peloton_power_zone_2":2.89,"name_peloton_pz1_active_recovery":3.58,"name_peloton_pz2_endurance_base":3.37,"name_peloton_pz2_steady_cruise":3.38,"name_peloton_pz3_cadence_tempo":2.93,"name_peloton_pz3_tempo_cruise":3.59,"name_peloton_pz4_lactate_clearance":3.55,"name_peloton_pz4_threshold_sweet_spot":3.51,"name_peloton_pz5_hard_interval":3.34,"name_peloton_pz5_vo2max_power":4.26,"name_peloton_pz6_1min_attack":3.49,"name_peloton_pz6_anaerobic_capacity":4.03,"name_peloton_pz7_neuromuscular_max":3.81,"name_peloton_pz7_standing_watts":3.92,"name_peloton_pz_endurance_hr_cap":3.1,"name_peloton_pz_over_under_intervals":2.53,"name_peloton_quad_burning_climb":2.52,"name_peloton_quad_collagen_flush":3.47,"name_peloton_resistance_pyramid":2.26,"name_peloton_rolling_hills_interval":3.08,"name_peloton_seated_cadence_hold":2.83,"name_peloton_seated_climb_heavy":3.36,"name_peloton_seated_steep_hill":2.39,"name_peloton_seated_surges":2.28,"name_peloton_seated_to_standing_switch":2.84,"name_peloton_single_leg_drill":2.7,"name_peloton_single_leg_left":2.8,"name_peloton_single_leg_right":2.8,"name_peloton_smooth_circles":3.97,"name_peloton_spin_100_rpm":3.72,"name_peloton_spin_105_rpm":4.0,"name_peloton_spin_110_rpm":4.47,"name_peloton_spin_115_rpm":4.19,"name_peloton_spin_120_rpm":4.56,"name_peloton_spin_85_rpm":3.42,"name_peloton_spin_90_rpm":3.51,"name_peloton_spin_95_rpm":3.9,"name_peloton_spin_ups_80_110":1.97,"name_peloton_standing_climb_heavy":2.56,"name_peloton_standing_torque_push":1.92,"name_peloton_switchback_climb":3.05,"name_peloton_tabata_20_10_sprint":3.57,"name_peloton_tabata_blast":2.41,"name_peloton_tabata_standing_burst":3.44,"name_peloton_tendon_flush":2.5,"name_peloton_tendon_gentle_pulse":4.02,"name_peloton_warmup_cadence_ramp":2.82,"name_peloton_warmup_spin":2.43,"name_quads_all_fours_squad_stretch":1.72,"name_quads_assisted_prone_lying_quads_stretch":2.58,"name_quads_backward_jump":1.18,"name_quads_balance_board":1.18,"name_quads_dumbbell_step_up_lunge":1.62,"name_quads_farmers_walk":1.19,"name_quads_forward_jump":1.21,"name_quads_intermediate_hip_flexor_and_quad_stretch":2.85,"name_quads_lying_side_quads_stretch":1.88,"name_quads_quads":0.77,"name_quads_quick_feet_v_2":1.54,"name_quads_snatch_pull":1.12,"name_rdl":1.68,"name_russian_twist":2.04,"name_scaption_raise":2.46,"name_serratus_anterior_incline_scapula_push_up":2.05,"name_serratus_anterior_scapula_push_up":1.46,"name_shoulder_bench_var_0":2.22,"name_shoulder_bench_var_1":2.42,"name_shoulder_bench_var_10":2.97,"name_shoulder_bench_var_11":2.31,"name_shoulder_bench_var_12":2.59,"name_shoulder_bench_var_13":2.12,"name_shoulder_bench_var_14":3.04,"name_shoulder_bench_var_2":2.24,"name_shoulder_bench_var_3":2.34,"name_shoulder_bench_var_4":1.95,"name_shoulder_bench_var_5":2.89,"name_shoulder_bench_var_6":2.65,"name_shoulder_bench_var_7":2.74,"name_shoulder_bench_var_8":2.36,"name_shoulder_bench_var_9":2.25,"name_tendon_bench_concentration_curl":1.93,"name_tendon_bench_lying_leg_raise":1.87,"name_tendon_bent_knee_wall_calf_raise":2.12,"name_tendon_incline_bench_alternate_hammer_curl":2.76,"name_tendon_seated_bench_calf_raise":1.88,"name_tendon_seated_bench_curl":1.46,"name_tendon_seated_bench_hammer_curl":2.13,"name_tendon_single_leg_dumbbell_calf_raise":2.55,"name_tendon_standing_single_arm_curl":1.85,"name_traps_dumbbell_decline_shrug":1.75,"name_traps_dumbbell_decline_shrug_v_2":2.36,"name_traps_dumbbell_incline_shrug":1.83,"name_traps_dumbbell_shrug":1.22,"name_traps_scapula_dips":1.3,"name_triceps_assisted_standing_triceps_extension_with_towel":3.41,"name_triceps_assisted_triceps_dip_kneeling":2.45,"name_triceps_bench_dip_knees_bent":1.88,"name_triceps_bench_dip_on_floor":1.64,"name_triceps_body_up":0.92,"name_upper_back_dumbbell_side_plank_with_rear_fly":2.65,"paused":0.82,"phase_hold":0.75,"phase_lift":1.11,"phase_lower":1.34,"plus_15":1.94,"ready":0.91,"rem_2":0.87,"rem_3":0.98,"rem_half":1.18,"rem_last":1.83,"reps_1":1.03,"reps_10":1.07,"reps_11":1.26,"reps_12":1.15,"reps_13":1.28,"reps_14":1.32,"reps_15":1.29,"reps_16":1.33,"reps_17":1.44,"reps_18":1.3,"reps_19":1.43,"reps_2":0.92,"reps_20":1.12,"reps_21":1.55,"reps_22":1.47,"reps_23":1.37,"reps_24":1.37,"reps_25":1.5,"reps_26":1.46,"reps_27":1.68,"reps_28":1.38,"reps_29":1.48,"reps_3":1.03,"reps_30":1.08,"reps_4":1.02,"reps_5":1.06,"reps_6":1.05,"reps_7":1.11,"reps_8":1.0,"reps_9":1.16,"rest_10":2.37,"rest_15":1.32,"rest_30":1.55,"rest_day":2.97,"rest_tip_1":2.23,"rest_tip_2":3.49,"rest_tip_3":1.56,"rest_tip_4":2.32,"rest_tip_5":1.62,"resumed":1.11,"same_next":2.8,"set_1":0.87,"set_10":0.97,"set_2":0.94,"set_3":0.99,"set_4":0.96,"set_5":1.03,"set_6":0.93,"set_7":1.03,"set_8":0.92,"set_9":0.99,"set_done_1":1.65,"set_done_2":1.75,"set_done_3":1.85,"set_final":1.11,"sets_1":1.04,"sets_10":1.08,"sets_2":0.95,"sets_3":1.03,"sets_4":1.01,"sets_5":1.03,"sets_6":0.97,"sets_7":1.13,"sets_8":0.94,"sets_9":1.12,"skip":1.17,"slower":1.34,"sound_on":0.98,"start":1.35,"up_next":0.98,"voice_off":1.69,"voice_on":1.5,"welcome":1.92,"workout_done":2.75};
+        const COACH_CLIPS = {"breath_1":2.15,"breath_2":1.75,"breath_3":2.38,"breathe_in":0.96,"breathe_out":1.2,"cooldown_done":2.59,"cooldown_q":2.45,"count_1":0.67,"count_10":0.69,"count_11":0.84,"count_12":0.74,"count_13":0.9,"count_14":0.9,"count_15":0.89,"count_16":0.95,"count_17":1.02,"count_18":0.83,"count_19":0.91,"count_2":0.68,"count_20":0.8,"count_21":0.94,"count_22":1.08,"count_23":1.03,"count_24":1.03,"count_25":1.1,"count_26":0.99,"count_27":1.1,"count_28":1.02,"count_29":1.03,"count_3":0.73,"count_30":0.8,"count_4":0.69,"count_5":0.78,"count_6":0.61,"count_7":0.75,"count_8":0.65,"count_9":0.79,"cue_lower":0.8,"cue_pull":0.69,"cue_raise":0.84,"enc_1":1.88,"enc_2":2.04,"enc_3":1.53,"enc_4":1.26,"enc_5":1.47,"enc_6":1.51,"enc_7":1.09,"enc_8":1.55,"exercise_done":1.55,"faster":1.37,"form_bike_1":1.96,"form_bike_2":2.55,"form_bike_3":2.81,"form_bike_4":2.46,"form_breath_1":1.65,"form_breath_2":1.57,"form_breath_3":1.74,"form_breath_4":1.62,"form_bridge_1":1.87,"form_bridge_2":2.04,"form_bridge_3":2.24,"form_bridge_4":2.36,"form_calf_1":2.56,"form_calf_2":2.67,"form_calf_3":1.55,"form_calf_4":1.93,"form_core_1":1.77,"form_core_2":2.69,"form_core_3":1.83,"form_core_4":2.45,"form_curl_1":2.26,"form_curl_2":2.23,"form_curl_3":1.5,"form_curl_4":2.3,"form_hang_1":1.93,"form_hang_2":2.29,"form_hang_3":1.56,"form_hang_4":2.18,"form_hinge_1":2.12,"form_hinge_2":1.88,"form_hinge_3":2.39,"form_hinge_4":2.42,"form_lunge_1":2.51,"form_lunge_2":2.1,"form_lunge_3":1.98,"form_lunge_4":1.44,"form_overhead_1":2.4,"form_overhead_2":2.74,"form_overhead_3":1.78,"form_overhead_4":2.49,"form_plank_1":3.02,"form_plank_2":2.34,"form_plank_3":1.45,"form_plank_4":1.5,"form_press_1":2.74,"form_press_2":1.89,"form_press_3":1.84,"form_press_4":2.53,"form_pull_1":2.56,"form_pull_2":2.43,"form_pull_3":1.63,"form_pull_4":2.69,"form_pushup_1":1.91,"form_pushup_2":1.9,"form_pushup_3":2.64,"form_pushup_4":2.78,"form_raise_1":1.89,"form_raise_2":2.36,"form_raise_3":2.56,"form_raise_4":1.9,"form_row_1":2.29,"form_row_2":2.56,"form_row_3":1.65,"form_row_4":2.47,"form_squat_1":2.32,"form_squat_2":2.17,"form_squat_3":1.82,"form_squat_4":2.45,"form_static_1":2.31,"form_static_2":2.53,"form_static_3":1.84,"form_static_4":1.5,"form_stretch_1":2.55,"form_stretch_2":1.71,"form_stretch_3":2.5,"form_stretch_4":2.15,"form_warm_1":2.32,"form_warm_2":1.92,"form_warm_3":2.24,"form_warm_4":2.68,"go":0.77,"hold_10":2.15,"howto_bent_row":7.36,"howto_biceps_dumbbell_hammer_curl":8.77,"howto_bw_air_squat":7.36,"howto_bw_mountain_climber":7.76,"howto_bw_plank":8.17,"howto_bw_push_up":9.77,"howto_bw_reverse_lunge":8.0,"howto_bw_side_plank":6.81,"howto_bw_superman":6.94,"howto_bw_wall_sit":9.1,"howto_calf_eccentric":7.8,"howto_cd_breathing":7.87,"howto_cd_chest_stretch":7.62,"howto_cd_childs_pose":7.27,"howto_cd_hamstring_stretch":9.48,"howto_cd_knee_hug":8.03,"howto_cd_quad_stretch":7.49,"howto_cd_shoulder_stretch":6.91,"howto_copenhagen_side_plank_bench":8.99,"howto_db_bench_nordic_curl_progression":9.86,"howto_db_bulgarian_split_squat_bench":11.41,"howto_db_close_grip_floor_press":9.45,"howto_db_elevated_calf_raise_bench":11.17,"howto_db_incline_chest_supported_rear_delt_row":11.46,"howto_db_incline_spider_curl_bench":11.62,"howto_db_mat_deadbug_press":9.74,"howto_db_mat_plank_pull_through":9.05,"howto_db_mat_russian_twist_elevated":9.95,"howto_db_neutral_grip_overhead_press_bench":8.61,"howto_db_patellar_decline_squat_hsr":12.09,"howto_db_quad_sissy_squat_progression":9.72,"howto_db_reverse_fly_isometric_pinch_bench":9.19,"howto_db_seated_90_90_external_rotation_bench":10.07,"howto_db_seated_arnold_press_bench":9.4,"howto_db_single_arm_push_press_kg":11.11,"howto_db_standing_woodchopper_low_high":9.2,"howto_db_tempo_rdl_eccentric":10.62,"howto_eccentric_hammer":7.15,"howto_floor_press":8.12,"howto_glute_bridge":7.33,"howto_goblet_squat":7.47,"howto_incline_bench_db_w_raise":10.16,"howto_incline_bench_db_y_raise":11.43,"howto_iso_squat_hold":7.82,"howto_lunges":6.47,"howto_mat_prone_floor_angel":9.28,"howto_mat_side_lying_db_external_rotation":9.09,"howto_mat_single_leg_glute_bridge_db":9.43,"howto_overhead_press":6.53,"howto_pb_dead_hang":9.47,"howto_pb_flexed_hang":8.09,"howto_pb_knee_raise":6.07,"howto_pb_negative_pull_up":8.88,"howto_pb_pull_up":8.05,"howto_pb_scap_pull":8.11,"howto_peloton_achilles_low_tension_spin":6.79,"howto_peloton_active_recovery_cruise":5.65,"howto_peloton_ankle_capillary_flush":6.18,"howto_peloton_bike_bent_row_fusion":7.55,"howto_peloton_bike_bicep_curl_fusion":4.78,"howto_peloton_bike_floor_press_fusion":6.42,"howto_peloton_bike_goblet_squat_fusion":8.22,"howto_peloton_bike_overhead_press_fusion":5.52,"howto_peloton_bike_rdl_fusion":6.6,"howto_peloton_cadence_ladder_up":4.86,"howto_peloton_cooldown_heart_decel":8.88,"howto_peloton_glute_focused_climb":5.72,"howto_peloton_hiit_15s_super_sprint":8.34,"howto_peloton_hiit_30_30_interval":9.78,"howto_peloton_hip_knee_mobility_spin":7.26,"howto_peloton_low_impact_joint_unloading":6.44,"howto_peloton_patellar_synovial_flush":10.58,"howto_peloton_post_leg_day_flush":8.82,"howto_peloton_post_squat_knee_decompression":6.37,"howto_peloton_pz2_endurance_base":9.9,"howto_peloton_pz3_tempo_cruise":8.77,"howto_peloton_seated_climb_heavy":9.79,"howto_peloton_smooth_circles":7.92,"howto_peloton_spin_100_rpm":7.52,"howto_peloton_spin_90_rpm":9.14,"howto_peloton_spin_ups_80_110":9.08,"howto_peloton_standing_climb_heavy":8.35,"howto_peloton_tabata_20_10_sprint":9.64,"howto_rdl":6.99,"howto_russian_twist":8.29,"howto_scaption_raise":7.5,"howto_wu_air_squats":9.09,"howto_wu_arm_circles":7.3,"howto_wu_high_knees":6.11,"howto_wu_jumping_jacks":7.88,"howto_wu_leg_swings":7.17,"howto_wu_side_bends":7.73,"hr_connected":2.24,"hr_down":2.16,"hr_high":2.85,"last_one":1.01,"minus_15":1.58,"name_abductors_side_bridge_hip_abduction":2.03,"name_abductors_side_hip_abduction":1.59,"name_abductors_straight_leg_outer_hip_abductor":2.21,"name_abs_3_4_sit_up":1.55,"name_abs_45_side_bend":1.93,"name_abs_air_bike":0.92,"name_abs_alternate_heel_touchers":1.71,"name_abs_arms_overhead_full_sit_up_male":2.6,"name_abs_assisted_lying_leg_raise_with_lateral_throw_down":3.69,"name_abs_assisted_lying_leg_raise_with_throw_down":3.04,"name_abs_assisted_motion_russian_twist":2.57,"name_abs_assisted_prone_rectus_femoris_stretch":2.95,"name_abs_assisted_sit_up":1.41,"name_abs_bodyweight_incline_side_plank":2.23,"name_abs_bottoms_up":1.08,"name_abs_bridge_mountain_climber_cross_body":2.54,"name_abs_butt_ups":0.87,"name_abs_cocoons":1.02,"name_abs_crab_twist_toe_touch":1.84,"name_abs_cross_body_crunch":1.47,"name_abs_crunch_floor":1.09,"name_abs_crunch_hands_overhead":1.81,"name_abs_curl_up":0.92,"name_abs_dead_bug":0.95,"name_abs_decline_crunch":1.35,"name_abs_decline_sit_up":1.47,"name_abs_dumbbell_side_bend":1.73,"name_abs_elbow_to_knee":1.32,"name_abs_flag":0.78,"name_abs_flexion_leg_sit_up_bent_knee":2.28,"name_abs_flexion_leg_sit_up_straight_arm":2.34,"name_abs_frog_crunch":1.12,"name_abs_frog_planche":1.12,"name_abs_front_plank_with_twist":1.67,"name_abs_full_maltese":1.23,"name_abs_full_planche":1.09,"name_abs_gorilla_chin":1.22,"name_abs_groin_crunch":1.21,"name_abs_half_sit_up_male":1.38,"name_abs_hip_raise_bent_knee":1.69,"name_abs_inchworm":0.89,"name_abs_inchworm_v_2":1.52,"name_abs_incline_leg_hip_raise_leg_straight":2.65,"name_abs_incline_twisting_sit_up":2.07,"name_abs_jackknife_sit_up":1.5,"name_abs_janda_sit_up":1.3,"name_abs_knee_touch_crunch":1.34,"name_abs_kneeling_plank_tap_shoulder_male":2.29,"name_abs_l_sit_on_floor":1.56,"name_abs_lean_planche":1.12,"name_abs_leg_pull_in_flat_bench":1.86,"name_abs_lunge_with_twist":1.48,"name_abs_lying_elbow_to_knee":1.67,"name_abs_lying_leg_hip_raise":1.62,"name_abs_lying_leg_raise_flat_bench":2.23,"name_abs_negative_crunch":1.29,"name_abs_oblique_crunch_v_2":1.8,"name_abs_oblique_crunches_floor":1.7,"name_abs_otis_up":1.15,"name_abs_pelvic_tilt":1.1,"name_abs_posterior_step_to_overhead_reach":2.54,"name_abs_potty_squat":1.05,"name_abs_power_point_plank":1.37,"name_abs_prisoner_half_sit_up_male":2.06,"name_abs_push_up_to_side_plank":1.62,"name_abs_quarter_sit_up":1.22,"name_abs_reverse_crunch":1.35,"name_abs_reverse_plank_with_leg_lift":2.28,"name_abs_russian_twist":1.26,"name_abs_seated_leg_raise":1.4,"name_abs_seated_side_crunch_wall":1.8,"name_abs_shoulder_tap":1.14,"name_abs_side_bridge_v_2":1.86,"name_abs_side_to_side_toe_touch_male":2.23,"name_abs_sit_up_v_2":1.36,"name_abs_sit_up_with_arms_on_chest":2.1,"name_abs_spell_caster":1.24,"name_abs_spine_twist":1.23,"name_abs_straddle_maltese":1.49,"name_abs_straddle_planche":1.23,"name_abs_suspended_abdominal_fallout":2.4,"name_abs_suspended_reverse_crunch":2.02,"name_abs_tuck_crunch":1.05,"name_abs_twisted_leg_raise":1.59,"name_abs_twisted_leg_raise_female":2.23,"name_abs_v_sit_on_floor":1.68,"name_abs_weighted_crunch":1.22,"name_abs_weighted_decline_sit_up":2.0,"name_abs_weighted_front_plank":1.47,"name_abs_weighted_russian_twist":1.81,"name_abs_weighted_russian_twist_legs_up":2.47,"name_abs_weighted_russian_twist_v_2":2.45,"name_abs_wind_sprints":1.18,"name_adductors_assisted_side_lying_adductor_stretch":2.84,"name_adductors_butterfly_yoga_pose":1.9,"name_adductors_side_lying_hip_adduction_male":2.36,"name_adductors_side_plank_hip_adduction":1.83,"name_back_bench_reverse_hyperextension":2.45,"name_back_cat_cow_spine_mobiliser":2.24,"name_back_chest_supported_incline_dumbbell_row":2.93,"name_back_child_s_pose_lat_stretch":1.88,"name_back_incline_bench_preacher_curl":2.17,"name_back_prone_superman_hold":1.84,"name_back_prone_y_raise_on_mat":2.13,"name_back_seated_bench_alternating_bicep_curl":2.99,"name_back_seated_bench_single_arm_curl":2.22,"name_back_side_lying_open_book_stretch":2.14,"name_back_tall_kneeling_dumbbell_curl":2.08,"name_back_v_sit_dumbbell_bicep_curl":2.44,"name_bench_elevated_feet_pike_pushup":2.37,"name_bench_flat_leg_raise_hip_lift":2.67,"name_bench_reverse_crunch_leg_extension":3.15,"name_bent_row":1.93,"name_biceps_biceps_leg_concentration_curl":2.67,"name_biceps_biceps_narrow_pull_ups":1.94,"name_biceps_bodyweight_side_lying_biceps_curl":2.83,"name_biceps_dumbbell_alternate_biceps_curl":2.44,"name_biceps_dumbbell_alternate_biceps_curl_with_arm_blaster":3.47,"name_biceps_dumbbell_alternate_hammer_preacher_curl":2.88,"name_biceps_dumbbell_alternate_preacher_curl":2.43,"name_biceps_dumbbell_alternate_seated_hammer_curl":2.76,"name_biceps_dumbbell_bicep_curl_lunge_with_bowling_motion":3.22,"name_biceps_dumbbell_bicep_curl_with_stork_stance":2.83,"name_biceps_dumbbell_biceps_curl":1.87,"name_biceps_dumbbell_biceps_curl_reverse":2.29,"name_biceps_dumbbell_biceps_curl_squat":2.18,"name_biceps_dumbbell_biceps_curl_with_arm_blaster":2.85,"name_biceps_dumbbell_concentration_curl":2.09,"name_biceps_dumbbell_cross_body_hammer_curl":2.41,"name_biceps_dumbbell_cross_body_hammer_curl_v_2":2.9,"name_biceps_dumbbell_hammer_curl":1.71,"name_biceps_dumbbell_hammer_curl_v_2":2.22,"name_biceps_dumbbell_hammer_curls_with_arm_blaster":2.61,"name_biceps_dumbbell_high_curl":1.53,"name_biceps_dumbbell_incline_biceps_curl":2.45,"name_biceps_dumbbell_incline_curl":1.88,"name_biceps_dumbbell_incline_curl_v_2":2.42,"name_biceps_dumbbell_incline_hammer_curl":2.24,"name_biceps_dumbbell_incline_inner_biceps_curl":2.76,"name_biceps_dumbbell_lunge_with_bicep_curl":2.52,"name_biceps_dumbbell_lying_supine_biceps_curl":2.58,"name_biceps_dumbbell_lying_supine_curl":2.12,"name_biceps_dumbbell_lying_wide_curl":2.07,"name_biceps_dumbbell_one_arm_hammer_preacher_curl":2.58,"name_biceps_dumbbell_one_arm_prone_curl":2.3,"name_biceps_dumbbell_one_arm_prone_hammer_curl":2.62,"name_biceps_dumbbell_one_arm_reverse_preacher_curl":2.9,"name_biceps_dumbbell_one_arm_reverse_spider_curl":2.77,"name_biceps_dumbbell_one_arm_seated_hammer_curl":2.65,"name_biceps_dumbbell_one_arm_standing_curl":2.42,"name_biceps_dumbbell_one_arm_standing_hammer_curl":2.82,"name_biceps_dumbbell_one_arm_zottman_preacher_curl":2.83,"name_biceps_dumbbell_over_bench_neutral_wrist_curl":2.74,"name_biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl":3.29,"name_biceps_dumbbell_peacher_hammer_curl":2.19,"name_biceps_dumbbell_preacher_curl":1.73,"name_biceps_dumbbell_prone_incline_curl":2.45,"name_biceps_dumbbell_prone_incline_hammer_curl":2.71,"name_biceps_dumbbell_revers_grip_biceps_curl":2.65,"name_biceps_dumbbell_reverse_preacher_curl":2.17,"name_biceps_dumbbell_reverse_spider_curl":2.15,"name_biceps_dumbbell_seated_bicep_curl":2.24,"name_biceps_dumbbell_seated_biceps_curl_to_shoulder_press":3.15,"name_biceps_dumbbell_seated_curl":1.65,"name_biceps_dumbbell_seated_hammer_curl":2.15,"name_biceps_dumbbell_seated_inner_biceps_curl":2.6,"name_biceps_dumbbell_seated_neutral_wrist_curl":2.5,"name_biceps_dumbbell_seated_preacher_curl":2.2,"name_biceps_dumbbell_seated_revers_grip_concentration_curl":3.52,"name_biceps_dumbbell_standing_alternate_hammer_curl_and_press":3.22,"name_biceps_dumbbell_standing_biceps_curl":2.3,"name_biceps_dumbbell_standing_concentration_curl":2.64,"name_biceps_dumbbell_standing_inner_biceps_curl_v_2":3.12,"name_biceps_dumbbell_standing_one_arm_concentration_curl":3.12,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench":3.51,"name_biceps_dumbbell_standing_one_arm_curl_over_incline_bench_1680":5.78,"name_biceps_dumbbell_standing_one_arm_reverse_curl":2.75,"name_biceps_dumbbell_standing_preacher_curl":2.19,"name_biceps_dumbbell_standing_reverse_curl":2.31,"name_biceps_dumbbell_standing_zottman_preacher_curl":2.83,"name_biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl":3.59,"name_biceps_dumbbell_waiter_biceps_curl":2.33,"name_biceps_dumbbell_zottman_curl":1.72,"name_biceps_dumbbell_zottman_preacher_curl":2.25,"name_biceps_weighted_standing_curl":1.62,"name_bw_air_squat":1.65,"name_bw_mountain_climber":1.4,"name_bw_plank":1.28,"name_bw_push_up":0.83,"name_bw_reverse_lunge":1.88,"name_bw_side_plank":1.13,"name_bw_superman":1.39,"name_bw_wall_sit":1.04,"name_calf_eccentric":2.57,"name_calves_ankle_circles":1.32,"name_calves_assisted_lying_calves_stretch":2.29,"name_calves_bodyweight_standing_calf_raise":2.18,"name_calves_calf_push_stretch_with_hands_against_wall":2.74,"name_calves_calf_stretch_with_hands_against_wall":2.56,"name_calves_circles_knee_stretch":1.57,"name_calves_donkey_calf_raise":1.59,"name_calves_dumbbell_seated_calf_raise":2.1,"name_calves_dumbbell_seated_one_leg_calf_raise":2.73,"name_calves_dumbbell_seated_one_leg_calf_raise_hammer_grip":3.35,"name_calves_dumbbell_seated_one_leg_calf_raise_palm_up":3.18,"name_calves_dumbbell_single_leg_calf_raise":2.38,"name_calves_dumbbell_standing_calf_raise":2.15,"name_calves_one_leg_donkey_calf_raise":2.18,"name_calves_one_leg_floor_calf_raise":1.99,"name_calves_peroneals_stretch":1.24,"name_calves_posterior_tibialis_stretch":2.21,"name_calves_seated_calf_stretch_male":1.8,"name_calves_single_leg_calf_raise_on_a_dumbbell":2.75,"name_calves_standing_calf_raise_on_a_staircase":2.62,"name_calves_standing_calves":1.36,"name_calves_standing_calves_calf_stretch":2.12,"name_calves_weighted_donkey_calf_raise":2.06,"name_cardio_semi_squat_jump_male":1.88,"name_cd_breathing":1.18,"name_cd_chest_stretch":1.86,"name_cd_childs_pose":1.3,"name_cd_hamstring_stretch":1.79,"name_cd_knee_hug":1.84,"name_cd_quad_stretch":1.59,"name_cd_shoulder_stretch":1.79,"name_chest_bench_chest_stretch":1.49,"name_chest_bench_dip":1.02,"name_chest_bench_pike_push_up":1.52,"name_chest_cross_bench_dumbbell_pullover":2.23,"name_chest_decline_push_up":1.45,"name_chest_diamond_push_up":1.38,"name_chest_dumbbell_handle_push_up":1.87,"name_chest_explosive_floor_press":1.74,"name_chest_flat_bench_dumbbell_fly":1.92,"name_chest_flat_bench_dumbbell_pullover":2.27,"name_chest_flat_bench_single_arm_fly":2.08,"name_chest_flat_bench_single_arm_press":2.02,"name_chest_floor_dumbbell_pullover":1.76,"name_chest_floor_fly_with_glute_bridge":2.18,"name_chest_floor_press_with_glute_bridge":2.12,"name_chest_floor_single_arm_fly":1.74,"name_chest_incline_bench_dumbbell_fly":2.22,"name_chest_incline_bench_single_arm_fly":2.47,"name_chest_incline_bench_single_arm_press":2.39,"name_chest_incline_push_up_on_bench":1.86,"name_chest_kneeling_push_up":1.3,"name_chest_low_incline_bench_dumbbell_press":2.52,"name_chest_single_arm_bench_pullover":2.05,"name_chest_staggered_hand_push_up":1.61,"name_chest_wide_push_up":1.22,"name_copenhagen_side_plank_bench":2.62,"name_core_kneeling_dumbbell_woodchop":1.86,"name_core_side_plank_hip_dip":1.68,"name_db_around_the_world_bench":2.76,"name_db_b-stance_rdl_mat":2.84,"name_db_bench_nordic_curl_progression":2.96,"name_db_bench_split_squat_isometric_hold":3.37,"name_db_bench_step_ups_kg":1.99,"name_db_bulgarian_split_squat_bench":2.13,"name_db_close_grip_floor_press":2.08,"name_db_cossack_squat_mat":2.18,"name_db_curtsy_lunge_mat":1.74,"name_db_eccentric_overhead_press_lowering":3.5,"name_db_elevated_calf_raise_bench":2.15,"name_db_floor_z_press_mat":2.36,"name_db_front_raise_isometric_pause":3.5,"name_db_half_kneeling_overhead_press_mat":2.59,"name_db_high_pull_upright_row":2.7,"name_db_hollow_body_hold_mat":3.54,"name_db_incline_chest_supported_rear_delt_row":3.32,"name_db_incline_prone_reverse_fly_bench":2.7,"name_db_incline_scapular_shrugs_bench":2.9,"name_db_incline_spider_curl_bench":2.25,"name_db_incline_tate_press_bench":2.06,"name_db_isometric_lateral_hold_mat":2.85,"name_db_kneeling_woodchopper_mat":2.77,"name_db_leaning_lateral_raise":2.9,"name_db_lu_raise_overhead_arc":2.01,"name_db_mat_bird_dog_row":2.27,"name_db_mat_deadbug_press":3.05,"name_db_mat_pallof_press_kneeling":3.19,"name_db_mat_plank_pull_through":1.97,"name_db_mat_renegade_plank_hold":2.62,"name_db_mat_russian_twist_elevated":2.04,"name_db_mat_windshield_wipers":2.79,"name_db_neutral_grip_overhead_press_bench":2.63,"name_db_overhead_situp_press_mat":3.02,"name_db_patellar_decline_squat_hsr":2.15,"name_db_quad_sissy_squat_progression":2.92,"name_db_reverse_fly_isometric_pinch_bench":3.53,"name_db_seated_90_90_external_rotation_bench":4.25,"name_db_seated_alternating_shoulder_press":3.02,"name_db_seated_arnold_press_bench":2.13,"name_db_seated_bradford_press_bench":2.31,"name_db_seated_cuban_press_bench":1.97,"name_db_seated_hammer_front_raise_bench":2.37,"name_db_seated_shrug_bench":1.54,"name_db_single_arm_push_press_kg":2.15,"name_db_standing_cuban_press":2.07,"name_db_standing_oblique_side_bend":2.97,"name_db_standing_shrug_pause":2.95,"name_db_standing_suitcase_carry_march":2.76,"name_db_standing_woodchopper_high_low":2.57,"name_db_standing_woodchopper_low_high":2.72,"name_db_straight_leg_situp_mat":2.4,"name_db_sumo_goblet_squat_kg":2.41,"name_db_tempo_rdl_eccentric":2.13,"name_db_tempo_scaption_hold_mat":1.78,"name_db_turkish_getup_quarter_roll_mat":1.95,"name_db_turkish_getup_sit_to_lunge_mat":1.95,"name_db_waiter_carry_isometric_mat":3.38,"name_db_windmill_shoulder_stabilizer_mat":2.77,"name_delts_dumbbell_alternate_side_press":2.13,"name_delts_dumbbell_arnold_press":1.62,"name_delts_dumbbell_arnold_press_v_2":2.28,"name_delts_dumbbell_bench_seated_press":2.11,"name_delts_dumbbell_cuban_press":1.61,"name_delts_dumbbell_cuban_press_v_2":2.45,"name_delts_dumbbell_front_raise":1.55,"name_delts_dumbbell_front_raise_v_2":2.33,"name_delts_dumbbell_full_can_lateral_raise":2.49,"name_delts_dumbbell_incline_one_arm_lateral_raise":3.02,"name_delts_dumbbell_incline_raise":1.87,"name_delts_dumbbell_incline_rear_lateral_raise":2.74,"name_delts_dumbbell_incline_t_raise":2.03,"name_delts_dumbbell_iron_cross":1.59,"name_delts_dumbbell_lateral_raise":1.74,"name_delts_dumbbell_lateral_to_front_raise":2.44,"name_delts_dumbbell_lying_external_shoulder_rotation":2.98,"name_delts_dumbbell_lying_on_floor_rear_delt_raise":2.97,"name_delts_dumbbell_lying_one_arm_deltoid_rear":2.85,"name_delts_dumbbell_lying_one_arm_rear_lateral_raise":3.13,"name_delts_dumbbell_lying_rear_lateral_raise":2.66,"name_delts_dumbbell_one_arm_lateral_raise":2.54,"name_delts_dumbbell_one_arm_lateral_raise_with_support":3.12,"name_delts_dumbbell_one_arm_reverse_fly_with_support":3.02,"name_delts_dumbbell_one_arm_shoulder_press":2.38,"name_delts_dumbbell_one_arm_shoulder_press_v_2":2.67,"name_delts_dumbbell_one_arm_upright_row":2.45,"name_delts_dumbbell_push_press":1.47,"name_delts_dumbbell_raise":1.19,"name_delts_dumbbell_rear_delt_raise":2.11,"name_delts_dumbbell_rear_delt_row_shoulder":2.45,"name_delts_dumbbell_rear_fly":1.57,"name_delts_dumbbell_rear_lateral_raise":2.31,"name_delts_dumbbell_rear_lateral_raise_support_head":2.93,"name_delts_dumbbell_reverse_fly":1.79,"name_delts_dumbbell_rotation_reverse_fly":2.67,"name_delts_dumbbell_scott_press":1.6,"name_delts_dumbbell_seated_alternate_front_raise":2.75,"name_delts_dumbbell_seated_alternate_press":2.34,"name_delts_dumbbell_seated_alternate_shoulder":2.45,"name_delts_dumbbell_seated_bent_arm_lateral_raise":2.99,"name_delts_dumbbell_seated_front_raise":1.98,"name_delts_dumbbell_seated_lateral_raise":2.36,"name_delts_dumbbell_seated_lateral_raise_v_2":2.95,"name_delts_dumbbell_seated_shoulder_press":2.01,"name_delts_dumbbell_seated_shoulder_press_parallel_grip":2.93,"name_delts_dumbbell_side_lying_one_hand_raise":2.79,"name_delts_dumbbell_single_arm_overhead_carry":2.63,"name_delts_dumbbell_standing_alternate_overhead_press":2.92,"name_delts_dumbbell_standing_alternate_raise":2.42,"name_delts_dumbbell_standing_around_world":2.22,"name_delts_dumbbell_standing_front_raise_above_head":2.58,"name_delts_dumbbell_standing_one_arm_palm_in_press":2.71,"name_delts_dumbbell_standing_overhead_press":2.32,"name_delts_dumbbell_standing_palms_in_press":2.27,"name_delts_dumbbell_upright_row":1.7,"name_delts_dumbbell_upright_row_back_pov":2.36,"name_delts_dumbbell_upright_shoulder_external_rotation":3.16,"name_delts_dumbbell_w_press":1.66,"name_delts_left_hook_boxing":1.42,"name_delts_rear_deltoid_stretch":1.68,"name_delts_standing_behind_neck_press":2.13,"name_delts_weighted_front_raise":1.54,"name_delts_weighted_kneeling_step_with_swing":2.27,"name_delts_weighted_round_arm":1.59,"name_eccentric_hammer":2.28,"name_floor_press":1.52,"name_forearms_dumbbell_finger_curls":1.87,"name_forearms_dumbbell_one_arm_reverse_wrist_curl":2.84,"name_forearms_dumbbell_one_arm_seated_neutral_wrist_curl":3.04,"name_forearms_dumbbell_one_arm_wrist_curl":2.22,"name_forearms_dumbbell_over_bench_one_arm_reverse_wrist_curl":3.45,"name_forearms_dumbbell_over_bench_one_arm_wrist_curl":2.88,"name_forearms_dumbbell_over_bench_revers_wrist_curl":2.77,"name_forearms_dumbbell_over_bench_wrist_curl":2.32,"name_forearms_dumbbell_reverse_wrist_curl":2.2,"name_forearms_dumbbell_seated_palms_up_wrist_curl":2.67,"name_forearms_finger_curls":1.28,"name_forearms_side_wrist_pull_stretch":1.87,"name_glute_bridge":1.99,"name_glutes_arms_apart_circular_toe_touch_male":2.58,"name_glutes_assisted_lying_glutes_stretch":2.11,"name_glutes_assisted_lying_gluteus_and_piriformis_stretch":3.36,"name_glutes_basic_toe_touch_male":1.82,"name_glutes_bench_hip_extension":1.66,"name_glutes_bent_knee_lying_twist_male":2.1,"name_glutes_bodyweight_drop_jump_squat":2.16,"name_glutes_curtsey_squat":1.17,"name_glutes_dumbbell_bench_squat":1.56,"name_glutes_dumbbell_clean":1.22,"name_glutes_dumbbell_contralateral_forward_lunge":2.64,"name_glutes_dumbbell_deadlift":1.31,"name_glutes_dumbbell_lunge":1.21,"name_glutes_dumbbell_one_arm_snatch":1.95,"name_glutes_dumbbell_plyo_squat":1.67,"name_glutes_dumbbell_rear_lunge":1.55,"name_glutes_dumbbell_romanian_deadlift":2.13,"name_glutes_dumbbell_single_leg_deadlift":2.04,"name_glutes_dumbbell_single_leg_deadlift_with_stepbox_support":3.36,"name_glutes_dumbbell_single_leg_squat":1.91,"name_glutes_dumbbell_squat":1.2,"name_glutes_dumbbell_step_up":1.32,"name_glutes_dumbbell_stiff_leg_deadlift":2.29,"name_glutes_dumbbell_straight_leg_deadlift":2.0,"name_glutes_dumbbell_sumo_pull_through":2.07,"name_glutes_flutter_kicks":1.06,"name_glutes_forward_lunge_male":1.63,"name_glutes_frankenstein_squat":1.65,"name_glutes_glute_bridge_march":1.45,"name_glutes_glute_bridge_two_legs_on_bench_male":2.75,"name_glutes_hands_clasped_circular_toe_touch_male":2.75,"name_glutes_hands_reversed_clasped_circular_toe_touch_male":3.23,"name_glutes_hug_keens_to_chest":1.65,"name_glutes_iron_cross_stretch":1.56,"name_glutes_jump_squat_v_2":1.64,"name_glutes_lunge_with_jump":1.39,"name_glutes_march_sit_wall":1.3,"name_glutes_monster_walk":1.23,"name_glutes_outside_leg_kick_push_up":2.02,"name_glutes_pike_to_cobra_push_up":1.79,"name_glutes_push_up_inside_leg_kick":2.06,"name_glutes_reverse_hyper_on_flat_bench":2.29,"name_glutes_rocking_frog_stretch":1.59,"name_glutes_seated_glute_stretch":1.44,"name_glutes_seated_piriformis_stretch":1.82,"name_glutes_spider_crawl_push_up":1.62,"name_glutes_swimmer_kicks_v_2_male":2.14,"name_glutes_twist_hip_lift":1.36,"name_glutes_walking_lunge":1.26,"name_glutes_weighted_lunge_with_swing":2.04,"name_glutes_weighted_stretch_lunge":1.55,"name_goblet_squat":1.59,"name_hamstrings_assisted_prone_hamstring":1.94,"name_hamstrings_dumbbell_lying_femoral":1.65,"name_hamstrings_hamstring_stretch":1.37,"name_hamstrings_inverse_leg_curl_bench_support":2.51,"name_hamstrings_kick_out_sit":1.09,"name_hamstrings_leg_up_hamstring_stretch":1.79,"name_hamstrings_power_clean":1.12,"name_hamstrings_runners_stretch":1.2,"name_hamstrings_seated_wide_angle_pose_sequence":2.61,"name_hamstrings_self_assisted_inverse_leg_curl":2.72,"name_hamstrings_self_assisted_inverse_leg_curl_1766":5.57,"name_hamstrings_self_assisted_inverse_leg_curl_on_floor":3.3,"name_hamstrings_world_greatest_stretch":1.58,"name_incline_bench_db_l_raise":3.85,"name_incline_bench_db_t_raise":2.37,"name_incline_bench_db_w_raise":2.68,"name_incline_bench_db_y_raise":2.43,"name_iso_squat_hold":2.33,"name_lats_alternate_lateral_pulldown":2.2,"name_lats_back_pec_stretch":1.29,"name_lats_bench_pull_ups":1.24,"name_lats_gironda_sternum_chin":1.89,"name_lats_kipping_muscle_up":1.47,"name_lats_kneeling_lat_stretch":1.5,"name_lats_muscle_up":1.06,"name_lats_muscle_up_on_vertical_bar":2.21,"name_lats_one_arm_against_wall":1.85,"name_lats_seated_lower_back_stretch":1.85,"name_lats_side_lying_floor_stretch":1.92,"name_lats_side_to_side_chin":1.65,"name_lats_standing_lateral_stretch":1.79,"name_lats_twin_handle_parallel_grip_lat_pulldown":3.01,"name_lats_weighted_muscle_up":1.56,"name_lats_weighted_muscle_up_on_bar":2.26,"name_legs_half_kneeling_hip_flexor_stretch":2.19,"name_legs_prone_hip_rotation_on_mat":2.36,"name_legs_seated_mat_hamstring_stretch":2.12,"name_legs_single_leg_glute_bridge_with_dumbbell":2.61,"name_legs_single_leg_step_down_from_bench":2.21,"name_levator_scapulae_neck_side_stretch":1.37,"name_levator_scapulae_side_push_neck_stretch":1.65,"name_lunges":1.81,"name_mat_bicycle_crunch_tempo_pause":2.91,"name_mat_dolphin_pushup_delts":1.99,"name_mat_flutter_kicks_db_hold":3.28,"name_mat_frog_pumps_db":2.06,"name_mat_pike_pushup_delts":1.41,"name_mat_plank_knee_to_elbow_spider":1.43,"name_mat_prone_cobra_scapular_squeeze":2.78,"name_mat_prone_floor_angel":3.15,"name_mat_side_lying_db_external_rotation":3.05,"name_mat_side_plank_hip_dip_db":2.56,"name_mat_single_leg_glute_bridge_db":2.69,"name_overhead_press":2.06,"name_pb_dead_hang":1.0,"name_pb_flexed_hang":1.4,"name_pb_knee_raise":1.49,"name_pb_negative_pull_up":1.31,"name_pb_pull_up":0.8,"name_pb_scap_pull":1.36,"name_pectorals_archer_push_up":1.28,"name_pectorals_assisted_chest_dip_kneeling":2.26,"name_pectorals_assisted_wide_grip_chest_dip_kneeling":2.84,"name_pectorals_behind_head_chest_stretch":1.88,"name_pectorals_chest_and_front_of_shoulder_stretch":2.51,"name_pectorals_chest_dip":1.05,"name_pectorals_chest_dip_on_straight_bar":1.94,"name_pectorals_chest_tap_push_up_male":1.83,"name_pectorals_clap_push_up":1.15,"name_pectorals_clock_push_up":1.15,"name_pectorals_decline_push_up":1.45,"name_pectorals_deep_push_up":1.13,"name_pectorals_drop_push_up":1.17,"name_pectorals_dumbbell_around_pullover":1.7,"name_pectorals_dumbbell_bench_press":1.53,"name_pectorals_dumbbell_decline_bench_press":2.2,"name_pectorals_dumbbell_decline_fly":1.8,"name_pectorals_dumbbell_decline_one_arm_fly":2.64,"name_pectorals_dumbbell_decline_twist_fly":2.17,"name_pectorals_dumbbell_fly":1.19,"name_pectorals_dumbbell_incline_alternate_press":2.52,"name_pectorals_dumbbell_incline_bench_press":2.19,"name_pectorals_dumbbell_incline_breeding":1.88,"name_pectorals_dumbbell_incline_fly":1.86,"name_pectorals_dumbbell_incline_one_arm_fly":2.48,"name_pectorals_dumbbell_incline_one_arm_press":2.38,"name_pectorals_dumbbell_incline_palm_in_press":2.25,"name_pectorals_dumbbell_incline_twisted_flyes":2.4,"name_pectorals_dumbbell_lying_one_arm_press":2.23,"name_pectorals_dumbbell_lying_one_arm_press_v_2":2.65,"name_pectorals_dumbbell_one_arm_bench_fly":2.17,"name_pectorals_dumbbell_one_arm_decline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_incline_chest_press":2.77,"name_pectorals_dumbbell_one_arm_reverse_grip_press":2.73,"name_pectorals_dumbbell_pullover":1.3,"name_pectorals_dumbbell_reverse_bench_press":2.06,"name_pectorals_dumbbell_straight_arm_pullover":2.19,"name_pectorals_dynamic_chest_stretch_male":2.02,"name_pectorals_full_planche_push_up":1.58,"name_pectorals_hands_bike":1.08,"name_pectorals_hyght_dumbbell_fly":1.44,"name_pectorals_incline_push_up":1.43,"name_pectorals_incline_push_up_depth_jump":2.01,"name_pectorals_incline_push_up_on_box":1.88,"name_pectorals_incline_reverse_grip_push_up":2.15,"name_pectorals_isometric_chest_squeeze":1.85,"name_pectorals_isometric_wipers":1.68,"name_pectorals_kneeling_push_up_male":1.6,"name_pectorals_korean_dips":1.2,"name_pectorals_modified_hindu_push_up_male":2.36,"name_pectorals_plyo_push_up":1.31,"name_pectorals_push_and_pull_bodyweight":1.74,"name_pectorals_push_up":0.8,"name_pectorals_push_up_plus":1.13,"name_pectorals_push_up_wall":1.18,"name_pectorals_push_up_wall_v_2":1.8,"name_pectorals_shoulder_tap_push_up":1.67,"name_pectorals_single_arm_push_up":1.72,"name_pectorals_superman_push_up":1.48,"name_pectorals_suspended_push_up":1.5,"name_pectorals_weighted_drop_push_up":1.62,"name_pectorals_weighted_straight_bar_dip":1.73,"name_pectorals_weighted_svend_press":1.68,"name_pectorals_wide_hand_push_up":1.6,"name_peloton_achilles_low_tension_spin":3.04,"name_peloton_active_recovery_cruise":2.48,"name_peloton_alpine_pass_endurance":2.98,"name_peloton_ankle_capillary_flush":3.18,"name_peloton_bike_bench_dip_fusion":3.79,"name_peloton_bike_bent_row_fusion":4.25,"name_peloton_bike_bicep_curl_fusion":4.26,"name_peloton_bike_deadbug_fusion":3.53,"name_peloton_bike_floor_press_fusion":3.94,"name_peloton_bike_goblet_squat_fusion":3.81,"name_peloton_bike_mat_mountain_climber":3.65,"name_peloton_bike_overhead_press_fusion":4.09,"name_peloton_bike_pushup_fusion":3.77,"name_peloton_bike_rdl_fusion":4.42,"name_peloton_bike_renegade_row_fusion":4.55,"name_peloton_bike_russian_twist_fusion":3.94,"name_peloton_bike_split_squat_fusion":4.03,"name_peloton_bike_tabata_squat_blast":3.85,"name_peloton_bike_tendon_stretch_flush":3.99,"name_peloton_bike_walking_lunge_fusion":3.41,"name_peloton_cadence_ladder_up":2.51,"name_peloton_cadence_pyramid":2.58,"name_peloton_climb_cadence_surge":3.63,"name_peloton_climb_summit_push":3.06,"name_peloton_cooldown_heart_decel":3.48,"name_peloton_cooldown_spin":2.49,"name_peloton_evening_parasympathetic_spin":2.83,"name_peloton_glute_focused_climb":3.15,"name_peloton_hamstring_flush_spin":3.26,"name_peloton_heavy_climb":2.17,"name_peloton_hiit_10s_flying_start":3.11,"name_peloton_hiit_15s_super_sprint":3.43,"name_peloton_hiit_30_30_interval":3.94,"name_peloton_hiit_45s_vo2_blast":4.32,"name_peloton_hiit_60s_power_surge":2.88,"name_peloton_hiit_aerobic_surge_pyramid":2.88,"name_peloton_hiit_all_out_empty_tank":2.73,"name_peloton_hiit_cadence_drop_recover":3.35,"name_peloton_hiit_descending_ladder":2.34,"name_peloton_hiit_microbursts":2.65,"name_peloton_hiit_resistance_sprint":2.19,"name_peloton_hiit_sprints":3.19,"name_peloton_hiit_standing_seated_sprint":3.6,"name_peloton_hiit_tabata_quad_crush":3.26,"name_peloton_hill_attack_intervals":3.2,"name_peloton_hip_knee_mobility_spin":3.69,"name_peloton_low_cadence_strength_grind":3.67,"name_peloton_low_impact_joint_unloading":3.32,"name_peloton_morning_awakening_spin":2.59,"name_peloton_over_under_cadence":2.65,"name_peloton_patellar_synovial_flush":3.52,"name_peloton_post_leg_day_flush":3.09,"name_peloton_post_squat_knee_decompression":3.04,"name_peloton_power_zone_2":2.89,"name_peloton_pz1_active_recovery":3.58,"name_peloton_pz2_endurance_base":3.37,"name_peloton_pz2_steady_cruise":3.38,"name_peloton_pz3_cadence_tempo":2.93,"name_peloton_pz3_tempo_cruise":3.59,"name_peloton_pz4_lactate_clearance":3.55,"name_peloton_pz4_threshold_sweet_spot":3.51,"name_peloton_pz5_hard_interval":3.34,"name_peloton_pz5_vo2max_power":4.26,"name_peloton_pz6_1min_attack":3.49,"name_peloton_pz6_anaerobic_capacity":4.03,"name_peloton_pz7_neuromuscular_max":3.81,"name_peloton_pz7_standing_watts":3.92,"name_peloton_pz_endurance_hr_cap":3.1,"name_peloton_pz_over_under_intervals":2.53,"name_peloton_quad_burning_climb":2.52,"name_peloton_quad_collagen_flush":3.47,"name_peloton_resistance_pyramid":2.26,"name_peloton_rolling_hills_interval":3.08,"name_peloton_seated_cadence_hold":2.83,"name_peloton_seated_climb_heavy":3.36,"name_peloton_seated_steep_hill":2.39,"name_peloton_seated_surges":2.28,"name_peloton_seated_to_standing_switch":2.84,"name_peloton_single_leg_drill":2.7,"name_peloton_single_leg_left":2.8,"name_peloton_single_leg_right":2.8,"name_peloton_smooth_circles":3.97,"name_peloton_spin_100_rpm":3.72,"name_peloton_spin_105_rpm":4.0,"name_peloton_spin_110_rpm":4.47,"name_peloton_spin_115_rpm":4.19,"name_peloton_spin_120_rpm":4.56,"name_peloton_spin_85_rpm":3.42,"name_peloton_spin_90_rpm":3.51,"name_peloton_spin_95_rpm":3.9,"name_peloton_spin_ups_80_110":1.97,"name_peloton_standing_climb_heavy":2.56,"name_peloton_standing_torque_push":1.92,"name_peloton_switchback_climb":3.05,"name_peloton_tabata_20_10_sprint":3.57,"name_peloton_tabata_blast":2.41,"name_peloton_tabata_standing_burst":3.44,"name_peloton_tendon_flush":2.5,"name_peloton_tendon_gentle_pulse":4.02,"name_peloton_warmup_cadence_ramp":2.82,"name_peloton_warmup_spin":2.43,"name_quads_all_fours_squad_stretch":1.72,"name_quads_assisted_prone_lying_quads_stretch":2.58,"name_quads_backward_jump":1.18,"name_quads_balance_board":1.18,"name_quads_dumbbell_step_up_lunge":1.62,"name_quads_farmers_walk":1.19,"name_quads_forward_jump":1.21,"name_quads_intermediate_hip_flexor_and_quad_stretch":2.85,"name_quads_lying_side_quads_stretch":1.88,"name_quads_quads":0.77,"name_quads_quick_feet_v_2":1.54,"name_quads_snatch_pull":1.12,"name_rdl":1.68,"name_russian_twist":2.04,"name_scaption_raise":2.46,"name_serratus_anterior_incline_scapula_push_up":2.05,"name_serratus_anterior_scapula_push_up":1.46,"name_shoulder_bench_var_0":2.22,"name_shoulder_bench_var_1":2.42,"name_shoulder_bench_var_10":2.97,"name_shoulder_bench_var_11":2.31,"name_shoulder_bench_var_12":2.59,"name_shoulder_bench_var_13":2.12,"name_shoulder_bench_var_14":3.04,"name_shoulder_bench_var_2":2.24,"name_shoulder_bench_var_3":2.34,"name_shoulder_bench_var_4":1.95,"name_shoulder_bench_var_5":2.89,"name_shoulder_bench_var_6":2.65,"name_shoulder_bench_var_7":2.74,"name_shoulder_bench_var_8":2.36,"name_shoulder_bench_var_9":2.25,"name_tendon_bench_concentration_curl":1.93,"name_tendon_bench_lying_leg_raise":1.87,"name_tendon_bent_knee_wall_calf_raise":2.12,"name_tendon_incline_bench_alternate_hammer_curl":2.76,"name_tendon_seated_bench_calf_raise":1.88,"name_tendon_seated_bench_curl":1.46,"name_tendon_seated_bench_hammer_curl":2.13,"name_tendon_single_leg_dumbbell_calf_raise":2.55,"name_tendon_standing_single_arm_curl":1.85,"name_traps_dumbbell_decline_shrug":1.75,"name_traps_dumbbell_decline_shrug_v_2":2.36,"name_traps_dumbbell_incline_shrug":1.83,"name_traps_dumbbell_shrug":1.22,"name_traps_scapula_dips":1.3,"name_triceps_assisted_standing_triceps_extension_with_towel":3.41,"name_triceps_assisted_triceps_dip_kneeling":2.45,"name_triceps_bench_dip_knees_bent":1.88,"name_triceps_bench_dip_on_floor":1.64,"name_triceps_body_up":0.92,"name_upper_back_dumbbell_side_plank_with_rear_fly":2.65,"name_wu_air_squats":1.56,"name_wu_arm_circles":1.22,"name_wu_high_knees":1.04,"name_wu_jumping_jacks":1.34,"name_wu_leg_swings":1.15,"name_wu_side_bends":1.71,"paused":0.82,"phase_hold":0.75,"phase_lift":1.11,"phase_lower":1.34,"plus_15":1.94,"ready":0.91,"rem_2":0.87,"rem_3":0.98,"rem_half":1.18,"rem_last":1.83,"reps_1":1.03,"reps_10":1.07,"reps_11":1.26,"reps_12":1.15,"reps_13":1.28,"reps_14":1.32,"reps_15":1.29,"reps_16":1.33,"reps_17":1.44,"reps_18":1.3,"reps_19":1.43,"reps_2":0.92,"reps_20":1.12,"reps_21":1.55,"reps_22":1.47,"reps_23":1.37,"reps_24":1.37,"reps_25":1.5,"reps_26":1.46,"reps_27":1.68,"reps_28":1.38,"reps_29":1.48,"reps_3":1.03,"reps_30":1.08,"reps_4":1.02,"reps_5":1.06,"reps_6":1.05,"reps_7":1.11,"reps_8":1.0,"reps_9":1.16,"rest_10":2.37,"rest_15":1.32,"rest_30":1.55,"rest_day":2.97,"rest_tip_1":2.23,"rest_tip_2":3.49,"rest_tip_3":1.56,"rest_tip_4":2.32,"rest_tip_5":1.62,"resumed":1.11,"same_next":2.8,"secs_10":1.17,"secs_100":1.51,"secs_105":2.25,"secs_110":2.23,"secs_115":2.38,"secs_120":2.28,"secs_125":2.52,"secs_130":2.33,"secs_135":2.63,"secs_140":2.4,"secs_145":2.59,"secs_15":1.32,"secs_150":2.35,"secs_155":2.58,"secs_160":2.35,"secs_165":2.65,"secs_170":2.39,"secs_175":2.71,"secs_180":2.2,"secs_20":1.24,"secs_25":1.46,"secs_30":1.23,"secs_35":1.51,"secs_40":1.21,"secs_45":1.56,"secs_50":1.22,"secs_55":1.49,"secs_60":1.22,"secs_65":1.56,"secs_70":1.29,"secs_75":1.63,"secs_80":1.22,"secs_85":1.51,"secs_90":1.24,"secs_95":1.55,"set_1":0.87,"set_10":0.97,"set_2":0.94,"set_3":0.99,"set_4":0.96,"set_5":1.03,"set_6":0.93,"set_7":1.03,"set_8":0.92,"set_9":0.99,"set_done_1":1.65,"set_done_2":1.75,"set_done_3":1.85,"set_final":1.11,"sets_1":1.04,"sets_10":1.08,"sets_2":0.95,"sets_3":1.03,"sets_4":1.01,"sets_5":1.03,"sets_6":0.97,"sets_7":1.13,"sets_8":0.94,"sets_9":1.12,"skip":1.17,"slower":1.34,"sound_on":0.98,"start":1.35,"switch_sides":1.11,"up_next":0.98,"voice_off":1.69,"voice_on":1.5,"warmup_done":3.27,"warmup_q":3.45,"welcome":1.92,"workout_done":2.75};
         // Generated at build time: clip id -> the words, shown as captions.
-        const COACH_TEXT = {"count_1":"One.","count_2":"Two.","count_3":"Three.","count_4":"Four.","count_5":"Five.","count_6":"Six.","count_7":"Seven.","count_8":"Eight.","count_9":"Nine.","count_10":"Ten.","count_11":"Eleven.","count_12":"Twelve.","count_13":"Thirteen.","count_14":"Fourteen.","count_15":"Fifteen.","count_16":"Sixteen.","count_17":"Seventeen.","count_18":"Eighteen.","count_19":"Nineteen.","count_20":"Twenty.","count_21":"Twenty-one.","count_22":"Twenty-two.","count_23":"Twenty-three.","count_24":"Twenty-four.","count_25":"Twenty-five.","count_26":"Twenty-six.","count_27":"Twenty-seven.","count_28":"Twenty-eight.","count_29":"Twenty-nine.","count_30":"Thirty.","reps_1":"One rep.","reps_2":"Two reps.","reps_3":"Three reps.","reps_4":"Four reps.","reps_5":"Five reps.","reps_6":"Six reps.","reps_7":"Seven reps.","reps_8":"Eight reps.","reps_9":"Nine reps.","reps_10":"Ten reps.","reps_11":"Eleven reps.","reps_12":"Twelve reps.","reps_13":"Thirteen reps.","reps_14":"Fourteen reps.","reps_15":"Fifteen reps.","reps_16":"Sixteen reps.","reps_17":"Seventeen reps.","reps_18":"Eighteen reps.","reps_19":"Nineteen reps.","reps_20":"Twenty reps.","reps_21":"Twenty-one reps.","reps_22":"Twenty-two reps.","reps_23":"Twenty-three reps.","reps_24":"Twenty-four reps.","reps_25":"Twenty-five reps.","reps_26":"Twenty-six reps.","reps_27":"Twenty-seven reps.","reps_28":"Twenty-eight reps.","reps_29":"Twenty-nine reps.","reps_30":"Thirty reps.","set_1":"Set one.","sets_1":"One set.","set_2":"Set two.","sets_2":"Two sets.","set_3":"Set three.","sets_3":"Three sets.","set_4":"Set four.","sets_4":"Four sets.","set_5":"Set five.","sets_5":"Five sets.","set_6":"Set six.","sets_6":"Six sets.","set_7":"Set seven.","sets_7":"Seven sets.","set_8":"Set eight.","sets_8":"Eight sets.","set_9":"Set nine.","sets_9":"Nine sets.","set_10":"Set ten.","sets_10":"Ten sets.","set_final":"Final set.","phase_lower":"Lower, slowly.","phase_hold":"Hold.","phase_lift":"And drive up.","rem_half":"Halfway there.","rem_3":"Three more.","rem_2":"Two more.","rem_last":"Last one. Make it count.","enc_1":"Good. Nice and smooth.","enc_2":"That's it. Stay with the tempo.","enc_3":"Strong. Keep going.","enc_4":"Great control.","enc_5":"Own the slow part.","enc_6":"Lovely. Same again.","enc_7":"You've got this.","enc_8":"Steady. Don't rush it.","breath_1":"Breathe in on the way down.","breath_2":"Breathe out as you push.","breath_3":"Keep breathing, nice and steady.","ready":"Get ready.","go":"Go!","up_next":"Up next.","same_next":"Same exercise. Next set coming up.","set_done_1":"Set done. Rest up.","set_done_2":"Good set. Take a breather.","set_done_3":"Nice work. Rest now.","rest_tip_1":"Shake out your arms and legs.","rest_tip_2":"Slow breath in through the nose, and out through the mouth.","rest_tip_3":"Have a sip of water.","rest_tip_4":"Roll your shoulders, and relax.","rest_tip_5":"Let your heart rate settle.","rest_30":"Thirty seconds left.","rest_15":"Fifteen seconds.","rest_10":"Ten seconds. Get into position.","hr_down":"Heart rate's coming down nicely.","hr_high":"Heart rate is still high. Take the full rest.","hr_connected":"Heart rate monitor connected.","start":"Let's get started.","exercise_done":"Exercise complete.","workout_done":"Workout complete. Brilliant work today.","paused":"Paused.","resumed":"And we're back.","faster":"Picking up the pace.","slower":"Slowing it down.","plus_15":"Fifteen seconds added.","minus_15":"Fifteen seconds off.","skip":"Skipping ahead.","welcome":"Welcome to DumbbellFit.","voice_on":"Voice control on.","voice_off":"Voice control off.","rest_day":"Rest day today. Let your tendons recover.","cue_lower":"Lower.","cue_raise":"Raise.","last_one":"Last one.","sound_on":"Sound on.","form_squat_1":"Chest tall, weight in your heels.","form_squat_2":"Knees track over your toes.","form_squat_3":"Sit back between your hips.","form_squat_4":"Brace your core before you go down.","form_static_1":"Stay still and hold the position.","form_static_2":"Thighs parallel, knees pushing out.","form_static_3":"Breathe. Don't hold your breath.","form_static_4":"Push the floor away.","form_lunge_1":"Front knee stays over your ankle.","form_lunge_2":"Drop the back knee straight down.","form_lunge_3":"Push through your front heel.","form_lunge_4":"Keep your hips square.","form_hinge_1":"Push your hips back, not down.","form_hinge_2":"Flat back, long spine.","form_hinge_3":"Keep the dumbbells close to your legs.","form_hinge_4":"Feel the stretch in your hamstrings.","form_bridge_1":"Drive through your heels.","form_bridge_2":"Squeeze your glutes at the top.","form_bridge_3":"Ribs down. Don't arch your back.","form_bridge_4":"Knees stay in line with your hips.","form_calf_1":"Rise all the way up onto your toes.","form_calf_2":"Lower your heels slowly, below the step.","form_calf_3":"Keep your knees soft.","form_calf_4":"Balance through the big toe.","form_press_1":"Elbows at about forty-five degrees.","form_press_2":"Shoulder blades pinned back.","form_press_3":"Press up, and slightly in.","form_press_4":"Control the weight on the way down.","form_overhead_1":"Squeeze your glutes. Don't lean back.","form_overhead_2":"Press straight up, biceps by your ears.","form_overhead_3":"Ribs down, core tight.","form_overhead_4":"Lower to shoulder height with control.","form_row_1":"Pull your elbows past your ribs.","form_row_2":"Squeeze your shoulder blades together.","form_row_3":"Flat back, neck long.","form_row_4":"Don't shrug. Keep your shoulders down.","form_curl_1":"Elbows pinned to your sides.","form_curl_2":"No swinging. Just your arms.","form_curl_3":"Squeeze at the top.","form_curl_4":"Fight the weight on the way down.","form_raise_1":"Thumbs up, slightly forward.","form_raise_2":"Raise to shoulder height, no higher.","form_raise_3":"Shoulders down, away from your ears.","form_raise_4":"Light weight, perfect form.","form_core_1":"Lean back, chest proud.","form_core_2":"Rotate from your ribs, not your arms.","form_core_3":"Breathe out as you twist.","form_core_4":"Keep your core tight the whole time.","form_bike_1":"Keep your cadence smooth.","form_bike_2":"Relax your shoulders and your grip.","form_bike_3":"Push and pull through the whole pedal stroke.","form_bike_4":"Steady breathing. Stay in control."};
+        const COACH_TEXT = {"count_1":"One.","count_2":"Two.","count_3":"Three.","count_4":"Four.","count_5":"Five.","count_6":"Six.","count_7":"Seven.","count_8":"Eight.","count_9":"Nine.","count_10":"Ten.","count_11":"Eleven.","count_12":"Twelve.","count_13":"Thirteen.","count_14":"Fourteen.","count_15":"Fifteen.","count_16":"Sixteen.","count_17":"Seventeen.","count_18":"Eighteen.","count_19":"Nineteen.","count_20":"Twenty.","count_21":"Twenty-one.","count_22":"Twenty-two.","count_23":"Twenty-three.","count_24":"Twenty-four.","count_25":"Twenty-five.","count_26":"Twenty-six.","count_27":"Twenty-seven.","count_28":"Twenty-eight.","count_29":"Twenty-nine.","count_30":"Thirty.","reps_1":"One rep.","reps_2":"Two reps.","reps_3":"Three reps.","reps_4":"Four reps.","reps_5":"Five reps.","reps_6":"Six reps.","reps_7":"Seven reps.","reps_8":"Eight reps.","reps_9":"Nine reps.","reps_10":"Ten reps.","reps_11":"Eleven reps.","reps_12":"Twelve reps.","reps_13":"Thirteen reps.","reps_14":"Fourteen reps.","reps_15":"Fifteen reps.","reps_16":"Sixteen reps.","reps_17":"Seventeen reps.","reps_18":"Eighteen reps.","reps_19":"Nineteen reps.","reps_20":"Twenty reps.","reps_21":"Twenty-one reps.","reps_22":"Twenty-two reps.","reps_23":"Twenty-three reps.","reps_24":"Twenty-four reps.","reps_25":"Twenty-five reps.","reps_26":"Twenty-six reps.","reps_27":"Twenty-seven reps.","reps_28":"Twenty-eight reps.","reps_29":"Twenty-nine reps.","reps_30":"Thirty reps.","set_1":"Set one.","sets_1":"One set.","set_2":"Set two.","sets_2":"Two sets.","set_3":"Set three.","sets_3":"Three sets.","set_4":"Set four.","sets_4":"Four sets.","set_5":"Set five.","sets_5":"Five sets.","set_6":"Set six.","sets_6":"Six sets.","set_7":"Set seven.","sets_7":"Seven sets.","set_8":"Set eight.","sets_8":"Eight sets.","set_9":"Set nine.","sets_9":"Nine sets.","set_10":"Set ten.","sets_10":"Ten sets.","set_final":"Final set.","phase_lower":"Lower, slowly.","phase_hold":"Hold.","phase_lift":"And drive up.","rem_half":"Halfway there.","rem_3":"Three more.","rem_2":"Two more.","rem_last":"Last one. Make it count.","enc_1":"Good. Nice and smooth.","enc_2":"That's it. Stay with the tempo.","enc_3":"Strong. Keep going.","enc_4":"Great control.","enc_5":"Own the slow part.","enc_6":"Lovely. Same again.","enc_7":"You've got this.","enc_8":"Steady. Don't rush it.","breath_1":"Breathe in on the way down.","breath_2":"Breathe out as you push.","breath_3":"Keep breathing, nice and steady.","ready":"Get ready.","go":"Go!","up_next":"Up next.","same_next":"Same exercise. Next set coming up.","set_done_1":"Set done. Rest up.","set_done_2":"Good set. Take a breather.","set_done_3":"Nice work. Rest now.","rest_tip_1":"Shake out your arms and legs.","rest_tip_2":"Slow breath in through the nose, and out through the mouth.","rest_tip_3":"Have a sip of water.","rest_tip_4":"Roll your shoulders, and relax.","rest_tip_5":"Let your heart rate settle.","rest_30":"Thirty seconds left.","rest_15":"Fifteen seconds.","rest_10":"Ten seconds. Get into position.","hr_down":"Heart rate's coming down nicely.","hr_high":"Heart rate is still high. Take the full rest.","hr_connected":"Heart rate monitor connected.","start":"Let's get started.","exercise_done":"Exercise complete.","workout_done":"Workout complete. Brilliant work today.","paused":"Paused.","resumed":"And we're back.","faster":"Picking up the pace.","slower":"Slowing it down.","plus_15":"Fifteen seconds added.","minus_15":"Fifteen seconds off.","skip":"Skipping ahead.","welcome":"Welcome to DumbbellFit.","voice_on":"Voice control on.","voice_off":"Voice control off.","rest_day":"Rest day today. Let your tendons recover.","cue_lower":"Lower.","cue_raise":"Raise.","last_one":"Last one.","sound_on":"Sound on.","cue_pull":"Pull.","breathe_in":"Breathe in.","breathe_out":"And breathe out.","switch_sides":"Switch sides.","hold_10":"Ten seconds left. Hold it.","warmup_q":"Do you want to warm up first? It only takes five minutes.","warmup_done":"Warm-up done. You're ready. Let's start the workout.","cooldown_q":"Want to cool down with a short stretch?","cooldown_done":"Cool-down complete. Well done today.","secs_10":"Ten seconds.","secs_15":"Fifteen seconds.","secs_20":"Twenty seconds.","secs_25":"Twenty-five seconds.","secs_30":"Thirty seconds.","secs_35":"Thirty-five seconds.","secs_40":"Forty seconds.","secs_45":"Forty-five seconds.","secs_50":"Fifty seconds.","secs_55":"Fifty-five seconds.","secs_60":"Sixty seconds.","secs_65":"Sixty-five seconds.","secs_70":"Seventy seconds.","secs_75":"Seventy-five seconds.","secs_80":"Eighty seconds.","secs_85":"Eighty-five seconds.","secs_90":"Ninety seconds.","secs_95":"Ninety-five seconds.","secs_100":"One hundred seconds.","secs_105":"One hundred and five seconds.","secs_110":"One hundred and ten seconds.","secs_115":"One hundred and fifteen seconds.","secs_120":"One hundred and twenty seconds.","secs_125":"One hundred and twenty-five seconds.","secs_130":"One hundred and thirty seconds.","secs_135":"One hundred and thirty-five seconds.","secs_140":"One hundred and forty seconds.","secs_145":"One hundred and forty-five seconds.","secs_150":"One hundred and fifty seconds.","secs_155":"One hundred and fifty-five seconds.","secs_160":"One hundred and sixty seconds.","secs_165":"One hundred and sixty-five seconds.","secs_170":"One hundred and seventy seconds.","secs_175":"One hundred and seventy-five seconds.","secs_180":"One hundred and eighty seconds.","form_squat_1":"Chest tall, weight in your heels.","form_squat_2":"Knees track over your toes.","form_squat_3":"Sit back between your hips.","form_squat_4":"Brace your core before you go down.","form_static_1":"Stay still and hold the position.","form_static_2":"Thighs parallel, knees pushing out.","form_static_3":"Breathe. Don't hold your breath.","form_static_4":"Push the floor away.","form_lunge_1":"Front knee stays over your ankle.","form_lunge_2":"Drop the back knee straight down.","form_lunge_3":"Push through your front heel.","form_lunge_4":"Keep your hips square.","form_hinge_1":"Push your hips back, not down.","form_hinge_2":"Flat back, long spine.","form_hinge_3":"Keep the dumbbells close to your legs.","form_hinge_4":"Feel the stretch in your hamstrings.","form_bridge_1":"Drive through your heels.","form_bridge_2":"Squeeze your glutes at the top.","form_bridge_3":"Ribs down. Don't arch your back.","form_bridge_4":"Knees stay in line with your hips.","form_calf_1":"Rise all the way up onto your toes.","form_calf_2":"Lower your heels slowly, below the step.","form_calf_3":"Keep your knees soft.","form_calf_4":"Balance through the big toe.","form_press_1":"Elbows at about forty-five degrees.","form_press_2":"Shoulder blades pinned back.","form_press_3":"Press up, and slightly in.","form_press_4":"Control the weight on the way down.","form_overhead_1":"Squeeze your glutes. Don't lean back.","form_overhead_2":"Press straight up, biceps by your ears.","form_overhead_3":"Ribs down, core tight.","form_overhead_4":"Lower to shoulder height with control.","form_row_1":"Pull your elbows past your ribs.","form_row_2":"Squeeze your shoulder blades together.","form_row_3":"Flat back, neck long.","form_row_4":"Don't shrug. Keep your shoulders down.","form_curl_1":"Elbows pinned to your sides.","form_curl_2":"No swinging. Just your arms.","form_curl_3":"Squeeze at the top.","form_curl_4":"Fight the weight on the way down.","form_raise_1":"Thumbs up, slightly forward.","form_raise_2":"Raise to shoulder height, no higher.","form_raise_3":"Shoulders down, away from your ears.","form_raise_4":"Light weight, perfect form.","form_core_1":"Lean back, chest proud.","form_core_2":"Rotate from your ribs, not your arms.","form_core_3":"Breathe out as you twist.","form_core_4":"Keep your core tight the whole time.","form_warm_1":"Nice and easy. Just get warm.","form_warm_2":"Stay light on your feet.","form_warm_3":"Breathe steadily, find a rhythm.","form_warm_4":"Loosen up. Let your joints move freely.","form_stretch_1":"Ease into the stretch. No bouncing.","form_stretch_2":"Relax your shoulders.","form_stretch_3":"Breathe out and sink a little deeper.","form_stretch_4":"A gentle pull, never pain.","form_breath_1":"In through the nose.","form_breath_2":"Let your belly rise.","form_breath_3":"Slow, long breath out.","form_breath_4":"Let your heart rate settle.","form_pushup_1":"Body in one straight line.","form_pushup_2":"Hands under your shoulders.","form_pushup_3":"Elbows back at forty-five degrees.","form_pushup_4":"Squeeze your glutes. Don't let your hips sag.","form_plank_1":"Squeeze your glutes and brace your stomach.","form_plank_2":"Straight line from head to heels.","form_plank_3":"Don't hold your breath.","form_plank_4":"Push the floor away.","form_pull_1":"Shoulders down, away from your ears.","form_pull_2":"Pull your elbows down to your ribs.","form_pull_3":"Chest up to the bar.","form_pull_4":"Lower all the way, slow and controlled.","form_hang_1":"Grip tight, shoulders active.","form_hang_2":"Relax your legs. No swinging.","form_hang_3":"Breathe. Stay calm.","form_hang_4":"Keep your core gently braced.","form_bike_1":"Keep your cadence smooth.","form_bike_2":"Relax your shoulders and your grip.","form_bike_3":"Push and pull through the whole pedal stroke.","form_bike_4":"Steady breathing. Stay in control."};
 
         // Priorities: a new clip only interrupts one of the same or lower priority.
         const P_FILLER = 1;    // form tips, encouragement
@@ -13122,6 +13520,14 @@
         function exercisePattern(ex) {
             const gif = (ex && ex.gifUrl) || '';
             if (gif.includes('peloton')) return 'bike';
+            if (gif.includes('stretch_')) return 'stretch';
+            if (gif.includes('breathing')) return 'breath';
+            if (/jumping_jack|arm_circles|leg_swing|high_knees|side_bend|mountain_climber/.test(gif)) return 'warm';
+            if (gif.includes('push_up')) return 'pushup';
+            if (/plank|wall_sit|superman/.test(gif)) return 'plank';
+            if (/dead_hang|flexed_hang/.test(gif)) return 'hang';
+            if (/pull_up|scap_pull/.test(gif)) return 'pull';
+            if (gif.includes('hanging_knee_raise')) return 'core';
             if (gif.includes('iso_squat')) return 'static';
             if (gif.includes('goblet_squat')) return 'squat';
             if (gif.includes('lunge')) return 'lunge';
@@ -13137,10 +13543,62 @@
             return 'squat';
         }
 
-        // Bike intervals and static holds have no lower / hold / lift phases.
-        function exerciseHasPhases(ex) {
+        // How an exercise is done:
+        //   tempo  - lower / hold / raise (or pull / hold / lower when ex.upFirst)
+        //   breath - breathe in / hold / breathe out
+        //   flow   - a steady rhythm, reps counted (warm-up moves)
+        //   hold   - a timed hold in seconds (planks, stretches, hangs)
+        //   bike, static - older data: Peloton intervals and isometric holds counted in reps
+        function exerciseStyle(ex) {
+            if (ex && ex.style) return ex.style;
             const p = exercisePattern(ex);
-            return p !== 'bike' && p !== 'static';
+            return p === 'bike' ? 'bike' : (p === 'static' ? 'static' : 'tempo');
+        }
+
+        function isHoldExercise(ex) {
+            return exerciseStyle(ex) === 'hold';
+        }
+
+        // No dumbbells: the weight control is hidden.
+        function isBodyweightExercise(ex) {
+            return !!ex && !!ex.category && /Bodyweight|Pull-up Bar|Warm-up/.test(ex.category);
+        }
+
+        // Only tempo and breathing exercises have the three-part dial.
+        function exerciseHasPhases(ex) {
+            const s = exerciseStyle(ex);
+            return s === 'tempo' || s === 'breath';
+        }
+
+        // The two moving parts of a rep, in order, with the word the coach says for each.
+        function phaseWords(ex) {
+            if (exerciseStyle(ex) === 'breath') {
+                return { first: { key: 'lower', label: 'Breathe in', cue: 'breathe_in', how: 'in through the nose' },
+                         second: { key: 'lift', label: 'Breathe out', cue: 'breathe_out', how: 'out, slowly' } };
+            }
+            if (ex && ex.upFirst) {
+                const up = ex.upWord === 'pull' ? { label: 'Pull', cue: 'cue_pull' } : { label: 'Raise', cue: 'cue_raise' };
+                return { first: { key: 'lift', label: up.label, cue: up.cue, how: 'up' },
+                         second: { key: 'lower', label: 'Lower', cue: 'cue_lower', how: 'down, slow' } };
+            }
+            return { first: { key: 'lower', label: 'Lower', cue: 'cue_lower', how: 'down, slow' },
+                     second: { key: 'lift', label: 'Raise', cue: 'cue_raise', how: 'up' } };
+        }
+
+        // Seconds per rep for an exercise: its own pace for warm-up moves, holds (1 s ticks),
+        // breathing and the bodyweight and bar exercises; otherwise the workout's tempo.
+        function exerciseTempo(ex, baseTempo) {
+            const s = exerciseStyle(ex);
+            if (s === 'hold') return 1;
+            if (ex && (ex.style || isBodyweightExercise(ex))) return ex.repPacing || baseTempo || 5.0;
+            return baseTempo || 5.0;
+        }
+
+        // Reps (or hold time) and tempo for the exercise now on screen.
+        function loadExerciseSettings() {
+            const ex = currentExerciseData();
+            activeWorkout.targetReps = getRepTarget(ex.id);
+            activeWorkout.repSpeedSeconds = exerciseTempo(ex, activeWorkout.baseTempo);
         }
 
         function exerciseNameItems(ex) {
@@ -13225,10 +13683,15 @@
                 }
                 if (progress >= 60 && !cue.raise) {
                     cue.raise = true;
-                    Coach.say(['cue_raise', raiseFollowUp(n, activeWorkout.targetReps)], P_TIMING);
+                    Coach.say([phaseWords(ex).second.cue, raiseFollowUp(n, activeWorkout.targetReps)], P_TIMING);
                 }
                 return;
             }
+
+            // Timed holds are coached once a second (coachHoldSecond); fast warm-up moves just get counts.
+            const style = exerciseStyle(ex);
+            if (style === 'hold') return;
+            if (style === 'flow' && activeWorkout.repSpeedSeconds < 3) return;
 
             // Bike intervals and static holds: no phases, so the coach gives tips instead.
             if (!cue.line && progress >= 15 && !Coach.isAudible()) {
@@ -13241,8 +13704,31 @@
         // What is said as a rep starts: the count of the rep just finished, then "Lower".
         function repStartItems(firstItem) {
             const ex = currentExerciseData();
-            if (exerciseHasPhases(ex) && repCuesFit()) return [firstItem, 'cue_lower'];
+            if (exerciseHasPhases(ex) && repCuesFit()) return [firstItem, phaseWords(ex).first.cue];
+            if (isHoldExercise(ex) && firstItem === 'go') return ['go', 'phase_hold'];
             return [firstItem];
+        }
+
+        // Timed hold: called each second with seconds done and seconds left.
+        function coachHoldSecond(ex, done, left) {
+            const target = activeWorkout.targetReps;
+            const half = Math.round(target / 2);
+            if (ex.bilateral && done === half) { Coach.say('switch_sides', P_TIMING); return; }
+            if (left >= 1 && left <= 3) { Coach.say(`count_${left}`, P_TIMING); return; }
+            if (left === 10 && target >= 20) { Coach.say('hold_10', P_INFO); return; }
+            const nearSwitch = ex.bilateral && Math.abs(done - half) <= 3;
+            if (done % 8 === 4 && left > 6 && !nearSwitch && !Coach.isAudible()) {
+                const k = Math.floor(done / 8);
+                Coach.say(k % 3 === 2 ? 'breath_3' : `form_${exercisePattern(ex)}_${(k % 4) + 1}`, P_FILLER);
+            }
+        }
+
+        function holdDetail(ex) {
+            if (ex && ex.bilateral) {
+                const half = Math.round(activeWorkout.targetReps / 2);
+                return activeWorkout.currentRep < half ? 'First side. Breathe slowly' : 'Second side. Breathe slowly';
+            }
+            return 'Stay still and breathe slowly';
         }
 
         function coachSayCount(n) {
@@ -13253,7 +13739,7 @@
         // Clips needed for the current exercise: loaded ahead so cues are on time.
         function preloadExerciseCoaching(ex) {
             const pattern = exercisePattern(ex);
-            const ids = ['cue_lower', 'phase_hold', 'cue_raise', 'last_one', 'rem_half', 'rem_3', 'rem_2', 'rem_last', 'go', 'ready'];
+            const ids = ['cue_lower', 'phase_hold', 'cue_raise', 'cue_pull', 'breathe_in', 'breathe_out', 'switch_sides', 'hold_10', 'last_one', 'rem_half', 'rem_3', 'rem_2', 'rem_last', 'go', 'ready'];
             for (let i = 1; i <= Math.min(REPS_MAX, activeWorkout.targetReps || REPS_DEFAULT); i++) ids.push(`count_${i}`);
             for (let i = 1; i <= 4; i++) ids.push(`form_${pattern}_${i}`);
             for (let i = 1; i <= 8; i++) ids.push(`enc_${i}`);
@@ -13700,17 +14186,22 @@
         // noPhases: true, or the exercise itself (bike = "Ride", static hold = "Hold").
         function getCadencePhase(progress, speedSeconds, noPhases) {
             const speed = speedSeconds || 5.0;
+            let words = phaseWords(null);
             if (noPhases && typeof noPhases === 'object') {
-                const pattern = exercisePattern(noPhases);
-                if (pattern === 'static') return { key: 'hold', label: 'Hold', detail: 'Stay still, keep breathing' };
-                if (pattern !== 'bike') noPhases = false;
+                const ex = noPhases;
+                const style = exerciseStyle(ex);
+                if (style === 'static') return { key: 'hold', label: 'Hold', detail: 'Stay still, keep breathing' };
+                if (style === 'hold') return { key: 'hold', label: exercisePattern(ex) === 'stretch' ? 'Stretch' : 'Hold', detail: holdDetail(ex) };
+                if (style === 'flow') return { key: 'lower', label: 'Move', detail: `${speed.toFixed(1)} s per rep, steady rhythm` };
+                if (style === 'bike') noPhases = true;
+                else { words = phaseWords(ex); noPhases = false; }
             }
             if (noPhases) {
                 return { key: 'lower', label: 'Ride', detail: `${speed.toFixed(1)} s intervals` };
             }
-            if (progress < 40) return { key: 'lower', label: 'Lower', detail: `${(speed * 0.4).toFixed(1)} s down, slow` };
+            if (progress < 40) return { key: words.first.key, label: words.first.label, detail: `${(speed * 0.4).toFixed(1)} s ${words.first.how}` };
             if (progress < 60) return { key: 'hold', label: 'Hold', detail: `${(speed * 0.2).toFixed(1)} s pause` };
-            return { key: 'lift', label: 'Raise', detail: `${(speed * 0.4).toFixed(1)} s up` };
+            return { key: words.second.key, label: words.second.label, detail: `${(speed * 0.4).toFixed(1)} s ${words.second.how}` };
         }
 
         function currentExerciseData() {
@@ -13719,7 +14210,9 @@
         }
 
         function adjustRepCadence(deltaSeconds) {
-            activeWorkout.repSpeedSeconds = Math.max(2.0, Math.min(10.0, activeWorkout.repSpeedSeconds + deltaSeconds));
+            if (isHoldExercise(currentExerciseData())) return;   // holds run on seconds
+            activeWorkout.repSpeedSeconds = Math.max(exerciseStyle(currentExerciseData()) === 'flow' ? 1.0 : 2.0, Math.min(12.0, activeWorkout.repSpeedSeconds + deltaSeconds));
+            if (exerciseTempo(currentExerciseData(), -1) === -1) activeWorkout.baseTempo = activeWorkout.repSpeedSeconds;
             const speedFormatted = activeWorkout.repSpeedSeconds.toFixed(1);
 
             if (deltaSeconds < 0) announce(`Faster: ${speedFormatted} s per rep`, 'faster');
@@ -13771,6 +14264,18 @@
             activeWorkout.currentRep++;
             activeWorkout.cue = null;
 
+            const ex = currentExerciseData();
+            if (isHoldExercise(ex)) {
+                const left = activeWorkout.targetReps - activeWorkout.currentRep;
+                if (left <= 0) { completeSetAndTriggerBreak(null); return; }
+                coachHoldSecond(ex, activeWorkout.currentRep, left);
+                const el = $('active-current-rep-display');
+                if (el) el.textContent = left;
+                const detail = $('cadence-phase-detail');
+                if (detail) detail.textContent = holdDetail(ex);
+                return;
+            }
+
             if (activeWorkout.currentRep >= activeWorkout.targetReps) {
                 completeSetAndTriggerBreak(activeWorkout.currentRep);
             } else {
@@ -13781,6 +14286,15 @@
             }
         }
 
+        // How full the dial is: one rep, or the whole hold.
+        function ringFraction(ex) {
+            if (isHoldExercise(ex)) {
+                const t = Math.max(1, activeWorkout.targetReps);
+                return Math.min(1, (activeWorkout.currentRep + activeWorkout.repCycleProgress / 100) / t);
+            }
+            return activeWorkout.repCycleProgress / 100;
+        }
+
         function updateCadenceUI() {
             if (!hasActiveWorkout() || activeWorkout.isGetReady) return;
             const ex = currentExerciseData();
@@ -13788,8 +14302,7 @@
 
             const ring = $('cadence-progress-ring');
             if (ring) {
-                const offset = RING_CIRCUMFERENCE - (activeWorkout.repCycleProgress / 100) * RING_CIRCUMFERENCE;
-                ring.style.strokeDashoffset = offset;
+                ring.style.strokeDashoffset = RING_CIRCUMFERENCE - ringFraction(ex) * RING_CIRCUMFERENCE;
             }
 
             if (phase.key === lastCadencePhaseKey) return;
@@ -13823,14 +14336,14 @@
 
             // No rest after the very last set: the workout is done.
             if (isLastSetOfWorkout()) {
-                Coach.say([countItem, 'workout_done'], P_TIMING);
-                finishWorkout();
+                finishWorkout(countItem);
                 return;
             }
 
+            const restSeconds = activeWorkout.restOverride || rememberedDefaultRest;
             activeWorkout.isRestMode = true;
-            activeWorkout.restRemainingSeconds = rememberedDefaultRest;
-            activeWorkout.restInitialSeconds = rememberedDefaultRest;
+            activeWorkout.restRemainingSeconds = restSeconds;
+            activeWorkout.restInitialSeconds = restSeconds;
             planRestCoaching();
 
             const sameExercise = activeWorkout.currentSet < activeWorkout.sets;
@@ -13922,7 +14435,8 @@
                 activeWorkout.restRemainingSeconds = Math.max(5, activeWorkout.restRemainingSeconds + step);
                 activeWorkout.restInitialSeconds = Math.max(15, activeWorkout.restInitialSeconds + step);
 
-                updateRememberedDefaultRest(activeWorkout.restInitialSeconds);
+                // Warm-up and cool-down use their own short rest; it is not remembered.
+                if (!activeWorkout.restOverride) updateRememberedDefaultRest(activeWorkout.restInitialSeconds);
                 updateRestUI();
             } else {
                 const newDefault = Math.max(15, rememberedDefaultRest + step);
@@ -13959,16 +14473,33 @@
             onRestCountdownComplete();
         }
 
-        function finishWorkout() {
+        // countItem: the count of the last rep, said before the closing line.
+        function finishWorkout(countItem) {
             stopCadenceMetronome();
             clearWorkoutTimers();
             recordWorkoutSession(true);
+            const role = activeWorkout.role || 'main';
+            const next = activeWorkout.thenStart;
             const summary = `${activeWorkout.programTitle} finished in ${formatTime(activeWorkout.totalElapsedSeconds)}. Saved to your history.`;
             activeWorkout.exercises = [];
             activeWorkout.isPaused = false;
             activeWorkout.isRestMode = false;
             activeWorkout.isGetReady = false;
-            showModal('Workout complete', summary);
+
+            // Warm-up done: go straight into the workout it was for.
+            if (next) {
+                Coach.say([countItem], P_TIMING);
+                beginWorkout(Object.assign({}, next, { introLead: 'warmup_done' }));
+                return;
+            }
+            if (role === 'main' && warmCoolPromptsOn) {
+                Coach.say([countItem, 'workout_done', 'cooldown_q'], P_TIMING);
+                switchTab('profile');
+                offerCooldown('Workout complete', `${summary} Cool down with a 6-minute stretch?`);
+                return;
+            }
+            Coach.say([countItem, role === 'cooldown' ? 'cooldown_done' : 'workout_done'], P_TIMING);
+            showModal(role === 'cooldown' ? 'Cool-down complete' : (role === 'warmup' ? 'Warm-up complete' : 'Workout complete'), summary);
             switchTab('profile');
         }
 
@@ -13981,7 +14512,7 @@
             } else if (activeWorkout.currentExIndex < activeWorkout.exercises.length - 1) {
                 activeWorkout.currentExIndex++;
                 activeWorkout.currentSet = 1;
-                activeWorkout.targetReps = getRepTarget(activeWorkout.exercises[activeWorkout.currentExIndex]);
+                loadExerciseSettings();
             } else {
                 finishWorkout();
                 return;
@@ -14139,9 +14670,13 @@
                 programTitle: options.programTitle,
                 exercises: [...options.exercises],
                 currentExIndex: 0,
-                sets: rememberedDefaultSets,
+                sets: options.sets || rememberedDefaultSets,
                 currentSet: 1,
                 targetReps: getRepTarget(options.exercises[0]),
+                role: options.role || 'main',
+                thenStart: options.thenStart || null,
+                restOverride: options.restSeconds || 0,
+                baseTempo: options.repSpeedSeconds || 5.0,
                 currentRep: 0,
                 weight: previousWeight,
 
@@ -14168,6 +14703,7 @@
                 activeWorkout.scheduleMeta = options.scheduleMeta;
             }
 
+            loadExerciseSettings();
             resetHeartRateSession();
             startTotalTimer();
             Coach.unlock();
@@ -14175,7 +14711,7 @@
             const firstEx = currentExerciseData();
             preloadExerciseCoaching(firstEx);
             switchTab('active');
-            startGetReady(['ready'].concat(exerciseNameItems(firstEx), exerciseHowtoItems(firstEx)));
+            startGetReady([options.introLead || 'ready'].concat(exerciseNameItems(firstEx), exerciseHowtoItems(firstEx)));
         }
 
         function startScheduledWorkout(tierId, weekNum, dayNum) {
@@ -14190,7 +14726,8 @@
             }
 
             const tag = dayData.tag || '';
-            beginWorkout({
+            startWithWarmupPrompt({
+                role: 'main',
                 programId: `sched_${tierId}_w${weekNum}_d${dayNum}`,
                 programTitle: `${prog.title}: W${weekNum} D${dayNum} - ${dayData.title}`,
                 exercises: dayData.exercises,
@@ -14470,13 +15007,19 @@
             { id: 'All', label: 'All' },
             { id: 'Tendon', label: 'Tendon health' },
             { id: 'Strength', label: 'Strength' },
-            { id: 'Peloton', label: 'Peloton bike' }
+            { id: 'Peloton', label: 'Peloton bike' },
+            { id: 'Bodyweight', label: 'No dumbbells' },
+            { id: 'Bar', label: 'Pull-up bar' },
+            { id: 'WarmCool', label: 'Warm-up & cool-down' }
         ];
 
         function routineMatchesFilter(p, filterId) {
             if (filterId === 'Tendon') return p.category === 'Tendon';
             if (filterId === 'Strength') return p.category === 'Strength' || p.category === 'General';
             if (filterId === 'Peloton') return p.category === 'Peloton';
+            if (filterId === 'Bodyweight') return p.category === 'Bodyweight';
+            if (filterId === 'Bar') return p.category === 'Bar';
+            if (filterId === 'WarmCool') return p.category === 'Warmup' || p.category === 'Cooldown';
             return true;
         }
 
@@ -14539,6 +15082,7 @@
             beginWorkout({
                 programId: 'single_' + ex.id,
                 programTitle: ex.name,
+                role: 'single',
                 exercises: [ex.id],
                 targetReps: 10,
                 repSpeedSeconds: ex.repPacing || 5.0,
@@ -14550,16 +15094,103 @@
             startSingleExerciseWorkout(exId);
         }
 
-        function startProgram(progId) {
-            const prog = workoutPrograms.find(p => p.id === progId);
-            if (!prog) return;
+        function programRole(prog) {
+            if (!prog) return 'main';
+            if (prog.category === 'Warmup') return 'warmup';
+            if (prog.category === 'Cooldown') return 'cooldown';
+            return 'main';
+        }
 
-            beginWorkout({
+        function programOptions(prog) {
+            return {
                 programId: prog.id,
                 programTitle: prog.title,
                 exercises: prog.exercises,
-                targetReps: 10,
                 repSpeedSeconds: 5.0,
+                sets: prog.sets,
+                restSeconds: prog.rest,
+                role: programRole(prog)
+            };
+        }
+
+        function startProgram(progId) {
+            const prog = workoutPrograms.find(p => p.id === progId);
+            if (!prog) return;
+            startWithWarmupPrompt(programOptions(prog));
+        }
+
+        // ==========================================
+        // WARM-UP BEFORE, COOL-DOWN AFTER
+        // Before a routine or scheduled session the app asks about a warm-up; after it, a cool-down.
+        // ==========================================
+        const STORAGE_KEY_WARMCOOL = 'dumbbell_warm_cool_prompts';
+        const WARMUP_PROGRAM_ID = 'prog_warmup_full';
+        const COOLDOWN_PROGRAM_ID = 'prog_cooldown_stretch';
+        let warmCoolPromptsOn = true;
+        try { warmCoolPromptsOn = localStorage.getItem(STORAGE_KEY_WARMCOOL) !== '0'; } catch (e) {}
+        let sessionPromptActions = null;
+        let pendingMainWorkout = null;
+
+        function setWarmCoolPrompts(on) {
+            warmCoolPromptsOn = !!on;
+            try { localStorage.setItem(STORAGE_KEY_WARMCOOL, on ? '1' : '0'); } catch (e) {}
+            if (currentTab === 'profile') refreshCurrentTab();
+        }
+
+        function openSessionPrompt(title, message, primaryLabel, secondaryLabel, actions) {
+            sessionPromptActions = actions;
+            const set = (id, text) => { const el = $(id); if (el) el.textContent = text; };
+            set('session-prompt-title', title);
+            set('session-prompt-message', message);
+            set('session-prompt-primary', primaryLabel);
+            set('session-prompt-secondary', secondaryLabel);
+            const modal = $('session-prompt-modal');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeSessionPrompt() {
+            const modal = $('session-prompt-modal');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function runSessionPrompt(which) {
+            const actions = sessionPromptActions || {};
+            sessionPromptActions = null;
+            closeSessionPrompt();
+            Coach.unlock();
+            if (typeof actions[which] === 'function') actions[which]();
+        }
+
+        function startWithWarmupPrompt(options) {
+            const warmup = workoutPrograms.find(p => p.id === WARMUP_PROGRAM_ID);
+            if (!warmCoolPromptsOn || options.role !== 'main' || !warmup) {
+                beginWorkout(options);
+                return;
+            }
+            pendingMainWorkout = options;
+            Coach.unlock();
+            Coach.say('warmup_q', P_INFO);
+            openSessionPrompt('Warm up first?',
+                `${warmup.duration} of easy movement gets your muscles and tendons ready for ${options.programTitle}.`,
+                `Warm up first (${warmup.duration})`, 'Skip, start workout', {
+                    primary: () => chooseWarmup(true),
+                    secondary: () => chooseWarmup(false)
+                });
+        }
+
+        function chooseWarmup(yes) {
+            const main = pendingMainWorkout;
+            pendingMainWorkout = null;
+            if (!main) return;
+            const warmup = workoutPrograms.find(p => p.id === WARMUP_PROGRAM_ID);
+            if (yes && warmup) beginWorkout(Object.assign(programOptions(warmup), { thenStart: main }));
+            else beginWorkout(main);
+        }
+
+        function offerCooldown(title, message) {
+            openSessionPrompt(title, message, 'Start cool-down', 'Not now', {
+                primary: () => startProgram(COOLDOWN_PROGRAM_ID),
+                secondary: () => {}
             });
         }
 
@@ -14623,7 +15254,12 @@
             }
 
             const phase = getCadencePhase(activeWorkout.repCycleProgress, activeWorkout.repSpeedSeconds, exData);
-            const ringOffset = RING_CIRCUMFERENCE - (activeWorkout.repCycleProgress / 100) * RING_CIRCUMFERENCE;
+            const ringOffset = RING_CIRCUMFERENCE - ringFraction(exData) * RING_CIRCUMFERENCE;
+            const isHold = isHoldExercise(exData);
+            const words = phaseWords(exData);
+            const firstArc = words.first.key === 'lift' ? 't-lift' : 't-lower';
+            const secondArc = words.second.key === 'lift' ? 't-lift' : 't-lower';
+            const style = exerciseStyle(exData);
             const ringColor = phase.key === 'hold' ? 'var(--hold)' : (phase.key === 'lift' ? 'var(--lift)' : 'var(--accent)');
             lastCadencePhaseKey = phase.key;
 
@@ -14672,19 +15308,19 @@
                             </div>
                             <div class="grow stack-sm">
                                 <p class="phase phase-lower">Get ready</p>
-                                <p class="meta">Set ${activeWorkout.currentSet} of ${activeWorkout.sets}, <span id="getready-reps-text">${activeWorkout.targetReps} reps</span> at ${activeWorkout.repSpeedSeconds.toFixed(1)} s each. Listen for the coach.</p>
+                                <p class="meta">Set ${activeWorkout.currentSet} of ${activeWorkout.sets}, <span id="getready-reps-text">${targetText(exData.id, activeWorkout.targetReps)}</span>${isHold ? '' : ` at ${activeWorkout.repSpeedSeconds.toFixed(1)} s each`}. Listen for the coach.</p>
                             </div>
                         </div>
                         ` : `
                         <div class="tempo">
                             <div class="dial">
                                 <svg viewBox="0 0 100 100">
-                                    ${isBike ? `<circle class="track t-lower" cx="50" cy="50" r="46"/>` : arc('t-lower', 0, 0.4) + arc('t-hold', 0.4, 0.2) + arc('t-lift', 0.6, 0.4)}
+                                    ${isBike ? `<circle class="track t-lower" cx="50" cy="50" r="46"/>` : arc(firstArc, 0, 0.4) + arc('t-hold', 0.4, 0.2) + arc(secondArc, 0.6, 0.4)}
                                     <circle id="cadence-progress-ring" class="cadence-circle" cx="50" cy="50" r="46" stroke-dasharray="${C.toFixed(2)}" style="stroke-dashoffset:${ringOffset.toFixed(2)};stroke:${ringColor}"/>
                                 </svg>
                                 <div class="dial-center">
-                                    <span id="active-current-rep-display" class="num">${activeWorkout.currentRep}</span>
-                                    <span class="meta" id="active-reps-of">of ${activeWorkout.targetReps} reps</span>
+                                    <span id="active-current-rep-display" class="num">${isHold ? Math.max(0, activeWorkout.targetReps - activeWorkout.currentRep) : activeWorkout.currentRep}</span>
+                                    <span class="meta" id="active-reps-of">${isHold ? 'seconds left' : `of ${activeWorkout.targetReps} reps`}</span>
                                 </div>
                             </div>
                             <div class="grow stack-sm">
@@ -14697,20 +15333,24 @@
 
                     <div class="hud-grid">
                         <div class="hud-cell">
-                            <p class="meta">Reps</p>
-                            ${stepperHtml(`<span id="active-reps-display">${activeWorkout.targetReps}</span>`, 'adjustRepTarget(-1)', 'adjustRepTarget(1)', 'reps')}
+                            <p class="meta">${isHold ? 'Hold time' : 'Reps'}</p>
+                            ${stepperHtml(`<span id="active-reps-display">${activeWorkout.targetReps}${isHold ? '<small> s</small>' : ''}</span>`, 'adjustRepTarget(-1)', 'adjustRepTarget(1)', isHold ? 'hold time' : 'reps')}
                         </div>
                         <div class="hud-cell">
                             <p class="meta">Set</p>
                             ${stepperHtml(`${activeWorkout.currentSet}<small> of ${activeWorkout.sets}</small>`, 'adjustActiveWorkoutSets(-1)', 'adjustActiveWorkoutSets(1)', 'sets')}
                         </div>
                         <div class="hud-cell">
-                            <p class="meta">Weight</p>
-                            ${stepperHtml(`<span id="active-weight-display">${activeWorkout.weight}<small> kg</small></span>`, 'adjustWeight(-2)', 'adjustWeight(2)', 'weight')}
+                            <p class="meta">${isBodyweightExercise(exData) ? 'Load' : 'Weight'}</p>
+                            ${isBodyweightExercise(exData)
+                                ? `<p class="hud-text">${exData.equipment === 'Pull-up Bar' ? 'Pull-up bar' : 'Bodyweight'}</p>`
+                                : stepperHtml(`<span id="active-weight-display">${activeWorkout.weight}<small> kg</small></span>`, 'adjustWeight(-2)', 'adjustWeight(2)', 'weight')}
                         </div>
                         <div class="hud-cell">
-                            <p class="meta">Rep tempo</p>
-                            ${stepperHtml(`<span id="active-rep-speed-display">${activeWorkout.repSpeedSeconds.toFixed(1)}<small> s</small></span>`, 'adjustRepCadence(-1.0)', 'adjustRepCadence(1.0)', 'seconds per rep')}
+                            ${isHold
+                                ? `<p class="meta">Sides</p><p class="hud-text">${exData.bilateral ? 'Switch halfway' : 'Both together'}</p>`
+                                : `<p class="meta">${style === 'flow' ? 'Pace' : (style === 'breath' ? 'Breath' : 'Rep tempo')}</p>
+                            ${stepperHtml(`<span id="active-rep-speed-display">${activeWorkout.repSpeedSeconds.toFixed(1)}<small> s</small></span>`, 'adjustRepCadence(-1.0)', 'adjustRepCadence(1.0)', 'seconds per rep')}`}
                         </div>
                     </div>
 
@@ -14775,12 +15415,12 @@
                                 <div class="grow">
                                     <p class="meta">Up next</p>
                                     <p class="h3">${esc(nextExData.name)}</p>
-                                    <p class="meta">Set ${nextSetNum} of ${sameExercise ? activeWorkout.sets : rememberedDefaultSets}, <span id="next-reps-text">${repControlTarget().reps} reps</span>, ${activeWorkout.weight} kg</p>
+                                    <p class="meta">Set ${nextSetNum} of ${activeWorkout.sets}, <span id="next-reps-text">${targetText(repControlTarget().exId, repControlTarget().reps)}</span>${isBodyweightExercise(nextExData) ? '' : `, ${activeWorkout.weight} kg`}</p>
                                 </div>
                             </div>
                             <div class="setting">
                                 <p class="label">Reps</p>
-                                ${stepperHtml(`<span id="next-reps-display">${repControlTarget().reps}</span>`, 'adjustRepTarget(-1)', 'adjustRepTarget(1)', 'reps')}
+                                ${stepperHtml(`<span id="next-reps-display">${repControlTarget().reps}${repLimits(repControlTarget().exId).unit === 's' ? '<small> s</small>' : ''}</span>`, 'adjustRepTarget(-1)', 'adjustRepTarget(1)', repLimits(repControlTarget().exId).unit === 's' ? 'hold time' : 'reps')}
                             </div>
                         ` : `
                             <div class="grow">
@@ -14818,7 +15458,7 @@
                 }
                 Coach.unlock();
                 stopCadenceMetronome();
-                activeWorkout.targetReps = getRepTarget(activeWorkout.exercises[activeWorkout.currentExIndex]);
+                loadExerciseSettings();
                 const nextEx = currentExerciseData();
                 preloadExerciseCoaching(nextEx);
                 startGetReady(['up_next'].concat(exerciseNameItems(nextEx), exerciseHowtoItems(nextEx)));
@@ -14829,7 +15469,7 @@
         }
 
         // ==========================================
-        // VIEW: EXERCISE LIBRARY (700 exercises)
+        // VIEW: EXERCISE LIBRARY (700 dumbbell exercises + bodyweight, pull-up bar, warm-up and cool-down)
         // ==========================================
         let libraryDisplayLimit = 20;
 
@@ -14841,7 +15481,10 @@
             { id: 'Back & Biceps', label: 'Back & biceps' },
             { id: 'Shoulders & Rotator Cuff', label: 'Shoulders' },
             { id: 'Core & Functional Stability', label: 'Core' },
-            { id: 'Peloton Bike & Cardio', label: 'Peloton & cardio' }
+            { id: 'Peloton Bike & Cardio', label: 'Peloton & cardio' },
+            { id: 'Bodyweight (No Equipment)', label: 'No dumbbells' },
+            { id: 'Pull-up Bar', label: 'Pull-up bar' },
+            { id: 'Warm-up & Cool-down', label: 'Warm-up & cool-down' }
         ];
 
         function getFilteredLibrary() {
@@ -15149,15 +15792,32 @@
             clearWorkoutTimers();
 
             recordWorkoutSession(false);
-            Coach.say('workout_done', P_TIMING);
+            const role = activeWorkout.role || 'main';
+            const next = activeWorkout.thenStart;
 
             activeWorkout.exercises = [];
             activeWorkout.inProgress = false;
             activeWorkout.isPaused = false;
             activeWorkout.isRestMode = false;
-
-            showModal('Workout saved', 'This session is in your history.');
+            activeWorkout.isGetReady = false;
             switchTab('profile');
+
+            // Warm-up cut short: the workout it was for can still start.
+            if (next) {
+                Coach.say('warmup_done', P_TIMING);
+                openSessionPrompt('Warm-up ended', `Start ${next.programTitle} now?`, 'Start workout', 'Not now', {
+                    primary: () => beginWorkout(next),
+                    secondary: () => {}
+                });
+                return;
+            }
+            if (role === 'main' && warmCoolPromptsOn) {
+                Coach.say(['workout_done', 'cooldown_q'], P_TIMING);
+                offerCooldown('Workout saved', 'This session is in your history. Cool down with a 6-minute stretch?');
+                return;
+            }
+            Coach.say('workout_done', P_TIMING);
+            showModal('Workout saved', 'This session is in your history.');
         }
 
         // ==========================================
@@ -15862,6 +16522,13 @@
                                     <p class="meta">Default is 60 s</p>
                                 </div>
                                 ${stepperHtml(`${rememberedDefaultRest}<small> s</small>`, 'adjustBreakTime(-15)', 'adjustBreakTime(15)', 'rest')}
+                            </div>
+                            <div class="setting">
+                                <div>
+                                    <p class="label">Ask about warm-up and cool-down</p>
+                                    <p class="meta">Before and after routines and scheduled sessions</p>
+                                </div>
+                                <button onclick="setWarmCoolPrompts(${!warmCoolPromptsOn})" class="btn btn-sm ${warmCoolPromptsOn ? 'btn-primary' : ''}" aria-pressed="${warmCoolPromptsOn}">${warmCoolPromptsOn ? 'On' : 'Off'}</button>
                             </div>
                             <div class="setting">
                                 <div>
