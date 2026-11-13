@@ -4,64 +4,84 @@
     "title": "Beginner Muscle & Tendon Foundation",
     "subtitle": "Foundational Hypertrophy & Connective Tissue Armor",
     "durationWeeks": 8,
-    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "durationMonths": "1–2 Months (8 Weeks • 56 Days)",
     "tier": "Beginner",
     "category": "Beginner",
     "badgeColor": "border-emerald-500/50 bg-emerald-500/10 text-emerald-400",
     "accentColor": "from-emerald-600/30 to-ios-card",
-    "icon": "\ud83c\udf31",
+    "icon": "🌱",
     "desc": "Designed for lifters establishing base strength. Combines gentle dumbbell hypertrophy with 5-second Heavy Slow Resistance (HSR) to build tendon tensile stiffness and joint durability.",
-    "weeklySplit": "3 Days Muscle/Tendon + 2 Days Peloton Flush + 2 Days Rest",
+    "weeklySplit": "3 Days Muscle/Tendon + 2 Days Cardio Flush + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Upper Muscle & Rotator Cuff Armor",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator HSR",
+        "tag": "💪 Muscle + 🩺 Rotator HSR",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "50 min",
         "exercises": [
           "floor_press",
+          "chest_floor_press_with_glute_bridge",
+          "chest_flat_bench_single_arm_press",
           "bent_row",
+          "biceps_dumbbell_one_arm_reverse_spider_curl",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
           "scaption_raise",
+          "biceps_dumbbell_biceps_curl_squat",
           "eccentric_hammer",
-          "mat_side_lying_db_external_rotation"
+          "tendon_seated_bench_curl",
+          "mat_side_lying_db_external_rotation",
+          "db_seated_90_90_external_rotation_bench"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Synovial Flush & Core",
-        "tag": "\ud83d\udeb4 Peloton + \ud83e\ude7a Synovial Flush",
+        "title": "Cardio Synovial Flush & Core",
+        "tag": "🏃 Cardio + 🩺 Synovial Flush",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "40 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_lateral_shuffle",
+          "cardio_bench_step_ups_fast",
           "russian_twist",
+          "core_slow_bicycle_crunch",
+          "db_standing_oblique_side_bend",
           "db_mat_deadbug_press",
-          "peloton_cooldown_heart_decel"
+          "core_bodyweight_dead_bug_slow",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Lower Muscle & Patellar Tendon HSR",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar HSR",
+        "tag": "💪 Muscle + 🩺 Patellar HSR",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "50 min",
         "exercises": [
           "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "calves_standing_calf_raise_on_a_staircase",
           "goblet_squat",
+          "legs_single_leg_step_down_from_bench",
+          "calves_circles_knee_stretch",
           "rdl",
+          "hamstrings_dumbbell_lying_femoral",
           "lunges",
-          "glute_bridge"
+          "quads_farmers_walk",
+          "glute_bridge",
+          "quads_forward_jump"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Collagen Matrix Synthesis Rest",
-        "tag": "\ud83d\udca4 Tendon Rest Window",
+        "tag": "💤 Tendon Rest Window",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -70,36 +90,175 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Full Body Armor & Achilles HSR",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "45 min",
         "exercises": [
           "overhead_press",
+          "shoulders_dumbbell_front_raise_alternating",
+          "delts_dumbbell_standing_alternate_overhead_press",
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "floor_press",
+          "pectorals_deep_push_up",
           "bent_row",
-          "eccentric_hammer"
+          "biceps_dumbbell_reverse_spider_curl",
+          "eccentric_hammer",
+          "tendon_glute_bridge_isometric_hold_hamstrings"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Zone 2 Base Ride",
-        "tag": "\ud83d\udeb4 Peloton Cardio",
+        "title": "Cardio Zone 2 Base Session",
+        "tag": "🏃 Cardio",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "35 min",
         "exercises": [
-          "peloton_pz2_endurance_base",
-          "peloton_achilles_low_tension_spin",
-          "peloton_hip_knee_mobility_spin",
-          "peloton_cooldown_heart_decel"
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_bench_step_ups_fast",
+          "cardio_dumbbell_squat_to_press",
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_half_jacks",
+          "cardio_dumbbell_cross_punches",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Systemic Recovery & Rest",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Muscle & Rotator Cuff Armor",
+        "tag": "💪 Muscle + 🩺 Rotator HSR",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "floor_press",
+          "chest_floor_press_with_glute_bridge",
+          "chest_flat_bench_single_arm_press",
+          "bent_row",
+          "biceps_dumbbell_one_arm_reverse_spider_curl",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
+          "scaption_raise",
+          "biceps_dumbbell_biceps_curl_squat",
+          "eccentric_hammer",
+          "tendon_seated_bench_curl",
+          "mat_side_lying_db_external_rotation",
+          "db_seated_90_90_external_rotation_bench"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Synovial Flush & Core",
+        "tag": "🏃 Cardio + 🩺 Synovial Flush",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_lateral_shuffle",
+          "cardio_bench_step_ups_fast",
+          "russian_twist",
+          "core_slow_bicycle_crunch",
+          "db_standing_oblique_side_bend",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Muscle & Patellar Tendon HSR",
+        "tag": "💪 Muscle + 🩺 Patellar HSR",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "calves_standing_calf_raise_on_a_staircase",
+          "goblet_squat",
+          "legs_single_leg_step_down_from_bench",
+          "calves_circles_knee_stretch",
+          "rdl",
+          "hamstrings_dumbbell_lying_femoral",
+          "lunges",
+          "quads_farmers_walk",
+          "glute_bridge",
+          "quads_forward_jump"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Matrix Synthesis Rest",
+        "tag": "💤 Tendon Rest Window",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Armor & Achilles HSR",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "overhead_press",
+          "shoulders_dumbbell_front_raise_alternating",
+          "delts_dumbbell_standing_alternate_overhead_press",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "floor_press",
+          "pectorals_deep_push_up",
+          "bent_row",
+          "biceps_dumbbell_reverse_spider_curl",
+          "eccentric_hammer",
+          "tendon_glute_bridge_isometric_hold_hamstrings"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Zone 2 Base Session",
+        "tag": "🏃 Cardio",
+        "isRest": false,
+        "duration": "35 min",
+        "exercises": [
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_bench_step_ups_fast",
+          "cardio_dumbbell_squat_to_press",
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_half_jacks",
+          "cardio_dumbbell_cross_punches",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Recovery & Rest",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -111,109 +270,291 @@
     "title": "Intermediate Kinetic Armor & Overload",
     "subtitle": "Progressive Overload & Dense Tendon Remodeling",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Intermediate",
     "category": "Intermediate",
     "badgeColor": "border-amber-500/50 bg-amber-500/10 text-amber-400",
     "accentColor": "from-amber-600/30 to-ios-card",
-    "icon": "\u26a1",
-    "desc": "A 3-month periodized split. 4 high-tension muscle days combined with Heavy Slow Resistance (HSR) tendon protocols, plus 2 Peloton interval and synovial flush rides.",
-    "weeklySplit": "4 Days Muscle/Tendon + 2 Days Peloton + 1 Day Rest",
+    "icon": "⚡",
+    "desc": "A 3-month periodized split. 4 high-tension muscle days combined with Heavy Slow Resistance (HSR) tendon protocols, plus 2 Cardio interval and synovial flush cardio sessions.",
+    "weeklySplit": "4 Days Muscle/Tendon + 2 Days Cardio + 1 Day Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Upper Hypertrophy + Shoulder/Elbow Armor",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator/Elbow HSR",
+        "tag": "💪 Muscle + 🩺 Rotator/Elbow HSR",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "50 min",
         "exercises": [
           "floor_press",
+          "pectorals_push_up",
+          "chest_floor_single_arm_fly",
           "bent_row",
+          "biceps_dumbbell_seated_revers_grip_concentration_curl",
+          "forearms_dumbbell_finger_curls",
           "db_seated_arnold_press_bench",
+          "upper_back_dumbbell_side_plank_with_rear_fly",
           "incline_bench_db_y_raise",
-          "eccentric_hammer"
+          "mat_prone_cobra_scapular_squeeze",
+          "eccentric_hammer",
+          "biceps_dumbbell_seated_hammer_curl"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Quad Drive & Patellar Tendon HSR",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar HSR",
+        "tag": "💪 Muscle + 🩺 Patellar HSR",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "45 min",
         "exercises": [
           "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_seated_isometric_knee_extension",
           "db_bulgarian_split_squat_bench",
+          "legs_single_leg_step_down_from_bench",
+          "db_bench_split_squat_isometric_hold",
           "goblet_squat",
+          "lunges",
           "db_tempo_rdl_eccentric",
-          "glute_bridge"
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
-        "title": "Peloton Cadence Intervals & Core Armor",
-        "tag": "\ud83d\udeb4 Peloton HIIT + \u26a1 Core",
+        "title": "Cardio Cadence Intervals & Core Armor",
+        "tag": "🏃 Cardio HIIT + ⚡ Core",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "45 min",
         "exercises": [
-          "peloton_spin_ups_80_110",
-          "peloton_hiit_30_30_interval",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_half_burpee",
+          "cardio_inchworm_with_push_up",
+          "cardio_bench_push_up_burpee",
           "db_mat_plank_pull_through",
+          "abs_dumbbell_side_bend",
           "copenhagen_side_plank_bench",
-          "peloton_cooldown_heart_decel"
+          "abs_reverse_crunch",
+          "cardio_lateral_shuffle",
+          "cardio_frog_jumps"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Upper Kinetic Power + Rotator Shield",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator Shield",
+        "tag": "💪 Muscle + 🩺 Rotator Shield",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "50 min",
         "exercises": [
           "db_neutral_grip_overhead_press_bench",
+          "mat_pike_pushup_delts",
+          "db_front_raise_isometric_pause",
           "bent_row",
+          "back_bench_reverse_hyperextension",
+          "biceps_dumbbell_seated_preacher_curl",
           "scaption_raise",
+          "abs_twisted_leg_raise",
           "db_seated_90_90_external_rotation_bench",
-          "db_incline_spider_curl_bench"
+          "shoulder_bench_var_5",
+          "db_incline_spider_curl_bench",
+          "back_dumbbell_pullover_on_floor_slow"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Posterior Hypertrophy & Achilles Elasticity",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "45 min",
         "exercises": [
           "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
           "calf_eccentric",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "tendon_isometric_calf_raise_hold",
           "lunges",
+          "db_bench_split_squat_isometric_hold",
           "mat_single_leg_glute_bridge_db",
-          "db_elevated_calf_raise_bench"
+          "glute_bridge",
+          "db_elevated_calf_raise_bench",
+          "legs_lateral_bench_step_down"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Power Zone Ride & Synovial Flush",
-        "tag": "\ud83d\udeb4 Peloton PZ + \ud83e\ude7a Joint Flush",
+        "title": "Cardio Power Zone Session & Synovial Flush",
+        "tag": "🏃 Cardio PZ + 🩺 Joint Flush",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "35 min",
         "exercises": [
-          "peloton_pz3_tempo_cruise",
-          "peloton_patellar_synovial_flush",
-          "peloton_post_leg_day_flush",
-          "peloton_cooldown_heart_decel"
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_star_jumps",
+          "cardio_bear_crawl_in_place",
+          "cardio_step_jacks_low_impact",
+          "cardio_half_burpee",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Complete Collagen Remodeling Rest",
-        "tag": "\ud83d\udca4 Tendon Rest Window",
+        "tag": "💤 Tendon Rest Window",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Hypertrophy + Shoulder/Elbow Armor",
+        "tag": "💪 Muscle + 🩺 Rotator/Elbow HSR",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_push_up",
+          "chest_floor_single_arm_fly",
+          "bent_row",
+          "biceps_dumbbell_seated_revers_grip_concentration_curl",
+          "forearms_dumbbell_finger_curls",
+          "db_seated_arnold_press_bench",
+          "upper_back_dumbbell_side_plank_with_rear_fly",
+          "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "eccentric_hammer",
+          "biceps_dumbbell_seated_hammer_curl"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Quad Drive & Patellar Tendon HSR",
+        "tag": "💪 Muscle + 🩺 Patellar HSR",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_seated_isometric_knee_extension",
+          "db_bulgarian_split_squat_bench",
+          "legs_single_leg_step_down_from_bench",
+          "db_bench_split_squat_isometric_hold",
+          "goblet_squat",
+          "lunges",
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Cardio Cadence Intervals & Core Armor",
+        "tag": "🏃 Cardio HIIT + ⚡ Core",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_half_burpee",
+          "cardio_inchworm_with_push_up",
+          "cardio_bench_push_up_burpee",
+          "db_mat_plank_pull_through",
+          "abs_dumbbell_side_bend",
+          "copenhagen_side_plank_bench",
+          "abs_reverse_crunch",
+          "cardio_lateral_shuffle",
+          "cardio_frog_jumps"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Upper Kinetic Power + Rotator Shield",
+        "tag": "💪 Muscle + 🩺 Rotator Shield",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "db_neutral_grip_overhead_press_bench",
+          "mat_pike_pushup_delts",
+          "db_front_raise_isometric_pause",
+          "bent_row",
+          "back_bench_reverse_hyperextension",
+          "biceps_dumbbell_seated_preacher_curl",
+          "scaption_raise",
+          "abs_twisted_leg_raise",
+          "db_seated_90_90_external_rotation_bench",
+          "shoulder_bench_var_5",
+          "db_incline_spider_curl_bench",
+          "back_dumbbell_pullover_on_floor_slow"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Hypertrophy & Achilles Elasticity",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "tendon_isometric_calf_raise_hold",
+          "lunges",
+          "db_bench_split_squat_isometric_hold",
+          "mat_single_leg_glute_bridge_db",
+          "glute_bridge",
+          "db_elevated_calf_raise_bench",
+          "legs_lateral_bench_step_down"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Power Zone Session & Synovial Flush",
+        "tag": "🏃 Cardio PZ + 🩺 Joint Flush",
+        "isRest": false,
+        "duration": "35 min",
+        "exercises": [
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_star_jumps",
+          "cardio_bear_crawl_in_place",
+          "cardio_step_jacks_low_impact",
+          "cardio_half_burpee",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Complete Collagen Remodeling Rest",
+        "tag": "💤 Tendon Rest Window",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -225,110 +566,295 @@
     "title": "Advanced Periodized Power & Tendon Armor",
     "subtitle": "Periodized Hypertrophy & Maximum Tendon Armor",
     "durationWeeks": 20,
-    "durationMonths": "4\u20135 Months (20 Weeks \u2022 140 Days)",
+    "durationMonths": "4–5 Months (20 Weeks • 140 Days)",
     "tier": "Advanced",
     "category": "Advanced",
     "badgeColor": "border-purple-500/50 bg-purple-500/10 text-purple-400",
     "accentColor": "from-purple-600/30 to-ios-card",
-    "icon": "\ud83d\udc51",
-    "desc": "Elite 5-month periodized protocol. Combines high-load dumbbell hypertrophy splits with advanced Heavy Slow Resistance (HSR) and high-power Peloton intervals.",
-    "weeklySplit": "5 Days Muscle/Tendon + 1 Day Peloton Bootcamp + 1 Day Rest",
+    "icon": "👑",
+    "desc": "Elite 5-month periodized protocol. Combines high-load dumbbell hypertrophy splits with advanced Heavy Slow Resistance (HSR) and high-power Cardio intervals.",
+    "weeklySplit": "5 Days Muscle/Tendon + 1 Day Cardio Bootcamp + 1 Day Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Chest Hypertrophy & Rotator Cuff Armor",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Rotator HSR",
+        "tag": "💪 Muscle + 🩺 Rotator HSR",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "50 min",
         "exercises": [
           "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_dumbbell_straight_arm_pullover",
           "db_close_grip_floor_press",
+          "chest_floor_skull_crusher",
+          "chest_diamond_push_up",
           "db_seated_arnold_press_bench",
+          "mat_prone_floor_angel",
           "incline_bench_db_y_raise",
-          "mat_side_lying_db_external_rotation"
+          "mat_prone_cobra_scapular_squeeze",
+          "mat_side_lying_db_external_rotation",
+          "incline_bench_db_w_raise"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Back Thickness & Epicondyle Armor",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Elbow HSR",
+        "tag": "💪 Muscle + 🩺 Elbow HSR",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "45 min",
         "exercises": [
           "bent_row",
+          "back_prone_floor_lat_pull",
+          "back_dumbbell_good_morning",
           "db_incline_chest_supported_rear_delt_row",
+          "db_incline_prone_reverse_fly_bench",
+          "shoulder_bench_var_5",
           "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_neutral_wrist_curl",
           "eccentric_hammer",
-          "db_reverse_fly_isometric_pinch_bench"
+          "glutes_curtsey_squat",
+          "db_reverse_fly_isometric_pinch_bench",
+          "shoulders_seated_dumbbell_shrug_hold"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Quad Overload & Patellar Tendon HSR",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Patellar Overload",
+        "tag": "💪 Muscle + 🩺 Patellar Overload",
         "isRest": false,
-        "duration": "30 min",
+        "duration": "45 min",
         "exercises": [
           "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_eccentric_single_leg_squat_to_bench",
           "db_bulgarian_split_squat_bench",
+          "lunges",
+          "db_bench_step_ups_kg",
           "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
           "goblet_squat",
-          "db_quad_sissy_squat_progression"
+          "legs_single_leg_step_down_from_bench",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
-        "title": "Peloton Anaerobic Engine & Core Rotational Power",
-        "tag": "\ud83d\udeb4 Peloton Tabata + \u26a1 Core",
+        "title": "Cardio Anaerobic Engine & Core Rotational Power",
+        "tag": "🏃 Cardio Tabata + ⚡ Core",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "45 min",
         "exercises": [
-          "peloton_tabata_20_10_sprint",
-          "peloton_hiit_15s_super_sprint",
+          "cardio_skater_hops",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_curtsy_lunge_steps",
+          "cardio_star_jumps",
+          "cardio_dumbbell_thruster",
+          "cardio_bench_jump_overs_hands_on",
           "db_mat_russian_twist_elevated",
+          "core_dumbbell_suitcase_carry_march",
           "copenhagen_side_plank_bench",
-          "db_standing_woodchopper_low_high"
+          "abs_kneeling_plank_tap_shoulder_male",
+          "db_standing_woodchopper_low_high",
+          "mat_bicycle_crunch_tempo_pause"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Posterior Chain Power & Achilles Elasticity",
-        "tag": "\ud83d\udcaa Muscle + \ud83e\ude7a Achilles HSR",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "45 min",
         "exercises": [
           "rdl",
+          "db_b-stance_rdl_mat",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "db_bench_nordic_curl_progression",
+          "hamstrings_seated_wide_angle_pose_sequence",
           "db_tempo_rdl_eccentric",
-          "db_elevated_calf_raise_bench"
+          "hamstrings_dumbbell_lying_femoral",
+          "db_elevated_calf_raise_bench",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Bike & Dumbbell Fusion + Synovial Flush",
-        "tag": "\ud83d\udeb4 Hybrid + \ud83e\ude7a Synovial Flush",
+        "title": "Cardio & Dumbbell Fusion + Synovial Flush",
+        "tag": "🏃 Hybrid + 🩺 Synovial Flush",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "45 min",
         "exercises": [
-          "peloton_bike_goblet_squat_fusion",
-          "peloton_bike_floor_press_fusion",
-          "peloton_bike_bent_row_fusion",
-          "peloton_patellar_synovial_flush",
-          "peloton_cooldown_heart_decel"
+          "cardio_dumbbell_renegade_row",
+          "cardio_dumbbell_deadlift_to_upright_row",
+          "cardio_cross_body_mountain_climbers",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_jumping_jacks",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps",
+          "cardio_lateral_shuffle",
+          "cardio_broad_jump_and_walk_back"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Systemic Regeneration & Hydro-Recovery",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Chest Hypertrophy & Rotator Cuff Armor",
+        "tag": "💪 Muscle + 🩺 Rotator HSR",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_dumbbell_straight_arm_pullover",
+          "db_close_grip_floor_press",
+          "chest_floor_skull_crusher",
+          "chest_diamond_push_up",
+          "db_seated_arnold_press_bench",
+          "mat_prone_floor_angel",
+          "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "mat_side_lying_db_external_rotation",
+          "incline_bench_db_w_raise"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Back Thickness & Epicondyle Armor",
+        "tag": "💪 Muscle + 🩺 Elbow HSR",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "bent_row",
+          "back_prone_floor_lat_pull",
+          "back_dumbbell_good_morning",
+          "db_incline_chest_supported_rear_delt_row",
+          "db_incline_prone_reverse_fly_bench",
+          "shoulder_bench_var_5",
+          "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_neutral_wrist_curl",
+          "eccentric_hammer",
+          "glutes_curtsey_squat",
+          "db_reverse_fly_isometric_pinch_bench",
+          "shoulders_seated_dumbbell_shrug_hold"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Quad Overload & Patellar Tendon HSR",
+        "tag": "💪 Muscle + 🩺 Patellar Overload",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_eccentric_single_leg_squat_to_bench",
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "db_bench_step_ups_kg",
+          "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "goblet_squat",
+          "legs_single_leg_step_down_from_bench",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Cardio Anaerobic Engine & Core Rotational Power",
+        "tag": "🏃 Cardio Tabata + ⚡ Core",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "cardio_skater_hops",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_curtsy_lunge_steps",
+          "cardio_star_jumps",
+          "cardio_dumbbell_thruster",
+          "cardio_bench_jump_overs_hands_on",
+          "db_mat_russian_twist_elevated",
+          "core_dumbbell_suitcase_carry_march",
+          "copenhagen_side_plank_bench",
+          "abs_kneeling_plank_tap_shoulder_male",
+          "db_standing_woodchopper_low_high",
+          "mat_bicycle_crunch_tempo_pause"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Chain Power & Achilles Elasticity",
+        "tag": "💪 Muscle + 🩺 Achilles HSR",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "db_bench_nordic_curl_progression",
+          "hamstrings_seated_wide_angle_pose_sequence",
+          "db_tempo_rdl_eccentric",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_elevated_calf_raise_bench",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio & Dumbbell Fusion + Synovial Flush",
+        "tag": "🏃 Hybrid + 🩺 Synovial Flush",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "cardio_dumbbell_renegade_row",
+          "cardio_dumbbell_deadlift_to_upright_row",
+          "cardio_cross_body_mountain_climbers",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_jumping_jacks",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_skater_steps_low_impact",
+          "cardio_curtsy_lunge_steps",
+          "cardio_lateral_shuffle",
+          "cardio_broad_jump_and_walk_back"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Regeneration & Hydro-Recovery",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -340,63 +866,82 @@
     "title": "Patellar Tendinopathy & Knee Armor",
     "subtitle": "Jumper's Knee & Quad Tendon Heavy Slow Resistance",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Tendon Focus",
     "category": "Tendon",
     "badgeColor": "border-cyan-500/50 bg-cyan-500/10 text-cyan-400",
     "accentColor": "from-cyan-600/30 to-ios-card",
-    "icon": "\ud83e\ude7a",
-    "desc": "Dedicated protocol for patellar tendonitis and runner's knee. Features 5-second decline squats, isometrics, and Peloton synovial fluid circulation without joint impacts.",
-    "weeklySplit": "3 Days Knee Armor + 2 Days Peloton Synovial + 2 Days Rest",
+    "icon": "🩺",
+    "desc": "Dedicated protocol for patellar tendonitis and runner's knee. Features 5-second decline squats, isometrics, and Cardio synovial fluid circulation without joint impacts.",
+    "weeklySplit": "3 Days Knee Armor + 2 Days Cardio Synovial + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Patellar HSR Eccentric Overload",
-        "tag": "\ud83e\ude7a Patellar HSR 5s",
+        "tag": "🩺 Patellar HSR 5s",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "45 min",
         "exercises": [
           "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_eccentric_single_leg_squat_to_bench",
           "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "abs_potty_squat",
           "goblet_squat",
+          "db_bench_step_ups_kg",
           "db_quad_sissy_squat_progression",
-          "glute_bridge"
+          "lunges",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Low-Resistance Peloton Synovial Flush",
-        "tag": "\ud83d\udeb4 Joint Circulation",
+        "title": "Low-Impact Cardio Synovial Flush",
+        "tag": "🏃 Joint Circulation",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "35 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_hip_knee_mobility_spin",
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_overhead_dumbbell_march",
+          "cardio_dumbbell_halo_squat",
+          "cardio_bench_step_ups_fast",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_thruster",
           "db_mat_deadbug_press",
-          "peloton_cooldown_heart_decel"
+          "core_dumbbell_dead_bug",
+          "cardio_lateral_shuffle",
+          "cardio_jumping_lunges"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Upper Body Compound Strength",
-        "tag": "\ud83d\udcaa Upper Muscle",
+        "tag": "💪 Upper Muscle",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "chest_flat_bench_single_arm_fly",
+          "pectorals_dumbbell_one_arm_incline_chest_press",
           "bent_row",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_standing_zottman_preacher_curl",
           "overhead_press",
-          "eccentric_hammer"
+          "db_seated_shrug_bench",
+          "eccentric_hammer",
+          "glutes_glute_bridge_two_legs_on_bench_male"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Patellar Collagen Synthesis Window",
-        "tag": "\ud83d\udca4 Knee Rest",
+        "tag": "💤 Knee Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -405,34 +950,165 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Quadriceps Eccentric & Hamstring Antagonist",
-        "tag": "\ud83d\udcaa Quad & Hamstring",
+        "tag": "💪 Quad & Hamstring",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
+          "goblet_squat",
           "db_tempo_rdl_eccentric",
+          "hamstrings_dumbbell_lying_femoral",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
           "iso_squat_hold",
-          "db_elevated_calf_raise_bench"
+          "tendon_split_squat_isometric_hold_patellar",
+          "db_elevated_calf_raise_bench",
+          "quads_forward_jump"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Knee Decompression Spin",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Knee Decompression Session",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_post_squat_knee_decompression",
-          "peloton_active_recovery_cruise",
-          "russian_twist"
+          "cardio_skater_steps_low_impact",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_curtsy_lunge_steps",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_alternating_lateral_lunges",
+          "cardio_jumping_jacks",
+          "russian_twist",
+          "db_standing_woodchopper_high_low"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest & Connective Tissue Stiffening",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Patellar HSR Eccentric Overload",
+        "tag": "🩺 Patellar HSR 5s",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_eccentric_single_leg_squat_to_bench",
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "abs_potty_squat",
+          "goblet_squat",
+          "db_bench_step_ups_kg",
+          "db_quad_sissy_squat_progression",
+          "lunges",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Low-Impact Cardio Synovial Flush",
+        "tag": "🏃 Joint Circulation",
+        "isRest": false,
+        "duration": "35 min",
+        "exercises": [
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_overhead_dumbbell_march",
+          "cardio_dumbbell_halo_squat",
+          "cardio_bench_step_ups_fast",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_thruster",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug",
+          "cardio_lateral_shuffle",
+          "cardio_jumping_lunges"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body Compound Strength",
+        "tag": "💪 Upper Muscle",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "chest_flat_bench_single_arm_fly",
+          "pectorals_dumbbell_one_arm_incline_chest_press",
+          "bent_row",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_standing_zottman_preacher_curl",
+          "overhead_press",
+          "db_seated_shrug_bench",
+          "eccentric_hammer",
+          "glutes_glute_bridge_two_legs_on_bench_male"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Patellar Collagen Synthesis Window",
+        "tag": "💤 Knee Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Quadriceps Eccentric & Hamstring Antagonist",
+        "tag": "💪 Quad & Hamstring",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
+          "goblet_squat",
+          "db_tempo_rdl_eccentric",
+          "hamstrings_dumbbell_lying_femoral",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "iso_squat_hold",
+          "tendon_split_squat_isometric_hold_patellar",
+          "db_elevated_calf_raise_bench",
+          "quads_forward_jump"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Knee Decompression Session",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_skater_steps_low_impact",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_curtsy_lunge_steps",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_alternating_lateral_lunges",
+          "cardio_jumping_jacks",
+          "russian_twist",
+          "db_standing_woodchopper_high_low"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest & Connective Tissue Stiffening",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -444,103 +1120,267 @@
     "title": "Rotator Cuff & Shoulder Capsule Shield",
     "subtitle": "Supraspinatus, Infraspinatus & Scapular Armor",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Tendon Focus",
     "category": "Tendon",
     "badgeColor": "border-blue-500/50 bg-blue-500/10 text-blue-400",
     "accentColor": "from-blue-600/30 to-ios-card",
-    "icon": "\ud83d\udee1\ufe0f",
+    "icon": "🛡️",
     "desc": "Fortifies the 4 rotator cuff tendons and scapular stabilizers. Eliminates shoulder impingement through strict scapular-plane raises, external rotations, and supported rows.",
-    "weeklySplit": "3 Days Shoulder Armor + 2 Days Peloton + 2 Days Rest",
+    "weeklySplit": "3 Days Shoulder Armor + 2 Days Cardio + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Supraspinatus & Scapular Plane Armor",
-        "tag": "\ud83e\ude7a Rotator Cuff HSR",
+        "tag": "🩺 Rotator Cuff HSR",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "scaption_raise",
+          "tendon_bent_knee_wall_calf_raise",
+          "biceps_dumbbell_seated_hammer_curl",
           "incline_bench_db_y_raise",
+          "mat_prone_floor_angel",
+          "mat_prone_cobra_scapular_squeeze",
           "mat_side_lying_db_external_rotation",
-          "db_neutral_grip_overhead_press_bench"
+          "shoulder_bench_var_5",
+          "db_neutral_grip_overhead_press_bench",
+          "mat_pike_pushup_delts"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Zone 2 Base Cruise & Core",
-        "tag": "\ud83d\udeb4 Peloton Base",
+        "title": "Cardio Zone 2 Base Cruise & Core",
+        "tag": "🏃 Cardio Base",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "35 min",
         "exercises": [
-          "peloton_pz2_endurance_base",
-          "peloton_spin_90_rpm",
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_spiderman_climbers",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_two_hand_dumbbell_swing",
           "russian_twist",
-          "peloton_cooldown_heart_decel"
+          "mat_bicycle_crunch_tempo_pause",
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Lower Body Dumbbell Strength",
-        "tag": "\ud83d\udcaa Lower Muscle",
+        "tag": "💪 Lower Muscle",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
           "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
           "lunges",
-          "glute_bridge"
+          "db_bench_step_ups_kg",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Infraspinatus & Teres Minor HSR",
-        "tag": "\ud83e\ude7a Posterior Cuff",
+        "tag": "🩺 Posterior Cuff",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "40 min",
         "exercises": [
           "db_seated_90_90_external_rotation_bench",
+          "mat_side_lying_db_external_rotation",
+          "db_half_kneeling_overhead_press_mat",
           "incline_bench_db_w_raise",
+          "shoulder_bench_var_5",
+          "upper_back_dumbbell_side_plank_with_rear_fly",
           "db_reverse_fly_isometric_pinch_bench",
-          "bent_row"
+          "db_seated_shrug_bench",
+          "bent_row",
+          "biceps_dumbbell_preacher_curl"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Chest & Triceps Pressing Armor",
-        "tag": "\ud83d\udcaa Chest & Arm",
+        "tag": "💪 Chest & Arm",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_incline_push_up",
           "db_close_grip_floor_press",
+          "chest_close_grip_dumbbell_bench_press",
+          "triceps_bench_dip_knees_bent",
           "db_seated_arnold_press_bench",
-          "eccentric_hammer"
+          "db_lu_raise_overhead_arc",
+          "eccentric_hammer",
+          "calves_bodyweight_standing_calf_raise"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Low-Impact Flush & Scapular Mobility",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Low-Impact Flush & Scapular Mobility",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_bench_push_up_burpee",
           "mat_prone_floor_angel",
-          "peloton_cooldown_heart_decel"
+          "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Shoulder Capsule Synthesis Rest",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Supraspinatus & Scapular Plane Armor",
+        "tag": "🩺 Rotator Cuff HSR",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "scaption_raise",
+          "tendon_bent_knee_wall_calf_raise",
+          "biceps_dumbbell_seated_hammer_curl",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel",
+          "mat_prone_cobra_scapular_squeeze",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5",
+          "db_neutral_grip_overhead_press_bench",
+          "mat_pike_pushup_delts"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Zone 2 Base Cruise & Core",
+        "tag": "🏃 Cardio Base",
+        "isRest": false,
+        "duration": "35 min",
+        "exercises": [
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_spiderman_climbers",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_two_hand_dumbbell_swing",
+          "russian_twist",
+          "mat_bicycle_crunch_tempo_pause",
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body Dumbbell Strength",
+        "tag": "💪 Lower Muscle",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "lunges",
+          "db_bench_step_ups_kg",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Infraspinatus & Teres Minor HSR",
+        "tag": "🩺 Posterior Cuff",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_seated_90_90_external_rotation_bench",
+          "mat_side_lying_db_external_rotation",
+          "db_half_kneeling_overhead_press_mat",
+          "incline_bench_db_w_raise",
+          "shoulder_bench_var_5",
+          "upper_back_dumbbell_side_plank_with_rear_fly",
+          "db_reverse_fly_isometric_pinch_bench",
+          "db_seated_shrug_bench",
+          "bent_row",
+          "biceps_dumbbell_preacher_curl"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Chest & Triceps Pressing Armor",
+        "tag": "💪 Chest & Arm",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_incline_push_up",
+          "db_close_grip_floor_press",
+          "chest_close_grip_dumbbell_bench_press",
+          "triceps_bench_dip_knees_bent",
+          "db_seated_arnold_press_bench",
+          "db_lu_raise_overhead_arc",
+          "eccentric_hammer",
+          "calves_bodyweight_standing_calf_raise"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Low-Impact Flush & Scapular Mobility",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_bench_push_up_burpee",
+          "mat_prone_floor_angel",
+          "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Shoulder Capsule Synthesis Rest",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -552,61 +1392,78 @@
     "title": "Achilles Tendon & Lower Kinetic Elasticity",
     "subtitle": "Achilles Tendon Collagen Remodeling & Elastic Recoil",
     "durationWeeks": 10,
-    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "durationMonths": "2–2.5 Months (10 Weeks • 70 Days)",
     "tier": "Tendon Focus",
     "category": "Tendon",
     "badgeColor": "border-orange-500/50 bg-orange-500/10 text-orange-400",
     "accentColor": "from-orange-600/30 to-ios-card",
-    "icon": "\u26a1",
+    "icon": "⚡",
     "desc": "Heavy Slow Resistance eccentric calf drops and hamstring loading to remodel collagen fibers in the Achilles tendon and prevent running/jumping injuries.",
-    "weeklySplit": "3 Days Achilles Armor + 2 Days Peloton Cadence + 2 Days Rest",
+    "weeklySplit": "3 Days Achilles Armor + 2 Days Cardio Cadence + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Achilles Heavy Eccentric Drops & Soleus Load",
-        "tag": "\ud83e\ude7a Achilles HSR 5s",
+        "tag": "🩺 Achilles HSR 5s",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "40 min",
         "exercises": [
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "db_elevated_calf_raise_bench",
+          "legs_lateral_bench_step_up",
+          "legs_dumbbell_split_squat",
           "rdl",
-          "glute_bridge"
+          "db_b-stance_rdl_mat",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Low-Tension Cadence Spin",
-        "tag": "\ud83d\udeb4 Tendon Cadence",
+        "title": "Cardio Low-Tension Cadence Session",
+        "tag": "🏃 Tendon Cadence",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_achilles_low_tension_spin",
-          "peloton_ankle_capillary_flush",
-          "db_mat_deadbug_press"
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_skipping_in_place",
+          "cardio_forward_back_hops",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_hollow_rocks",
+          "cardio_burpee",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Upper Body Muscle Hypertrophy",
-        "tag": "\ud83d\udcaa Upper Muscle",
+        "tag": "💪 Upper Muscle",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "pectorals_dumbbell_incline_one_arm_press",
+          "chest_flat_bench_dumbbell_fly",
           "bent_row",
+          "biceps_dumbbell_reverse_spider_curl",
+          "back_bench_back_extension",
           "scaption_raise",
-          "eccentric_hammer"
+          "biceps_dumbbell_biceps_curl_squat",
+          "eccentric_hammer",
+          "abs_lying_leg_raise_flat_bench"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Achilles Collagen Synthesis Rest",
-        "tag": "\ud83d\udca4 Achilles Rest",
+        "tag": "💤 Achilles Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -615,34 +1472,161 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Hamstring & Calf Kinetic Chain Armor",
-        "tag": "\ud83d\udcaa Posterior Chain",
+        "tag": "💪 Posterior Chain",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "lunges",
-          "db_bench_nordic_curl_progression"
+          "legs_single_leg_step_down_from_bench",
+          "db_bench_nordic_curl_progression",
+          "hamstrings_leg_up_hamstring_stretch"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Cadence Drill & Ankle Mobilization",
-        "tag": "\ud83d\udeb4 Ankle Mobility",
+        "title": "Cardio Cadence Drill & Ankle Mobilization",
+        "tag": "🏃 Ankle Mobility",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_spin_ups_80_110",
-          "peloton_achilles_low_tension_spin",
-          "peloton_cooldown_heart_decel"
+          "cardio_cross_body_mountain_climbers",
+          "cardio_bicycle_crunches_fast",
+          "cardio_dumbbell_russian_twist_fast",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Lower Kinetic Chain Rest Day",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Achilles Heavy Eccentric Drops & Soleus Load",
+        "tag": "🩺 Achilles HSR 5s",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "db_elevated_calf_raise_bench",
+          "legs_lateral_bench_step_up",
+          "legs_dumbbell_split_squat",
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Low-Tension Cadence Session",
+        "tag": "🏃 Tendon Cadence",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_skipping_in_place",
+          "cardio_forward_back_hops",
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_hollow_rocks",
+          "cardio_burpee",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body Muscle Hypertrophy",
+        "tag": "💪 Upper Muscle",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_dumbbell_incline_one_arm_press",
+          "chest_flat_bench_dumbbell_fly",
+          "bent_row",
+          "biceps_dumbbell_reverse_spider_curl",
+          "back_bench_back_extension",
+          "scaption_raise",
+          "biceps_dumbbell_biceps_curl_squat",
+          "eccentric_hammer",
+          "abs_lying_leg_raise_flat_bench"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Achilles Collagen Synthesis Rest",
+        "tag": "💤 Achilles Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Hamstring & Calf Kinetic Chain Armor",
+        "tag": "💪 Posterior Chain",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "lunges",
+          "legs_single_leg_step_down_from_bench",
+          "db_bench_nordic_curl_progression",
+          "hamstrings_leg_up_hamstring_stretch"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Cadence Drill & Ankle Mobilization",
+        "tag": "🏃 Ankle Mobility",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_cross_body_mountain_climbers",
+          "cardio_bicycle_crunches_fast",
+          "cardio_dumbbell_russian_twist_fast",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Lower Kinetic Chain Rest Day",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -654,61 +1638,78 @@
     "title": "Tennis & Golfer's Elbow Epicondyle Armor",
     "subtitle": "Common Extensor & Flexor Tendon Regeneration",
     "durationWeeks": 8,
-    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "durationMonths": "1–2 Months (8 Weeks • 56 Days)",
     "tier": "Tendon Focus",
     "category": "Tendon",
     "badgeColor": "border-rose-500/50 bg-rose-500/10 text-rose-400",
     "accentColor": "from-rose-600/30 to-ios-card",
-    "icon": "\ud83e\ude79",
+    "icon": "🩹",
     "desc": "Treats lateral and medial epicondylalgia. Strict 5-second eccentric hammer curls and floor press pauses stimulate healthy collagen alignment in forearm tendons.",
-    "weeklySplit": "3 Days Forearm/Arm + 2 Days Peloton + 2 Days Rest",
+    "weeklySplit": "3 Days Forearm/Arm + 2 Days Cardio + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Common Extensor 5s Eccentric Negatives",
-        "tag": "\ud83e\ude7a Elbow HSR 5s",
+        "tag": "🩺 Elbow HSR 5s",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "40 min",
         "exercises": [
           "eccentric_hammer",
+          "calves_dumbbell_standing_calf_raise",
+          "delts_dumbbell_rear_lateral_raise_support_head",
           "biceps_dumbbell_hammer_curl",
+          "biceps_dumbbell_biceps_curl_squat",
+          "tendon_seated_bench_curl",
           "bent_row",
-          "floor_press"
+          "biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl",
+          "floor_press",
+          "chest_floor_single_arm_fly"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton HIIT Sprints & Core",
-        "tag": "\ud83d\udeb4 Cardio & Core",
+        "title": "Cardio HIIT Sprints & Core",
+        "tag": "🏃 Cardio & Core",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_hiit_30_30_interval",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_alternating_dumbbell_snatch",
           "russian_twist",
-          "copenhagen_side_plank_bench"
+          "mat_plank_knee_to_elbow_spider",
+          "core_slow_bicycle_crunch",
+          "copenhagen_side_plank_bench",
+          "db_hollow_body_hold_mat"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Lower Body Compound Strength",
-        "tag": "\ud83d\udcaa Lower Muscle",
+        "tag": "💪 Lower Muscle",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "db_bench_step_ups_kg",
+          "db_bulgarian_split_squat_bench",
           "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
           "lunges",
-          "calf_eccentric"
+          "db_bench_split_squat_isometric_hold",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Forearm Tendon Matrix Synthesis Rest",
-        "tag": "\ud83d\udca4 Elbow Rest",
+        "tag": "💤 Elbow Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -717,33 +1718,157 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Biceps Brachii & Forearm Flexor Stiffening",
-        "tag": "\ud83d\udcaa Biceps & Forearm",
+        "tag": "💪 Biceps & Forearm",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "40 min",
         "exercises": [
           "db_incline_spider_curl_bench",
+          "back_bench_single_arm_lat_pullover",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
           "eccentric_hammer",
+          "calves_single_leg_calf_raise_on_a_dumbbell",
+          "abs_lying_leg_raise_flat_bench",
           "scaption_raise",
-          "db_close_grip_floor_press"
+          "calf_eccentric",
+          "db_close_grip_floor_press",
+          "chest_bench_dumbbell_skull_crusher"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Synovial Flush & Arm Unloading",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Synovial Flush & Arm Unloading",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_pz2_endurance_base"
+          "cardio_lateral_shuffle",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_single_arm_dumbbell_swing"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Systemic Recovery Rest",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Common Extensor 5s Eccentric Negatives",
+        "tag": "🩺 Elbow HSR 5s",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "eccentric_hammer",
+          "calves_dumbbell_standing_calf_raise",
+          "delts_dumbbell_rear_lateral_raise_support_head",
+          "biceps_dumbbell_hammer_curl",
+          "biceps_dumbbell_biceps_curl_squat",
+          "tendon_seated_bench_curl",
+          "bent_row",
+          "biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl",
+          "floor_press",
+          "chest_floor_single_arm_fly"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio HIIT Sprints & Core",
+        "tag": "🏃 Cardio & Core",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_alternating_dumbbell_snatch",
+          "russian_twist",
+          "mat_plank_knee_to_elbow_spider",
+          "core_slow_bicycle_crunch",
+          "copenhagen_side_plank_bench",
+          "db_hollow_body_hold_mat"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body Compound Strength",
+        "tag": "💪 Lower Muscle",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "db_bench_step_ups_kg",
+          "db_bulgarian_split_squat_bench",
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "lunges",
+          "db_bench_split_squat_isometric_hold",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Forearm Tendon Matrix Synthesis Rest",
+        "tag": "💤 Elbow Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Biceps Brachii & Forearm Flexor Stiffening",
+        "tag": "💪 Biceps & Forearm",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_incline_spider_curl_bench",
+          "back_bench_single_arm_lat_pullover",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
+          "eccentric_hammer",
+          "calves_single_leg_calf_raise_on_a_dumbbell",
+          "abs_lying_leg_raise_flat_bench",
+          "scaption_raise",
+          "calf_eccentric",
+          "db_close_grip_floor_press",
+          "chest_bench_dumbbell_skull_crusher"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Synovial Flush & Arm Unloading",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_lateral_shuffle",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_single_arm_dumbbell_swing"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Systemic Recovery Rest",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -755,61 +1880,78 @@
     "title": "4-Month Total Body Connective Tissue Armor",
     "subtitle": "Full Connective Tissue Longevity & Kinetic Armor",
     "durationWeeks": 16,
-    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "durationMonths": "3–4 Months (16 Weeks • 112 Days)",
     "tier": "Longevity",
     "category": "Longevity",
     "badgeColor": "border-teal-500/50 bg-teal-500/10 text-teal-400",
     "accentColor": "from-teal-600/30 to-ios-card",
-    "icon": "\ud83e\uddec",
+    "icon": "🧬",
     "desc": "A master longevity program hitting patellar, Achilles, rotator cuff, and epicondyle tendons every single week with 5.0-second controlled time-under-tension.",
-    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Peloton Flush + 2 Days Rest",
+    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Cardio Flush + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Upper Kinetic Matrix (Chest/Lats/Rotator)",
-        "tag": "\ud83d\udcaa Upper Matrix",
+        "tag": "💪 Upper Matrix",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "chest_flat_bench_single_arm_press",
+          "pectorals_push_up",
           "bent_row",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
+          "biceps_dumbbell_lunge_with_bicep_curl",
           "scaption_raise",
-          "eccentric_hammer"
+          "abs_lying_leg_hip_raise",
+          "eccentric_hammer",
+          "biceps_dumbbell_one_arm_seated_hammer_curl"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Low-Impact Knee Flush & Core",
-        "tag": "\ud83d\udeb4 Knee Flush",
+        "title": "Cardio Low-Impact Knee Flush & Core",
+        "tag": "🏃 Knee Flush",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_frog_jumps",
           "db_mat_deadbug_press",
-          "russian_twist"
+          "core_bodyweight_dead_bug_slow",
+          "core_dumbbell_dead_bug",
+          "russian_twist",
+          "db_kneeling_woodchopper_mat"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Lower Kinetic Matrix (Knees/Hips/Patellar)",
-        "tag": "\ud83d\udcaa Lower Matrix",
+        "tag": "💪 Lower Matrix",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "40 min",
         "exercises": [
           "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_split_squat_isometric_hold_patellar",
           "goblet_squat",
+          "lunges",
+          "db_bench_step_ups_kg",
           "rdl",
-          "glute_bridge"
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Collagen Synthesis Window",
-        "tag": "\ud83d\udca4 Tendon Rest",
+        "tag": "💤 Tendon Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -818,33 +1960,157 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Posterior Chain & Achilles Elasticity",
-        "tag": "\ud83d\udcaa Achilles Matrix",
+        "tag": "💪 Achilles Matrix",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
           "overhead_press",
-          "lunges"
+          "db_incline_prone_reverse_fly_bench",
+          "lunges",
+          "goblet_squat"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Active Recovery Cruise",
-        "tag": "\ud83d\udeb4 Aerobic Flush",
+        "title": "Cardio Active Recovery Cruise",
+        "tag": "🏃 Aerobic Flush",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_pz2_endurance_base",
-          "peloton_hip_knee_mobility_spin"
+          "cardio_bench_step_ups_fast",
+          "cardio_squat_and_punch_combo",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_curtsy_lunge_steps"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Full Systemic Rest",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Kinetic Matrix (Chest/Lats/Rotator)",
+        "tag": "💪 Upper Matrix",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "chest_flat_bench_single_arm_press",
+          "pectorals_push_up",
+          "bent_row",
+          "biceps_dumbbell_over_bench_neutral_wrist_curl",
+          "biceps_dumbbell_lunge_with_bicep_curl",
+          "scaption_raise",
+          "abs_lying_leg_hip_raise",
+          "eccentric_hammer",
+          "biceps_dumbbell_one_arm_seated_hammer_curl"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Low-Impact Knee Flush & Core",
+        "tag": "🏃 Knee Flush",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_frog_jumps",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow",
+          "core_dumbbell_dead_bug",
+          "russian_twist",
+          "db_kneeling_woodchopper_mat"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Kinetic Matrix (Knees/Hips/Patellar)",
+        "tag": "💪 Lower Matrix",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_split_squat_isometric_hold_patellar",
+          "goblet_squat",
+          "lunges",
+          "db_bench_step_ups_kg",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Window",
+        "tag": "💤 Tendon Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Posterior Chain & Achilles Elasticity",
+        "tag": "💪 Achilles Matrix",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "overhead_press",
+          "db_incline_prone_reverse_fly_bench",
+          "lunges",
+          "goblet_squat"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Active Recovery Cruise",
+        "tag": "🏃 Aerobic Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_bench_step_ups_fast",
+          "cardio_squat_and_punch_combo",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_curtsy_lunge_steps"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Systemic Rest",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -853,100 +2119,246 @@
   },
   "peloton_db_fusion": {
     "id": "peloton_db_fusion",
-    "title": "Peloton Bike & Dumbbell Muscle Fusion Hybrid",
+    "title": "Cardio & Dumbbell Muscle Fusion Hybrid",
     "subtitle": "Cardio Cadence + Hypertrophy Bootcamp Intervals",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Hybrid",
-    "category": "Peloton",
+    "category": "Cardio",
     "badgeColor": "border-yellow-500/50 bg-yellow-500/10 text-yellow-400",
     "accentColor": "from-yellow-600/30 to-ios-card",
-    "icon": "\ud83d\udeb4",
-    "desc": "High-output hybrid training: combines Peloton cycling cadence surges directly with Dumbbell Goblet Squats, Floor Presses, and Bent-Over Rows.",
-    "weeklySplit": "4 Days Bike/DB Fusion + 1 Day Active Flush + 2 Days Rest",
+    "icon": "🏃",
+    "desc": "High-output hybrid training: combines Cardio cadence surges directly with Dumbbell Goblet Squats, Floor Presses, and Bent-Over Rows.",
+    "weeklySplit": "4 Days Cardio/DB Fusion + 1 Day Active Flush + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
-        "title": "Bike Intervals + Upper DB Compound",
-        "tag": "\u26a1 Hybrid Upper",
+        "title": "Cardio Intervals + Upper DB Compound",
+        "tag": "⚡ Hybrid Upper",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_spin_ups_80_110",
-          "peloton_bike_floor_press_fusion",
-          "peloton_bike_bent_row_fusion"
+          "cardio_cross_body_mountain_climbers",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_russian_twist_fast",
+          "cardio_dumbbell_high_pull",
+          "cardio_plank_shoulder_taps_fast",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_two_hand_dumbbell_swing",
+          "cardio_curtsy_lunge_steps"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Bike Climb + Lower DB Power",
-        "tag": "\u26a1 Hybrid Lower",
+        "title": "Cardio Step-Up Climb + Lower DB Power",
+        "tag": "⚡ Hybrid Lower",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_seated_climb_heavy",
-          "peloton_bike_goblet_squat_fusion",
-          "peloton_bike_rdl_fusion"
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_lateral_shuffle",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_step_jacks_low_impact",
+          "cardio_dumbbell_reverse_lunge_to_press",
+          "cardio_bench_jump_overs_hands_on"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Mat Core Stability & Active Recovery",
-        "tag": "\u26a1 Mat Core",
+        "tag": "⚡ Mat Core",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
           "russian_twist",
+          "db_standing_woodchopper_low_high",
+          "core_slow_bicycle_crunch",
           "db_mat_plank_pull_through",
-          "db_mat_deadbug_press"
+          "core_seated_bench_knee_tuck",
+          "abs_dumbbell_side_bend",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
-        "title": "Bike HIIT Sprints + DB Arm Armor",
-        "tag": "\u26a1 Hybrid Arms",
+        "title": "Cardio HIIT Sprints + DB Arm Armor",
+        "tag": "⚡ Hybrid Arms",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_hiit_30_30_interval",
-          "peloton_bike_bicep_curl_fusion",
-          "eccentric_hammer"
+          "cardio_cross_body_mountain_climbers",
+          "cardio_russian_twist_fast",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_dumbbell_high_pull",
+          "cardio_bench_toe_taps",
+          "cardio_dumbbell_clean_and_press",
+          "eccentric_hammer",
+          "tendon_single_leg_dumbbell_calf_raise"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
-        "title": "Bike Climb + DB Shoulder Fusion",
-        "tag": "\u26a1 Hybrid Delts",
+        "title": "Cardio Step-Up Climb + DB Shoulder Fusion",
+        "tag": "⚡ Hybrid Delts",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_standing_climb_heavy",
-          "peloton_bike_overhead_press_fusion",
-          "scaption_raise"
+          "cardio_dumbbell_thruster",
+          "cardio_squat_jacks",
+          "cardio_squat_and_punch_combo",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "scaption_raise",
+          "tendon_bench_concentration_curl"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Synovial Flush & Quad Decompression",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Synovial Flush & Quad Decompression",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_post_squat_knee_decompression"
+          "cardio_step_back_burpee_low_impact",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_step_jacks_low_impact",
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_bicycle_crunches_fast",
+          "cardio_cross_body_mountain_climbers"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest Day & Recovery",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Cardio Intervals + Upper DB Compound",
+        "tag": "⚡ Hybrid Upper",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_cross_body_mountain_climbers",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_russian_twist_fast",
+          "cardio_dumbbell_high_pull",
+          "cardio_plank_shoulder_taps_fast",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_two_hand_dumbbell_swing",
+          "cardio_curtsy_lunge_steps"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Step-Up Climb + Lower DB Power",
+        "tag": "⚡ Hybrid Lower",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_lateral_shuffle",
+          "cardio_dumbbell_clean_and_press",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_step_jacks_low_impact",
+          "cardio_dumbbell_reverse_lunge_to_press",
+          "cardio_bench_jump_overs_hands_on"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Mat Core Stability & Active Recovery",
+        "tag": "⚡ Mat Core",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "russian_twist",
+          "db_standing_woodchopper_low_high",
+          "core_slow_bicycle_crunch",
+          "db_mat_plank_pull_through",
+          "core_seated_bench_knee_tuck",
+          "abs_dumbbell_side_bend",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Cardio HIIT Sprints + DB Arm Armor",
+        "tag": "⚡ Hybrid Arms",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_cross_body_mountain_climbers",
+          "cardio_russian_twist_fast",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_dumbbell_high_pull",
+          "cardio_bench_toe_taps",
+          "cardio_dumbbell_clean_and_press",
+          "eccentric_hammer",
+          "tendon_single_leg_dumbbell_calf_raise"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Cardio Step-Up Climb + DB Shoulder Fusion",
+        "tag": "⚡ Hybrid Delts",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_dumbbell_thruster",
+          "cardio_squat_jacks",
+          "cardio_squat_and_punch_combo",
+          "cardio_bench_step_up_with_knee_drive",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "scaption_raise",
+          "tendon_bench_concentration_curl"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Synovial Flush & Quad Decompression",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_step_back_burpee_low_impact",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_step_jacks_low_impact",
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_bicycle_crunches_fast",
+          "cardio_cross_body_mountain_climbers"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day & Recovery",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -958,12 +2370,12 @@
     "title": "Push / Pull / Legs (PPL) + Joint Armor Split",
     "subtitle": "Classic 6-Day Hypertrophy with Built-In 5s Tendon HSR",
     "durationWeeks": 16,
-    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "durationMonths": "3–4 Months (16 Weeks • 112 Days)",
     "tier": "Hypertrophy",
     "category": "Hypertrophy",
     "badgeColor": "border-red-500/50 bg-red-500/10 text-red-400",
     "accentColor": "from-red-600/30 to-ios-card",
-    "icon": "\ud83d\udcaa",
+    "icon": "💪",
     "desc": "Periodized Push/Pull/Legs routine enhanced with targeted Heavy Slow Resistance on tendons to prevent overuse injuries while building max muscle.",
     "weeklySplit": "3 Days PPL + 1 Day Flush + 2 Days Upper/Lower + 1 Day Rest",
     "days": [
@@ -971,90 +2383,254 @@
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Push: Chest, Delts & Rotator HSR",
-        "tag": "\ud83d\udcaa Push Day",
+        "tag": "💪 Push Day",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "pectorals_incline_push_up",
+          "pectorals_dumbbell_pullover",
           "db_seated_arnold_press_bench",
+          "shoulders_side_lying_rear_delt_raise_slow",
+          "shoulders_dumbbell_y_press",
           "db_close_grip_floor_press",
-          "incline_bench_db_y_raise"
+          "chest_dumbbell_triceps_kickback",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Pull: Back, Biceps & Elbow HSR",
-        "tag": "\ud83d\udcaa Pull Day",
+        "tag": "💪 Pull Day",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "bent_row",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_seated_inner_biceps_curl",
           "db_incline_spider_curl_bench",
+          "forearms_dumbbell_seated_palms_up_wrist_curl",
+          "back_v_sit_dumbbell_bicep_curl",
           "eccentric_hammer",
-          "scaption_raise"
+          "tendon_eccentric_single_leg_squat_to_bench",
+          "scaption_raise",
+          "glutes_glute_bridge_two_legs_on_bench_male"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Legs: Quads, Hams & Patellar HSR",
-        "tag": "\ud83d\udcaa Legs Day",
+        "tag": "💪 Legs Day",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "lunges",
           "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
           "db_patellar_decline_squat_hsr",
-          "calf_eccentric"
+          "iso_squat_hold",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
-        "title": "Peloton Synovial Flush & Core",
-        "tag": "\ud83d\udeb4 Active Flush",
+        "title": "Cardio Synovial Flush & Core",
+        "tag": "🏃 Active Flush",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
+          "cardio_step_back_burpee_low_impact",
+          "cardio_step_jacks_low_impact",
+          "cardio_inchworm_with_push_up",
           "russian_twist",
-          "db_mat_deadbug_press"
+          "core_side_plank_reach_through",
+          "core_kneeling_dumbbell_woodchop",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Upper Kinetic Hybrid (Push/Pull)",
-        "tag": "\ud83d\udcaa Upper Hybrid",
+        "tag": "💪 Upper Hybrid",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "chest_floor_fly_with_glute_bridge",
+          "pectorals_dumbbell_around_pullover",
           "bent_row",
+          "forearms_dumbbell_over_bench_wrist_curl",
+          "db_incline_spider_curl_bench",
           "db_neutral_grip_overhead_press_bench",
-          "mat_side_lying_db_external_rotation"
+          "db_seated_hammer_front_raise_bench",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
         "title": "Lower Kinetic Power & Glutes",
-        "tag": "\ud83d\udcaa Lower Power",
+        "tag": "💪 Lower Power",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "legs_single_leg_step_down_from_bench",
+          "goblet_squat",
           "lunges",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
           "glute_bridge",
-          "calf_eccentric"
+          "mat_single_leg_glute_bridge_db",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Full Rest & Collagen Rebuilding",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Push: Chest, Delts & Rotator HSR",
+        "tag": "💪 Push Day",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_incline_push_up",
+          "pectorals_dumbbell_pullover",
+          "db_seated_arnold_press_bench",
+          "shoulders_side_lying_rear_delt_raise_slow",
+          "shoulders_dumbbell_y_press",
+          "db_close_grip_floor_press",
+          "chest_dumbbell_triceps_kickback",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Pull: Back, Biceps & Elbow HSR",
+        "tag": "💪 Pull Day",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "bent_row",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_seated_inner_biceps_curl",
+          "db_incline_spider_curl_bench",
+          "forearms_dumbbell_seated_palms_up_wrist_curl",
+          "back_v_sit_dumbbell_bicep_curl",
+          "eccentric_hammer",
+          "tendon_eccentric_single_leg_squat_to_bench",
+          "scaption_raise",
+          "glutes_glute_bridge_two_legs_on_bench_male"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Legs: Quads, Hams & Patellar HSR",
+        "tag": "💪 Legs Day",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_patellar_decline_squat_hsr",
+          "iso_squat_hold",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Cardio Synovial Flush & Core",
+        "tag": "🏃 Active Flush",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_step_back_burpee_low_impact",
+          "cardio_step_jacks_low_impact",
+          "cardio_inchworm_with_push_up",
+          "russian_twist",
+          "core_side_plank_reach_through",
+          "core_kneeling_dumbbell_woodchop",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Upper Kinetic Hybrid (Push/Pull)",
+        "tag": "💪 Upper Hybrid",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "chest_floor_fly_with_glute_bridge",
+          "pectorals_dumbbell_around_pullover",
+          "bent_row",
+          "forearms_dumbbell_over_bench_wrist_curl",
+          "db_incline_spider_curl_bench",
+          "db_neutral_grip_overhead_press_bench",
+          "db_seated_hammer_front_raise_bench",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Lower Kinetic Power & Glutes",
+        "tag": "💪 Lower Power",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "legs_single_leg_step_down_from_bench",
+          "goblet_squat",
+          "lunges",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Collagen Rebuilding",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1066,100 +2642,255 @@
     "title": "4-Day Upper / Lower Heavy Overload Split",
     "subtitle": "High-Load Hypertrophy with Synovial Recovery",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Strength",
     "category": "Strength",
     "badgeColor": "border-indigo-500/50 bg-indigo-500/10 text-indigo-400",
     "accentColor": "from-indigo-600/30 to-ios-card",
-    "icon": "\ud83c\udfcb\ufe0f",
-    "desc": "Classic 4-day Upper/Lower split allowing intense dumbbell mechanical loading with dedicated 48-hour tendon recovery days and Peloton flushes.",
-    "weeklySplit": "4 Days Upper/Lower + 2 Days Peloton + 1 Day Rest",
+    "icon": "🏋️",
+    "desc": "Classic 4-day Upper/Lower split allowing intense dumbbell mechanical loading with dedicated 48-hour tendon recovery days and Cardio flushes.",
+    "weeklySplit": "4 Days Upper/Lower + 2 Days Cardio + 1 Day Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Upper Strength & Tendon Armor 1",
-        "tag": "\ud83d\udcaa Upper Strength",
+        "tag": "💪 Upper Strength",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "pectorals_dumbbell_bench_press",
+          "pectorals_dumbbell_decline_one_arm_fly",
           "bent_row",
+          "biceps_dumbbell_standing_one_arm_curl_over_incline_bench",
+          "biceps_dumbbell_seated_inner_biceps_curl",
           "overhead_press",
-          "eccentric_hammer"
+          "db_seated_hammer_front_raise_bench",
+          "eccentric_hammer",
+          "glutes_jump_squat_v_2"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Lower Strength & Patellar HSR 1",
-        "tag": "\ud83d\udcaa Lower Strength",
+        "tag": "💪 Lower Strength",
         "isRest": false,
-        "duration": "28 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "legs_single_leg_step_down_from_bench",
+          "db_bulgarian_split_squat_bench",
           "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
           "db_patellar_decline_squat_hsr",
-          "calf_eccentric"
+          "tendon_split_squat_isometric_hold_patellar",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
-        "title": "Peloton Active Flush Ride",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Active Flush Session",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_pz2_endurance_base",
-          "peloton_patellar_synovial_flush"
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_jumping_jacks",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_skater_steps_low_impact"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Upper Volume & Rotator Shield 2",
-        "tag": "\ud83d\udcaa Upper Volume",
+        "tag": "💪 Upper Volume",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "db_close_grip_floor_press",
+          "chest_dumbbell_triceps_kickback",
+          "triceps_assisted_standing_triceps_extension_with_towel",
           "db_seated_arnold_press_bench",
+          "delts_dumbbell_standing_overhead_press",
+          "shoulder_bench_var_11",
           "scaption_raise",
-          "db_incline_spider_curl_bench"
+          "glutes_curtsey_squat",
+          "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_revers_grip_concentration_curl"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Lower Volume & Glute Power 2",
-        "tag": "\ud83d\udcaa Lower Volume",
+        "tag": "💪 Lower Volume",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "db_quad_sissy_squat_progression",
+          "goblet_squat",
           "lunges",
+          "db_bench_split_squat_isometric_hold",
+          "db_bench_step_ups_kg",
           "db_tempo_rdl_eccentric",
-          "glute_bridge"
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Cadence Pyramid",
-        "tag": "\ud83d\udeb4 Peloton Cadence",
+        "title": "Cardio Cadence Pyramid",
+        "tag": "🏃 Cardio Cadence",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_cadence_ladder_up",
-          "peloton_cooldown_heart_decel"
+          "cardio_burpee",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_man_maker",
+          "cardio_lateral_shuffle",
+          "cardio_tuck_jumps",
+          "cardio_single_arm_dumbbell_thruster"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest & Restoration",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Upper Strength & Tendon Armor 1",
+        "tag": "💪 Upper Strength",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_dumbbell_bench_press",
+          "pectorals_dumbbell_decline_one_arm_fly",
+          "bent_row",
+          "biceps_dumbbell_standing_one_arm_curl_over_incline_bench",
+          "biceps_dumbbell_seated_inner_biceps_curl",
+          "overhead_press",
+          "db_seated_hammer_front_raise_bench",
+          "eccentric_hammer",
+          "glutes_jump_squat_v_2"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Lower Strength & Patellar HSR 1",
+        "tag": "💪 Lower Strength",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "legs_single_leg_step_down_from_bench",
+          "db_bulgarian_split_squat_bench",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Cardio Active Flush Session",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_jumping_jacks",
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_skater_steps_low_impact"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Upper Volume & Rotator Shield 2",
+        "tag": "💪 Upper Volume",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_close_grip_floor_press",
+          "chest_dumbbell_triceps_kickback",
+          "triceps_assisted_standing_triceps_extension_with_towel",
+          "db_seated_arnold_press_bench",
+          "delts_dumbbell_standing_overhead_press",
+          "shoulder_bench_var_11",
+          "scaption_raise",
+          "glutes_curtsey_squat",
+          "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_revers_grip_concentration_curl"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Lower Volume & Glute Power 2",
+        "tag": "💪 Lower Volume",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_quad_sissy_squat_progression",
+          "goblet_squat",
+          "lunges",
+          "db_bench_split_squat_isometric_hold",
+          "db_bench_step_ups_kg",
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Cadence Pyramid",
+        "tag": "🏃 Cardio Cadence",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_burpee",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_man_maker",
+          "cardio_lateral_shuffle",
+          "cardio_tuck_jumps",
+          "cardio_single_arm_dumbbell_thruster"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest & Restoration",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1168,104 +2899,262 @@
   },
   "express_7min_daily": {
     "id": "express_7min_daily",
-    "title": "7-Minute High-Intensity Express Daily Blitz",
+    "title": "High-Intensity Express Daily Blitz",
     "subtitle": "Short, Intense Daily Scientific Dumbbell Pacing",
     "durationWeeks": 8,
-    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "durationMonths": "1–2 Months (8 Weeks • 56 Days)",
     "tier": "Time-Saver",
     "category": "Beginner",
     "badgeColor": "border-orange-400/50 bg-orange-400/10 text-orange-400",
     "accentColor": "from-orange-600/30 to-ios-card",
-    "icon": "\u23f1\ufe0f",
-    "desc": "Perfect for hectic schedules. 7-minute daily scientific blitzes alternating upper body, lower body, and Peloton sprints with zero wasted time.",
-    "weeklySplit": "5 Days Express DB + 1 Day Peloton + 1 Day Rest",
+    "icon": "⏱️",
+    "desc": "Perfect for hectic schedules. Daily blitzes alternating upper body, lower body, and Cardio sprints with zero wasted time.",
+    "weeklySplit": "5 Days Express DB + 1 Day Cardio + 1 Day Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
-        "title": "7-Min Full Body Blitz A",
-        "tag": "\u26a1 7-Min Blitz",
+        "title": "Quick Full Body Blitz A",
+        "tag": "⚡ Quick Blitz",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "50 min",
         "exercises": [
           "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
           "floor_press",
+          "pectorals_dumbbell_one_arm_decline_chest_press",
+          "chest_flat_bench_single_arm_press",
           "bent_row",
+          "biceps_dumbbell_reverse_spider_curl",
           "overhead_press",
-          "russian_twist"
+          "delts_dumbbell_standing_overhead_press",
+          "russian_twist",
+          "db_standing_woodchopper_low_high"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "7-Min Lower & Knee Armor",
-        "tag": "\u26a1 7-Min Lower",
+        "title": "Quick Lower & Knee Armor",
+        "tag": "⚡ Quick Lower",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "40 min",
         "exercises": [
           "iso_squat_hold",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_seated_isometric_knee_extension",
           "lunges",
+          "db_bulgarian_split_squat_bench",
+          "goblet_squat",
           "rdl",
-          "glute_bridge"
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
-        "title": "7-Min Peloton Fast Legs Blast",
-        "tag": "\ud83d\udeb4 7-Min Sprints",
+        "title": "Quick Cardio Fast Legs Blast",
+        "tag": "🏃 Quick Sprints",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_hiit_30_30_interval",
-          "peloton_spin_100_rpm"
+          "cardio_squat_jacks",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_jumping_lunges",
+          "cardio_burpee",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_man_maker"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
-        "title": "7-Min Upper & Rotator Cuff",
-        "tag": "\u26a1 7-Min Upper",
+        "title": "Quick Upper & Rotator Cuff",
+        "tag": "⚡ Quick Upper",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "pectorals_decline_push_up",
+          "pectorals_clap_push_up",
           "bent_row",
+          "biceps_dumbbell_seated_preacher_curl",
+          "biceps_dumbbell_standing_inner_biceps_curl_v_2",
           "scaption_raise",
-          "eccentric_hammer"
+          "glutes_frankenstein_squat",
+          "eccentric_hammer",
+          "glutes_dumbbell_bench_squat"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
-        "title": "7-Min Full Body Blitz B",
-        "tag": "\u26a1 7-Min Blitz",
+        "title": "Quick Full Body Blitz B",
+        "tag": "⚡ Quick Blitz",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "db_bench_split_squat_isometric_hold",
+          "goblet_squat",
           "overhead_press",
+          "delts_dumbbell_iron_cross",
+          "shoulder_bench_var_13",
           "calf_eccentric",
-          "russian_twist"
+          "tendon_isometric_calf_raise_hold",
+          "russian_twist",
+          "mat_bicycle_crunch_tempo_pause"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "7-Min Peloton Synovial Flush",
-        "tag": "\ud83d\udeb4 7-Min Flush",
+        "title": "Quick Cardio Synovial Flush",
+        "tag": "🏃 Quick Flush",
         "isRest": false,
-        "duration": "7 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_cooldown_heart_decel"
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_dumbbell_squat_clean",
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_cross_body_mountain_climbers"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Active Rest Day",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Quick Full Body Blitz A",
+        "tag": "⚡ Quick Blitz",
+        "isRest": false,
+        "duration": "50 min",
+        "exercises": [
+          "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
+          "floor_press",
+          "pectorals_dumbbell_one_arm_decline_chest_press",
+          "chest_flat_bench_single_arm_press",
+          "bent_row",
+          "biceps_dumbbell_reverse_spider_curl",
+          "overhead_press",
+          "delts_dumbbell_standing_overhead_press",
+          "russian_twist",
+          "db_standing_woodchopper_low_high"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Quick Lower & Knee Armor",
+        "tag": "⚡ Quick Lower",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "iso_squat_hold",
+          "tendon_split_squat_isometric_hold_patellar",
+          "tendon_seated_isometric_knee_extension",
+          "lunges",
+          "db_bulgarian_split_squat_bench",
+          "goblet_squat",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Quick Cardio Fast Legs Blast",
+        "tag": "🏃 Quick Sprints",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_squat_jacks",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_jumping_lunges",
+          "cardio_burpee",
+          "cardio_jumping_jacks",
+          "cardio_dumbbell_man_maker"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Quick Upper & Rotator Cuff",
+        "tag": "⚡ Quick Upper",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_decline_push_up",
+          "pectorals_clap_push_up",
+          "bent_row",
+          "biceps_dumbbell_seated_preacher_curl",
+          "biceps_dumbbell_standing_inner_biceps_curl_v_2",
+          "scaption_raise",
+          "glutes_frankenstein_squat",
+          "eccentric_hammer",
+          "glutes_dumbbell_bench_squat"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Quick Full Body Blitz B",
+        "tag": "⚡ Quick Blitz",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_bench_split_squat_isometric_hold",
+          "goblet_squat",
+          "overhead_press",
+          "delts_dumbbell_iron_cross",
+          "shoulder_bench_var_13",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "russian_twist",
+          "mat_bicycle_crunch_tempo_pause"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Quick Cardio Synovial Flush",
+        "tag": "🏃 Quick Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_inchworm_walkout",
+          "cardio_butt_kicks",
+          "cardio_dumbbell_squat_clean",
+          "cardio_standing_cross_body_knee_drive",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_cross_body_mountain_climbers"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Active Rest Day",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1277,58 +3166,72 @@
     "title": "Low-Impact Joint Rebuild & Cartilage Preservation",
     "subtitle": "Zero-Impact Hypertrophy with Pure Isometrics & Flushes",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Joint Longevity",
     "category": "Longevity",
     "badgeColor": "border-green-500/50 bg-green-500/10 text-green-400",
     "accentColor": "from-green-600/30 to-ios-card",
-    "icon": "\ud83c\udf31",
-    "desc": "Protects degenerative joints, cartilage wear, and sensitive tendons. Uses bench/floor supported angles, slow tempos, and smooth circular cycling.",
-    "weeklySplit": "3 Days Low-Impact + 2 Days Peloton Unload + 2 Days Rest",
+    "icon": "🌱",
+    "desc": "Protects degenerative joints, cartilage wear, and sensitive tendons. Uses bench/floor supported angles, slow tempos, and smooth circular cardio.",
+    "weeklySplit": "3 Days Low-Impact + 2 Days Cardio Unload + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Controlled Isometric Lower Body",
-        "tag": "\ud83e\ude7a Knee Isometric",
+        "tag": "🩺 Knee Isometric",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
           "iso_squat_hold",
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
           "glute_bridge",
-          "calf_eccentric"
+          "mat_single_leg_glute_bridge_db",
+          "glutes_dumbbell_stiff_leg_deadlift",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Low-Impact Synovial Unloading",
-        "tag": "\ud83d\udeb4 Joint Unloading",
+        "title": "Cardio Low-Impact Synovial Unloading",
+        "tag": "🏃 Joint Unloading",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_low_impact_joint_unloading",
-          "peloton_patellar_synovial_flush"
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_skipping_in_place",
+          "cardio_forward_back_hops",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_two_hand_dumbbell_swing"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Floor & Bench Supported Upper Body",
-        "tag": "\ud83d\udcaa Supported Upper",
+        "tag": "💪 Supported Upper",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "30 min",
         "exercises": [
           "floor_press",
+          "chest_staggered_hand_push_up",
+          "pectorals_kneeling_push_up_male",
           "scaption_raise",
-          "mat_side_lying_db_external_rotation"
+          "tendon_incline_bench_alternate_hammer_curl",
+          "calves_dumbbell_seated_one_leg_calf_raise_palm_up",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Rest & Connective Tissue Synthesis",
-        "tag": "\ud83d\udca4 Joint Rest",
+        "tag": "💤 Joint Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1337,32 +3240,147 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Slow Eccentric Kinetic Chain",
-        "tag": "\ud83d\udcaa Slow Eccentric",
+        "tag": "💪 Slow Eccentric",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "30 min",
         "exercises": [
           "db_tempo_rdl_eccentric",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_b-stance_rdl_mat",
           "eccentric_hammer",
-          "db_seated_arnold_press_bench"
+          "delts_dumbbell_lateral_to_front_raise",
+          "biceps_dumbbell_biceps_curl_squat",
+          "db_seated_arnold_press_bench",
+          "traps_dumbbell_shrug"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Smooth Circles & Mobility Spin",
-        "tag": "\ud83d\udeb4 Smooth Circles",
+        "title": "Cardio Smooth Flow & Mobility Session",
+        "tag": "🏃 Smooth Flow",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_smooth_circles",
-          "peloton_hip_knee_mobility_spin"
+          "cardio_lateral_shuffle",
+          "cardio_squat_jacks",
+          "cardio_squat_and_punch_combo",
+          "cardio_bench_step_ups_fast",
+          "cardio_dumbbell_squat_to_press",
+          "cardio_dumbbell_reverse_lunge_to_press"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Full Rest & Recovery",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Controlled Isometric Lower Body",
+        "tag": "🩺 Knee Isometric",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "iso_squat_hold",
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db",
+          "glutes_dumbbell_stiff_leg_deadlift",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Low-Impact Synovial Unloading",
+        "tag": "🏃 Joint Unloading",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_skipping_in_place",
+          "cardio_forward_back_hops",
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_two_hand_dumbbell_swing"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Floor & Bench Supported Upper Body",
+        "tag": "💪 Supported Upper",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "floor_press",
+          "chest_staggered_hand_push_up",
+          "pectorals_kneeling_push_up_male",
+          "scaption_raise",
+          "tendon_incline_bench_alternate_hammer_curl",
+          "calves_dumbbell_seated_one_leg_calf_raise_palm_up",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Rest & Connective Tissue Synthesis",
+        "tag": "💤 Joint Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Slow Eccentric Kinetic Chain",
+        "tag": "💪 Slow Eccentric",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "db_tempo_rdl_eccentric",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_b-stance_rdl_mat",
+          "eccentric_hammer",
+          "delts_dumbbell_lateral_to_front_raise",
+          "biceps_dumbbell_biceps_curl_squat",
+          "db_seated_arnold_press_bench",
+          "traps_dumbbell_shrug"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Smooth Flow & Mobility Session",
+        "tag": "🏃 Smooth Flow",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_lateral_shuffle",
+          "cardio_squat_jacks",
+          "cardio_squat_and_punch_combo",
+          "cardio_bench_step_ups_fast",
+          "cardio_dumbbell_squat_to_press",
+          "cardio_dumbbell_reverse_lunge_to_press"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1371,99 +3389,242 @@
   },
   "peloton_vo2_cadence": {
     "id": "peloton_vo2_cadence",
-    "title": "Peloton VO2 Max Cadence & Core Engine",
-    "subtitle": "High-Cadence Anaerobic Power & 360\u00b0 Core Stability",
+    "title": "Cardio VO2 Max Cadence & Core Engine",
+    "subtitle": "High-Cadence Anaerobic Power & 360° Core Stability",
     "durationWeeks": 10,
-    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "durationMonths": "2–2.5 Months (10 Weeks • 70 Days)",
     "tier": "Cardio & Core",
-    "category": "Peloton",
+    "category": "Cardio",
     "badgeColor": "border-rose-400/50 bg-rose-400/10 text-rose-400",
     "accentColor": "from-rose-600/30 to-ios-card",
-    "icon": "\ud83d\udeb4",
-    "desc": "Supercharges cardiovascular engine and threshold cadence on the Peloton bike while building bulletproof abdominal wall and lumbar stability on mat.",
-    "weeklySplit": "3 Days Peloton Power + 2 Days DB Strength + 2 Days Rest",
+    "icon": "🏃",
+    "desc": "Supercharges cardiovascular engine and threshold cadence while building bulletproof abdominal wall and lumbar stability on mat.",
+    "weeklySplit": "3 Days Cardio Power + 2 Days DB Strength + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
-        "title": "High RPM Spin-Ups & Core Planks",
-        "tag": "\ud83d\udeb4 Cadence & Core",
+        "title": "Fast Speed Bursts & Core Planks",
+        "tag": "🏃 Cadence & Core",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_spin_ups_80_110",
+          "cardio_plank_jacks",
+          "cardio_high_plank_hold_cardio_finisher",
+          "cardio_slow_mountain_climbers",
           "copenhagen_side_plank_bench",
-          "db_mat_plank_pull_through"
+          "db_mat_russian_twist_elevated",
+          "db_standing_oblique_side_bend",
+          "db_mat_plank_pull_through",
+          "abs_knee_touch_crunch"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Dumbbell Upper Kinetic Foundation",
-        "tag": "\ud83d\udcaa Upper Strength",
+        "tag": "💪 Upper Strength",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "30 min",
         "exercises": [
           "floor_press",
+          "pectorals_dumbbell_incline_one_arm_fly",
+          "pectorals_dumbbell_incline_one_arm_press",
           "bent_row",
-          "overhead_press"
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_lying_wide_curl",
+          "overhead_press",
+          "db_neutral_grip_overhead_press_bench"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
-        "title": "Peloton Tabata Max Wattage Output",
-        "tag": "\ud83d\udeb4 Tabata Max",
+        "title": "Cardio Tabata Max Output",
+        "tag": "🏃 Tabata Max",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_tabata_20_10_sprint",
-          "peloton_hiit_15s_super_sprint"
+          "cardio_star_jumps",
+          "cardio_jumping_lunges",
+          "cardio_dumbbell_squat_clean",
+          "cardio_squat_thrusts",
+          "cardio_bench_push_up_burpee",
+          "cardio_jumping_jacks"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Dumbbell Lower Kinetic Foundation",
-        "tag": "\ud83d\udcaa Lower Strength",
+        "tag": "💪 Lower Strength",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "30 min",
         "exercises": [
           "goblet_squat",
+          "db_bench_step_ups_kg",
+          "db_quad_sissy_squat_progression",
           "rdl",
-          "calf_eccentric"
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
-        "title": "Peloton Steep Hill Climb & Torque Push",
-        "tag": "\ud83d\udeb4 Heavy Torque",
+        "title": "Cardio Steep Hill Step-Up Climb",
+        "tag": "🏃 Power Climb",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_seated_climb_heavy",
-          "peloton_standing_climb_heavy"
+          "cardio_dumbbell_renegade_row",
+          "cardio_dumbbell_deadlift_to_upright_row",
+          "cardio_speed_squats",
+          "cardio_dumbbell_thruster",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_tuck_jumps"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Synovial Flush & Deep Core",
-        "tag": "\ud83d\udeb4 Flush & Core",
+        "title": "Cardio Synovial Flush & Deep Core",
+        "tag": "🏃 Flush & Core",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
+          "cardio_step_back_burpee_low_impact",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_jumping_jacks",
           "russian_twist",
-          "db_mat_deadbug_press"
+          "core_side_plank_reach_through",
+          "db_standing_woodchopper_low_high",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest Day",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Fast Speed Bursts & Core Planks",
+        "tag": "🏃 Cadence & Core",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_plank_jacks",
+          "cardio_high_plank_hold_cardio_finisher",
+          "cardio_slow_mountain_climbers",
+          "copenhagen_side_plank_bench",
+          "db_mat_russian_twist_elevated",
+          "db_standing_oblique_side_bend",
+          "db_mat_plank_pull_through",
+          "abs_knee_touch_crunch"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Dumbbell Upper Kinetic Foundation",
+        "tag": "💪 Upper Strength",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_dumbbell_incline_one_arm_fly",
+          "pectorals_dumbbell_incline_one_arm_press",
+          "bent_row",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "biceps_dumbbell_lying_wide_curl",
+          "overhead_press",
+          "db_neutral_grip_overhead_press_bench"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Cardio Tabata Max Output",
+        "tag": "🏃 Tabata Max",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_star_jumps",
+          "cardio_jumping_lunges",
+          "cardio_dumbbell_squat_clean",
+          "cardio_squat_thrusts",
+          "cardio_bench_push_up_burpee",
+          "cardio_jumping_jacks"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Dumbbell Lower Kinetic Foundation",
+        "tag": "💪 Lower Strength",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "goblet_squat",
+          "db_bench_step_ups_kg",
+          "db_quad_sissy_squat_progression",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Cardio Steep Hill Step-Up Climb",
+        "tag": "🏃 Power Climb",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_dumbbell_renegade_row",
+          "cardio_dumbbell_deadlift_to_upright_row",
+          "cardio_speed_squats",
+          "cardio_dumbbell_thruster",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_tuck_jumps"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Synovial Flush & Deep Core",
+        "tag": "🏃 Flush & Core",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_step_back_burpee_low_impact",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_jumping_jacks",
+          "russian_twist",
+          "core_side_plank_reach_through",
+          "db_standing_woodchopper_low_high",
+          "db_mat_deadbug_press",
+          "core_dumbbell_dead_bug"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1475,62 +3636,80 @@
     "title": "3-Day Full Body Time-Saver Split",
     "subtitle": "Maximum Efficiency Full-Body Compound Stimulus",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Time-Saver",
     "category": "Strength",
     "badgeColor": "border-sky-500/50 bg-sky-500/10 text-sky-400",
     "accentColor": "from-sky-600/30 to-ios-card",
-    "icon": "\u26a1",
-    "desc": "The ultimate schedule for busy professionals: 3 high-yield full-body compound workouts per week (Mon/Wed/Fri) with optional weekend Peloton recovery.",
+    "icon": "⚡",
+    "desc": "The ultimate schedule for busy professionals: 3 high-yield full-body compound workouts per week (Mon/Wed/Fri) with optional weekend Cardio recovery.",
     "weeklySplit": "3 Days Full Body + 2 Days Optional Flush + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Full Body Compound A",
-        "tag": "\ud83d\udcaa Full Body A",
+        "tag": "💪 Full Body A",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "45 min",
         "exercises": [
           "goblet_squat",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
           "floor_press",
+          "pectorals_dumbbell_incline_bench_press",
+          "pectorals_push_up_plus",
           "bent_row",
+          "forearms_dumbbell_one_arm_reverse_wrist_curl",
           "overhead_press",
-          "scaption_raise"
+          "delts_dumbbell_standing_one_arm_palm_in_press",
+          "scaption_raise",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Optional Peloton Flush Ride",
-        "tag": "\ud83d\udeb4 Active Flush",
+        "title": "Optional Cardio Flush Session",
+        "tag": "🏃 Active Flush",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_cooldown_heart_decel"
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_flutter_kick_intervals",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_squat_jacks",
+          "cardio_dumbbell_squat_clean"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Full Body Compound B",
-        "tag": "\ud83d\udcaa Full Body B",
+        "tag": "💪 Full Body B",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "45 min",
         "exercises": [
           "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
           "db_close_grip_floor_press",
+          "chest_dumbbell_tate_press_on_floor",
+          "chest_diamond_push_up",
           "lunges",
+          "db_bulgarian_split_squat_bench",
           "eccentric_hammer",
-          "calf_eccentric"
+          "abs_hip_raise_bent_knee",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Collagen Synthesis Rest",
-        "tag": "\ud83d\udca4 Tendon Rest",
+        "tag": "💤 Tendon Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1539,32 +3718,159 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Full Body Compound C",
-        "tag": "\ud83d\udcaa Full Body C",
+        "tag": "💪 Full Body C",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
+          "db_quad_sissy_squat_progression",
           "db_seated_arnold_press_bench",
+          "shoulder_bench_var_2",
+          "delts_dumbbell_lying_external_shoulder_rotation",
           "glute_bridge",
-          "russian_twist"
+          "mat_single_leg_glute_bridge_db",
+          "russian_twist",
+          "core_dumbbell_suitcase_carry_march"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Optional Peloton Zone 2 Base",
-        "tag": "\ud83d\udeb4 Aerobic Base",
+        "title": "Optional Cardio Zone 2 Base",
+        "tag": "🏃 Aerobic Base",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_pz2_endurance_base"
+          "cardio_step_jacks_low_impact",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_burpee_with_push_up",
+          "cardio_bench_push_up_burpee",
+          "cardio_dumbbell_man_maker",
+          "cardio_dumbbell_clean_and_press"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Weekly Restoration Rest",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Full Body Compound A",
+        "tag": "💪 Full Body A",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "goblet_squat",
+          "db_quad_sissy_squat_progression",
+          "db_bench_split_squat_isometric_hold",
+          "floor_press",
+          "pectorals_dumbbell_incline_bench_press",
+          "pectorals_push_up_plus",
+          "bent_row",
+          "forearms_dumbbell_one_arm_reverse_wrist_curl",
+          "overhead_press",
+          "delts_dumbbell_standing_one_arm_palm_in_press",
+          "scaption_raise",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Optional Cardio Flush Session",
+        "tag": "🏃 Active Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_marching_high_knees_low_impact",
+          "cardio_high_knees",
+          "cardio_flutter_kick_intervals",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_squat_jacks",
+          "cardio_dumbbell_squat_clean"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Full Body Compound B",
+        "tag": "💪 Full Body B",
+        "isRest": false,
+        "duration": "45 min",
+        "exercises": [
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "db_close_grip_floor_press",
+          "chest_dumbbell_tate_press_on_floor",
+          "chest_diamond_push_up",
+          "lunges",
+          "db_bulgarian_split_squat_bench",
+          "eccentric_hammer",
+          "abs_hip_raise_bent_knee",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Rest",
+        "tag": "💤 Tendon Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Compound C",
+        "tag": "💪 Full Body C",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_bench_step_ups_kg",
+          "db_quad_sissy_squat_progression",
+          "db_seated_arnold_press_bench",
+          "shoulder_bench_var_2",
+          "delts_dumbbell_lying_external_shoulder_rotation",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db",
+          "russian_twist",
+          "core_dumbbell_suitcase_carry_march"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Optional Cardio Zone 2 Base",
+        "tag": "🏃 Aerobic Base",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_step_jacks_low_impact",
+          "cardio_alternating_dumbbell_snatch",
+          "cardio_burpee_with_push_up",
+          "cardio_bench_push_up_burpee",
+          "cardio_dumbbell_man_maker",
+          "cardio_dumbbell_clean_and_press"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Weekly Restoration Rest",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1576,60 +3882,76 @@
     "title": "Glute, Hamstring & Hip Stability Armor",
     "subtitle": "Posterior Chain Power & Pelvic Alignment",
     "durationWeeks": 10,
-    "durationMonths": "2\u20132.5 Months (10 Weeks \u2022 70 Days)",
+    "durationMonths": "2–2.5 Months (10 Weeks • 70 Days)",
     "tier": "Hypertrophy",
     "category": "Hypertrophy",
     "badgeColor": "border-pink-500/50 bg-pink-500/10 text-pink-400",
     "accentColor": "from-pink-600/30 to-ios-card",
-    "icon": "\ud83c\udf51",
+    "icon": "🍑",
     "desc": "Builds glute max/medius and hamstring hypertrophy while protecting sacroiliac joints, lower back, and distal hamstring tendons.",
-    "weeklySplit": "3 Days Posterior Chain + 2 Days Peloton + 2 Days Rest",
+    "weeklySplit": "3 Days Posterior Chain + 2 Days Cardio + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Posterior Chain Drive (RDL & Glutes)",
-        "tag": "\ud83d\udcaa Glutes & RDL",
+        "tag": "💪 Glutes & RDL",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "40 min",
         "exercises": [
           "rdl",
+          "db_b-stance_rdl_mat",
+          "db_tempo_rdl_eccentric",
           "glute_bridge",
+          "glutes_dumbbell_rear_lunge",
+          "glutes_march_sit_wall",
           "mat_single_leg_glute_bridge_db",
-          "calf_eccentric"
+          "glutes_flutter_kicks",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Out-of-Saddle Glute Climb",
-        "tag": "\ud83d\udeb4 Glute Climb",
+        "title": "Cardio Glute Step-Up Climb",
+        "tag": "🏃 Glute Step-Up Climb",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "25 min",
         "exercises": [
-          "peloton_glute_focused_climb",
-          "peloton_standing_climb_heavy"
+          "cardio_dumbbell_squat_to_press",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_dumbbell_reverse_lunge_to_press",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_jumping_lunges",
+          "cardio_squat_and_punch_combo"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Upper Body DB Strength",
-        "tag": "\ud83d\udcaa Upper Body",
+        "tag": "💪 Upper Body",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_deep_push_up",
           "bent_row",
+          "back_bench_back_extension",
+          "back_dumbbell_spider_curl_on_incline_bench",
           "overhead_press",
-          "scaption_raise"
+          "db_half_kneeling_overhead_press_mat",
+          "scaption_raise",
+          "eccentric_hammer"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Glute Collagen Rest Window",
-        "tag": "\ud83d\udca4 Posterior Rest",
+        "tag": "💤 Posterior Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1638,33 +3960,155 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Unilateral Glute & Adductor Armor",
-        "tag": "\ud83d\udcaa Unilateral Power",
+        "tag": "💪 Unilateral Power",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "db_bench_split_squat_isometric_hold",
+          "goblet_squat",
           "copenhagen_side_plank_bench",
+          "abs_dumbbell_side_bend",
+          "core_half_kneeling_dumbbell_halo",
           "lunges",
-          "db_tempo_rdl_eccentric"
+          "legs_single_leg_step_down_from_bench",
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Post-Leg-Day Flush",
-        "tag": "\ud83d\udeb4 Leg Flush",
+        "title": "Cardio Post-Leg-Day Flush",
+        "tag": "🏃 Leg Flush",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_post_leg_day_flush",
-          "peloton_hip_knee_mobility_spin"
+          "cardio_lateral_shuffle",
+          "cardio_dumbbell_squat_clean",
+          "cardio_jumping_lunges",
+          "cardio_step_jacks_low_impact",
+          "cardio_half_burpee",
+          "cardio_dumbbell_man_maker"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Full Rest & Recovery",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Posterior Chain Drive (RDL & Glutes)",
+        "tag": "💪 Glutes & RDL",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "db_tempo_rdl_eccentric",
+          "glute_bridge",
+          "glutes_dumbbell_rear_lunge",
+          "glutes_march_sit_wall",
+          "mat_single_leg_glute_bridge_db",
+          "glutes_flutter_kicks",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Glute Step-Up Climb",
+        "tag": "🏃 Glute Step-Up Climb",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "cardio_dumbbell_squat_to_press",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_dumbbell_reverse_lunge_to_press",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_jumping_lunges",
+          "cardio_squat_and_punch_combo"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Upper Body DB Strength",
+        "tag": "💪 Upper Body",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "chest_flat_bench_dumbbell_fly",
+          "pectorals_deep_push_up",
+          "bent_row",
+          "back_bench_back_extension",
+          "back_dumbbell_spider_curl_on_incline_bench",
+          "overhead_press",
+          "db_half_kneeling_overhead_press_mat",
+          "scaption_raise",
+          "eccentric_hammer"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Glute Collagen Rest Window",
+        "tag": "💤 Posterior Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Unilateral Glute & Adductor Armor",
+        "tag": "💪 Unilateral Power",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "db_bench_split_squat_isometric_hold",
+          "goblet_squat",
+          "copenhagen_side_plank_bench",
+          "abs_dumbbell_side_bend",
+          "core_half_kneeling_dumbbell_halo",
+          "lunges",
+          "legs_single_leg_step_down_from_bench",
+          "db_tempo_rdl_eccentric",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Post-Leg-Day Flush",
+        "tag": "🏃 Leg Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_lateral_shuffle",
+          "cardio_dumbbell_squat_clean",
+          "cardio_jumping_lunges",
+          "cardio_step_jacks_low_impact",
+          "cardio_half_burpee",
+          "cardio_dumbbell_man_maker"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1676,61 +4120,78 @@
     "title": "Chest & Back Antagonist Hypertrophy",
     "subtitle": "Opposing Muscle Push-Pull Balance & Scapular Armor",
     "durationWeeks": 12,
-    "durationMonths": "2\u20133 Months (12 Weeks \u2022 84 Days)",
+    "durationMonths": "2–3 Months (12 Weeks • 84 Days)",
     "tier": "Hypertrophy",
     "category": "Hypertrophy",
     "badgeColor": "border-cyan-400/50 bg-cyan-400/10 text-cyan-400",
     "accentColor": "from-cyan-600/30 to-ios-card",
-    "icon": "\ud83d\udee1\ufe0f",
+    "icon": "🛡️",
     "desc": "Pairing chest and back antagonist supersets creates maximum muscular pump and upper-body posture symmetry while protecting shoulder capsules.",
-    "weeklySplit": "3 Days Antagonist + 2 Days Peloton + 2 Days Rest",
+    "weeklySplit": "3 Days Antagonist + 2 Days Cardio + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Horizontal Push/Pull Supersets",
-        "tag": "\ud83d\udcaa Horizontal Antagonist",
+        "tag": "💪 Horizontal Antagonist",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "floor_press",
+          "pectorals_dumbbell_decline_one_arm_fly",
+          "pectorals_dumbbell_incline_bench_press",
           "bent_row",
+          "biceps_dumbbell_one_arm_reverse_spider_curl",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
           "db_close_grip_floor_press",
-          "incline_bench_db_y_raise"
+          "chest_kneeling_bench_triceps_dip",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton Cadence Intervals",
-        "tag": "\ud83d\udeb4 Peloton Sprints",
+        "title": "Cardio Cadence Intervals",
+        "tag": "🏃 Cardio Sprints",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_hiit_30_30_interval",
-          "peloton_spin_100_rpm",
-          "russian_twist"
+          "cardio_cross_body_mountain_climbers",
+          "cardio_standing_oblique_knee_crunch",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_jump_squats",
+          "cardio_wall_sit_with_punches",
+          "cardio_speed_squats",
+          "russian_twist",
+          "mat_bicycle_crunch_tempo_pause"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Lower Body HSR & Quads",
-        "tag": "\ud83d\udcaa Lower Body",
+        "tag": "💪 Lower Body",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "lunges",
           "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
           "iso_squat_hold",
-          "calf_eccentric"
+          "tendon_split_squat_isometric_hold_patellar",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Antagonist Rest Window",
-        "tag": "\ud83d\udca4 Upper Rest",
+        "tag": "💤 Upper Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1739,33 +4200,157 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Vertical Push/Pull Supersets",
-        "tag": "\ud83d\udcaa Vertical Antagonist",
+        "tag": "💪 Vertical Antagonist",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "overhead_press",
+          "shoulders_standing_external_rotation_elbow_at_side",
+          "delts_weighted_round_arm",
           "bent_row",
+          "biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl",
+          "back_prone_floor_lat_pull",
           "db_seated_arnold_press_bench",
-          "scaption_raise"
+          "shoulders_dumbbell_upright_row_wide_slow",
+          "scaption_raise",
+          "tendon_isometric_hammer_curl_hold_90_degrees"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Synovial Flush Ride",
-        "tag": "\ud83d\udeb4 Active Flush",
+        "title": "Cardio Synovial Flush Session",
+        "tag": "🏃 Active Flush",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_cooldown_heart_decel"
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_dumbbell_halo_squat",
+          "cardio_bench_step_ups_fast",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_jumping_lunges"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest Day",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Horizontal Push/Pull Supersets",
+        "tag": "💪 Horizontal Antagonist",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "floor_press",
+          "pectorals_dumbbell_decline_one_arm_fly",
+          "pectorals_dumbbell_incline_bench_press",
+          "bent_row",
+          "biceps_dumbbell_one_arm_reverse_spider_curl",
+          "biceps_dumbbell_step_up_single_leg_balance_with_bicep_curl",
+          "db_close_grip_floor_press",
+          "chest_kneeling_bench_triceps_dip",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio Cadence Intervals",
+        "tag": "🏃 Cardio Sprints",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_cross_body_mountain_climbers",
+          "cardio_standing_oblique_knee_crunch",
+          "cardio_dumbbell_woodchop_fast",
+          "cardio_jump_squats",
+          "cardio_wall_sit_with_punches",
+          "cardio_speed_squats",
+          "russian_twist",
+          "mat_bicycle_crunch_tempo_pause"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Lower Body HSR & Quads",
+        "tag": "💪 Lower Body",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "rdl",
+          "legs_dumbbell_single_leg_romanian_deadlift_slow",
+          "hamstrings_dumbbell_lying_femoral",
+          "iso_squat_hold",
+          "tendon_split_squat_isometric_hold_patellar",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Antagonist Rest Window",
+        "tag": "💤 Upper Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Vertical Push/Pull Supersets",
+        "tag": "💪 Vertical Antagonist",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "overhead_press",
+          "shoulders_standing_external_rotation_elbow_at_side",
+          "delts_weighted_round_arm",
+          "bent_row",
+          "biceps_dumbbell_over_bench_one_arm_neutral_wrist_curl",
+          "back_prone_floor_lat_pull",
+          "db_seated_arnold_press_bench",
+          "shoulders_dumbbell_upright_row_wide_slow",
+          "scaption_raise",
+          "tendon_isometric_hammer_curl_hold_90_degrees"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Synovial Flush Session",
+        "tag": "🏃 Active Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_dumbbell_halo_squat",
+          "cardio_bench_step_ups_fast",
+          "cardio_single_arm_dumbbell_thruster",
+          "cardio_jumping_lunges"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1777,59 +4362,74 @@
     "title": "Arms & Deltoid Definition + Tendon Shield",
     "subtitle": "Biceps, Triceps, 3D Deltoids & Elbow Armor",
     "durationWeeks": 8,
-    "durationMonths": "1\u20132 Months (8 Weeks \u2022 56 Days)",
+    "durationMonths": "1–2 Months (8 Weeks • 56 Days)",
     "tier": "Hypertrophy",
     "category": "Hypertrophy",
     "badgeColor": "border-violet-500/50 bg-violet-500/10 text-violet-400",
     "accentColor": "from-violet-600/30 to-ios-card",
-    "icon": "\ud83d\udcaa",
+    "icon": "💪",
     "desc": "Direct arm and shoulder focus. Maximizes biceps, triceps, and side delt definition with strict slow negatives that strengthen elbow epicondyles.",
-    "weeklySplit": "3 Days Arms/Delts + 2 Days Peloton + 2 Days Rest",
+    "weeklySplit": "3 Days Arms/Delts + 2 Days Cardio + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Biceps, Triceps & Common Extensor HSR",
-        "tag": "\ud83d\udcaa Arm Hypertrophy",
+        "tag": "💪 Arm Hypertrophy",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "30 min",
         "exercises": [
           "eccentric_hammer",
+          "delts_dumbbell_side_lying_one_hand_raise",
+          "glutes_dumbbell_squat",
           "db_close_grip_floor_press",
-          "db_incline_spider_curl_bench"
+          "chest_bench_supported_single_arm_kickback",
+          "chest_bench_dip",
+          "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_bicep_curl"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton HIIT Sprints & Core",
-        "tag": "\ud83d\udeb4 HIIT & Core",
+        "title": "Cardio HIIT Sprints & Core",
+        "tag": "🏃 HIIT & Core",
         "isRest": false,
-        "duration": "20 min",
+        "duration": "25 min",
         "exercises": [
-          "peloton_hiit_30_30_interval",
-          "russian_twist"
+          "cardio_mountain_climbers",
+          "cardio_plank_shoulder_taps_fast",
+          "cardio_high_plank_hold_cardio_finisher",
+          "russian_twist",
+          "db_kneeling_woodchopper_mat",
+          "mat_side_plank_hip_dip_db"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Deltoids & Rotator Cuff Shield",
-        "tag": "\ud83d\udcaa 3D Delts",
+        "tag": "💪 3D Delts",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "db_seated_arnold_press_bench",
+          "delts_dumbbell_one_arm_shoulder_press",
+          "db_seated_shrug_bench",
           "scaption_raise",
+          "biceps_dumbbell_standing_alternate_hammer_curl_and_press",
+          "glutes_dumbbell_single_leg_squat",
           "incline_bench_db_y_raise",
-          "mat_side_lying_db_external_rotation"
+          "mat_prone_floor_angel",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Arm Tendon Synthesis Rest",
-        "tag": "\ud83d\udca4 Arm Rest",
+        "tag": "💤 Arm Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1838,33 +4438,153 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Full Body Kinetic Armor",
-        "tag": "\ud83d\udcaa Full Body",
+        "tag": "💪 Full Body",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "40 min",
         "exercises": [
           "goblet_squat",
+          "lunges",
+          "db_bulgarian_split_squat_bench",
           "floor_press",
+          "pectorals_incline_reverse_grip_push_up",
+          "pectorals_dumbbell_one_arm_reverse_grip_press",
           "bent_row",
-          "calf_eccentric"
+          "db_incline_spider_curl_bench",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Active Synovial Flush",
-        "tag": "\ud83d\udeb4 Joint Recovery",
+        "title": "Cardio Active Synovial Flush",
+        "tag": "🏃 Joint Recovery",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "25 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_achilles_low_tension_spin"
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_step_jacks_low_impact",
+          "cardio_squat_thrusts",
+          "cardio_dumbbell_clean_and_press"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Rest Day",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Biceps, Triceps & Common Extensor HSR",
+        "tag": "💪 Arm Hypertrophy",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "eccentric_hammer",
+          "delts_dumbbell_side_lying_one_hand_raise",
+          "glutes_dumbbell_squat",
+          "db_close_grip_floor_press",
+          "chest_bench_supported_single_arm_kickback",
+          "chest_bench_dip",
+          "db_incline_spider_curl_bench",
+          "biceps_dumbbell_seated_bicep_curl"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio HIIT Sprints & Core",
+        "tag": "🏃 HIIT & Core",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "cardio_mountain_climbers",
+          "cardio_plank_shoulder_taps_fast",
+          "cardio_high_plank_hold_cardio_finisher",
+          "russian_twist",
+          "db_kneeling_woodchopper_mat",
+          "mat_side_plank_hip_dip_db"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Deltoids & Rotator Cuff Shield",
+        "tag": "💪 3D Delts",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "db_seated_arnold_press_bench",
+          "delts_dumbbell_one_arm_shoulder_press",
+          "db_seated_shrug_bench",
+          "scaption_raise",
+          "biceps_dumbbell_standing_alternate_hammer_curl_and_press",
+          "glutes_dumbbell_single_leg_squat",
+          "incline_bench_db_y_raise",
+          "mat_prone_floor_angel",
+          "mat_side_lying_db_external_rotation",
+          "shoulder_bench_var_5"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Arm Tendon Synthesis Rest",
+        "tag": "💤 Arm Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Full Body Kinetic Armor",
+        "tag": "💪 Full Body",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "goblet_squat",
+          "lunges",
+          "db_bulgarian_split_squat_bench",
+          "floor_press",
+          "pectorals_incline_reverse_grip_push_up",
+          "pectorals_dumbbell_one_arm_reverse_grip_press",
+          "bent_row",
+          "db_incline_spider_curl_bench",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Active Synovial Flush",
+        "tag": "🏃 Joint Recovery",
+        "isRest": false,
+        "duration": "25 min",
+        "exercises": [
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_step_jacks_low_impact",
+          "cardio_squat_thrusts",
+          "cardio_dumbbell_clean_and_press"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Rest Day",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1876,97 +4596,243 @@
     "title": "Athletic Performance, Power & Rotational Speed",
     "subtitle": "Unilateral Strength, Explosive Cadence & Core",
     "durationWeeks": 16,
-    "durationMonths": "3\u20134 Months (16 Weeks \u2022 112 Days)",
+    "durationMonths": "3–4 Months (16 Weeks • 112 Days)",
     "tier": "Athletic",
     "category": "Advanced",
     "badgeColor": "border-orange-500/50 bg-orange-500/10 text-orange-400",
     "accentColor": "from-orange-600/30 to-ios-card",
-    "icon": "\u26a1",
-    "desc": "Built for competitive athletes. Combines explosive single-arm push presses, unilateral Bulgarian squats, rotational woodchoppers, and high-wattage Peloton Tabatas.",
-    "weeklySplit": "4 Days Athletic DB + 2 Days Peloton Sprints + 1 Day Rest",
+    "icon": "⚡",
+    "desc": "Built for competitive athletes. Combines explosive single-arm push presses, unilateral Bulgarian squats, rotational woodchoppers, and high-power Cardio Tabatas.",
+    "weeklySplit": "4 Days Athletic DB + 2 Days Cardio Sprints + 1 Day Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Explosive Dumbbell Power & Push Press",
-        "tag": "\u26a1 Athletic Power",
+        "tag": "⚡ Athletic Power",
         "isRest": false,
-        "duration": "25 min",
+        "duration": "30 min",
         "exercises": [
           "db_single_arm_push_press_kg",
+          "db_eccentric_overhead_press_lowering",
+          "db_floor_z_press_mat",
           "goblet_squat",
-          "floor_press"
+          "db_bench_split_squat_isometric_hold",
+          "db_quad_sissy_squat_progression",
+          "floor_press",
+          "pectorals_push_up_wall"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
-        "title": "Peloton High-Wattage Tabata Attack",
-        "tag": "\ud83d\udeb4 Tabata Power",
+        "title": "Cardio High-Power Tabata Attack",
+        "tag": "🏃 Tabata Power",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_tabata_20_10_sprint",
-          "peloton_hiit_15s_super_sprint"
+          "cardio_half_burpee",
+          "cardio_step_jacks_low_impact",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_star_jumps",
+          "cardio_lateral_shuffle",
+          "cardio_squat_and_punch_combo"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
         "title": "Unilateral Strength & Tendon HSR",
-        "tag": "\ud83d\udcaa Unilateral Leg",
+        "tag": "💪 Unilateral Leg",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "30 min",
         "exercises": [
           "db_bulgarian_split_squat_bench",
+          "lunges",
+          "goblet_squat",
           "db_tempo_rdl_eccentric",
-          "calf_eccentric"
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Rotational Core & Scapular Stability",
-        "tag": "\u26a1 Rotational Core",
+        "tag": "⚡ Rotational Core",
         "isRest": false,
-        "duration": "22 min",
+        "duration": "30 min",
         "exercises": [
           "db_standing_woodchopper_low_high",
+          "db_mat_windshield_wipers",
+          "db_standing_oblique_side_bend",
           "copenhagen_side_plank_bench",
-          "scaption_raise"
+          "abs_decline_sit_up",
+          "abs_bottoms_up",
+          "scaption_raise",
+          "glutes_dumbbell_plyo_squat"
         ]
       },
       {
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Heavy Upper Pull & Posterior Chain",
-        "tag": "\ud83d\udcaa Pull & Posterior",
+        "tag": "💪 Pull & Posterior",
         "isRest": false,
-        "duration": "26 min",
+        "duration": "40 min",
         "exercises": [
           "bent_row",
+          "biceps_dumbbell_one_arm_reverse_preacher_curl",
+          "biceps_biceps_leg_concentration_curl",
           "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
           "eccentric_hammer",
-          "lunges"
+          "delts_dumbbell_standing_front_raise_above_head",
+          "lunges",
+          "db_bulgarian_split_squat_bench"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Active Flushing & Hip Mobility",
-        "tag": "\ud83d\udeb4 Hip Mobility",
+        "title": "Cardio Active Flushing & Hip Mobility",
+        "tag": "🏃 Hip Mobility",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "20 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_hip_knee_mobility_spin"
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_side_to_side_hops",
+          "cardio_fast_feet"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Full Rest & Recovery",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Explosive Dumbbell Power & Push Press",
+        "tag": "⚡ Athletic Power",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "db_single_arm_push_press_kg",
+          "db_eccentric_overhead_press_lowering",
+          "db_floor_z_press_mat",
+          "goblet_squat",
+          "db_bench_split_squat_isometric_hold",
+          "db_quad_sissy_squat_progression",
+          "floor_press",
+          "pectorals_push_up_wall"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Cardio High-Power Tabata Attack",
+        "tag": "🏃 Tabata Power",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_half_burpee",
+          "cardio_step_jacks_low_impact",
+          "cardio_dumbbell_complex_deadlift_squat_press",
+          "cardio_star_jumps",
+          "cardio_lateral_shuffle",
+          "cardio_squat_and_punch_combo"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Unilateral Strength & Tendon HSR",
+        "tag": "💪 Unilateral Leg",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "db_bulgarian_split_squat_bench",
+          "lunges",
+          "goblet_squat",
+          "db_tempo_rdl_eccentric",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Rotational Core & Scapular Stability",
+        "tag": "⚡ Rotational Core",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "db_standing_woodchopper_low_high",
+          "db_mat_windshield_wipers",
+          "db_standing_oblique_side_bend",
+          "copenhagen_side_plank_bench",
+          "abs_decline_sit_up",
+          "abs_bottoms_up",
+          "scaption_raise",
+          "glutes_dumbbell_plyo_squat"
+        ]
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Heavy Upper Pull & Posterior Chain",
+        "tag": "💪 Pull & Posterior",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "bent_row",
+          "biceps_dumbbell_one_arm_reverse_preacher_curl",
+          "biceps_biceps_leg_concentration_curl",
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "hamstrings_dumbbell_lying_femoral",
+          "eccentric_hammer",
+          "delts_dumbbell_standing_front_raise_above_head",
+          "lunges",
+          "db_bulgarian_split_squat_bench"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Active Flushing & Hip Mobility",
+        "tag": "🏃 Hip Mobility",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_reverse_lunge_to_knee_drive",
+          "cardio_broad_jump_and_walk_back",
+          "cardio_dumbbell_step_up_to_press",
+          "cardio_low_impact_cardio_boxer_shuffle",
+          "cardio_side_to_side_hops",
+          "cardio_fast_feet"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Full Rest & Recovery",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -1978,61 +4844,78 @@
     "title": "5-Month Master Collagen & Joint Longevity Protocol",
     "subtitle": "Complete Kinetic Chain Resilience & Lifelong Cartilage Health",
     "durationWeeks": 20,
-    "durationMonths": "4\u20135 Months (20 Weeks \u2022 140 Days)",
+    "durationMonths": "4–5 Months (20 Weeks • 140 Days)",
     "tier": "Master Longevity",
     "category": "Longevity",
     "badgeColor": "border-emerald-400/50 bg-emerald-400/10 text-emerald-400",
     "accentColor": "from-emerald-600/30 to-ios-card",
-    "icon": "\ud83e\uddec",
+    "icon": "🧬",
     "desc": "The ultimate 20-week longevity curriculum. Methodically rotates mechanical tension across knee, shoulder, elbow, ankle, and hip connective tissues for permanent joint armor.",
-    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Peloton Synovial + 2 Days Rest",
+    "weeklySplit": "3 Days Kinetic Matrix + 2 Days Cardio Synovial + 2 Days Rest",
     "days": [
       {
         "day": 1,
         "dayName": "Day 1 (Mon)",
         "title": "Knee & Patellar Matrix HSR",
-        "tag": "\ud83e\ude7a Knee Matrix",
+        "tag": "🩺 Knee Matrix",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_eccentric_single_leg_squat_to_bench",
           "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "delts_dumbbell_seated_front_raise",
           "goblet_squat",
-          "glute_bridge"
+          "db_bulgarian_split_squat_bench",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
         ]
       },
       {
         "day": 2,
         "dayName": "Day 2 (Tue)",
         "title": "Shoulder & Rotator Cuff Matrix HSR",
-        "tag": "\ud83e\ude7a Shoulder Matrix",
+        "tag": "🩺 Shoulder Matrix",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "scaption_raise",
+          "abductors_side_bridge_hip_abduction",
+          "biceps_dumbbell_one_arm_standing_hammer_curl",
           "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "mat_prone_floor_angel",
           "mat_side_lying_db_external_rotation",
-          "floor_press"
+          "db_seated_90_90_external_rotation_bench",
+          "floor_press",
+          "pectorals_dumbbell_decline_twist_fly"
         ]
       },
       {
         "day": 3,
         "dayName": "Day 3 (Wed)",
-        "title": "Peloton Low-Impact Joint Synovial Flush",
-        "tag": "\ud83d\udeb4 Joint Circulation",
+        "title": "Cardio Low-Impact Joint Synovial Flush",
+        "tag": "🏃 Joint Circulation",
         "isRest": false,
-        "duration": "18 min",
+        "duration": "30 min",
         "exercises": [
-          "peloton_patellar_synovial_flush",
-          "peloton_hip_knee_mobility_spin",
-          "db_mat_deadbug_press"
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_step_jacks_low_impact",
+          "cardio_squat_thrusts",
+          "cardio_dumbbell_man_maker",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow"
         ]
       },
       {
         "day": 4,
         "dayName": "Day 4 (Thu)",
         "title": "Collagen Synthesis Rest Window",
-        "tag": "\ud83d\udca4 Collagen Rest",
+        "tag": "💤 Collagen Rest",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
@@ -2041,33 +4924,157 @@
         "day": 5,
         "dayName": "Day 5 (Fri)",
         "title": "Achilles, Foot & Elbow Tendon Matrix HSR",
-        "tag": "\ud83e\ude7a Achilles & Elbow",
+        "tag": "🩺 Achilles & Elbow",
         "isRest": false,
-        "duration": "24 min",
+        "duration": "40 min",
         "exercises": [
           "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
           "eccentric_hammer",
+          "iso_squat_hold",
+          "tendon_wrist_flexor_eccentric_golfer_s_elbow",
           "rdl",
-          "db_incline_spider_curl_bench"
+          "db_b-stance_rdl_mat",
+          "db_incline_spider_curl_bench",
+          "back_chest_supported_hammer_row"
         ]
       },
       {
         "day": 6,
         "dayName": "Day 6 (Sat)",
-        "title": "Peloton Zone 2 Base Capillary Flush",
-        "tag": "\ud83d\udeb4 Aerobic Flush",
+        "title": "Cardio Zone 2 Base Capillary Flush",
+        "tag": "🏃 Aerobic Flush",
         "isRest": false,
         "duration": "20 min",
         "exercises": [
-          "peloton_pz2_endurance_base",
-          "peloton_achilles_low_tension_spin"
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_inchworm_walkout",
+          "cardio_lunge_pulses",
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_half_jacks"
         ]
       },
       {
         "day": 7,
         "dayName": "Day 7 (Sun)",
         "title": "Complete Rest & Restorative Sleep",
-        "tag": "\ud83d\udca4 Full Recovery",
+        "tag": "💤 Full Recovery",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      }
+    ],
+    "scheduleTemplate": [
+      {
+        "day": 1,
+        "dayName": "Day 1 (Mon)",
+        "title": "Knee & Patellar Matrix HSR",
+        "tag": "🩺 Knee Matrix",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "iso_squat_hold",
+          "tendon_seated_isometric_knee_extension",
+          "tendon_eccentric_single_leg_squat_to_bench",
+          "db_patellar_decline_squat_hsr",
+          "tendon_split_squat_isometric_hold_patellar",
+          "delts_dumbbell_seated_front_raise",
+          "goblet_squat",
+          "db_bulgarian_split_squat_bench",
+          "glute_bridge",
+          "mat_single_leg_glute_bridge_db"
+        ]
+      },
+      {
+        "day": 2,
+        "dayName": "Day 2 (Tue)",
+        "title": "Shoulder & Rotator Cuff Matrix HSR",
+        "tag": "🩺 Shoulder Matrix",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "scaption_raise",
+          "abductors_side_bridge_hip_abduction",
+          "biceps_dumbbell_one_arm_standing_hammer_curl",
+          "incline_bench_db_y_raise",
+          "mat_prone_cobra_scapular_squeeze",
+          "mat_prone_floor_angel",
+          "mat_side_lying_db_external_rotation",
+          "db_seated_90_90_external_rotation_bench",
+          "floor_press",
+          "pectorals_dumbbell_decline_twist_fly"
+        ]
+      },
+      {
+        "day": 3,
+        "dayName": "Day 3 (Wed)",
+        "title": "Cardio Low-Impact Joint Synovial Flush",
+        "tag": "🏃 Joint Circulation",
+        "isRest": false,
+        "duration": "30 min",
+        "exercises": [
+          "cardio_skater_steps_low_impact",
+          "cardio_dumbbell_sumo_high_pull",
+          "cardio_dumbbell_swing_to_squat",
+          "cardio_step_jacks_low_impact",
+          "cardio_squat_thrusts",
+          "cardio_dumbbell_man_maker",
+          "db_mat_deadbug_press",
+          "core_bodyweight_dead_bug_slow"
+        ]
+      },
+      {
+        "day": 4,
+        "dayName": "Day 4 (Thu)",
+        "title": "Collagen Synthesis Rest Window",
+        "tag": "💤 Collagen Rest",
+        "isRest": true,
+        "duration": "Rest Day",
+        "exercises": []
+      },
+      {
+        "day": 5,
+        "dayName": "Day 5 (Fri)",
+        "title": "Achilles, Foot & Elbow Tendon Matrix HSR",
+        "tag": "🩺 Achilles & Elbow",
+        "isRest": false,
+        "duration": "40 min",
+        "exercises": [
+          "calf_eccentric",
+          "tendon_isometric_calf_raise_hold",
+          "tendon_single_leg_dumbbell_calf_raise",
+          "eccentric_hammer",
+          "iso_squat_hold",
+          "tendon_wrist_flexor_eccentric_golfer_s_elbow",
+          "rdl",
+          "db_b-stance_rdl_mat",
+          "db_incline_spider_curl_bench",
+          "back_chest_supported_hammer_row"
+        ]
+      },
+      {
+        "day": 6,
+        "dayName": "Day 6 (Sat)",
+        "title": "Cardio Zone 2 Base Capillary Flush",
+        "tag": "🏃 Aerobic Flush",
+        "isRest": false,
+        "duration": "20 min",
+        "exercises": [
+          "cardio_dumbbell_farmer_s_march",
+          "cardio_inchworm_walkout",
+          "cardio_lunge_pulses",
+          "cardio_shadow_boxing_with_light_dumbbells",
+          "cardio_dumbbell_push_press_fast",
+          "cardio_half_jacks"
+        ]
+      },
+      {
+        "day": 7,
+        "dayName": "Day 7 (Sun)",
+        "title": "Complete Rest & Restorative Sleep",
+        "tag": "💤 Full Recovery",
         "isRest": true,
         "duration": "Rest Day",
         "exercises": []
